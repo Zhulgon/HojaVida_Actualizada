@@ -409,7 +409,7 @@ const translations = {
           ],
           tags: ["NestJS", "Prisma", "PostgreSQL", "React", "Vite", "TypeScript", "Docker"],
           links: [{ label: "GitHub", href: "https://github.com/Zhulgon/optica-suite" }],
-          fallback: "OS",
+          image: "assets/projects/SO.png",
         },
         {
           name: "AR Monturas",
@@ -613,6 +613,40 @@ const dataLakeProjectEn = {
   fallback: "DL",
 };
 
+const bearingStatsProjectEs = {
+  name: "Estadistica de cojinetes",
+  kind: "standard",
+  meta: "Python · Estadistica descriptiva",
+  title: "Caso aplicado de estadistica sobre diametros de cojinetes esfericos",
+  summary:
+    "Replica en Python de un ejercicio academico sobre una muestra de 54 cojinetes: tabla de frecuencias, percentiles, dispersion e intervalos de confianza para la desviacion estandar poblacional.",
+  bullets: [
+    "Reproduce medidas de tendencia central y posicion para datos agrupados.",
+    "Incluye varianza, desviacion estandar, coeficiente de variacion e intervalo intercuartilico.",
+    "Calcula IC del 90% y 95% para sigma usando chi-cuadrado y deja el caso documentado como pieza de portafolio.",
+  ],
+  tags: ["Python", "NumPy", "Matplotlib", "SciPy", "Chi-cuadrado", "Estadistica"],
+  links: [{ label: "Ver caso", href: "cases/cojinetes-estadistica.html" }],
+  image: "assets/projects/cojinetes-statistics-summary.png",
+};
+
+const bearingStatsProjectEn = {
+  name: "Bearing statistics case",
+  kind: "standard",
+  meta: "Python · Descriptive statistics",
+  title: "Applied statistics case on spherical bearing diameters",
+  summary:
+    "Python recreation of an academic exercise built around a 54-item bearing sample: grouped frequencies, percentiles, dispersion metrics and confidence intervals for the population standard deviation.",
+  bullets: [
+    "Replicates central tendency and position measures for grouped data.",
+    "Includes variance, standard deviation, coefficient of variation and interquartile range.",
+    "Computes 90% and 95% confidence intervals for sigma with chi-square and documents the case as a portfolio piece.",
+  ],
+  tags: ["Python", "NumPy", "Matplotlib", "SciPy", "Chi-square", "Statistics"],
+  links: [{ label: "View case", href: "cases/cojinetes-estadistica.html" }],
+  image: "assets/projects/cojinetes-statistics-summary.png",
+};
+
 function upsertProjectBefore(items, project, targetName) {
   const existingIndex = items.findIndex((item) => item.name === project.name);
   if (existingIndex >= 0) {
@@ -680,6 +714,294 @@ Object.assign(translations.en.projects, {
 
 upsertProjectBefore(translations.es.projects.items, dataLakeProjectEs, "App Finanzas + Hábitos");
 upsertProjectBefore(translations.en.projects.items, dataLakeProjectEn, "Habits + Finance App");
+upsertProjectBefore(translations.es.projects.items, bearingStatsProjectEs, "Data Lake Practice");
+upsertProjectBefore(translations.en.projects.items, bearingStatsProjectEn, "Data Lake Practice");
+
+function updateProject(items, projectName, updates) {
+  const project = items.find((item) => item.name === projectName);
+  if (!project) {
+    return;
+  }
+
+  Object.assign(project, updates);
+}
+
+function reorderProjects(items, orderedNames) {
+  const ordered = [];
+  const used = new Set();
+
+  orderedNames.forEach((name) => {
+    const project = items.find((item) => item.name === name);
+    if (project) {
+      ordered.push(project);
+      used.add(name);
+    }
+  });
+
+  items.forEach((item) => {
+    if (!used.has(item.name)) {
+      ordered.push(item);
+    }
+  });
+
+  items.splice(0, items.length, ...ordered);
+}
+
+Object.assign(translations.es.hero, {
+  title:
+    'Transformo <span class="accent">datos</span>, <span class="accent">analítica</span> e <span class="accent">IA aplicada</span> en soluciones nacidas de problemas reales de operación.',
+  summary2:
+    "Ese enfoque nació en mi óptica, donde al comienzo la operación estaba dispersa entre Word, PDF, Excel y notas aisladas. A partir de ese problema diseñé software, dashboards y experiencias AR para integrar información, analizar ventas y mejorar la experiencia del cliente en un solo ecosistema.",
+  availabilityBody:
+    "Busco oportunidades como analista de datos junior, practicante de ingeniería de sistemas o roles iniciales donde pueda aportar en analítica, visualización, bases de datos, automatización e inteligencia artificial aplicada, usando el desarrollo de software como complemento para convertir necesidades de negocio en soluciones funcionales.",
+});
+
+Object.assign(translations.en.hero, {
+  title:
+    'I turn <span class="accent">data</span>, <span class="accent">analytics</span> and <span class="accent">applied AI</span> into solutions born from real operational problems.',
+  summary2:
+    "That focus started in my optical business, where operations were initially scattered across Word files, PDFs, Excel sheets and isolated notes. From that problem I designed software, dashboards and AR experiences to integrate information, analyze sales and improve customer experience in a single ecosystem.",
+  availabilityBody:
+    "I am looking for opportunities as a junior data analyst, systems engineering intern or early-career contributor who can support analytics, visualization, databases, automation and applied AI, using software development as a complement to turn business needs into functional solutions.",
+});
+
+Object.assign(translations.es.projects, {
+  title: "Datos, operación real y software construidos desde un problema concreto.",
+  intro:
+    "Mi trabajo no salió de ejercicios aislados: nació de la necesidad de ordenar la operación de mi óptica, integrar información, analizar ventas y diseñar mejores experiencias para clientes y equipo.",
+});
+
+Object.assign(translations.en.projects, {
+  title: "Data, real operations and software built from a concrete business problem.",
+  intro:
+    "My work did not come only from isolated exercises: it started from the need to organize my optical business operations, integrate information, analyze sales and design better experiences for customers and staff.",
+});
+
+updateProject(translations.es.projects.items, "Optica Suite", {
+  meta: "Software operativo · Datos · Full stack",
+  title: "Sistema integral para centralizar la operación de una óptica en un solo entorno",
+  summary:
+    "Nació al detectar que la óptica manejaba procesos aislados en Word, PDF, Excel y notas sueltas. Diseñé este sistema para integrar inventarios, ventas, historias, agenda de citas, sedes, usuarios por roles y reportes en una sola plataforma.",
+  bullets: [
+    "Resuelve un problema real de operación dispersa y mejora trazabilidad, control y seguimiento.",
+    "Integra inventarios, ventas, historias clínicas, agenda de citas, sedes, roles y reportes operativos.",
+    "Conecta software y datos para dejar información más confiable y facilitar decisiones dentro del negocio.",
+  ],
+});
+
+updateProject(translations.en.projects.items, "Optica Suite", {
+  meta: "Operational software · Data · Full stack",
+  title: "Integrated system to centralize optical business operations in a single environment",
+  summary:
+    "It started after identifying that the optical business was running processes separately across Word files, PDFs, Excel sheets and loose notes. I designed this system to unify inventory, sales, records, appointments, branches, role-based users and reporting in one platform.",
+  bullets: [
+    "Solves a real fragmented-operations problem and improves traceability, control and follow-up.",
+    "Integrates inventory, sales, clinical records, appointment scheduling, branches, role-based access and operational reports.",
+    "Connects software and data to produce more reliable information and better business decisions.",
+  ],
+});
+
+updateProject(translations.es.projects.items, "AR Monturas", {
+  meta: "Unity · AR aplicada al negocio",
+  title: "Catálogo en AR con face tracking pensado para una experiencia real de óptica",
+  summary:
+    "Desarrollé este catálogo para mejorar la forma de mostrar monturas y acercar una experiencia más interactiva al cliente. El proyecto sigue en mejora continua con la intención de llevarlo a una implementación real.",
+  bullets: [
+    "Permite visualizar monturas en 3D y navegar referencias del catálogo desde el móvil.",
+    "Incluye image targets y una línea experimental con face tracking para probar monturas sobre el rostro.",
+    "Nace como extensión del problema comercial y de experiencia que ya había detectado en la óptica.",
+  ],
+});
+
+updateProject(translations.en.projects.items, "AR Monturas", {
+  meta: "Unity · Business-oriented AR",
+  title: "AR catalog with face tracking designed for a real optical retail experience",
+  summary:
+    "I built this catalog to improve how optical frames are presented and to bring a more interactive experience to customers. The project is still under continuous improvement with the intention of becoming a real implementation.",
+  bullets: [
+    "Allows users to visualize 3D frames and browse catalog references from mobile devices.",
+    "Includes image targets and an experimental face-tracking flow for virtual frame try-on.",
+    "It was created as an extension of the commercial and customer-experience problem I had already identified in the optical business.",
+  ],
+});
+
+updateProject(translations.es.projects.items, "HR Dashboard en Tableau", {
+  summary:
+    "Proyecto en Tableau que fortaleció mi forma de convertir datos en visualizaciones útiles para toma de decisiones, storytelling y lectura ejecutiva de indicadores.",
+});
+
+updateProject(translations.en.projects.items, "HR Dashboard in Tableau", {
+  summary:
+    "A Tableau project that strengthened my ability to turn data into useful visualizations for decision-making, storytelling and executive KPI reading.",
+});
+
+updateProject(translations.es.projects.items, "IA y análisis de datos", {
+  title: "Ejercicios y prototipos de machine learning con datasets de texto, audio y video",
+  summary:
+    "Trabajo práctico para fortalecer limpieza de datos, EDA, preparación de datasets y evaluación de modelos supervisados, redes neuronales básicas y experimentos con IA aplicada.",
+});
+
+updateProject(translations.en.projects.items, "AI and data analysis", {
+  title: "Machine learning exercises and prototypes with text, audio and video datasets",
+  summary:
+    "Hands-on work to strengthen data cleaning, EDA, dataset preparation and evaluation of supervised models, basic neural networks and applied AI experimentation.",
+});
+
+reorderProjects(translations.es.projects.items, [
+  "Estadistica de cojinetes",
+  "HR Dashboard en Tableau",
+  "Data Lake Practice",
+  "IA y análisis de datos",
+  "Optica Suite",
+  "AR Monturas",
+  "App Finanzas + Hábitos",
+]);
+
+reorderProjects(translations.en.projects.items, [
+  "Bearing statistics case",
+  "HR Dashboard in Tableau",
+  "Data Lake Practice",
+  "AI and data analysis",
+  "Optica Suite",
+  "AR Monturas",
+  "Habits + Finance App",
+]);
+
+Object.assign(translations.es.experience, {
+  title: "Experiencia real de negocio convertida en datos, criterio y soluciones.",
+  intro:
+    "Haber sido dueño de una óptica no es un detalle secundario en mi perfil: fue el contexto donde aprendí operación, ventas, inventario, seguimiento y valor real de la información para decidir mejor.",
+  items: [
+    {
+      topline: "Sector óptico · 2 años",
+      title: "Propietario y administrador de óptica",
+      body: "Aprendí a gestionar inventario, proveedores, flujo de caja, ventas, atención al cliente y dinámica comercial. Esa experiencia me dio criterio operativo real y una visión clara de cómo los datos sí pueden generar valor cuando están bien organizados.",
+    },
+    {
+      topline: "Problema real convertido en producto",
+      title: "Diseño de soluciones para integrar operación, reportes y experiencia",
+      body: "Al detectar que la información estaba dispersa entre Word, PDF, Excel y notas aisladas, decidí diseñar un software para centralizar la operación, habilitar reportes, analizar ventas y sostener decisiones más confiables.",
+    },
+    {
+      topline: "Innovación aplicada en la óptica",
+      title: "Dashboard, software y AR como parte de una misma mejora continua",
+      body: "A partir de la operación real desarrollé un sistema integral, analicé información con dashboards y diseñé un catálogo en AR con face tracking para mejorar la experiencia de las monturas. Mi intención es seguir llevándolo hacia una solución real y madura.",
+    },
+  ],
+});
+
+Object.assign(translations.en.experience, {
+  title: "Real business experience turned into data, judgment and solutions.",
+  intro:
+    "Being the owner of an optical business is not a side detail in my profile: it was the environment where I learned operations, sales, inventory, follow-up and the real value of information for better decisions.",
+  items: [
+    {
+      topline: "Optical sector · 2 years",
+      title: "Optical business owner and administrator",
+      body: "I learned to manage inventory, suppliers, cash flow, sales, customer service and commercial operations. That experience gave me real operational judgment and a clear view of how data creates value when it is properly organized.",
+    },
+    {
+      topline: "Real problem turned into product",
+      title: "Designing solutions to integrate operations, reporting and experience",
+      body: "After identifying that information was scattered across Word files, PDFs, Excel sheets and isolated notes, I decided to design software that could centralize operations, enable reporting, analyze sales and support more reliable decision-making.",
+    },
+    {
+      topline: "Applied innovation in optical retail",
+      title: "Dashboard, software and AR as part of the same continuous improvement effort",
+      body: "From the real operation I developed an integrated system, worked with dashboards to analyze information and designed an AR catalog with face tracking to improve the frame experience. My goal is to keep evolving it into a real and mature solution.",
+    },
+  ],
+});
+
+Object.assign(translations.es.hero, {
+  summary2:
+    "Ese enfoque nació en mi óptica, donde al comienzo la operación estaba dispersa entre Word, PDF, Excel y notas aisladas. A partir de ese problema diseñé software, dashboards y experiencias AR para integrar información, analizar ventas, ordenar procesos y mejorar la experiencia del cliente dentro de un mismo ecosistema.",
+});
+
+Object.assign(translations.en.hero, {
+  summary2:
+    "That focus started in my optical business, where operations were initially scattered across Word files, PDFs, Excel sheets and isolated notes. From that problem I designed software, dashboards and AR experiences to integrate information, analyze sales, organize workflows and improve customer experience inside one ecosystem.",
+});
+
+updateProject(translations.es.projects.items, "Optica Suite", {
+  summary:
+    "Nació al detectar que la óptica manejaba procesos aislados en Word, PDF, Excel y notas sueltas. Diseñé este sistema para integrar inventarios, ventas, historias clínicas, agenda de citas, sedes, usuarios por roles, auditoría y reportes en una sola plataforma.",
+  bullets: [
+    "Resuelve un problema real de operación dispersa y mejora trazabilidad, control y seguimiento.",
+    "Integra inventarios, ventas, historias clínicas, agenda de citas, sedes, roles, auditoría y reportes operativos.",
+    "Conecta software y datos para dejar información más confiable, analizar el negocio y sostener mejores decisiones.",
+  ],
+});
+
+updateProject(translations.en.projects.items, "Optica Suite", {
+  summary:
+    "It started after identifying that the optical business was running processes separately across Word files, PDFs, Excel sheets and loose notes. I designed this system to unify inventory, sales, clinical records, appointments, branches, role-based users, audit tracking and reporting in one platform.",
+  bullets: [
+    "Solves a real fragmented-operations problem and improves traceability, control and follow-up.",
+    "Integrates inventory, sales, clinical records, appointment scheduling, branches, role-based access, audit trails and operational reports.",
+    "Connects software and data to produce more reliable information, analyze business performance and support better decisions.",
+  ],
+});
+
+updateProject(translations.es.projects.items, "AR Monturas", {
+  summary:
+    "Desarrollé este catálogo para mejorar la forma de mostrar monturas, apoyar la asesoría comercial y acercar una experiencia más interactiva al cliente. El proyecto sigue en mejora continua con la intención de llevarlo a una implementación real.",
+  bullets: [
+    "Permite visualizar monturas en 3D y navegar referencias del catálogo desde el móvil.",
+    "Incluye image targets y una línea experimental con face tracking para probar monturas sobre el rostro.",
+    "Nace como extensión del problema comercial y de experiencia que ya había detectado en la óptica al buscar una forma más útil de presentar el catálogo.",
+  ],
+});
+
+updateProject(translations.en.projects.items, "AR Monturas", {
+  summary:
+    "I built this catalog to improve how optical frames are presented, support the sales process and bring a more interactive experience to customers. The project is still under continuous improvement with the intention of becoming a real implementation.",
+  bullets: [
+    "Allows users to visualize 3D frames and browse catalog references from mobile devices.",
+    "Includes image targets and an experimental face-tracking flow for virtual frame try-on.",
+    "It was created as an extension of the commercial and customer-experience problem I had already identified while trying to present the catalog in a more useful way.",
+  ],
+});
+
+Object.assign(translations.es.experience, {
+  items: [
+    {
+      topline: "Sector óptico · 2 años",
+      title: "Propietario y administrador de óptica",
+      body: "Aprendí a gestionar inventario, proveedores, flujo de caja, ventas, atención al cliente y dinámica comercial. Esa experiencia me dio criterio operativo real y una visión clara de cómo los datos sí pueden generar valor cuando están bien organizados.",
+    },
+    {
+      topline: "Problema real convertido en producto",
+      title: "Diseño de soluciones para integrar operación, reportes y experiencia",
+      body: "Al detectar que la información estaba dispersa entre Word, PDF, Excel y notas aisladas, decidí diseñar un software para centralizar inventarios, ventas, historias, citas, sedes, roles y reportes, dejando una operación mucho más integrada y confiable.",
+    },
+    {
+      topline: "Innovación aplicada en la óptica",
+      title: "Dashboard, software y AR como parte de una misma mejora continua",
+      body: "A partir de la operación real desarrollé un sistema integral, analicé ventas e indicadores con dashboards y diseñé un catálogo en AR con face tracking para mejorar la experiencia alrededor de las monturas. Mi intención es seguir llevándolo hacia una solución real y madura.",
+    },
+  ],
+});
+
+Object.assign(translations.en.experience, {
+  items: [
+    {
+      topline: "Optical sector · 2 years",
+      title: "Optical business owner and administrator",
+      body: "I learned to manage inventory, suppliers, cash flow, sales, customer service and commercial operations. That experience gave me real operational judgment and a clear view of how data creates value when it is properly organized.",
+    },
+    {
+      topline: "Real problem turned into product",
+      title: "Designing solutions to integrate operations, reporting and experience",
+      body: "After identifying that information was scattered across Word files, PDFs, Excel sheets and isolated notes, I decided to design software that could centralize inventory, sales, records, appointments, branches, roles and reporting into a much more reliable operation.",
+    },
+    {
+      topline: "Applied innovation in optical retail",
+      title: "Dashboard, software and AR as part of the same continuous improvement effort",
+      body: "From that real operation I developed an integrated system, analyzed sales and business indicators with dashboards and designed an AR catalog with face tracking to improve the frame experience. My goal is to keep evolving it into a real and mature solution.",
+    },
+  ],
+});
 
 const state = {
   locale: localStorage.getItem("portfolio-locale") || "es",

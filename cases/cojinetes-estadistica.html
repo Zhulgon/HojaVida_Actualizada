@@ -1,0 +1,2969 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Libro Visual de Estadistica | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Libro visual de un caso de estadistica aplicada sobre cojinetes, reconstruido hoja por hoja con el contenido completo del ejercicio."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --bg: #efe8dc;
+      --paper: #fffdf8;
+      --paper-soft: #faf5eb;
+      --ink: #182334;
+      --ink-soft: #5f6778;
+      --line: rgba(24, 35, 52, 0.12);
+      --accent: #0f8e88;
+      --accent-2: #d59643;
+      --shadow: 0 24px 70px rgba(49, 37, 20, 0.12);
+      --shadow-soft: 0 12px 30px rgba(49, 37, 20, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(15, 142, 136, 0.16), transparent 24%),
+        radial-gradient(circle at top right, rgba(213, 150, 67, 0.16), transparent 24%),
+        linear-gradient(180deg, #f6f0e5 0%, #eee6d9 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1220px, calc(100% - 1.5rem));
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    .book-shell {
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      background: linear-gradient(180deg, rgba(255, 253, 248, 0.92), rgba(250, 244, 233, 0.94));
+      box-shadow: var(--shadow);
+      padding: 1.3rem;
+    }
+
+    .book-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.7rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      line-height: 1.04;
+    }
+
+    .book-head h1 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+    }
+
+    .book-head p {
+      margin: 0.6rem 0 0;
+      max-width: 720px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .page-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .page-control,
+    .page-tab,
+    .book-link {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--ink);
+      transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
+      font-weight: 700;
+    }
+
+    .page-control,
+    .page-tab {
+      cursor: pointer;
+    }
+
+    .page-control {
+      min-width: 3rem;
+      min-height: 3rem;
+      font-size: 1rem;
+    }
+
+    .page-tab {
+      padding: 0.62rem 0.92rem;
+    }
+
+    .page-tab--step {
+      min-width: 2.3rem;
+      padding: 0.5rem 0.7rem;
+    }
+
+    .book-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.1rem;
+    }
+
+    .page-control:hover,
+    .page-tab:hover,
+    .page-tab.is-active,
+    .book-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 142, 136, 0.3);
+      background: rgba(15, 142, 136, 0.08);
+    }
+
+    .book-nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 0.55rem;
+      margin-top: 0.35rem;
+      margin-bottom: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .book-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .book-nav-label {
+      flex: 0 0 auto;
+      padding: 0 0.2rem;
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .step-tabs {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: nowrap;
+    }
+
+    .book-head-link {
+      padding: 0.72rem 1rem;
+      white-space: nowrap;
+    }
+
+    .sheet {
+      display: none;
+      min-height: 840px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(252, 247, 239, 0.96));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), var(--shadow-soft);
+      padding: 1.35rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sheet::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(24, 35, 52, 0.025) 0, rgba(24, 35, 52, 0.025) 1px, transparent 1px, transparent 60px),
+        linear-gradient(rgba(24, 35, 52, 0.02) 0, rgba(24, 35, 52, 0.02) 1px, transparent 1px, transparent 60px);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .sheet.is-active {
+      display: block;
+    }
+
+    .sheet.is-compact {
+      min-height: 700px;
+      padding: 1rem;
+    }
+
+    .sheet.is-compact .sheet-inner {
+      gap: 0.9rem;
+    }
+
+    .sheet.is-compact .sheet-header {
+      padding-bottom: 0.65rem;
+    }
+
+    .sheet.is-compact .card {
+      padding: 0.95rem 1rem;
+    }
+
+    .sheet.is-compact-short {
+      min-height: 620px;
+    }
+
+    .sheet[data-page="3"] .sheet-grid > .card[style*="grid-column"] {
+      display: none;
+    }
+
+    .sheet[data-page="2"] .sheet-grid > .card[style*="grid-column"] {
+      display: none;
+    }
+
+    .sheet-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1.15rem;
+      height: 100%;
+    }
+
+    .sheet-cover {
+      align-content: center;
+      justify-items: center;
+      text-align: center;
+      padding: 2.5rem 2rem;
+    }
+
+    .sheet-cover .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+
+    .sheet-cover h2 {
+      font-size: clamp(2.7rem, 6vw, 5.4rem);
+      max-width: 900px;
+    }
+
+    .accent {
+      background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .sheet-cover p {
+      margin: 1.1rem auto 0;
+      max-width: 780px;
+      color: var(--ink-soft);
+      font-size: 1.06rem;
+      line-height: 1.9;
+    }
+
+    .cover-line {
+      width: min(620px, 100%);
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(24, 35, 52, 0.16) 12%, rgba(24, 35, 52, 0.16) 88%, transparent 100%);
+      margin: 1.5rem 0 0.9rem;
+    }
+
+    .sheet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sheet-header h3 {
+      font-size: clamp(1.45rem, 2.5vw, 2.2rem);
+    }
+
+    .sheet-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 6.2rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--ink-soft);
+      font-weight: 800;
+    }
+
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .card {
+      padding: 1.05rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .card h4 {
+      font-size: 1.02rem;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    .card p,
+    .card li {
+      color: var(--ink-soft);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .card ul,
+    .card ol {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .card li + li {
+      margin-top: 0.42rem;
+    }
+
+    .card-feature {
+      background:
+        linear-gradient(180deg, rgba(15, 142, 136, 0.06), rgba(213, 150, 67, 0.05)),
+        rgba(255, 255, 255, 0.86);
+    }
+
+    .formula {
+      display: block;
+      margin-top: 0.7rem;
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-md);
+      background: rgba(16, 24, 40, 0.96);
+      color: #eff6ff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      overflow: auto;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .spread {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1rem;
+    }
+
+    .selection-overview {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 1rem;
+    }
+
+    .selection-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .selection-table {
+      display: grid;
+      gap: 0.24rem;
+    }
+
+    .selection-head,
+    .selection-row {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr 0.95fr;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .selection-head {
+      padding: 0.8rem 0.9rem;
+      border-radius: 14px;
+      background: rgba(15, 142, 136, 0.08);
+      color: var(--ink);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .selection-row {
+      padding: 0.72rem 0.9rem;
+      border-radius: 14px;
+      color: var(--ink-soft);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(24, 35, 52, 0.06);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .selection-row:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 142, 136, 0.22);
+      box-shadow: 0 12px 24px rgba(24, 35, 52, 0.08);
+    }
+
+    .selection-row strong {
+      color: var(--ink);
+    }
+
+    .frequency-shell {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .frequency-scroll {
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+    }
+
+    .frequency-table {
+      width: 100%;
+      min-width: 980px;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.72);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .frequency-table thead th {
+      padding: 0.9rem 0.75rem;
+      background: rgba(15, 142, 136, 0.08);
+      color: var(--ink);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .frequency-table tbody td {
+      padding: 0.82rem 0.75rem;
+      color: var(--ink-soft);
+      border-bottom: 1px solid rgba(24, 35, 52, 0.08);
+    }
+
+    .frequency-table tbody tr:hover {
+      background: rgba(15, 142, 136, 0.05);
+    }
+
+    .frequency-table tbody td strong {
+      color: var(--ink);
+    }
+
+    .class-notes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .class-note {
+      padding: 1rem 1.05rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.78);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .class-note:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 142, 136, 0.22);
+      box-shadow: 0 12px 24px rgba(24, 35, 52, 0.08);
+    }
+
+    .class-note h4 {
+      margin: 0 0 0.45rem;
+      font-size: 1rem;
+    }
+
+    .class-note p {
+      margin: 0;
+      color: var(--ink-soft);
+      line-height: 1.75;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .chart-card {
+      padding: 1.05rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .chart-card h4 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+    }
+
+    .chart-card p {
+      margin: 0 0 0.85rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .chart-stage {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(15, 142, 136, 0.05), rgba(255, 255, 255, 0.4)),
+        rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(24, 35, 52, 0.08);
+      padding: 0.85rem;
+    }
+
+    .chart-stage svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .chart-stage text {
+      font-family: "Manrope", sans-serif;
+      fill: var(--ink-soft);
+      font-size: 12px;
+    }
+
+    .chart-stage .chart-title {
+      fill: var(--ink);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .chart-stage .value-label {
+      fill: var(--ink);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .chart-stage .axis-label {
+      fill: var(--ink);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .chart-note {
+      margin-top: 0.85rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .chart-analysis {
+      margin-top: 0.95rem;
+      padding: 0.95rem 1rem;
+      border: 1px solid rgba(24, 35, 52, 0.08);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .chart-analysis h5 {
+      margin: 0 0 0.55rem;
+      font-family: "Sora", sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .chart-analysis ul {
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+
+    .chart-analysis li {
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .chart-analysis li + li {
+      margin-top: 0.35rem;
+    }
+
+    .charts-carousel {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .carousel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 0 0.2rem;
+    }
+
+    .carousel-head p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .carousel-button,
+    .carousel-dot {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--ink);
+      transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
+      cursor: pointer;
+    }
+
+    .carousel-button {
+      width: 2.7rem;
+      height: 2.7rem;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .carousel-dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 999px;
+      padding: 0;
+    }
+
+    .carousel-button:hover,
+    .carousel-dot:hover,
+    .carousel-dot.is-active {
+      transform: translateY(-2px);
+      border-color: rgba(15, 142, 136, 0.28);
+      background: rgba(15, 142, 136, 0.14);
+    }
+
+    .carousel-status {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      font-weight: 700;
+      min-width: 3rem;
+      text-align: center;
+    }
+
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: 24px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.55s ease;
+      will-change: transform;
+    }
+
+    .chart-slide {
+      min-width: 100%;
+      padding: 0.1rem;
+    }
+
+    .ojiva-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1rem;
+      margin-top: 0.95rem;
+    }
+
+    .ojiva-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .ojiva-table th,
+    .ojiva-table td {
+      padding: 0.72rem 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(24, 35, 52, 0.08);
+      color: var(--ink-soft);
+    }
+
+    .ojiva-table th {
+      background: rgba(15, 142, 136, 0.08);
+      color: var(--ink);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .ojiva-table td strong {
+      color: var(--ink);
+    }
+
+    .study-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .study-grid.is-three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .study-card {
+      padding: 1.05rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .study-card h4 {
+      margin: 0 0 0.45rem;
+      font-size: 1rem;
+    }
+
+    .study-card p,
+    .study-card li {
+      margin: 0;
+      color: var(--ink-soft);
+      line-height: 1.72;
+    }
+
+    .study-card ul {
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+
+    .study-card li + li {
+      margin-top: 0.35rem;
+    }
+
+    .study-formula {
+      display: block;
+      margin: 0.7rem 0 0.75rem;
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      background: rgba(16, 24, 40, 0.96);
+      color: #eff6ff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      overflow: auto;
+    }
+
+    .study-meta {
+      margin-top: 0.75rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .study-meta span {
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    .study-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin: 0.1rem 0 0.8rem;
+      padding: 0.62rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 142, 136, 0.2);
+      background: rgba(15, 142, 136, 0.08);
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .normal-carousel {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .normal-slide {
+      min-width: 100%;
+      padding: 0.1rem;
+    }
+
+    .normal-card {
+      padding: 1.15rem;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(15, 142, 136, 0.04), rgba(255, 255, 255, 0.86)),
+        rgba(255, 255, 255, 0.84);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .normal-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(15, 142, 136, 0.18);
+      box-shadow: 0 18px 34px rgba(24, 35, 52, 0.08);
+    }
+
+    .normal-card > p {
+      margin: 0.4rem 0 1rem;
+      color: var(--ink-soft);
+      line-height: 1.72;
+    }
+
+    .normal-case-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .normal-math {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .normal-stack {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .normal-stack .study-formula {
+      margin: 0;
+    }
+
+    .normal-points {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+
+    .normal-points li {
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .normal-interpretation {
+      margin-top: 1rem;
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(24, 35, 52, 0.08);
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .normal-interpretation h5 {
+      margin: 0 0 0.45rem;
+      font-family: "Sora", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.2;
+    }
+
+    .normal-interpretation p {
+      margin: 0;
+      color: var(--ink-soft);
+      line-height: 1.72;
+    }
+
+    .normal-curve {
+      fill: none;
+      stroke: #182334;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .normal-axis {
+      stroke: rgba(24, 35, 52, 0.65);
+      stroke-width: 2;
+    }
+
+    .normal-guide {
+      stroke: rgba(24, 35, 52, 0.16);
+      stroke-width: 1.5;
+      stroke-dasharray: 4 5;
+    }
+
+    .normal-marker {
+      stroke: #4f86c6;
+      stroke-width: 2;
+    }
+
+    .normal-fill-primary {
+      fill: rgba(229, 182, 74, 0.72);
+    }
+
+    .normal-fill-secondary {
+      fill: rgba(116, 176, 240, 0.4);
+    }
+
+    .normal-label {
+      fill: var(--ink);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .normal-small {
+      fill: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+      .sheet-grid,
+      .spread,
+      .selection-overview,
+      .selection-columns,
+      .class-notes,
+      .charts-grid,
+      .ojiva-grid,
+      .normal-case-grid,
+      .study-grid,
+      .study-grid.is-three {
+        grid-template-columns: 1fr;
+      }
+
+      .book-head {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 1rem, 1220px);
+      }
+
+      .sheet {
+        padding: 1rem;
+      }
+
+      .sheet-cover {
+        padding: 1rem;
+      }
+
+      .book-nav {
+        gap: 0.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="book-shell">
+      <div class="book-head">
+        <div>
+          <p class="eyebrow">Libro virtual / Estadistica descriptiva / Caso aplicado</p>
+          <h1>Libro visual del caso de cojinetes.</h1>
+        </div>
+
+        <div class="page-controls">
+          <button class="page-control" type="button" id="prevPage" aria-label="Hoja anterior">←</button>
+          <button class="page-control" type="button" id="nextPage" aria-label="Siguiente hoja">→</button>
+          <a class="book-link book-head-link" href="../index.html#projects">Volver al portfolio</a>
+        </div>
+      </div>
+
+      <div class="book-nav">
+        <button class="page-tab is-active" type="button" data-page="0">Portada</button>
+        <button class="page-tab" type="button" data-page="1">Lista</button>
+        <span class="book-nav-label">Pasos</span>
+        <div class="step-tabs" aria-label="Navegacion por pasos">
+          <button class="page-tab page-tab--step" type="button" data-page="2">1</button>
+          <button class="page-tab page-tab--step" type="button" data-page="3">2</button>
+          <button class="page-tab page-tab--step" type="button" data-page="4">3</button>
+          <button class="page-tab page-tab--step" type="button" data-page="5">5</button>
+          <button class="page-tab page-tab--step" type="button" data-page="6">6</button>
+          <button class="page-tab page-tab--step" type="button" data-page="7">7</button>
+          <button class="page-tab page-tab--step" type="button" data-page="8">8</button>
+          <button class="page-tab page-tab--step" type="button" data-page="9">9</button>
+          <button class="page-tab page-tab--step" type="button" data-page="10">10</button>
+          <button class="page-tab page-tab--step" type="button" data-page="11">11</button>
+          <button class="page-tab page-tab--step" type="button" data-page="12">12</button>
+          <button class="page-tab page-tab--step" type="button" data-page="13">13</button>
+          <button class="page-tab page-tab--step" type="button" data-page="14">14</button>
+          <button class="page-tab page-tab--step" type="button" data-page="15">15</button>
+        </div>
+      </div>
+
+      <article class="sheet is-active" data-page="0">
+        <div class="sheet-inner sheet-cover">
+          <span class="cover-badge">Volumen 1</span>
+          <h2>Analisis de datos a una muestra de <span class="accent">cojinetes esfericos</span>.</h2>
+          <div class="cover-line"></div>
+          <p>
+            Libro visual reconstruido con el desarrollo completo del caso: planteamiento del problema,
+            tamano de muestra, seleccion de datos, tabla de frecuencias, graficos, medidas descriptivas,
+            distribucion normal, intervalos de confianza y pruebas de hipotesis.
+          </p>
+          <p>
+            El recorrido resume los 15 pasos del ejercicio y deja cada procedimiento explicado con formulas,
+            interpretaciones y apoyo visual para seguir el analisis de principio a fin.
+          </p>
+          <p style="display: none;">
+            Aplicando conceptos de estadistica descriptiva para organizar la muestra, definir el problema,
+            calcular el tamaño muestral y desarrollar el estudio paso a paso.
+          </p>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="1">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 2</p>
+              <h3>Lista de chequeo del ejercicio completo</h3>
+            </div>
+            <span class="sheet-number">Indice</span>
+          </div>
+
+          <div class="spread">
+            <section class="card card-feature">
+              <h4>Secuencia completa del trabajo</h4>
+              <ol>
+                <li>Aspectos basicos.</li>
+                <li>Tamaño de la muestra.</li>
+                <li>Seleccion de la muestra.</li>
+                <li>Arreglo y presentacion de datos.</li>
+                <li>Tabla de frecuencias.</li>
+                <li>Graficos.</li>
+                <li>Medidas de tendencia central.</li>
+                <li>Medidas de posicion.</li>
+                <li>Medidas de dispersion.</li>
+                <li>Medidas de la forma de la distribucion.</li>
+                <li>Distribucion normal.</li>
+                <li>Intervalos de confianza para estimar la media poblacional.</li>
+                <li>Intervalos de confianza para estimar la desviacion estandar poblacional.</li>
+                <li>Prueba de hipotesis.</li>
+                <li>Prueba de hipotesis por enfoque del valor-p.</li>
+              </ol>
+            </section>
+
+            <section class="card">
+              <h4>Bloques principales</h4>
+              <ul>
+                <li>Planteamiento del caso y definicion de la variable.</li>
+                <li>Diseño muestral y seleccion de la muestra.</li>
+                <li>Organizacion de datos y tabla de frecuencias.</li>
+                <li>Graficos y medidas de resumen.</li>
+                <li>Intervalos de confianza y pruebas de hipotesis.</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet is-compact" data-page="2">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 3</p>
+              <h3>Paso 1: Aspectos basicos</h3>
+            </div>
+            <span class="sheet-number">Base del problema</span>
+          </div>
+
+          <div class="sheet-grid">
+            <section class="card card-feature">
+              <h4>Definiciones del caso</h4>
+              <ul>
+                <li><strong>Elementos:</strong> los cojinetes.</li>
+                <li><strong>Poblacion:</strong> todos los cojinetes.</li>
+                <li><strong>Tipo de poblacion:</strong> finita.</li>
+                <li><strong>Variable:</strong> diametro de los cojinetes en centimetros.</li>
+                <li><strong>Tipo de variable:</strong> cuantitativa continua.</li>
+              </ul>
+            </section>
+
+            <section class="card">
+              <h4>Resumen de la hoja</h4>
+              <ul>
+                <li>Se define el objeto de estudio antes de calcular cualquier medida.</li>
+                <li>Se clasifica la poblacion como finita.</li>
+                <li>Se establece el diametro como variable cuantitativa continua.</li>
+              </ul>
+              <p style="margin-top: 0.85rem;">
+                Este punto nos ubica en el proposito del analisis: estudiar el comportamiento del diametro de
+                los cojinetes esfericos para poder organizar la muestra correctamente y preparar los calculos
+                estadisticos de las siguientes etapas.
+              </p>
+            </section>
+
+            <section class="card" style="grid-column: 1 / -1; display: none;">
+              <h4>Contexto del problema</h4>
+              <p>
+                El ejercicio busca analizar una muestra de cojinetes esfericos para estudiar su diametro y
+                evaluar si el proceso mantiene un comportamiento consistente. Este primer paso deja claro
+                que estamos trabajando con una variable continua y con una poblacion finita, lo que define
+                la forma correcta de construir la muestra, resumir los datos y llegar luego a intervalos
+                de confianza y pruebas de hipotesis.
+              </p>
+              <ul style="margin-top: 0.85rem;">
+                <li>El desarrollo de la formula produce un valor aproximado de 53,1302816.</li>
+                <li>El tamano final de la muestra se fija en 54 observaciones.</li>
+                <li>Ese valor es el que se usa en las hojas posteriores del ejercicio.</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet is-compact is-compact-short" data-page="3">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 4</p>
+              <h3>Paso 2: Tama&ntilde;o de la muestra</h3>
+            </div>
+            <span class="sheet-number">Calculo de n</span>
+          </div>
+
+          <div class="sheet-grid">
+            <section class="card card-feature">
+              <h4>Datos usados en la hoja</h4>
+              <ul>
+                <li><strong>Nivel de confianza:</strong> 95%.</li>
+                <li><strong>Factor probabilistico:</strong> Z = 1,96.</li>
+                <li><strong>Margen de error:</strong> E = 0,1.</li>
+                <li><strong>Desviacion estandar poblacional de un estudio anterior:</strong> θ = 0,4.</li>
+                <li><strong>Tamaño de la poblacion:</strong> N = 420.</li>
+              </ul>
+            </section>
+
+            <section class="card">
+              <h4>Formula desarrollada</h4>
+              <span class="formula">n = (N · Z² · θ²) / ((N - 1) · E² + Z² · θ²)</span>
+              <p style="margin-top: 0.8rem;">
+                A partir de esos valores se obtiene un resultado aproximado de <strong>53,1302816</strong>,
+                y en la hoja se deja finalmente <strong>n = 54</strong> como tamaño de muestra.
+              </p>
+              <ul style="margin-top: 0.85rem;">
+                <li>El desarrollo de la formula produce un valor aproximado de 53,1302816.</li>
+                <li>El tamano final de la muestra se fija en 54 observaciones.</li>
+                <li>Ese valor es el que se usa en las hojas posteriores del ejercicio.</li>
+              </ul>
+            </section>
+
+            <section class="card" style="grid-column: 1 / -1;">
+              <h4>Resultado del calculo</h4>
+              <ul>
+                <li>El desarrollo de la formula produce un valor aproximado de 53,1302816.</li>
+                <li>El tamaño final de la muestra se fija en 54 observaciones.</li>
+                <li>Ese valor es el que se usa en las hojas posteriores del ejercicio.</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="4">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 5</p>
+              <h3>Paso 3: Seleccion de la muestra</h3>
+            </div>
+            <span class="sheet-number">Muestreo aleatorio simple</span>
+          </div>
+
+          <div class="selection-overview">
+            <section class="card card-feature">
+              <h4>Registro de la seleccion</h4>
+              <ul>
+                <li><strong>Tecnica anotada:</strong> muestreo aleatorio simple.</li>
+                <li><strong>Tamano de muestra usado:</strong> 54 observaciones.</li>
+                <li><strong>Estructura del listado:</strong> consecutivo, numero aleatorio y valor de la muestra.</li>
+              </ul>
+            </section>
+
+            <section class="card">
+              <h4>Serie registrada en la hoja</h4>
+              <p>
+                La seleccion se organiza en 54 filas, repartidas en dos bloques de 27 registros,
+                manteniendo en cada linea el consecutivo de la muestra, el numero aleatorio tomado
+                y el diametro asociado del cojinete esferico.
+              </p>
+            </section>
+          </div>
+
+          <div class="selection-columns">
+            <section class="card">
+              <h4>Bloque 1 · Registros 1 a 27</h4>
+              <div class="selection-table">
+                <div class="selection-head">
+                  <span>Consecutivo</span>
+                  <span>No. aleatorio</span>
+                  <span>Muestra</span>
+                </div>
+                <div class="selection-row"><strong>1</strong><span>148</span><span>5.084</span></div>
+                <div class="selection-row"><strong>2</strong><span>169</span><span>5.087</span></div>
+                <div class="selection-row"><strong>3</strong><span>291</span><span>5.054</span></div>
+                <div class="selection-row"><strong>4</strong><span>184</span><span>5.011</span></div>
+                <div class="selection-row"><strong>5</strong><span>178</span><span>5.077</span></div>
+                <div class="selection-row"><strong>6</strong><span>141</span><span>5.041</span></div>
+                <div class="selection-row"><strong>7</strong><span>156</span><span>5.056</span></div>
+                <div class="selection-row"><strong>8</strong><span>411</span><span>5.097</span></div>
+                <div class="selection-row"><strong>9</strong><span>153</span><span>5.083</span></div>
+                <div class="selection-row"><strong>10</strong><span>45</span><span>5.069</span></div>
+                <div class="selection-row"><strong>11</strong><span>346</span><span>5.018</span></div>
+                <div class="selection-row"><strong>12</strong><span>129</span><span>5.096</span></div>
+                <div class="selection-row"><strong>13</strong><span>245</span><span>5.053</span></div>
+                <div class="selection-row"><strong>14</strong><span>35</span><span>5.075</span></div>
+                <div class="selection-row"><strong>15</strong><span>170</span><span>5.046</span></div>
+                <div class="selection-row"><strong>16</strong><span>357</span><span>5.054</span></div>
+                <div class="selection-row"><strong>17</strong><span>296</span><span>5.077</span></div>
+                <div class="selection-row"><strong>18</strong><span>286</span><span>5.077</span></div>
+                <div class="selection-row"><strong>19</strong><span>381</span><span>5.066</span></div>
+                <div class="selection-row"><strong>20</strong><span>121</span><span>5.076</span></div>
+                <div class="selection-row"><strong>21</strong><span>412</span><span>5.078</span></div>
+                <div class="selection-row"><strong>22</strong><span>388</span><span>5.059</span></div>
+                <div class="selection-row"><strong>23</strong><span>213</span><span>5.071</span></div>
+                <div class="selection-row"><strong>24</strong><span>26</span><span>5.071</span></div>
+                <div class="selection-row"><strong>25</strong><span>152</span><span>5.069</span></div>
+                <div class="selection-row"><strong>26</strong><span>372</span><span>5.049</span></div>
+                <div class="selection-row"><strong>27</strong><span>31</span><span>5.082</span></div>
+              </div>
+            </section>
+
+            <section class="card">
+              <h4>Bloque 2 · Registros 28 a 54</h4>
+              <div class="selection-table">
+                <div class="selection-head">
+                  <span>Consecutivo</span>
+                  <span>No. aleatorio</span>
+                  <span>Muestra</span>
+                </div>
+                <div class="selection-row"><strong>28</strong><span>257</span><span>5.061</span></div>
+                <div class="selection-row"><strong>29</strong><span>143</span><span>5.058</span></div>
+                <div class="selection-row"><strong>30</strong><span>401</span><span>5.087</span></div>
+                <div class="selection-row"><strong>31</strong><span>35</span><span>5.072</span></div>
+                <div class="selection-row"><strong>32</strong><span>417</span><span>5.066</span></div>
+                <div class="selection-row"><strong>33</strong><span>375</span><span>5.066</span></div>
+                <div class="selection-row"><strong>34</strong><span>311</span><span>5.058</span></div>
+                <div class="selection-row"><strong>35</strong><span>292</span><span>5.056</span></div>
+                <div class="selection-row"><strong>36</strong><span>176</span><span>5.068</span></div>
+                <div class="selection-row"><strong>37</strong><span>252</span><span>5.084</span></div>
+                <div class="selection-row"><strong>38</strong><span>160</span><span>5.077</span></div>
+                <div class="selection-row"><strong>39</strong><span>415</span><span>5.062</span></div>
+                <div class="selection-row"><strong>40</strong><span>7</span><span>5.055</span></div>
+                <div class="selection-row"><strong>41</strong><span>341</span><span>5.060</span></div>
+                <div class="selection-row"><strong>42</strong><span>10</span><span>5.066</span></div>
+                <div class="selection-row"><strong>43</strong><span>410</span><span>5.054</span></div>
+                <div class="selection-row"><strong>44</strong><span>3</span><span>5.090</span></div>
+                <div class="selection-row"><strong>45</strong><span>19</span><span>5.051</span></div>
+                <div class="selection-row"><strong>46</strong><span>59</span><span>5.096</span></div>
+                <div class="selection-row"><strong>47</strong><span>100</span><span>5.067</span></div>
+                <div class="selection-row"><strong>48</strong><span>280</span><span>5.073</span></div>
+                <div class="selection-row"><strong>49</strong><span>191</span><span>5.072</span></div>
+                <div class="selection-row"><strong>50</strong><span>139</span><span>5.069</span></div>
+                <div class="selection-row"><strong>51</strong><span>215</span><span>5.074</span></div>
+                <div class="selection-row"><strong>52</strong><span>52</span><span>5.066</span></div>
+                <div class="selection-row"><strong>53</strong><span>302</span><span>5.011</span></div>
+                <div class="selection-row"><strong>54</strong><span>13</span><span>5.051</span></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="5">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 6</p>
+              <h3>Paso 5: La tabla de frecuencia</h3>
+            </div>
+            <span class="sheet-number">6 clases</span>
+          </div>
+
+          <div class="frequency-shell">
+            <section class="card card-feature">
+              <h4>Tabla consolidada</h4>
+              <div class="frequency-scroll">
+                <table class="frequency-table">
+                  <thead>
+                    <tr>
+                      <th>No. clase</th>
+                      <th>Limite inferior</th>
+                      <th>Limite superior</th>
+                      <th>Fi</th>
+                      <th>Fr</th>
+                      <th>F%</th>
+                      <th>Fa</th>
+                      <th>Fa %</th>
+                      <th>Xi</th>
+                      <th>FiXi</th>
+                      <th>(Xi - X&#772;)^2 Fi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>1</strong></td>
+                      <td>5.043</td>
+                      <td>5.052</td>
+                      <td>4</td>
+                      <td>0.074</td>
+                      <td>7.4%</td>
+                      <td>4</td>
+                      <td>7.4%</td>
+                      <td>5.0475</td>
+                      <td>20.19</td>
+                      <td>0.01849</td>
+                    </tr>
+                    <tr>
+                      <td><strong>2</strong></td>
+                      <td>5.052</td>
+                      <td>5.061</td>
+                      <td>12</td>
+                      <td>0.222</td>
+                      <td>22.2%</td>
+                      <td>16</td>
+                      <td>29.6%</td>
+                      <td>5.0565</td>
+                      <td>60.678</td>
+                      <td>0.01875</td>
+                    </tr>
+                    <tr>
+                      <td><strong>3</strong></td>
+                      <td>5.061</td>
+                      <td>5.070</td>
+                      <td>11</td>
+                      <td>0.204</td>
+                      <td>20.4%</td>
+                      <td>27</td>
+                      <td>50%</td>
+                      <td>5.0655</td>
+                      <td>55.7205</td>
+                      <td>0.013475</td>
+                    </tr>
+                    <tr>
+                      <td><strong>4</strong></td>
+                      <td>5.070</td>
+                      <td>5.079</td>
+                      <td>16</td>
+                      <td>0.296</td>
+                      <td>29.6%</td>
+                      <td>43</td>
+                      <td>79.6%</td>
+                      <td>5.0745</td>
+                      <td>81.192</td>
+                      <td>0.00484</td>
+                    </tr>
+                    <tr>
+                      <td><strong>5</strong></td>
+                      <td>5.079</td>
+                      <td>5.088</td>
+                      <td>6</td>
+                      <td>0.111</td>
+                      <td>11.1%</td>
+                      <td>49</td>
+                      <td>90.7%</td>
+                      <td>5.0835</td>
+                      <td>30.501</td>
+                      <td>0.012615</td>
+                    </tr>
+                    <tr>
+                      <td><strong>6</strong></td>
+                      <td>5.088</td>
+                      <td>5.097</td>
+                      <td>5</td>
+                      <td>0.093</td>
+                      <td>9.3%</td>
+                      <td>54</td>
+                      <td>100%</td>
+                      <td>5.0925</td>
+                      <td>25.4625</td>
+                      <td>0.0216125</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="class-notes">
+              <article class="class-note">
+                <h4>Clase 1</h4>
+                <p>4 cojinetes obtuvieron un diametro entre 5.043 y 5.052 y equivalen al 7.4% de la muestra.</p>
+              </article>
+              <article class="class-note">
+                <h4>Clase 2</h4>
+                <p>12 cojinetes obtuvieron un diametro entre 5.052 y 5.061 y equivalen al 22.2% de la muestra.</p>
+              </article>
+              <article class="class-note">
+                <h4>Clase 3</h4>
+                <p>11 cojinetes obtuvieron un diametro entre 5.061 y 5.070 y equivalen al 20.4% de la muestra.</p>
+              </article>
+              <article class="class-note">
+                <h4>Clase 4</h4>
+                <p>16 cojinetes obtuvieron un diametro entre 5.070 y 5.079 y equivalen al 29.6% de la muestra.</p>
+              </article>
+              <article class="class-note">
+                <h4>Clase 5</h4>
+                <p>6 cojinetes obtuvieron un diametro entre 5.079 y 5.088 y equivalen al 11.1% de la muestra.</p>
+              </article>
+              <article class="class-note">
+                <h4>Clase 6</h4>
+                <p>5 cojinetes obtuvieron un diametro entre 5.088 y 5.097 y equivalen al 9.3% de la muestra.</p>
+              </article>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="6">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 7</p>
+              <h3>Paso 6: Graficos</h3>
+            </div>
+            <span class="sheet-number">3 graficas</span>
+          </div>
+
+          <div class="charts-carousel" id="chartsCarousel">
+            <div class="carousel-head">
+              <p>Histograma, poligono de frecuencias y ojiva.</p>
+
+              <div class="carousel-controls">
+                <button class="carousel-button" type="button" id="chartPrev" aria-label="Grafica anterior">&larr;</button>
+                <span class="carousel-status" id="chartStatus">1 / 3</span>
+                <button class="carousel-button" type="button" id="chartNext" aria-label="Siguiente grafica">&rarr;</button>
+              </div>
+            </div>
+
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="chartTrack">
+                <section class="chart-slide">
+                  <article class="chart-card">
+                    <h4>El histograma</h4>
+                    <p>Representacion de las frecuencias por intervalo de diametro, tal como se organiza en la tabla de frecuencia.</p>
+                    <div class="chart-stage">
+                      <svg viewBox="0 0 520 320" role="img" aria-label="Histograma de frecuencias de cojinetes">
+                        <text x="24" y="24" class="chart-title">Histograma</text>
+                        <line x1="56" y1="272" x2="490" y2="272" stroke="#182334" stroke-width="2"/>
+                        <line x1="56" y1="272" x2="56" y2="36" stroke="#182334" stroke-width="2"/>
+                        <line x1="56" y1="213.5" x2="490" y2="213.5" stroke="rgba(24,35,52,0.12)" stroke-width="1"/>
+                        <line x1="56" y1="96.5" x2="490" y2="96.5" stroke="rgba(24,35,52,0.12)" stroke-width="1"/>
+                        <rect x="72" y="213.5" width="56" height="58.5" fill="rgba(245, 99, 179, 0.28)" stroke="#ef5ca7" stroke-width="3"/>
+                        <rect x="136" y="96.5" width="56" height="175.5" fill="rgba(244, 179, 66, 0.28)" stroke="#e5a72f" stroke-width="3"/>
+                        <rect x="200" y="111.1" width="56" height="160.9" fill="rgba(95, 219, 120, 0.28)" stroke="#42be65" stroke-width="3"/>
+                        <rect x="264" y="38" width="56" height="234" fill="rgba(245, 99, 179, 0.22)" stroke="#ef5ca7" stroke-width="3"/>
+                        <rect x="328" y="184.25" width="56" height="87.75" fill="rgba(244, 179, 66, 0.28)" stroke="#e5a72f" stroke-width="3"/>
+                        <rect x="392" y="198.875" width="56" height="73.125" fill="rgba(95, 219, 120, 0.28)" stroke="#42be65" stroke-width="3"/>
+                        <text x="94" y="206" class="value-label">4</text>
+                        <text x="158" y="89" class="value-label">12</text>
+                        <text x="222" y="104" class="value-label">11</text>
+                        <text x="286" y="31" class="value-label">16</text>
+                        <text x="350" y="177" class="value-label">6</text>
+                        <text x="414" y="192" class="value-label">5</text>
+                        <text x="67" y="290">5.043</text>
+                        <text x="131" y="290">5.052</text>
+                        <text x="195" y="290">5.061</text>
+                        <text x="259" y="290">5.070</text>
+                        <text x="323" y="290">5.079</text>
+                        <text x="387" y="290">5.088</text>
+                        <text x="451" y="290">5.097</text>
+                        <text x="16" y="276">0</text>
+                        <text x="10" y="218">4</text>
+                        <text x="6" y="159">8</text>
+                        <text x="2" y="101">12</text>
+                        <text x="2" y="42">16</text>
+                        <text x="226" y="312" class="axis-label">Diametro (cm)</text>
+                        <text x="-168" y="18" transform="rotate(-90)" class="axis-label">Cojinetes</text>
+                      </svg>
+                    </div>
+                    <p class="chart-note">Se observan alturas de 4, 12, 11, 16, 6 y 5 cojinetes en los seis intervalos de diametro.</p>
+                    <div class="chart-analysis">
+                      <h5>Analisis del histograma</h5>
+                      <ul>
+                        <li>4 cojinetes esfericos registran diametro entre 5.043 y 5.052 y equivalen al 7.4%.</li>
+                        <li>12 cojinetes esfericos registran diametro entre 5.052 y 5.061 y equivalen al 22.2%.</li>
+                        <li>11 cojinetes esfericos registran diametro entre 5.061 y 5.070 y equivalen al 20.4%.</li>
+                        <li>16 cojinetes esfericos registran diametro entre 5.070 y 5.079 y equivalen al 29.6%.</li>
+                        <li>6 cojinetes esfericos registran diametro entre 5.079 y 5.088 y equivalen al 11.1%.</li>
+                        <li>5 cojinetes esfericos registran diametro entre 5.088 y 5.097 y equivalen al 9.3%.</li>
+                      </ul>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="chart-slide">
+                  <article class="chart-card">
+                    <h4>El poligono de frecuencias</h4>
+                    <p>Curva que enlaza las frecuencias de cada clase y permite ver el ascenso hacia la clase modal y la caida posterior.</p>
+                    <div class="chart-stage">
+                      <svg viewBox="0 0 520 320" role="img" aria-label="Poligono de frecuencias de cojinetes">
+                        <text x="24" y="24" class="chart-title">Poligono de frecuencias</text>
+                        <line x1="56" y1="272" x2="490" y2="272" stroke="#182334" stroke-width="2"/>
+                        <line x1="56" y1="272" x2="56" y2="36" stroke="#182334" stroke-width="2"/>
+                        <line x1="56" y1="213.5" x2="490" y2="213.5" stroke="rgba(24,35,52,0.12)" stroke-width="1"/>
+                        <line x1="56" y1="96.5" x2="490" y2="96.5" stroke="rgba(24,35,52,0.12)" stroke-width="1"/>
+                        <polyline points="56,272 96,213.5 160,96.5 224,111.1 288,38 352,184.25 416,198.875 480,272" fill="none" stroke="#ef5ca7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="96" cy="213.5" r="5.5" fill="#ef5ca7"/>
+                        <circle cx="160" cy="96.5" r="5.5" fill="#ef5ca7"/>
+                        <circle cx="224" cy="111.1" r="5.5" fill="#ef5ca7"/>
+                        <circle cx="288" cy="38" r="5.5" fill="#ef5ca7"/>
+                        <circle cx="352" cy="184.25" r="5.5" fill="#ef5ca7"/>
+                        <circle cx="416" cy="198.875" r="5.5" fill="#ef5ca7"/>
+                        <text x="88" y="206" class="value-label">4</text>
+                        <text x="152" y="89" class="value-label">12</text>
+                        <text x="216" y="104" class="value-label">11</text>
+                        <text x="280" y="31" class="value-label">16</text>
+                        <text x="344" y="177" class="value-label">6</text>
+                        <text x="408" y="192" class="value-label">5</text>
+                        <text x="82" y="290">5.043</text>
+                        <text x="146" y="290">5.052</text>
+                        <text x="210" y="290">5.061</text>
+                        <text x="274" y="290">5.070</text>
+                        <text x="338" y="290">5.079</text>
+                        <text x="402" y="290">5.088</text>
+                        <text x="16" y="276">0</text>
+                        <text x="10" y="218">4</text>
+                        <text x="6" y="159">8</text>
+                        <text x="2" y="101">12</text>
+                        <text x="2" y="42">16</text>
+                        <text x="226" y="312" class="axis-label">Diametro (cm)</text>
+                        <text x="-168" y="18" transform="rotate(-90)" class="axis-label">Cojinetes</text>
+                      </svg>
+                    </div>
+                    <p class="chart-note">La frecuencia maxima aparece en la cuarta clase, donde el poligono alcanza 16 cojinetes antes de descender a 6 y 5 en las clases finales.</p>
+                    <div class="chart-analysis">
+                      <h5>Analisis del poligono de frecuencias</h5>
+                      <ul>
+                        <li>4 cojinetes esfericos registran diametro alrededor de 5.043 cm.</li>
+                        <li>12 cojinetes esfericos registran diametro alrededor de 5.052 cm.</li>
+                        <li>11 cojinetes esfericos registran diametro alrededor de 5.061 cm.</li>
+                        <li>16 cojinetes esfericos registran diametro alrededor de 5.070 cm.</li>
+                        <li>6 cojinetes esfericos registran diametro alrededor de 5.079 cm.</li>
+                        <li>5 cojinetes esfericos registran diametro alrededor de 5.088 cm.</li>
+                      </ul>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="chart-slide">
+                  <article class="chart-card">
+                    <h4>La ojiva</h4>
+                    <p>Curva acumulada que muestra el porcentaje de cojinetes con diametro por debajo de cada limite superior.</p>
+                    <div class="chart-stage">
+                      <svg viewBox="0 0 520 320" role="img" aria-label="Ojiva de frecuencias acumuladas de cojinetes">
+                        <text x="24" y="24" class="chart-title">Ojiva</text>
+                        <line x1="56" y1="272" x2="490" y2="272" stroke="#182334" stroke-width="2"/>
+                        <line x1="56" y1="272" x2="56" y2="36" stroke="#182334" stroke-width="2"/>
+                        <line x1="56" y1="225.2" x2="490" y2="225.2" stroke="rgba(24,35,52,0.1)" stroke-width="1"/>
+                        <line x1="56" y1="177.6" x2="490" y2="177.6" stroke="rgba(24,35,52,0.1)" stroke-width="1"/>
+                        <line x1="56" y1="130" x2="490" y2="130" stroke="rgba(24,35,52,0.1)" stroke-width="1"/>
+                        <line x1="56" y1="82.4" x2="490" y2="82.4" stroke="rgba(24,35,52,0.1)" stroke-width="1"/>
+                        <polyline points="72,272 136,254.39 200,201.55 264,153 328,82.61 392,56.13 456,34" fill="none" stroke="#5bc46e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="72" cy="272" r="5.5" fill="#5bc46e"/>
+                        <circle cx="136" cy="254.39" r="5.5" fill="#5bc46e"/>
+                        <circle cx="200" cy="201.55" r="5.5" fill="#5bc46e"/>
+                        <circle cx="264" cy="153" r="5.5" fill="#5bc46e"/>
+                        <circle cx="328" cy="82.61" r="5.5" fill="#5bc46e"/>
+                        <circle cx="392" cy="56.13" r="5.5" fill="#5bc46e"/>
+                        <circle cx="456" cy="34" r="5.5" fill="#5bc46e"/>
+                        <text x="66" y="266" class="value-label">0</text>
+                        <text x="126" y="246" class="value-label">7.4%</text>
+                        <text x="188" y="193" class="value-label">29.6%</text>
+                        <text x="253" y="145" class="value-label">50%</text>
+                        <text x="318" y="75" class="value-label">79.6%</text>
+                        <text x="382" y="48" class="value-label">90.7%</text>
+                        <text x="447" y="28" class="value-label">100%</text>
+                        <text x="63" y="290">5.043</text>
+                        <text x="127" y="290">5.052</text>
+                        <text x="191" y="290">5.061</text>
+                        <text x="255" y="290">5.070</text>
+                        <text x="319" y="290">5.079</text>
+                        <text x="383" y="290">5.088</text>
+                        <text x="447" y="290">5.097</text>
+                        <text x="12" y="276">0%</text>
+                        <text x="6" y="228">20%</text>
+                        <text x="6" y="180">40%</text>
+                        <text x="6" y="132">60%</text>
+                        <text x="6" y="84">80%</text>
+                        <text x="0" y="36">100%</text>
+                        <text x="226" y="312" class="axis-label">Diametro (cm)</text>
+                        <text x="-174" y="18" transform="rotate(-90)" class="axis-label">Frecuencia acumulada</text>
+                      </svg>
+                    </div>
+                    <div class="ojiva-grid">
+                      <div class="chart-analysis" style="margin-top: 0;">
+                        <h5>Tabla menor que</h5>
+                        <table class="ojiva-table">
+                          <thead>
+                            <tr><th>Diametro</th><th>Acumulado</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr><td><strong>5.043</strong></td><td>0%</td></tr>
+                            <tr><td><strong>5.052</strong></td><td>7.4%</td></tr>
+                            <tr><td><strong>5.061</strong></td><td>29.6%</td></tr>
+                            <tr><td><strong>5.070</strong></td><td>50%</td></tr>
+                            <tr><td><strong>5.079</strong></td><td>79.6%</td></tr>
+                            <tr><td><strong>5.088</strong></td><td>90.7%</td></tr>
+                            <tr><td><strong>5.097</strong></td><td>100%</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="chart-analysis" style="margin-top: 0;">
+                        <h5>Analisis de la ojiva</h5>
+                        <ul>
+                          <li>El 7.4% de los cojinetes esfericos registran datos por debajo de 5.052 cm.</li>
+                          <li>El 29.6% de los cojinetes esfericos registran datos por debajo de 5.061 cm.</li>
+                          <li>El 50% de los cojinetes esfericos registran datos por debajo de 5.070 cm.</li>
+                          <li>El 79.6% de los cojinetes esfericos registran datos por debajo de 5.079 cm.</li>
+                          <li>El 90.7% de los cojinetes esfericos registran datos por debajo de 5.088 cm.</li>
+                          <li>El 100% de los cojinetes esfericos registran datos por debajo de 5.097 cm.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </article>
+                </section>
+              </div>
+            </div>
+
+            <div class="carousel-controls" aria-label="Indicadores del carrusel">
+              <button class="carousel-dot is-active" type="button" data-chart-slide="0" aria-label="Ir al histograma"></button>
+              <button class="carousel-dot" type="button" data-chart-slide="1" aria-label="Ir al poligono de frecuencias"></button>
+              <button class="carousel-dot" type="button" data-chart-slide="2" aria-label="Ir a la ojiva"></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="7">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 8</p>
+              <h3>Paso 7: Medidas de tendencia central</h3>
+            </div>
+            <span class="sheet-number">Media, mediana y moda</span>
+          </div>
+
+          <div class="study-grid is-three">
+            <section class="study-card">
+              <h4>La media</h4>
+              <span class="study-formula">X&#772; = Σ(FiXi) / n = 273.744 / 54 = 5.06933333</span>
+              <div class="study-result">X&#772; = 5.069 cm</div>
+              <p>Es como si todos los cojinetes de la muestra hubiesen obtenido un diametro de 5.069 puntos (cm).</p>
+            </section>
+
+            <section class="study-card">
+              <h4>La mediana</h4>
+              <span class="study-formula">X&#771; = Li + Amod ((n/2 - FAc-1) / Fc)
+5.061 + 0.009 ((27 - 16) / 11)</span>
+              <div class="study-meta">
+                <span>n / 2 = 27</span>
+                <span>Li = 5.061</span>
+                <span>Amod = 0.009</span>
+                <span>FAc-1 = 16</span>
+                <span>Fi = 11</span>
+              </div>
+              <div class="study-result">X&#771; = 5.07 cm</div>
+              <p>El 50% de los cojinetes de la muestra obtuvieron un diametro por debajo de 5.07 cm.</p>
+            </section>
+
+            <section class="study-card">
+              <h4>La moda</h4>
+              <span class="study-formula">X&#770; = Li modal + Amod (d1 / (d1 + d2))
+5.070 + 0.009 (5 / (5 + 10))</span>
+              <div class="study-meta">
+                <span>Li modal = 5.070</span>
+                <span>Amod = 0.009</span>
+                <span>d1 = 5</span>
+                <span>d2 = 10</span>
+              </div>
+              <div class="study-result">X&#770; = 5.073 cm</div>
+              <p>El diametro mas frecuente de la muestra es 5.073 cm.</p>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="8">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 9</p>
+              <h3>Paso 8: Medidas de posicion</h3>
+            </div>
+            <span class="sheet-number">Percentiles</span>
+          </div>
+
+          <div class="study-grid">
+            <section class="study-card">
+              <h4>Percentil 10</h4>
+              <span class="study-formula">Pk = Lic + Amod ((k n / 100 - FAc-1) / Fc)
+P10 = 5.052 + 0.009 ((5.4 - 4) / 12)</span>
+              <div class="study-meta">
+                <span>10n / 100 = 5.4</span>
+                <span>Lic = 5.052</span>
+                <span>Amod = 0.009</span>
+                <span>FAc-1 = 4</span>
+                <span>Fi = 12</span>
+              </div>
+              <div class="study-result">P10 = 5.053 cm</div>
+              <p>El diametro del 10% de los cojinetes de la muestra se encuentra 5.053 cm por debajo.</p>
+            </section>
+
+            <section class="study-card">
+              <h4>Percentil 25</h4>
+              <span class="study-formula">P25 = 5.052 + 0.009 ((13.5 - 4) / 12)</span>
+              <div class="study-meta">
+                <span>25n / 100 = 13.5</span>
+                <span>Lic = 5.052</span>
+                <span>Amod = 0.009</span>
+                <span>FAc-1 = 4</span>
+                <span>Fi = 12</span>
+              </div>
+              <div class="study-result">P25 = 5.059 cm</div>
+              <p>El diametro del 25% de los cojinetes de la muestra se encuentra 5.059 cm por debajo.</p>
+            </section>
+
+            <section class="study-card">
+              <h4>Percentil 75</h4>
+              <span class="study-formula">P75 = 5.070 + 0.009 ((40.5 - 27) / 16)</span>
+              <div class="study-meta">
+                <span>75n / 100 = 40.5</span>
+                <span>Lic = 5.070</span>
+                <span>Amod = 0.009</span>
+                <span>FAc-1 = 27</span>
+                <span>Fi = 16</span>
+              </div>
+              <div class="study-result">P75 = 5.0776 cm</div>
+              <p>El diametro del 75% de los cojinetes de la muestra se encuentra 5.077 cm por debajo.</p>
+            </section>
+
+            <section class="study-card">
+              <h4>Percentil 90</h4>
+              <span class="study-formula">P90 = 5.079 + 0.009 ((48.6 - 43) / 6)</span>
+              <div class="study-meta">
+                <span>90n / 100 = 48.6</span>
+                <span>Lic = 5.079</span>
+                <span>Amod = 0.009</span>
+                <span>FAc-1 = 43</span>
+                <span>Fi = 6</span>
+              </div>
+              <div class="study-result">P90 = 5.0874 cm</div>
+              <p>El diametro del 90% de los cojinetes de la muestra se encuentra 5.087 cm por debajo.</p>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="9">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 10</p>
+              <h3>Paso 9: Medidas de dispersion</h3>
+            </div>
+            <span class="sheet-number">RQ, s², s y CV</span>
+          </div>
+
+          <div class="study-grid">
+            <section class="study-card">
+              <h4>Rango intercuartilico</h4>
+              <span class="study-formula">RQ = P75 - P25
+RQ = 5.0776 - 5.059 = 0.0186</span>
+              <div class="study-result">RQ = 0.019 cm</div>
+              <p>La separacion medida por el rango intercuartilico es de 0.019 cm.</p>
+            </section>
+
+            <section class="study-card">
+              <h4>Varianza</h4>
+              <span class="study-formula">S² = Σ((Xi - X&#772;)² Fi) / (n - 1)</span>
+              <div class="study-result">S² = 0.00015 cm²</div>
+              <p>La varianza resume la dispersion cuadratica de los diametros respecto a la media.</p>
+            </section>
+
+            <section class="study-card">
+              <h4>Desviacion estandar</h4>
+              <span class="study-formula">s = √S²</span>
+              <div class="study-result">s = 0.0124 cm</div>
+              <p>La separacion entre la media y los datos medida por la desviacion estandar es de 0.0124 cm.</p>
+            </section>
+
+            <section class="study-card">
+              <h4>Coeficiente de variacion</h4>
+              <span class="study-formula">CV = s / X&#772;
+CV = 0.0124 / 5.0684 = 0.244653145</span>
+              <div class="study-result">CV = 0.245%</div>
+              <p>El coeficiente de variacion expresa la dispersion relativa de la muestra frente a su media.</p>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="10">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 11</p>
+              <h3>Paso 10: Medidas de la forma de distribucion</h3>
+            </div>
+            <span class="sheet-number">Simetria y curtosis</span>
+          </div>
+
+          <div class="study-grid">
+            <section class="study-card">
+              <h4>Simetria</h4>
+              <span class="study-formula">As = 3 (X&#772; - X&#771;) / s
+As = 3 (5.069 - 5.071) / 0.0124</span>
+              <div class="study-result">As = -0.241</div>
+              <p>Los datos presentan asimetria negativa y sesgo hacia la izquierda.</p>
+              <div class="study-meta">
+                <span>As &lt; 0</span>
+                <span>X&#772; &lt; X&#771; &lt; X&#770;</span>
+              </div>
+              <div class="chart-stage" style="margin-top: 0.9rem;">
+                <svg viewBox="0 0 420 220" role="img" aria-label="Curva con sesgo a la izquierda">
+                  <text x="20" y="24" class="chart-title">Sesgo a la izquierda</text>
+                  <line x1="48" y1="180" x2="386" y2="180" stroke="#182334" stroke-width="2"/>
+                  <line x1="48" y1="180" x2="48" y2="36" stroke="#182334" stroke-width="2"/>
+                  <path
+                    d="M 60 178
+                       C 95 172, 115 95, 150 78
+                       C 185 60, 212 70, 236 112
+                       C 254 144, 280 176, 344 176"
+                    fill="none"
+                    stroke="#88bdf7"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+                  <text x="78" y="204">As &lt; 0</text>
+                  <text x="214" y="58">X&#772; &lt; X&#771; &lt; X&#770;</text>
+                </svg>
+              </div>
+            </section>
+
+            <section class="study-card">
+              <h4>Curtosis</h4>
+              <span class="study-formula">Cu = (P75 - P25) / (2 (P90 - P10))
+Cu = (5.077 - 5.059) / (2 (5.087 - 5.053))</span>
+              <div class="study-result">Cu = 0.264</div>
+              <p>Los datos son leptocurticos y muestran alta dispersion.</p>
+              <div class="study-meta">
+                <span>Cu &gt; 0.263</span>
+              </div>
+              <div class="chart-stage" style="margin-top: 0.9rem;">
+                <svg viewBox="0 0 420 220" role="img" aria-label="Curva leptocurtica">
+                  <text x="20" y="24" class="chart-title">Leptocurtica</text>
+                  <line x1="48" y1="180" x2="386" y2="180" stroke="#182334" stroke-width="2"/>
+                  <line x1="48" y1="180" x2="48" y2="36" stroke="#182334" stroke-width="2"/>
+                  <path
+                    d="M 70 178
+                       C 120 172, 138 118, 170 84
+                       C 190 60, 214 60, 236 86
+                       C 268 122, 288 172, 350 178"
+                    fill="none"
+                    stroke="#88bdf7"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+                  <text x="218" y="154">Cu &gt; 0.263</text>
+                </svg>
+              </div>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="11">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 12</p>
+              <h3>Paso 11: Distribucion normal</h3>
+            </div>
+            <span class="sheet-number">7 casos</span>
+          </div>
+
+          <div class="normal-carousel">
+            <div class="carousel-head">
+              <p>Probabilidades construidas con la estandarizacion z y la lectura del area bajo la curva normal.</p>
+              <div class="carousel-controls">
+                <button class="carousel-button" type="button" id="normalPrev" aria-label="Caso anterior">&larr;</button>
+                <span class="carousel-status" id="normalStatus">1 / 7</span>
+                <button class="carousel-button" type="button" id="normalNext" aria-label="Caso siguiente">&rarr;</button>
+              </div>
+            </div>
+
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="normalTrack">
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Caso 1</h4>
+                    <p>Probabilidad de registrar un valor por encima de 5.078.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">z = (tx - X&#772;) / s
+z = (5.078 - 5.06933333) / 0.0124
+z = 0.7258</span>
+                          <span class="study-formula">A1 = A3 - A2
+A1 = 0.5 - 0.2642
+A1 = 0.2358 = 23.58%</span>
+                        </div>
+                        <div class="study-result">A1 = 23.58%</div>
+                        <ul class="normal-points">
+                          <li>Valor de referencia: 5.078.</li>
+                          <li>Media muestral: 5.06933333.</li>
+                          <li>Desviacion estandar: 0.0124.</li>
+                        </ul>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva normal con cola derecha sombreada por encima de 5.078">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="220" y1="236" x2="220" y2="40" class="normal-guide"/>
+                          <line x1="259" y1="236" x2="259" y2="108" class="normal-marker"/>
+                          <path class="normal-fill-primary" d="M 259 236 L 259 108 C 273 129, 286 145, 295 145 C 322 196, 346 236, 396 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="203" y="32" class="normal-label">Curva normal</text>
+                          <text x="250" y="100" class="normal-label">A1</text>
+                          <text x="246" y="252" class="normal-small">z = 0.7258</text>
+                          <text x="243" y="266" class="normal-small">5.078</text>
+                          <text x="211" y="252" class="normal-small">0</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>La probabilidad de registrar un diametro por encima de 5.078 es 23.58%.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Caso 2</h4>
+                    <p>Probabilidad de registrar un valor entre 5.078 y 5.088.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">z1 = (5.078 - 5.06933333) / 0.0124 = 0.7258
+A2 = 0.2642</span>
+                          <span class="study-formula">z2 = (5.088 - 5.0693333) / 0.0124
+z2 = 1.5323</span>
+                          <span class="study-formula">A1 = A3 - A2
+A1 = 0.5 - 0.4370
+A1 = 0.063 = 6.3%</span>
+                        </div>
+                        <div class="study-result">A1 = 6.3%</div>
+                        <ul class="normal-points">
+                          <li>Limite inferior: 5.078.</li>
+                          <li>Limite superior: 5.088.</li>
+                          <li>Area entre z = 0.7258 y z = 1.5323.</li>
+                        </ul>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva normal con banda sombreada entre 5.078 y 5.088">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="259" y1="236" x2="259" y2="108" class="normal-marker"/>
+                          <line x1="305" y1="236" x2="305" y2="165" class="normal-marker"/>
+                          <path class="normal-fill-secondary" d="M 259 236 L 259 108 C 270 124, 282 138, 294 145 C 299 152, 302 158, 305 165 L 305 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="203" y="32" class="normal-label">Curva normal</text>
+                          <text x="277" y="122" class="normal-label">A1</text>
+                          <text x="246" y="252" class="normal-small">0.7258</text>
+                          <text x="293" y="252" class="normal-small">1.5323</text>
+                          <text x="243" y="266" class="normal-small">5.078</text>
+                          <text x="289" y="266" class="normal-small">5.088</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>La probabilidad de registrar un diametro entre 5.078 y 5.088 es 6.3%.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Caso 3</h4>
+                    <p>Probabilidad de registrar un valor entre 5.060 y 5.078.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">z(5.078) = 0.7258
+A2 = 0.2611</span>
+                          <span class="study-formula">z(5.060) = (5.060 - 5.069) / 0.0124
+z = -0.72581
+A3 = 0.2611</span>
+                          <span class="study-formula">A1 = A2 + A3
+A1 = 0.2611 + 0.2611
+A1 = 0.5222 = 52.22%</span>
+                        </div>
+                        <div class="study-result">A1 = 52.22%</div>
+                        <ul class="normal-points">
+                          <li>Limite inferior: 5.060.</li>
+                          <li>Limite superior: 5.078.</li>
+                          <li>El area central queda entre z = -0.72581 y z = 0.7258.</li>
+                        </ul>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva normal con zona central sombreada entre 5.060 y 5.078">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="181" y1="236" x2="181" y2="108" class="normal-marker"/>
+                          <line x1="259" y1="236" x2="259" y2="108" class="normal-marker"/>
+                          <path class="normal-fill-primary" d="M 181 236 L 181 108 C 194 84, 206 62, 220 46 C 234 62, 246 84, 259 108 L 259 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="203" y="32" class="normal-label">Curva normal</text>
+                          <text x="211" y="112" class="normal-label">A1</text>
+                          <text x="154" y="252" class="normal-small">-0.7258</text>
+                          <text x="246" y="252" class="normal-small">0.7258</text>
+                          <text x="165" y="266" class="normal-small">5.060</text>
+                          <text x="243" y="266" class="normal-small">5.078</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>La probabilidad de registrar un diametro entre 5.060 y 5.078 es 52.22%.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Caso 4</h4>
+                    <p>Probabilidad de registrar valores entre 5.060 y 5.051.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">z(5.060) = -0.7258
+A3 = 0.2611</span>
+                          <span class="study-formula">z(5.051) = (5.051 - 5.069) / 0.0124
+z = -1.45161
+A2 = 0.0957</span>
+                          <span class="study-formula">A1 = A3 - A2
+A1 = 0.2611 - 0.0957
+A1 = 0.16540 = 16.54%</span>
+                        </div>
+                        <div class="study-result">A1 = 16.54%</div>
+                        <ul class="normal-points">
+                          <li>Limite mas cercano a la media: 5.060.</li>
+                          <li>Limite inferior: 5.051.</li>
+                          <li>El area sombreada queda entre z = -1.45161 y z = -0.7258.</li>
+                        </ul>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva normal con banda sombreada entre 5.051 y 5.060">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="138" y1="236" x2="138" y2="169" class="normal-marker"/>
+                          <line x1="181" y1="236" x2="181" y2="108" class="normal-marker"/>
+                          <path class="normal-fill-secondary" d="M 138 236 L 138 169 C 149 152, 162 128, 181 108 L 181 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="203" y="32" class="normal-label">Curva normal</text>
+                          <text x="150" y="154" class="normal-label">A1</text>
+                          <text x="118" y="252" class="normal-small">-1.451</text>
+                          <text x="154" y="252" class="normal-small">-0.7258</text>
+                          <text x="144" y="266" class="normal-small">5.051</text>
+                          <text x="188" y="266" class="normal-small">5.060</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>La probabilidad de registrar un diametro entre 5.060 y 5.051 es 16.54%.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Caso 5</h4>
+                    <p>Probabilidad de registrar un valor por debajo de 5.051.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">tx = 5.051
+z = -1.45
+A2 = 0.4265</span>
+                          <span class="study-formula">A1 = A3 - A2
+A1 = 0.5 - 0.4265
+A1 = 0.0735 = 7.3%</span>
+                        </div>
+                        <div class="study-result">A1 = 7.3%</div>
+                        <ul class="normal-points">
+                          <li>Valor de corte: 5.051.</li>
+                          <li>La cola izquierda representa el area buscada.</li>
+                          <li>Se trabaja con z = -1.45.</li>
+                        </ul>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva normal con cola izquierda sombreada por debajo de 5.051">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="138" y1="236" x2="138" y2="169" class="normal-marker"/>
+                          <path class="normal-fill-primary" d="M 44 236 C 94 236, 118 196, 138 169 L 138 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="203" y="32" class="normal-label">Curva normal</text>
+                          <text x="88" y="184" class="normal-label">A1</text>
+                          <text x="120" y="252" class="normal-small">-1.45</text>
+                          <text x="144" y="266" class="normal-small">5.051</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>La probabilidad de registrar un diametro por debajo de 5.051 es 7.3%.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Caso 6</h4>
+                    <p>Probabilidad de registrar un valor por encima de 5.051 cm.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">tx = 5.051
+z = -1.45
+A3 = 0.4265</span>
+                          <span class="study-formula">A1 = A3 + A2
+A2 = 0.5
+A1 = 0.4265 + 0.5
+A1 = 0.9265 = 92.65%</span>
+                        </div>
+                        <div class="study-result">A1 = 92.65%</div>
+                        <ul class="normal-points">
+                          <li>Valor de corte: 5.051 cm.</li>
+                          <li>Se toma toda la region a la derecha del marcador.</li>
+                          <li>Se suma el area entre la media y z con la mitad derecha de la curva.</li>
+                        </ul>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva normal con region sombreada por encima de 5.051">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="138" y1="236" x2="138" y2="169" class="normal-marker"/>
+                          <path class="normal-fill-primary" d="M 138 236 L 138 169 C 149 152, 162 128, 181 108 C 194 84, 206 62, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="203" y="32" class="normal-label">Curva normal</text>
+                          <text x="250" y="118" class="normal-label">A1</text>
+                          <text x="120" y="252" class="normal-small">-1.45</text>
+                          <text x="144" y="266" class="normal-small">5.051</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>La probabilidad de registrar un diametro por encima de 5.051 es 92.65%.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Caso 7</h4>
+                    <p>Probabilidad de registrar un valor por debajo de 5.078.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">bx = 5.078
+z = (5.078 - 5.069) / 0.0124
+z = 0.7258
+A2 = 0.2642</span>
+                          <span class="study-formula">A1 = 0.5 + A2
+A1 = 0.5 + 0.2642
+A1 = 0.7642 = 76.42%</span>
+                        </div>
+                        <div class="study-result">A1 = 76.42%</div>
+                        <ul class="normal-points">
+                          <li>Valor de corte: 5.078.</li>
+                          <li>Se toma toda la region a la izquierda del marcador.</li>
+                          <li>Se suma la mitad izquierda de la curva con el area desde la media hasta z.</li>
+                        </ul>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva normal con region sombreada por debajo de 5.078">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="259" y1="236" x2="259" y2="108" class="normal-marker"/>
+                          <path class="normal-fill-primary" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 234 62, 246 84, 259 108 L 259 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="203" y="32" class="normal-label">Curva normal</text>
+                          <text x="170" y="112" class="normal-label">A1</text>
+                          <text x="246" y="252" class="normal-small">0.7258</text>
+                          <text x="243" y="266" class="normal-small">5.078</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>La probabilidad de registrar un diametro por debajo de 5.078 es 76.42%.</p>
+                    </div>
+                  </article>
+                </section>
+              </div>
+            </div>
+
+            <div class="carousel-controls" aria-label="Indicadores del carrusel de distribucion normal">
+              <button class="carousel-dot is-active" type="button" data-normal-slide="0" aria-label="Ir al caso 1"></button>
+              <button class="carousel-dot" type="button" data-normal-slide="1" aria-label="Ir al caso 2"></button>
+              <button class="carousel-dot" type="button" data-normal-slide="2" aria-label="Ir al caso 3"></button>
+              <button class="carousel-dot" type="button" data-normal-slide="3" aria-label="Ir al caso 4"></button>
+              <button class="carousel-dot" type="button" data-normal-slide="4" aria-label="Ir al caso 5"></button>
+              <button class="carousel-dot" type="button" data-normal-slide="5" aria-label="Ir al caso 6"></button>
+              <button class="carousel-dot" type="button" data-normal-slide="6" aria-label="Ir al caso 7"></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="12">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 13</p>
+              <h3>Paso 12: Intervalos de confianza para estimar la media poblacional</h3>
+            </div>
+            <span class="sheet-number">3 niveles</span>
+          </div>
+
+          <div class="normal-carousel">
+            <div class="carousel-head">
+              <p>Construccion de intervalos de confianza para la media poblacional con niveles de 90%, 95% y 99%.</p>
+              <div class="carousel-controls">
+                <button class="carousel-button" type="button" id="meanPrev" aria-label="Intervalo anterior">&larr;</button>
+                <span class="carousel-status" id="meanStatus">1 / 3</span>
+                <button class="carousel-button" type="button" id="meanNext" aria-label="Intervalo siguiente">&rarr;</button>
+              </div>
+            </div>
+
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="meanTrack">
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Confianza del 90%</h4>
+                    <p>Construir un intervalo de confianza del 90% para estimar la media poblacional.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">Datos
+n = 54
+s = 0.0124
+X&#772; = 5.06933333</span>
+                          <span class="study-formula">Nivel de confianza del 90%
+1 - &alpha; = 0.90
+0.90 / 2 = 0.45</span>
+                          <span class="study-formula">&mu; = X&#772; &plusmn; z (s / &radic;n)
+&mu; = 5.06933333 &plusmn; 1.64 (0.0124 / &radic;54)
+&mu; = 5.06933333 &plusmn; 0.002767379</span>
+                        </div>
+                        <div class="study-result">5.066565951 &lt; &mu; &lt; 5.072100709</div>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Campana de Gauss para el intervalo del 90 por ciento">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="168" y1="236" x2="168" y2="114" class="normal-marker"/>
+                          <line x1="272" y1="236" x2="272" y2="114" class="normal-marker"/>
+                          <path class="normal-fill-secondary" d="M 44 236 C 94 236, 118 196, 145 145 C 155 130, 162 122, 168 114 L 168 236 Z"/>
+                          <path class="normal-fill-secondary" d="M 272 236 L 272 114 C 278 122, 285 130, 295 145 C 322 196, 346 236, 396 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="202" y="32" class="normal-label">1 - &alpha;</text>
+                          <text x="204" y="116" class="normal-label">0.90</text>
+                          <text x="152" y="252" class="normal-small">-z</text>
+                          <text x="209" y="252" class="normal-small">&mu;</text>
+                          <text x="269" y="252" class="normal-small">z</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>Estamos 90% seguros de que la media poblacional de los cojinetes esfericos registra diametros entre 5.066565951 y 5.072100709.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Confianza del 95%</h4>
+                    <p>Construir un intervalo de confianza del 95% para estimar la media poblacional.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">Datos
+n = 54
+s = 0.0124
+X&#772; = 5.06933333</span>
+                          <span class="study-formula">Nivel de confianza del 95%
+1 - &alpha; = 0.95
+0.95 / 2 = 0.4750</span>
+                          <span class="study-formula">&mu; = X&#772; &plusmn; z (s / &radic;n)
+&mu; = 5.06933333 &plusmn; 1.96 (0.0124 / &radic;54)
+&mu; = 5.06933333 &plusmn; 0.033073555</span>
+                        </div>
+                        <div class="study-result">5.036259775 &lt; &mu; &lt; 5.102406885</div>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Campana de Gauss para el intervalo del 95 por ciento">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="150" y1="236" x2="150" y2="126" class="normal-marker"/>
+                          <line x1="290" y1="236" x2="290" y2="126" class="normal-marker"/>
+                          <path class="normal-fill-secondary" d="M 44 236 C 94 236, 118 196, 145 145 C 148 138, 149 132, 150 126 L 150 236 Z"/>
+                          <path class="normal-fill-secondary" d="M 290 236 L 290 126 C 291 132, 292 138, 295 145 C 322 196, 346 236, 396 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="202" y="32" class="normal-label">1 - &alpha;</text>
+                          <text x="204" y="116" class="normal-label">0.95</text>
+                          <text x="142" y="252" class="normal-small">-1.96</text>
+                          <text x="209" y="252" class="normal-small">0</text>
+                          <text x="284" y="252" class="normal-small">1.96</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>Estamos 95% seguros de que la media poblacional de todos los cojinetes esfericos registra un diametro entre 5.036259775 y 5.102406885.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Confianza del 99%</h4>
+                    <p>Construir un intervalo de confianza del 99% para estimar la media poblacional.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">Datos
+n = 54
+s = 0.0124
+X&#772; = 5.06933333</span>
+                          <span class="study-formula">Nivel de confianza del 99%
+1 - &alpha; = 0.99
+0.99 / 2 = 0.495</span>
+                          <span class="study-formula">&mu; = X&#772; &plusmn; z (s / &radic;n)
+&mu; = 5.06933333 &plusmn; 2.57 (0.0124 / &radic;n)
+&mu; = 5.06933333 &plusmn; 0.043366855</span>
+                        </div>
+                        <div class="study-result">5.025966475 &lt; &mu; &lt; 5.112700185</div>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Campana de Gauss para el intervalo del 99 por ciento">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <line x1="132" y1="236" x2="132" y2="144" class="normal-marker"/>
+                          <line x1="308" y1="236" x2="308" y2="144" class="normal-marker"/>
+                          <path class="normal-fill-secondary" d="M 44 236 C 94 236, 118 196, 132 144 L 132 236 Z"/>
+                          <path class="normal-fill-secondary" d="M 308 236 L 308 144 C 322 196, 346 236, 396 236 Z"/>
+                          <path class="normal-curve" d="M 44 236 C 94 236, 118 196, 145 145 C 172 95, 198 56, 220 46 C 242 56, 268 95, 295 145 C 322 196, 346 236, 396 236"/>
+                          <text x="202" y="32" class="normal-label">1 - &alpha;</text>
+                          <text x="204" y="116" class="normal-label">0.99</text>
+                          <text x="122" y="252" class="normal-small">-2.57</text>
+                          <text x="209" y="252" class="normal-small">0</text>
+                          <text x="302" y="252" class="normal-small">2.57</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>Estamos 99% seguros de que la media poblacional de todos los cojinetes esfericos registra diametros entre 5.025966475 y 5.112700185.</p>
+                    </div>
+                  </article>
+                </section>
+              </div>
+            </div>
+
+            <div class="carousel-controls" aria-label="Indicadores del carrusel de media poblacional">
+              <button class="carousel-dot is-active" type="button" data-mean-slide="0" aria-label="Ir al intervalo del 90 por ciento"></button>
+              <button class="carousel-dot" type="button" data-mean-slide="1" aria-label="Ir al intervalo del 95 por ciento"></button>
+              <button class="carousel-dot" type="button" data-mean-slide="2" aria-label="Ir al intervalo del 99 por ciento"></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="13">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 14</p>
+              <h3>Paso 13: Intervalos de confianza para estimar la desviacion estandar poblacional</h3>
+            </div>
+            <span class="sheet-number">3 niveles</span>
+          </div>
+
+          <div class="normal-carousel">
+            <div class="carousel-head">
+              <p>Estimacion de la desviacion estandar poblacional a partir de la curva chi cuadrado con niveles de 90%, 95% y 99%.</p>
+              <div class="carousel-controls">
+                <button class="carousel-button" type="button" id="sigmaPrev" aria-label="Intervalo anterior">&larr;</button>
+                <span class="carousel-status" id="sigmaStatus">1 / 3</span>
+                <button class="carousel-button" type="button" id="sigmaNext" aria-label="Intervalo siguiente">&rarr;</button>
+              </div>
+            </div>
+
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="sigmaTrack">
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Desviacion estandar con 90%</h4>
+                    <p>Intervalo de confianza del 90% para estimar la desviacion estandar poblacional.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">Datos
+n = 54
+s = 0.0124
+S^2 = 0.00015376
+gl = 53</span>
+                          <span class="study-formula">Nivel de confianza
+1 - &alpha; = 0.90
+&alpha; = 0.1
+&alpha; / 2 = 0.05
+(1 - &alpha;) / 2 = 0.95</span>
+                          <span class="study-formula">&radic;((n - 1)S^2 / &chi;^2(&alpha;/2,53)) &le; &sigma; &le; &radic;((n - 1)S^2 / &chi;^2(1-&alpha;/2,53))</span>
+                        </div>
+                        <div class="study-result">0.0107 &le; &sigma; &le; 0.0148</div>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva chi cuadrado para el intervalo del 90 por ciento">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <path class="normal-curve" d="M 46 236 C 90 204, 112 96, 164 82 C 210 74, 248 104, 278 154 C 305 196, 336 226, 392 236"/>
+                          <line x1="116" y1="236" x2="116" y2="162" class="normal-marker"/>
+                          <line x1="286" y1="236" x2="286" y2="166" class="normal-marker"/>
+                          <path class="normal-fill-secondary" d="M 46 236 C 90 204, 104 181, 116 162 L 116 236 Z"/>
+                          <path class="normal-fill-secondary" d="M 286 236 L 286 166 C 305 196, 336 226, 392 236 Z"/>
+                          <text x="196" y="82" class="normal-label">1 - &alpha;</text>
+                          <text x="108" y="252" class="normal-small">0.05</text>
+                          <text x="278" y="252" class="normal-small">0.95</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>Estamos 90% seguros de que la desviacion estandar poblacional de los diametros de los cojinetes esfericos se encuentra entre 0.0107 y 0.0148.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Desviacion estandar con 95%</h4>
+                    <p>Intervalo de confianza del 95% para estimar la desviacion estandar poblacional.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">Datos
+n = 54
+s = 0.0124
+S^2 = 0.00015376
+gl = 53</span>
+                          <span class="study-formula">Nivel de confianza
+1 - &alpha; = 0.95
+&alpha; = 0.05
+&alpha; / 2 = 0.025
+1 - &alpha; / 2 = 0.975</span>
+                          <span class="study-formula">&radic;((n - 1)S^2 / &chi;^2(&alpha;/2,53)) &le; &sigma; &le; &radic;((n - 1)S^2 / &chi;^2(1-&alpha;/2,53))</span>
+                        </div>
+                        <div class="study-result">0.0104 &le; &sigma; &le; 0.0153</div>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva chi cuadrado para el intervalo del 95 por ciento">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <path class="normal-curve" d="M 46 236 C 90 204, 112 96, 164 82 C 210 74, 248 104, 278 154 C 305 196, 336 226, 392 236"/>
+                          <line x1="98" y1="236" x2="98" y2="178" class="normal-marker"/>
+                          <line x1="302" y1="236" x2="302" y2="182" class="normal-marker"/>
+                          <path class="normal-fill-secondary" d="M 46 236 C 84 212, 92 194, 98 178 L 98 236 Z"/>
+                          <path class="normal-fill-secondary" d="M 302 236 L 302 182 C 324 214, 352 232, 392 236 Z"/>
+                          <text x="196" y="82" class="normal-label">1 - &alpha;</text>
+                          <text x="90" y="252" class="normal-small">0.025</text>
+                          <text x="292" y="252" class="normal-small">0.975</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>Estamos 95% seguros de que la desviacion estandar poblacional de los diametros de los cojinetes esfericos se encuentra entre 0.0104 y 0.0153.</p>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Desviacion estandar con 99%</h4>
+                    <p>Intervalo de confianza del 99% para estimar la desviacion estandar poblacional.</p>
+                    <div class="normal-case-grid">
+                      <div class="normal-math">
+                        <div class="normal-stack">
+                          <span class="study-formula">Datos
+n = 54
+s = 0.0124
+S^2 = 0.00015376
+gl = 53</span>
+                          <span class="study-formula">Nivel de confianza
+1 - &alpha; = 0.99
+&alpha; = 0.01
+&alpha; / 2 = 0.005
+1 - &alpha; / 2 = 0.995</span>
+                          <span class="study-formula">(n - 1)S^2 / &chi;^2(&alpha;/2,53) &le; &sigma;^2 &le; (n - 1)S^2 / &chi;^2(1-&alpha;/2,53)</span>
+                        </div>
+                        <div class="study-result">0.0099 &le; &sigma; &le; 0.0164</div>
+                      </div>
+
+                      <div class="chart-stage">
+                        <svg viewBox="0 0 420 270" role="img" aria-label="Curva chi cuadrado para el intervalo del 99 por ciento">
+                          <line x1="42" y1="236" x2="398" y2="236" class="normal-axis"/>
+                          <path class="normal-curve" d="M 46 236 C 90 204, 112 96, 164 82 C 210 74, 248 104, 278 154 C 305 196, 336 226, 392 236"/>
+                          <line x1="82" y1="236" x2="82" y2="193" class="normal-marker"/>
+                          <line x1="318" y1="236" x2="318" y2="193" class="normal-marker"/>
+                          <path class="normal-fill-secondary" d="M 46 236 C 74 218, 80 202, 82 193 L 82 236 Z"/>
+                          <path class="normal-fill-secondary" d="M 318 236 L 318 193 C 336 220, 360 233, 392 236 Z"/>
+                          <text x="196" y="82" class="normal-label">1 - &alpha;</text>
+                          <text x="74" y="252" class="normal-small">0.005</text>
+                          <text x="306" y="252" class="normal-small">0.995</text>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="normal-interpretation">
+                      <h5>Interpretacion</h5>
+                      <p>Estamos 99% seguros de que la desviacion estandar poblacional de los diametros de los cojinetes esfericos se encuentra entre 0.0099 y 0.0164.</p>
+                    </div>
+                  </article>
+                </section>
+              </div>
+            </div>
+
+            <div class="carousel-controls" aria-label="Indicadores del carrusel de desviacion estandar">
+              <button class="carousel-dot is-active" type="button" data-sigma-slide="0" aria-label="Ir al intervalo del 90 por ciento"></button>
+              <button class="carousel-dot" type="button" data-sigma-slide="1" aria-label="Ir al intervalo del 95 por ciento"></button>
+              <button class="carousel-dot" type="button" data-sigma-slide="2" aria-label="Ir al intervalo del 99 por ciento"></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="14">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 15</p>
+              <h3>Paso 14: Prueba de hipotesis</h3>
+            </div>
+            <span class="sheet-number">2 hojas</span>
+          </div>
+
+          <div class="normal-carousel">
+            <div class="carousel-head">
+              <p>Desarrollo de la prueba de hipotesis desde el planteamiento hasta la decision final consignada en las hojas.</p>
+              <div class="carousel-controls">
+                <button class="carousel-button" type="button" id="hypoPrev" aria-label="Hoja anterior del paso 14">&larr;</button>
+                <span class="carousel-status" id="hypoStatus">1 / 2</span>
+                <button class="carousel-button" type="button" id="hypoNext" aria-label="Hoja siguiente del paso 14">&rarr;</button>
+              </div>
+            </div>
+
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="hypoTrack">
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Planteamiento y estadistico de prueba</h4>
+                    <div class="sheet-grid">
+                      <section class="study-card">
+                        <h4>Datos y objetivo</h4>
+                        <span class="study-formula">Poblacion
+&mu; = 5.060
+
+Muestra
+n = 54
+X&#772; = 5.06933333
+s = 0.0124</span>
+                        <p>Para esta muestra queremos comprobar si la media poblacional es igual a &mu; = 5.060.</p>
+                      </section>
+
+                      <section class="study-card">
+                        <h4>Hipotesis</h4>
+                        <span class="study-formula">Como hipotesis de investigacion
+H0: La media poblacional es igual a 5.060
+H1: La media poblacional es mayor
+
+En forma estadistica
+H0: &mu; = 5.060
+H1: &mu; &gt; 5.060</span>
+                        <div class="study-meta">
+                          <span>Nivel de confianza: 1 - &alpha; = 0.95</span>
+                          <span>Nivel de significancia: &alpha; = 0.05</span>
+                          <span>Muestra grande</span>
+                          <span>Ensayo de cola izquierda</span>
+                        </div>
+                      </section>
+
+                      <section class="study-card" style="grid-column: 1 / -1;">
+                        <h4>Grafica y estadistico</h4>
+                        <div class="normal-case-grid">
+                          <div class="chart-stage">
+                            <svg viewBox="0 0 420 260" role="img" aria-label="Region de rechazo y aceptacion de la prueba de hipotesis">
+                              <line x1="42" y1="226" x2="398" y2="226" class="normal-axis"/>
+                              <line x1="122" y1="226" x2="122" y2="171" class="normal-marker"/>
+                              <path class="normal-fill-primary" d="M 44 226 C 82 226, 102 198, 122 171 L 122 226 Z"/>
+                              <path class="normal-curve" d="M 44 226 C 94 226, 118 186, 145 135 C 172 85, 198 46, 220 36 C 242 46, 268 85, 295 135 C 322 186, 346 226, 396 226"/>
+                              <text x="62" y="192" class="normal-label">R. rechazo</text>
+                              <text x="172" y="132" class="normal-label">Region aceptacion H0</text>
+                            </svg>
+                          </div>
+
+                          <div class="normal-math">
+                            <span class="study-formula">t = (X&#772; - &mu;) / (S / &radic;n)
+t = (5.06933333 - 5.060) / (0.0124 / &radic;54)
+t = -0.3450809</span>
+                            <p>La hoja deja calculado el estadistico de prueba con valor -0.3450809.</p>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </article>
+                </section>
+
+                <section class="normal-slide">
+                  <article class="normal-card">
+                    <h4>Regla de decision y conclusion</h4>
+                    <div class="study-grid">
+                      <section class="study-card">
+                        <h4>Paso 4</h4>
+                        <span class="study-formula">Establecer una regla de decision.
+
+Si zcal &gt; z tabla se acepta H0.</span>
+                      </section>
+
+                      <section class="study-card">
+                        <h4>Paso 5</h4>
+                        <span class="study-formula">Como -0.3450809 &gt; -2.005
+Se acepta H0.</span>
+                      </section>
+
+                      <section class="study-card" style="grid-column: 1 / -1;">
+                        <h4>Conclusion</h4>
+                        <div class="study-result">A un nivel de confianza del 95% se acepta H0</div>
+                        <p>A un nivel de confianza del 95% podemos creer en la hipotesis planteada.</p>
+                      </section>
+                    </div>
+                  </article>
+                </section>
+              </div>
+            </div>
+
+            <div class="carousel-controls" aria-label="Indicadores del carrusel de prueba de hipotesis">
+              <button class="carousel-dot is-active" type="button" data-hypo-slide="0" aria-label="Ir al planteamiento"></button>
+              <button class="carousel-dot" type="button" data-hypo-slide="1" aria-label="Ir a la conclusion"></button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="15">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 16</p>
+              <h3>Paso 15: Prueba de hipotesis por el enfoque del valor-P</h3>
+            </div>
+            <span class="sheet-number">Valor-P</span>
+          </div>
+
+          <div class="sheet-grid">
+            <section class="study-card">
+              <h4>Paso 1 y Paso 2</h4>
+              <span class="study-formula">Datos
+n = 54
+s = 0.0124
+X&#772; = 5.06933333
+
+H0: El diametro promedio de los cojinetes es igual a 5.060 cms
+H1: El diametro promedio de las C. esf. es diferente de 5.060 cms
+
+Nivel de confianza
+1 - &alpha; = 0.95
+
+Nivel de significancia
+&alpha; = 0.05
+
+Muestra grande - Distribucion normal</span>
+            </section>
+
+            <section class="study-card">
+              <h4>Paso 3</h4>
+              <div class="chart-stage" style="margin-bottom: 0.9rem;">
+                <svg viewBox="0 0 420 260" role="img" aria-label="Curva normal con area del valor p">
+                  <line x1="42" y1="226" x2="398" y2="226" class="normal-axis"/>
+                  <line x1="116" y1="226" x2="116" y2="176" class="normal-marker"/>
+                  <path class="normal-fill-primary" d="M 44 226 C 74 226, 96 206, 116 176 L 116 226 Z"/>
+                  <path class="normal-curve" d="M 44 226 C 94 226, 118 186, 145 135 C 172 85, 198 46, 220 36 C 242 46, 268 85, 295 135 C 322 186, 346 226, 396 226"/>
+                  <text x="70" y="160" class="normal-label">Valor-P</text>
+                </svg>
+              </div>
+              <span class="study-formula">t = (X&#772; - &mu;) / (S / &radic;n)
+t = (5.06433333 - 5.062) / (0.0124 / &radic;54)
+t = 0.00233333 / 0.001686
+t &asymp; 4.351</span>
+            </section>
+
+            <section class="study-card">
+              <h4>Calcular el valor-P</h4>
+              <span class="study-formula">ValorP = 2 (1 - A(Zcal))
+A(Zcal) = 0.9999
+ValorP = 1 - 0.9999 = 0.0001
+
+Para nuestro caso:
+Valor-P = 0.9999</span>
+              <p>La hoja consigna que 0.9999 &gt; 0.05, por lo tanto se acepta H0.</p>
+            </section>
+
+            <section class="study-card">
+              <h4>Regla de decision</h4>
+              <span class="study-formula">Si Valor-P &le; &alpha;, rechazamos H0.
+Si Valor-P &gt; &alpha;, aceptamos H0.</span>
+            </section>
+
+            <section class="study-card" style="grid-column: 1 / -1;">
+              <h4>Decision final</h4>
+              <div class="study-result">Como 0.9999 &gt; 0.05, aceptamos H0</div>
+              <p>La prueba queda cerrada por el enfoque del valor-P con aceptacion de la hipotesis nula.</p>
+            </section>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const pageTabs = Array.from(document.querySelectorAll(".page-tab"));
+    const pages = Array.from(document.querySelectorAll(".sheet"));
+    const prevPage = document.getElementById("prevPage");
+    const nextPage = document.getElementById("nextPage");
+    const chartTrack = document.getElementById("chartTrack");
+    const chartPrev = document.getElementById("chartPrev");
+    const chartNext = document.getElementById("chartNext");
+    const chartStatus = document.getElementById("chartStatus");
+    const chartDots = Array.from(document.querySelectorAll("[data-chart-slide]"));
+    const normalTrack = document.getElementById("normalTrack");
+    const normalPrev = document.getElementById("normalPrev");
+    const normalNext = document.getElementById("normalNext");
+    const normalStatus = document.getElementById("normalStatus");
+    const normalDots = Array.from(document.querySelectorAll("[data-normal-slide]"));
+    const meanTrack = document.getElementById("meanTrack");
+    const meanPrev = document.getElementById("meanPrev");
+    const meanNext = document.getElementById("meanNext");
+    const meanStatus = document.getElementById("meanStatus");
+    const meanDots = Array.from(document.querySelectorAll("[data-mean-slide]"));
+    const sigmaTrack = document.getElementById("sigmaTrack");
+    const sigmaPrev = document.getElementById("sigmaPrev");
+    const sigmaNext = document.getElementById("sigmaNext");
+    const sigmaStatus = document.getElementById("sigmaStatus");
+    const sigmaDots = Array.from(document.querySelectorAll("[data-sigma-slide]"));
+    const hypoTrack = document.getElementById("hypoTrack");
+    const hypoPrev = document.getElementById("hypoPrev");
+    const hypoNext = document.getElementById("hypoNext");
+    const hypoStatus = document.getElementById("hypoStatus");
+    const hypoDots = Array.from(document.querySelectorAll("[data-hypo-slide]"));
+    let activePage = 0;
+    let activeChart = 0;
+    let chartTimer = null;
+
+    function renderPage(index) {
+      activePage = (index + pages.length) % pages.length;
+
+      pageTabs.forEach((tab, tabIndex) => {
+        tab.classList.toggle("is-active", tabIndex === activePage);
+      });
+
+      pages.forEach((page, pageIndex) => {
+        page.classList.toggle("is-active", pageIndex === activePage);
+      });
+    }
+
+    pageTabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => renderPage(index));
+    });
+
+    prevPage.addEventListener("click", () => renderPage(activePage - 1));
+    nextPage.addEventListener("click", () => renderPage(activePage + 1));
+
+    function renderChart(index) {
+      if (!chartTrack || chartDots.length === 0) {
+        return;
+      }
+
+      activeChart = (index + chartDots.length) % chartDots.length;
+      chartTrack.style.transform = `translateX(-${activeChart * 100}%)`;
+
+      chartDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === activeChart);
+      });
+
+      if (chartStatus) {
+        chartStatus.textContent = `${activeChart + 1} / ${chartDots.length}`;
+      }
+    }
+
+    function startChartRotation() {
+      if (!chartTrack || chartDots.length === 0) {
+        return;
+      }
+
+      stopChartRotation();
+      chartTimer = window.setInterval(() => {
+        renderChart(activeChart + 1);
+      }, 4200);
+    }
+
+    function stopChartRotation() {
+      if (chartTimer) {
+        window.clearInterval(chartTimer);
+        chartTimer = null;
+      }
+    }
+
+    chartDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        renderChart(index);
+        startChartRotation();
+      });
+    });
+
+    if (chartPrev) {
+      chartPrev.addEventListener("click", () => {
+        renderChart(activeChart - 1);
+        startChartRotation();
+      });
+    }
+
+    if (chartNext) {
+      chartNext.addEventListener("click", () => {
+        renderChart(activeChart + 1);
+        startChartRotation();
+      });
+    }
+
+    if (chartTrack) {
+      chartTrack.addEventListener("mouseenter", stopChartRotation);
+      chartTrack.addEventListener("mouseleave", startChartRotation);
+    }
+
+    function setupManualCarousel(track, dots, status, prev, next) {
+      if (!track || dots.length === 0) {
+        return null;
+      }
+
+      let activeIndex = 0;
+
+      function render(index) {
+        activeIndex = (index + dots.length) % dots.length;
+        track.style.transform = `translateX(-${activeIndex * 100}%)`;
+
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("is-active", dotIndex === activeIndex);
+        });
+
+        if (status) {
+          status.textContent = `${activeIndex + 1} / ${dots.length}`;
+        }
+      }
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => render(index));
+      });
+
+      if (prev) {
+        prev.addEventListener("click", () => render(activeIndex - 1));
+      }
+
+      if (next) {
+        next.addEventListener("click", () => render(activeIndex + 1));
+      }
+
+      return render;
+    }
+
+    const renderNormal = setupManualCarousel(normalTrack, normalDots, normalStatus, normalPrev, normalNext);
+    const renderMean = setupManualCarousel(meanTrack, meanDots, meanStatus, meanPrev, meanNext);
+    const renderSigma = setupManualCarousel(sigmaTrack, sigmaDots, sigmaStatus, sigmaPrev, sigmaNext);
+    const renderHypo = setupManualCarousel(hypoTrack, hypoDots, hypoStatus, hypoPrev, hypoNext);
+
+    renderPage(0);
+    renderChart(0);
+    startChartRotation();
+
+    if (renderNormal) {
+      renderNormal(0);
+    }
+
+    if (renderMean) {
+      renderMean(0);
+    }
+
+    if (renderSigma) {
+      renderSigma(0);
+    }
+
+    if (renderHypo) {
+      renderHypo(0);
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        renderPage(activePage - 1);
+      }
+
+      if (event.key === "ArrowRight") {
+        renderPage(activePage + 1);
+      }
+    });
+  </script>
+</body>
+</html>
