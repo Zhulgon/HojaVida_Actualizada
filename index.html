@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juan Sebastián Rubiano | Portafolio</title>
+  <meta
+    name="description"
+    content="Portafolio de Juan Sebastián Rubiano, estudiante de Ingeniería de Sistemas y tecnólogo en Desarrollo de Sistemas Informáticos. Proyectos en desarrollo web, Python, SQL, React, TypeScript, análisis de datos, machine learning, IA aplicada y realidad aumentada."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+  <div class="page-noise" aria-hidden="true"></div>
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header-scrim" aria-hidden="true"></div>
+    <div class="container nav-shell">
+      <a class="brand" href="#hero" aria-label="Ir al inicio">JSR</a>
+
+      <div id="menuDropdown" class="menu-dropdown">
+        <nav id="siteMenu" class="site-menu" aria-label="Navegación principal">
+          <div class="site-menu-panel">
+            <div class="site-menu-group site-menu-group-left">
+              <a href="#skills" data-i18n="nav.skills"></a>
+              <a href="#projects" data-i18n="nav.projects"></a>
+            </div>
+
+            <button
+              id="menuToggle"
+              class="menu-trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="siteMenu"
+              aria-label="Abrir menú"
+            >
+              <span class="menu-trigger-label" data-i18n="nav.menu"></span>
+              <span class="menu-trigger-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+
+            <div class="site-menu-group site-menu-group-right">
+              <a href="#credentials" data-i18n="nav.credentials"></a>
+              <a href="#experience" data-i18n="nav.experience"></a>
+              <a href="#contact" data-i18n="nav.contact"></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="header-utilities">
+        <button id="langToggle" class="utility-btn" type="button" aria-label="Cambiar idioma">
+          <span id="langToggleLabel">EN</span>
+        </button>
+        <button id="themeToggle" class="utility-btn utility-btn-wide" type="button" aria-label="Cambiar tema">
+          <i class="fa-solid fa-moon"></i>
+          <span id="themeToggleLabel"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow" data-i18n="hero.eyebrow"></p>
+          <h1 class="hero-title" data-i18n-html="hero.title"></h1>
+          <p class="hero-text" data-i18n="hero.summary1"></p>
+          <p class="hero-text hero-text-muted" data-i18n="hero.summary2"></p>
+
+          <div class="hero-actions">
+            <div class="hero-links">
+              <a href="https://www.linkedin.com/in/juansrubiano" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin-in"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com/Zhulgon" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub</span>
+              </a>
+              <a href="mailto:jsebastian000124@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal reveal-delay">
+          <div class="portrait-card">
+            <img src="assets/profile.jpg" alt="Foto de Juan Sebastián Rubiano">
+          </div>
+
+          <div class="availability-card">
+            <div class="availability-line">
+              <span class="status-dot"></span>
+              <span data-i18n="hero.availabilityTitle"></span>
+            </div>
+            <p data-i18n="hero.availabilityBody"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow" data-i18n="skills.eyebrow"></p>
+            <h2 data-i18n="skills.title"></h2>
+            <p data-i18n="skills.intro"></p>
+          </div>
+
+          <div id="skillsGrid" class="skills-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow" data-i18n="projects.eyebrow"></p>
+            <h2 data-i18n="projects.title"></h2>
+            <p data-i18n="projects.intro"></p>
+          </div>
+
+          <div id="projectsCarousel" class="projects-carousel reveal reveal-delay">
+            <div class="projects-carousel-head">
+              <p id="projectsStatus" class="projects-status" aria-live="polite"></p>
+
+              <div class="projects-controls" aria-label="Project navigation">
+                <button id="projectsPrev" class="project-nav-btn" type="button">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button id="projectsNext" class="project-nav-btn" type="button">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="projectsViewport" class="projects-viewport" tabindex="0">
+              <div id="projectsGrid" class="projects-track"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials" class="section">
+      <div class="container">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow" data-i18n="credentials.eyebrow"></p>
+            <h2 data-i18n="credentials.title"></h2>
+            <p data-i18n="credentials.intro"></p>
+          </div>
+
+          <div id="credentialsGrid" class="credentials-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section section-alt">
+      <div class="container">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow" data-i18n="experience.eyebrow"></p>
+            <h2 data-i18n="experience.title"></h2>
+            <p data-i18n="experience.intro"></p>
+          </div>
+
+          <div id="experienceGrid" class="timeline-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <div class="container">
+        <div class="section-shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow" data-i18n="education.eyebrow"></p>
+            <h2 data-i18n="education.title"></h2>
+            <p data-i18n="education.intro"></p>
+          </div>
+
+          <div id="educationGrid" class="education-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-shell section-shell-contact">
+          <div class="contact-shell reveal">
+            <div class="contact-copy-block">
+              <p class="eyebrow" data-i18n="contact.eyebrow"></p>
+              <h2 data-i18n="contact.title"></h2>
+              <p data-i18n="contact.body"></p>
+
+              <div class="contact-pills">
+                <a href="mailto:jsebastian000124@gmail.com">jsebastian000124@gmail.com</a>
+                <a href="https://www.linkedin.com/in/juansrubiano" target="_blank" rel="noopener noreferrer">
+                  linkedin.com/in/juansrubiano
+                </a>
+                <a href="https://github.com/Zhulgon" target="_blank" rel="noopener noreferrer">
+                  github.com/Zhulgon
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-form-card">
+              <div class="contact-form-head">
+                <h3 data-i18n="contact.formTitle"></h3>
+                <p data-i18n="contact.formBody"></p>
+              </div>
+
+              <form id="contactForm" class="contact-form">
+                <div class="form-grid">
+                  <label>
+                    <span data-i18n="contact.name"></span>
+                    <input id="name" type="text" required>
+                  </label>
+                  <label>
+                    <span data-i18n="contact.email"></span>
+                    <input id="email" type="email" required>
+                  </label>
+                </div>
+
+                <label class="message-field">
+                  <span data-i18n="contact.message"></span>
+                  <textarea id="message" rows="5" required></textarea>
+                </label>
+
+                <div class="form-footer">
+                  <button id="contactSubmit" class="btn btn-primary" type="submit" data-i18n="contact.submit"></button>
+                  <p id="formMessage" class="form-message" aria-live="polite"></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <p id="footerCopy"></p>
+      <div class="footer-links">
+        <a href="#hero" data-i18n="footer.backToTop"></a>
+        <a href="https://www.linkedin.com/in/juansrubiano" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/Zhulgon" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
