@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Actividad parcial de IA | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Caso visual de un parcial de inteligencia artificial con CNN sobre MNIST y una extension multiclase sobre CIFAR-10 usando TensorFlow y data augmentation."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./ml-case.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="topbar-brand" href="./modelos-ml.html">
+        <span class="brand-dot" aria-hidden="true"></span>
+        Todos los casos ML
+      </a>
+      <nav class="topbar-nav" aria-label="Navegacion del caso">
+        <a href="#caso">Caso</a>
+        <a href="#flujo">Flujo</a>
+        <a href="#experimentos">Experimentos</a>
+        <a href="#lectura">Lectura</a>
+      </nav>
+      <a class="topbar-link" href="../index.html#projects">Portfolio</a>
+    </header>
+
+    <section class="hero" id="caso">
+      <div class="hero-panel">
+        <p class="eyebrow">Parcial de inteligencia artificial</p>
+        <h1 class="hero-title">Dos experimentos en un <span class="highlight">mismo parcial</span>.</h1>
+        <p class="lead">
+          Este archivo funciona como una actividad integradora. Primero entrena una CNN para reconocer digitos
+          manuscritos en MNIST y luego extiende la practica a CIFAR-10 filtrando tres clases visuales para
+          comparar entrenamiento normal contra un flujo con data augmentation.
+        </p>
+        <div class="hero-actions">
+          <a class="button-link primary" href="#experimentos">Ver experimentos</a>
+          <a
+            class="button-link"
+            href="https://colab.research.google.com/drive/1UeXTTcmO7rmNh5NylrYSSncuhZKp-mmZ?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Abrir Colab
+          </a>
+          <a class="button-link" href="./clasificador-numeros-mnist.html">Caso enfocado en MNIST</a>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <strong>2 bloques</strong>
+            <span>Digitos manuscritos y clasificacion de imagenes a color.</span>
+          </article>
+          <article class="metric-card">
+            <strong>TensorFlow</strong>
+            <span>Uso de Keras para definir, entrenar y evaluar redes convolucionales.</span>
+          </article>
+          <article class="metric-card">
+            <strong>10 clases</strong>
+            <span>Salida softmax sobre MNIST para los numeros del 0 al 9.</span>
+          </article>
+          <article class="metric-card">
+            <strong>3 clases</strong>
+            <span>CIFAR-10 filtrado en airplane, automobile y truck.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="visual-panel">
+        <article class="visual-card">
+          <h3>Lo mas valioso del parcial</h3>
+          <ul class="key-list">
+            <li>Pasa de una clasificacion simple en grises a una variante multiclase con imagenes RGB.</li>
+            <li>Incluye preparacion de datos, normalizacion, arquitectura, entrenamiento y lectura de predicciones.</li>
+            <li>Introduce una capa de augmentation para robustecer el segundo experimento.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">MNIST</span>
+            <span class="pill">CIFAR-10</span>
+            <span class="pill">Softmax</span>
+            <span class="pill">Augmentation</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="flujo">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Flujo</p>
+          <h2 class="section-title">Como esta armado el parcial.</h2>
+        </div>
+        <p class="section-intro">
+          El archivo no se queda en una sola prueba. Avanza desde un problema clasico de vision por computador
+          hasta una extension mas rica visualmente, lo que deja ver progresion y curiosidad tecnica.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="card step">
+          <span class="step-index">1</span>
+          <div>
+            <h3>MNIST y salida multiclase</h3>
+            <p>Se cargan los digitos, se normalizan imagenes de 28 x 28 x 1 y se convierten etiquetas con <code>to_categorical</code>.</p>
+          </div>
+        </article>
+        <article class="card step">
+          <span class="step-index">2</span>
+          <div>
+            <h3>CNN base</h3>
+            <p>Dos capas convolucionales con pooling, <code>Flatten</code>, capa densa y salida <code>softmax</code> para 10 clases.</p>
+          </div>
+        </article>
+        <article class="card step">
+          <span class="step-index">3</span>
+          <div>
+            <h3>Evaluacion visual</h3>
+            <p>Se comparan imagenes del set de prueba con la etiqueta real y la prediccion del modelo.</p>
+          </div>
+        </article>
+        <article class="card step">
+          <span class="step-index">4</span>
+          <div>
+            <h3>Extension a CIFAR-10</h3>
+            <p>Se filtran tres clases, se remapean etiquetas y se repite el entrenamiento con y sin augmentation.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="experimentos">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Experimentos</p>
+          <h2 class="section-title">Que demuestra cada bloque.</h2>
+        </div>
+        <p class="section-intro">
+          Aunque los dos modelos comparten una base CNN parecida, el valor del archivo esta en mostrar que
+          entiendes distintos tipos de entrada, salida y evaluacion.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>Bloque 1 - Digitos manuscritos</h3>
+          <p>Sirve para demostrar la comprension de una CNN clasica sobre imagenes pequenas, una salida de diez clases y lectura de probabilidades con <code>argmax</code>.</p>
+          <div class="code-block"><code>model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.1)</code></div>
+        </article>
+        <article class="card">
+          <h3>Bloque 2 - Imagenes RGB filtradas</h3>
+          <p>Amplia el caso hacia imagenes a color, uso de tres clases y una estrategia de augmentation con rotaciones, desplazamientos y volteo horizontal.</p>
+          <div class="code-block"><code>datagen = ImageDataGenerator(rotation_range=15, width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)</code></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="lectura">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Lectura tecnica</p>
+          <h2 class="section-title">Por que este parcial suma al portfolio.</h2>
+        </div>
+        <p class="section-intro">
+          No es solo una tarea entregada. Bien presentada, esta actividad muestra bases reales de deep learning,
+          preparacion de datasets y lectura critica de resultados.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card">
+          <h3>Base en CNN</h3>
+          <p>Demuestra manejo inicial de arquitecturas convolucionales, entrenamiento y evaluacion supervisada.</p>
+        </article>
+        <article class="card">
+          <h3>Escalado del problema</h3>
+          <p>Pasa de una clasificacion de digitos a un escenario visual mas complejo con objetos a color.</p>
+        </article>
+        <article class="card">
+          <h3>Capacidad de extension</h3>
+          <p>Deja ver que no te quedas con el ejemplo minimo y que buscas experimentar con mejoras y comparaciones.</p>
+        </article>
+      </div>
+
+      <div class="note" style="margin-top: 1rem;">
+        Este archivo comparte base con el caso de clasificador de numeros, pero aqui queda reinterpretado como una actividad parcial mas amplia, centrada en la progresion entre experimentos.
+      </div>
+
+      <div class="foot-links">
+        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a
+          href="https://colab.research.google.com/drive/1UeXTTcmO7rmNh5NylrYSSncuhZKp-mmZ?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir Colab
+        </a>
+        <a href="../index.html#projects">Volver al portfolio</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

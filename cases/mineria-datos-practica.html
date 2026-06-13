@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practica de mineria de datos | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Caso de mineria de datos con KMeans, regresion lineal, KNN y una aproximacion ART2 sobre datasets sinteticos en Python."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./ml-case.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="topbar-brand" href="./modelos-ml.html">
+        <span class="brand-dot" aria-hidden="true"></span>
+        Todos los casos ML
+      </a>
+      <nav class="topbar-nav" aria-label="Navegacion del caso">
+        <a href="#caso">Caso</a>
+        <a href="#kmeans">KMeans</a>
+        <a href="#regresion">Regresion</a>
+        <a href="#knn">KNN</a>
+        <a href="#art2">ART2</a>
+      </nav>
+      <a class="topbar-link" href="../index.html#projects">Portfolio</a>
+    </header>
+
+    <section class="hero" id="caso">
+      <div class="hero-panel">
+        <p class="eyebrow">Mineria de datos</p>
+        <h1 class="hero-title">Una practica que cruza <span class="highlight">clustering, regresion y clasificacion</span>.</h1>
+        <p class="lead">
+          Este archivo es uno de los mas amplios de la carpeta. Recorre clustering con KMeans, regresion lineal
+          sobre datos sinteticos, clasificacion con KNN y una implementacion basica inspirada en ART2 para agrupar
+          dinamicamente segun un umbral de vigilancia.
+        </p>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <strong>KMeans</strong>
+            <span>Comparacion entre <code>k=3</code> y <code>k=4</code> sobre datos sinteticos.</span>
+          </article>
+          <article class="metric-card">
+            <strong>Regresion</strong>
+            <span>Uso de <code>make_regression</code> y MSE para un problema continuo.</span>
+          </article>
+          <article class="metric-card">
+            <strong>KNN</strong>
+            <span>Clasificacion 2D con datos normalizados y lectura de accuracy.</span>
+          </article>
+          <article class="metric-card">
+            <strong>ART2</strong>
+            <span>Version basica con similitud por coseno y vigilancia variable.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="visual-panel">
+        <article class="visual-card">
+          <h3>Por que vale la pena</h3>
+          <ul class="key-list">
+            <li>No se queda en una sola tecnica: muestra amplitud conceptual.</li>
+            <li>Incluye preguntas de interpretacion, no solo ejecucion de codigo.</li>
+            <li>Toca clustering tradicional y adaptativo en un mismo flujo.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">KMeans</span>
+            <span class="pill">LinearRegression</span>
+            <span class="pill">KNN</span>
+            <span class="pill">ART2</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="kmeans">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Bloque 1</p>
+          <h2 class="section-title">Clustering con KMeans.</h2>
+        </div>
+        <p class="section-intro">
+          El ejercicio arranca generando 300 puntos con <code>make_blobs</code>, luego aplica KMeans con tres
+          clusters y despues fuerza cuatro para mostrar como cambia la particion.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card"><h3>k = 3</h3><p>Representa mejor la estructura original del dataset sintetico.</p></article>
+        <article class="card"><h3>k = 4</h3><p>Fuerza una division extra y sirve para explicar por que K debe definirse con criterio.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="regresion">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Bloque 2</p>
+          <h2 class="section-title">Regresion lineal sobre datos sinteticos.</h2>
+        </div>
+        <p class="section-intro">
+          Con <code>make_regression</code> se construye un problema sencillo de una sola variable para entrenar
+          una linea de regresion y evaluar el error cuadratico medio.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card"><h3>Train/test</h3><p>Se separan los datos antes de entrenar para medir generalizacion.</p></article>
+        <article class="card"><h3>Linea ajustada</h3><p>La salida grafica deja ver la tendencia central que el modelo captura.</p></article>
+        <article class="card"><h3>MSE</h3><p>Sirve para evaluar el tamano del error frente al ruido del dataset.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="knn">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Bloque 3</p>
+          <h2 class="section-title">Clasificacion con KNN.</h2>
+        </div>
+        <p class="section-intro">
+          El caso cambia de problema y pasa a un dataset 2D de clasificacion binaria. Antes de entrenar,
+          normaliza con <code>StandardScaler</code> y luego evalua accuracy con <code>k=5</code>.
+        </p>
+      </div>
+
+      <div class="note success">
+        La parte fuerte aqui es que el mismo notebook incorpora preguntas sobre el efecto de cambiar K, lo que muestra comprension del tradeoff entre sensibilidad y suavizado.
+      </div>
+    </section>
+
+    <section class="section" id="art2">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Bloque 4</p>
+          <h2 class="section-title">Aproximacion basica a ART2.</h2>
+        </div>
+        <p class="section-intro">
+          Sobre un subconjunto de 50 puntos se define una funcion propia para asignar clusters segun similitud por coseno
+          y un umbral de vigilancia. Luego se compara el comportamiento con vigilancia 0.9, 0.7 y 0.4.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>Idea principal</h3>
+          <p>Si un punto no se parece lo suficiente al centro de un cluster, se crea uno nuevo. Con vigilancia alta aparecen mas grupos.</p>
+        </article>
+        <article class="card">
+          <h3>Valor conceptual</h3>
+          <p>A diferencia de KMeans, aqui no se fija K desde el inicio. Eso conecta bien con la idea de clustering adaptativo.</p>
+        </article>
+      </div>
+
+      <div class="foot-links">
+        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="../index.html#projects">Volver al portfolio</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gatos vs perros con CNN | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Caso de clasificacion binaria con TensorFlow Datasets para distinguir gatos y perros mediante una CNN en escala de grises y pruebas con imagenes propias."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./ml-case.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="topbar-brand" href="./modelos-ml.html">
+        <span class="brand-dot" aria-hidden="true"></span>
+        Todos los casos ML
+      </a>
+      <nav class="topbar-nav" aria-label="Navegacion del caso">
+        <a href="#caso">Caso</a>
+        <a href="#flujo">Flujo</a>
+        <a href="#sigmoid">Sigmoid</a>
+        <a href="#pruebas">Pruebas</a>
+      </nav>
+      <a class="topbar-link" href="../index.html#projects">Portfolio</a>
+    </header>
+
+    <section class="hero" id="caso">
+      <div class="hero-panel">
+        <p class="eyebrow">Clasificacion binaria</p>
+        <h1 class="hero-title">Gatos vs perros con una <span class="highlight">CNN en grises</span>.</h1>
+        <p class="lead">
+          Este notebook usa el dataset <code>cats_vs_dogs</code> desde TensorFlow Datasets, redimensiona imagenes
+          a 100 x 100, las convierte a escala de grises y entrena una CNN binaria. Luego abre una segunda etapa de pruebas
+          con imagenes cargadas manualmente para revisar predicciones reales fuera del dataset base.
+        </p>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <strong>100 x 100</strong>
+            <span>Tamano unificado de entrada para las imagenes.</span>
+          </article>
+          <article class="metric-card">
+            <strong>Escala de grises</strong>
+            <span>Reduccion a un solo canal para simplificar el modelo.</span>
+          </article>
+          <article class="metric-card">
+            <strong>50 epocas</strong>
+            <span>Entrenamiento con <code>validation_split=0.15</code>.</span>
+          </article>
+          <article class="metric-card">
+            <strong>Sigmoid</strong>
+            <span>Salida binaria para distinguir entre gato y perro.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="visual-panel">
+        <article class="visual-card">
+          <h3>Elementos clave del pipeline</h3>
+          <ul class="key-list">
+            <li>Uso del dataset oficial de TensorFlow Datasets.</li>
+            <li>Conversor a escala de grises con OpenCV.</li>
+            <li>Pruebas con imagenes subidas manualmente al final del notebook.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">TFDS</span>
+            <span class="pill">OpenCV</span>
+            <span class="pill">Binary classification</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="flujo">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Flujo</p>
+          <h2 class="section-title">Preparacion de imagenes y entrenamiento.</h2>
+        </div>
+        <p class="section-intro">
+          El notebook recorre todo el proceso: inspeccion del dataset, transformacion, armado de arreglos,
+          normalizacion y entrenamiento de la red.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="card step">
+          <span class="step-index">1</span>
+          <div><p>Se cargan ejemplos desde <code>cats_vs_dogs</code> y se visualizan muestras.</p></div>
+        </article>
+        <article class="card step">
+          <span class="step-index">2</span>
+          <div><p>Cada imagen se redimensiona, pasa a escala de grises y se guarda como tensor de 100 x 100 x 1.</p></div>
+        </article>
+        <article class="card step">
+          <span class="step-index">3</span>
+          <div><p>Las imagenes se normalizan a valores entre 0 y 1 y las etiquetas se convierten a arreglo numpico.</p></div>
+        </article>
+        <article class="card step">
+          <span class="step-index">4</span>
+          <div><p>Se entrena una CNN con tres bloques convolucionales y salida binaria.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="sigmoid">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Interpretacion</p>
+          <h2 class="section-title">La parte importante: entender la sigmoid.</h2>
+        </div>
+        <p class="section-intro">
+          El mismo notebook deja una aclaracion valiosa: al principio parecia raro ver "Gato con 0% de confianza",
+          pero eso se corrige al entender que la salida representa probabilidad de ser perro, no una confianza simetrica entre dos etiquetas.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>Lectura correcta</h3>
+          <p>Si la salida esta cerca de 1, el modelo considera mas probable la clase perro. Si esta cerca de 0, la imagen se interpreta como gato con mayor confianza.</p>
+        </article>
+        <article class="card">
+          <h3>Ajuste en la confianza</h3>
+          <p>El notebook termina corrigiendo la presentacion de resultados usando <code>1 - prediccion</code> para reportar confianza de gato cuando corresponde.</p>
+          <div class="code-block"><code>confianza = prediccion * 100 if etiqueta == "Perro" else (1 - prediccion) * 100</code></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="pruebas">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Pruebas reales</p>
+          <h2 class="section-title">Predicciones sobre imagenes propias.</h2>
+        </div>
+        <p class="section-intro">
+          Este cierre es de lo mejor del ejercicio, porque saca al modelo del dataset base y lo pone a responder
+          frente a imagenes cargadas por el usuario.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card"><h3>Subida manual</h3><p>Las imagenes se cargan con Colab, se transforman igual que el train y se pasan al modelo.</p></article>
+        <article class="card"><h3>Prediccion individual</h3><p>Se puede probar una imagen puntual como <code>gato1.jpg</code> o <code>perro1.jpg</code> para inspeccion directa.</p></article>
+        <article class="card"><h3>Valor para portfolio</h3><p>Muestra un paso extra de validacion pragmatica y capacidad de interpretar salidas de modelos binarios.</p></article>
+      </div>
+
+      <div class="foot-links">
+        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="../index.html#projects">Volver al portfolio</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

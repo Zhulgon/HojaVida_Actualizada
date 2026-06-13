@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analisis de audio con MFCC y FFT | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Caso de analisis de audio con Python y librosa comparando guitarra y flauta mediante MFCC, mas una lectura de espectro de frecuencias usando FFT."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./ml-case.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="topbar-brand" href="./modelos-ml.html">
+        <span class="brand-dot" aria-hidden="true"></span>
+        Todos los casos ML
+      </a>
+      <nav class="topbar-nav" aria-label="Navegacion del caso">
+        <a href="#caso">Caso</a>
+        <a href="#mfcc">MFCC</a>
+        <a href="#fft">FFT</a>
+        <a href="#aporte">Aporte</a>
+      </nav>
+      <a class="topbar-link" href="../index.html#projects">Portfolio</a>
+    </header>
+
+    <section class="hero" id="caso">
+      <div class="hero-panel">
+        <p class="eyebrow">Analisis de audio</p>
+        <h1 class="hero-title">MFCC y <span class="highlight">espectro de frecuencias</span> en Python.</h1>
+        <p class="lead">
+          Este notebook trabaja dos puntos: primero compara dos audios, guitarra y flauta, usando coeficientes MFCC
+          y una distancia euclidiana entre sus promedios; luego analiza un audio adicional mediante FFT para leer
+          la distribucion de frecuencias y distinguir zonas graves y agudas.
+        </p>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <strong>2 instrumentos</strong>
+            <span>Comparacion entre guitarra y flauta a partir de rasgos de timbre.</span>
+          </article>
+          <article class="metric-card">
+            <strong>13 MFCC</strong>
+            <span>Extraccion de coeficientes cepstrales para resumir caracteristicas del audio.</span>
+          </article>
+          <article class="metric-card">
+            <strong>FFT</strong>
+            <span>Transformada para observar contenido frecuencial de una senal.</span>
+          </article>
+          <article class="metric-card">
+            <strong>0 - 5000 Hz</strong>
+            <span>Ventana de lectura para interpretar mejor el espectro resultante.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="visual-panel">
+        <article class="visual-card">
+          <h3>Que se trabaja aqui</h3>
+          <div class="badge-row">
+            <span class="badge">librosa</span>
+            <span class="badge">MFCC</span>
+            <span class="badge">FFT</span>
+          </div>
+          <ul class="key-list">
+            <li>Comparacion visual de coeficientes MFCC a lo largo del tiempo.</li>
+            <li>Resumen por medias para comparar el timbre promedio entre dos audios.</li>
+            <li>Uso de una ventana de Hann antes de calcular la FFT.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="mfcc">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Primer bloque</p>
+          <h2 class="section-title">Comparacion de guitarra y flauta con MFCC.</h2>
+        </div>
+        <p class="section-intro">
+          El primer bloque usa <code>librosa.feature.mfcc</code> para obtener una representacion compacta del timbre
+          de cada instrumento. Luego calcula un promedio por coeficiente para contrastar ambos audios de forma simple.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>Flujo</h3>
+          <div class="steps">
+            <div class="step">
+              <span class="step-index">1</span>
+              <div><p>Se cargan <code>guitarra.wav</code> y <code>flauta.wav</code>.</p></div>
+            </div>
+            <div class="step">
+              <span class="step-index">2</span>
+              <div><p>Se extraen 13 coeficientes MFCC para cada uno.</p></div>
+            </div>
+            <div class="step">
+              <span class="step-index">3</span>
+              <div><p>Se calcula la media por coeficiente y se grafican ambos perfiles.</p></div>
+            </div>
+            <div class="step">
+              <span class="step-index">4</span>
+              <div><p>Se usa distancia euclidiana para cuantificar la diferencia.</p></div>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Lectura del resultado</h3>
+          <p>Los MFCC no representan notas musicales de forma directa, sino caracteristicas espectrales compactas. Por eso son utiles para distinguir timbres e identificar semejanzas o diferencias entre audios.</p>
+          <div class="code-block"><code>distancia = euclidean(mfcc_guitarra_mean, mfcc_flauta_mean)</code></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="fft">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Segundo bloque</p>
+          <h2 class="section-title">Lectura del espectro de una senal con FFT.</h2>
+        </div>
+        <p class="section-intro">
+          El segundo punto se enfoca en un audio llamado <code>IA.wav</code>. Primero aplica una ventana para evitar
+          problemas en los bordes y luego usa la transformada de Fourier para observar la energia por frecuencia.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card">
+          <h3>Ventana de Hann</h3>
+          <p>Se multiplica la senal por una ventana suave para reducir artefactos al pasarla al dominio de frecuencia.</p>
+        </article>
+        <article class="card">
+          <h3>Frecuencias positivas</h3>
+          <p>El grafico conserva solo la mitad positiva del espectro, porque es la parte relevante para interpretar la senal real.</p>
+        </article>
+        <article class="card">
+          <h3>Guias visuales</h3>
+          <p>Se agregan lineas en 300 Hz y 2000 Hz para ubicar zonas graves y agudas dentro del grafico.</p>
+        </article>
+      </div>
+
+      <div class="note success" style="margin-top: 1rem;">
+        Este ejercicio aporta algo importante al portfolio: no se limita a clasificacion. Tambien demuestra lectura de senales, extraccion de rasgos y analisis visual de audio.
+      </div>
+
+      <div class="foot-links">
+        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="../index.html#projects">Volver al portfolio</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

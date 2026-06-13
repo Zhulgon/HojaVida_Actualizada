@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulacion de inversiones y portafolios | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Caso de simulacion financiera con Python usando yfinance, Markowitz, Monte Carlo y proyecciones de portafolios moderados y conservadores."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./ml-case.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="topbar-brand" href="./modelos-ml.html">
+        <span class="brand-dot" aria-hidden="true"></span>
+        Todos los casos ML
+      </a>
+      <nav class="topbar-nav" aria-label="Navegacion del caso">
+        <a href="#caso">Caso</a>
+        <a href="#markowitz">Markowitz</a>
+        <a href="#montecarlo">Monte Carlo</a>
+        <a href="#proyeccion">Proyeccion</a>
+      </nav>
+      <a class="topbar-link" href="../index.html#projects">Portfolio</a>
+    </header>
+
+    <section class="hero" id="caso">
+      <div class="hero-panel">
+        <p class="eyebrow">Simulacion financiera</p>
+        <h1 class="hero-title">Portafolios, <span class="highlight">riesgo y proyecciones</span> de inversion.</h1>
+        <p class="lead">
+          Este archivo va mucho mas alla de una grafica simple. Descarga historicos con <code>yfinance</code>,
+          calcula retornos mensuales, simula miles de portafolios aleatorios, arma escenarios moderado y conservador,
+          y proyecta crecimiento a varios anos incluyendo aportes mensuales.
+        </p>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <strong>Markowitz</strong>
+            <span>Busqueda del mejor equilibrio retorno-riesgo mediante Sharpe ratio.</span>
+          </article>
+          <article class="metric-card">
+            <strong>20 000</strong>
+            <span>Portafolios aleatorios en la primera simulacion de frontera eficiente.</span>
+          </article>
+          <article class="metric-card">
+            <strong>10 000</strong>
+            <span>Corridas Monte Carlo para escenarios de valor futuro.</span>
+          </article>
+          <article class="metric-card">
+            <strong>10 anos</strong>
+            <span>Horizonte extendido para ver efecto compuesto y aportes mensuales.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="visual-panel">
+        <article class="visual-card">
+          <h3>Capas del caso</h3>
+          <ul class="key-list">
+            <li>Optimizacion inicial sobre acciones como Ecopetrol, Bancolombia, Cemargos y Grupo Aval.</li>
+            <li>Diversificacion con ETFs como SPY, QQQ, EEM y BND.</li>
+            <li>Comparacion entre portafolio moderado y conservador.</li>
+            <li>Proyecciones con 1M inicial y 500k de aporte mensual.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">yfinance</span>
+            <span class="pill">Sharpe</span>
+            <span class="pill">Monte Carlo</span>
+            <span class="pill">Compound growth</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="markowitz">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Etapa 1</p>
+          <h2 class="section-title">Frontera eficiente y portafolio optimo.</h2>
+        </div>
+        <p class="section-intro">
+          La primera parte descarga cierres historicos, calcula retornos mensuales y recorre miles de pesos aleatorios
+          para encontrar el portafolio con mejor relacion rendimiento-riesgo.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>Variables centrales</h3>
+          <p>Retorno esperado anual, volatilidad anual y Sharpe ratio como criterio de comparacion entre portafolios simulados.</p>
+        </article>
+        <article class="card">
+          <h3>Lectura del grafico</h3>
+          <p>La nube de puntos representa posibles combinaciones de riesgo y retorno, mientras el punto resaltado marca la opcion optima segun el criterio elegido.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="montecarlo">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Etapa 2 y 3</p>
+          <h2 class="section-title">Diversificacion y simulacion de escenarios.</h2>
+        </div>
+        <p class="section-intro">
+          Luego el caso se vuelve mas interesante: mezcla acciones colombianas con ETFs globales y simula el valor futuro
+          de un capital inicial usando Monte Carlo para obtener escenarios pesimistas, medios y optimistas.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card">
+          <h3>Portafolio moderado</h3>
+          <p>Mayor participacion en SP500 y Nasdaq, mas una porcion de emergentes y bonos.</p>
+        </article>
+        <article class="card">
+          <h3>Portafolio conservador</h3>
+          <p>Aumenta el peso de bonos para bajar riesgo esperado y suavizar la distribucion final.</p>
+        </article>
+        <article class="card">
+          <h3>Percentiles P10, P50 y P90</h3>
+          <p>Resumir los resultados con percentiles hace que la simulacion sea mucho mas facil de comunicar.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="proyeccion">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Etapa 4</p>
+          <h2 class="section-title">Proyeccion con aportes mensuales.</h2>
+        </div>
+        <p class="section-intro">
+          La ultima parte aterriza el ejercicio a una logica mas practica: no solo proyecta un capital inicial,
+          sino que incorpora aportes mensuales y compara crecimiento final contra aportes acumulados.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>Escenario planteado</h3>
+          <p><code>1 000 000 COP</code> como capital inicial, <code>500 000 COP</code> de aporte mensual y un horizonte de 10 anos.</p>
+        </article>
+        <article class="card">
+          <h3>Lectura util</h3>
+          <p>Separar aportes totales de rendimiento acumulado ayuda a explicar cuanto crecimiento viene del habito de invertir y cuanto del retorno esperado.</p>
+        </article>
+      </div>
+
+      <div class="note success">
+        Este es uno de los casos mas completos de la carpeta porque une descarga de datos, estadistica descriptiva, optimizacion, simulacion y visualizacion en un solo hilo de negocio.
+      </div>
+
+      <div class="foot-links">
+        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="../index.html#projects">Volver al portfolio</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

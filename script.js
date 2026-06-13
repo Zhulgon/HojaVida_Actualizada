@@ -186,6 +186,7 @@ const translations = {
           ],
           tags: ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow", "EDA"],
           links: [{ label: "GitHub", href: "https://github.com/Zhulgon" }],
+          image: "assets/projects/MlCatalogo.png",
           fallback: "ML",
         },
       ],
@@ -595,6 +596,7 @@ const dataLakeProjectEs = {
   ],
   tags: ["Data Lake", "Python", "SQL", "ETL", "Arquitectura de datos"],
   links: [{ label: "GitHub", href: "https://github.com/Zhulgon/DataLakePractice" }],
+  image: "assets/projects/DataLake.png",
   fallback: "DL",
 };
 
@@ -612,6 +614,7 @@ const dataLakeProjectEn = {
   ],
   tags: ["Data Lake", "Python", "SQL", "ETL", "Data Architecture"],
   links: [{ label: "GitHub", href: "https://github.com/Zhulgon/DataLakePractice" }],
+  image: "assets/projects/DataLake.png",
   fallback: "DL",
 };
 
@@ -847,6 +850,27 @@ updateProject(translations.en.projects.items, "AI and data analysis", {
   title: "Machine learning exercises and prototypes with text, audio and video datasets",
   summary:
     "Hands-on work to strengthen data cleaning, EDA, dataset preparation and evaluation of supervised models, basic neural networks and applied AI experimentation.",
+});
+
+updateProject(translations.es.projects.items, "IA y anÃ¡lisis de datos", {
+  links: [
+    { label: "GitHub", href: "https://github.com/Zhulgon" },
+    { label: "Ver casos", href: "cases/modelos-ml.html" },
+  ],
+});
+
+updateProject(translations.en.projects.items, "AI and data analysis", {
+  links: [
+    { label: "GitHub", href: "https://github.com/Zhulgon" },
+    { label: "View cases", href: "cases/modelos-ml.html" },
+  ],
+});
+
+updateProject(translations.es.projects.items, "IA y anÃ¡lisis de datos", {
+  links: [
+    { label: "GitHub", href: "https://github.com/Zhulgon" },
+    { label: "Ver casos", href: "cases/modelos-ml.html" },
+  ],
 });
 
 reorderProjects(translations.es.projects.items, [

@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clasificador CNN de numeros manuscritos | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Caso visual de machine learning con un clasificador CNN de numeros manuscritos sobre MNIST, con flujo de preparacion de datos, arquitectura, entrenamiento y extension a CIFAR-10."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(12, 22, 38, 0.82);
+      --panel-strong: #101b2d;
+      --panel-soft: rgba(18, 31, 51, 0.72);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #eef4ff;
+      --muted: #9eb0ca;
+      --accent: #45d6c5;
+      --accent-2: #76b6ff;
+      --accent-3: #f4bf63;
+      --danger: #f87171;
+      --shadow: 0 28px 80px rgba(3, 9, 20, 0.42);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(69, 214, 197, 0.14), transparent 26%),
+        radial-gradient(circle at top right, rgba(118, 182, 255, 0.16), transparent 24%),
+        linear-gradient(180deg, #060d18 0%, #091321 48%, #0b1524 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(1240px, calc(100% - 1.6rem));
+      margin: 0 auto;
+      padding: 1rem 0 2rem;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0.85rem;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(5, 11, 21, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 40px rgba(2, 6, 16, 0.32);
+    }
+
+    .topbar-brand,
+    .topbar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.93rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 0.2rem rgba(69, 214, 197, 0.16);
+    }
+
+    .topbar-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .topbar-nav a,
+    .ghost-link,
+    .button-link {
+      padding: 0.72rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .topbar-nav a:hover,
+    .ghost-link:hover,
+    .button-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(118, 182, 255, 0.34);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 1rem;
+      min-height: 76vh;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 14% 12%, rgba(69, 214, 197, 0.12), transparent 26%),
+        radial-gradient(circle at 84% 18%, rgba(118, 182, 255, 0.12), transparent 28%),
+        linear-gradient(180deg, rgba(16, 27, 45, 0.94), rgba(10, 18, 32, 0.96));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      padding: clamp(1.2rem, 2vw, 1.8rem);
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      letter-spacing: -0.04em;
+    }
+
+    h1 {
+      max-width: 11ch;
+      font-size: clamp(3rem, 7vw, 5.9rem);
+      line-height: 0.94;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #ffffff 0%, #8ae2ff 54%, #46d7c5 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 62ch;
+      margin-top: 1.4rem;
+      font-size: 1.03rem;
+      line-height: 1.78;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .button-link {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .button-link.primary {
+      color: #06121f;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      box-shadow: 0 16px 34px rgba(69, 214, 197, 0.2);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin-top: 1.8rem;
+    }
+
+    .metric-card,
+    .glass-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 16px 34px rgba(4, 10, 20, 0.18);
+    }
+
+    .metric-card {
+      padding: 1rem;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .metric-card:hover,
+    .glass-card:hover,
+    .flow-card:hover,
+    .stack-card:hover,
+    .result-card:hover,
+    .code-card:hover,
+    .insight-card:hover,
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(118, 182, 255, 0.28);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .metric-card strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-size: 1.3rem;
+      font-family: "Sora", sans-serif;
+    }
+
+    .metric-card span {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .visual-panel {
+      display: flex;
+      align-items: stretch;
+      min-width: 0;
+      padding: clamp(1rem, 2vw, 1.4rem);
+    }
+
+    .screen-card {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(9, 15, 27, 0.98), rgba(13, 20, 35, 0.96));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .screen-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .screen-dots {
+      display: flex;
+      gap: 0.45rem;
+    }
+
+    .screen-dots span {
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 999px;
+    }
+
+    .screen-dots span:nth-child(1) { background: #f87171; }
+    .screen-dots span:nth-child(2) { background: #fbbf24; }
+    .screen-dots span:nth-child(3) { background: #34d399; }
+
+    .screen-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .digit-board {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .digit-card {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 4.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      color: rgba(255, 255, 255, 0.8);
+      font-family: "Sora", sans-serif;
+      font-size: 1.6rem;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .digit-card:hover {
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(118, 182, 255, 0.34);
+      box-shadow: 0 16px 28px rgba(4, 11, 20, 0.22);
+    }
+
+    .digit-card small {
+      position: absolute;
+      right: 0.55rem;
+      bottom: 0.48rem;
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+
+    .digit-card.active {
+      color: #07111f;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 32px rgba(69, 214, 197, 0.28);
+    }
+
+    .confidence-stack {
+      display: grid;
+      gap: 0.72rem;
+    }
+
+    .confidence-row {
+      display: grid;
+      grid-template-columns: 2.3rem minmax(0, 1fr) 3.4rem;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .confidence-bar {
+      height: 0.56rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.12);
+    }
+
+    .confidence-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .screen-note {
+      margin: 1rem 0 0;
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    .section {
+      margin-top: 1rem;
+      padding: 1.2rem;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(11, 19, 34, 0.9), rgba(10, 16, 29, 0.96));
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      padding: 0.6rem;
+    }
+
+    .section-title {
+      max-width: 18ch;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 0.98;
+    }
+
+    .section-intro {
+      max-width: 64ch;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.78;
+    }
+
+    .content-grid,
+    .results-grid,
+    .code-grid,
+    .insights-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .content-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .results-grid {
+      grid-template-columns: 1.08fr 0.92fr;
+    }
+
+    .code-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .insights-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .flow-card,
+    .stack-card,
+    .result-card,
+    .code-card,
+    .insight-card,
+    .timeline-card {
+      min-width: 0;
+      padding: 1.2rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.03);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .flow-card h3,
+    .stack-card h3,
+    .result-card h3,
+    .code-card h3,
+    .insight-card h3,
+    .timeline-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.22rem;
+    }
+
+    .flow-card p,
+    .stack-card p,
+    .result-card p,
+    .code-card p,
+    .insight-card p,
+    .timeline-card p,
+    .timeline-card li,
+    .stack-card li {
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      padding: 0.52rem 0.78rem;
+      border: 1px solid rgba(118, 182, 255, 0.22);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #bfdcff;
+      background: rgba(118, 182, 255, 0.08);
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .timeline-card span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.2rem;
+      height: 2.2rem;
+      margin-bottom: 0.95rem;
+      border-radius: 999px;
+      font-family: "Sora", sans-serif;
+      font-size: 0.9rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #07111f;
+      box-shadow: 0 14px 30px rgba(69, 214, 197, 0.22);
+    }
+
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .arch-node {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 9rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .arch-node strong {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-family: "Sora", sans-serif;
+      font-size: 1rem;
+    }
+
+    .arch-node em {
+      font-style: normal;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .arch-arrow {
+      display: grid;
+      place-items: center;
+      color: #7fdcff;
+      font-size: 1.6rem;
+      opacity: 0.78;
+    }
+
+    .results-block {
+      display: grid;
+      gap: 0.95rem;
+    }
+
+    .result-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .result-token {
+      padding: 0.8rem 0.95rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .result-token strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.94rem;
+    }
+
+    .result-token span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    pre {
+      margin: 0;
+      overflow: auto;
+      padding: 1rem;
+      border-radius: 20px;
+      background: rgba(5, 11, 21, 0.86);
+      color: #d9e7ff;
+      font-size: 0.87rem;
+      line-height: 1.7;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    code {
+      font-family: "Cascadia Code", "Consolas", monospace;
+    }
+
+    .footnote {
+      padding: 1rem 1.05rem;
+      border-left: 4px solid var(--accent-3);
+      border-radius: 18px;
+      background: rgba(244, 191, 99, 0.08);
+      color: #f7dfb4;
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.86rem 1.08rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 700;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+      transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .footer-links a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(118, 182, 255, 0.3);
+      color: var(--text);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .results-grid,
+      .code-grid,
+      .content-grid,
+      .insights-grid,
+      .pipeline {
+        grid-template-columns: 1fr;
+      }
+
+      .arch-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .arch-arrow {
+        transform: rotate(90deg);
+      }
+
+      h1,
+      .section-title {
+        max-width: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-shell {
+        width: min(100%, calc(100% - 1rem));
+      }
+
+      .topbar {
+        top: 0.5rem;
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 28px;
+      }
+
+      .topbar-nav {
+        justify-content: flex-start;
+      }
+
+      .hero-grid,
+      .digit-board {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .confidence-row {
+        grid-template-columns: 2rem minmax(0, 1fr) 2.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="topbar-brand" href="./modelos-ml.html">
+        <span class="dot" aria-hidden="true"></span>
+        Todos los casos ML
+      </a>
+      <nav class="topbar-nav" aria-label="Navegacion del caso">
+        <a href="#caso">Caso</a>
+        <a href="#flujo">Flujo</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#codigo">Codigo</a>
+        <a href="#extension">Extension</a>
+      </nav>
+      <a class="topbar-link" href="../index.html#projects">
+        Portfolio
+      </a>
+    </header>
+
+    <section class="hero reveal" id="caso">
+      <div class="hero-panel">
+        <p class="eyebrow">Machine learning aplicado · vision por computador</p>
+        <h1>Clasificador <span class="highlight">CNN</span> de numeros manuscritos.</h1>
+        <p class="hero-copy">
+          Este caso parte de un ejercicio en Python trabajado en Colab para entrenar una red neuronal convolucional
+          sobre MNIST. El flujo incluye preparacion de imagenes, codificacion de etiquetas, construccion del modelo,
+          entrenamiento, evaluacion y lectura visual de predicciones.
+        </p>
+        <p class="hero-copy">
+          Aunque el archivo se llama <code>clasificadorNumeros1-9</code>, la implementacion principal clasifica diez
+          clases reales del dataset: del 0 al 9. Dentro del mismo archivo tambien deje una extension con CIFAR-10
+          para seguir explorando clasificacion multiclase en imagenes a color.
+        </p>
+        <div class="hero-actions">
+          <a class="button-link primary" href="#flujo">Ver desarrollo</a>
+          <a class="button-link" href="#codigo">Revisar bloques clave</a>
+          <a
+            class="button-link"
+            href="https://colab.research.google.com/drive/1UeXTTcmO7rmNh5NylrYSSncuhZKp-mmZ?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Abrir Colab
+          </a>
+          <a class="button-link" href="./modelos-ml.html">Ver catalogo ML</a>
+        </div>
+        <div class="hero-grid">
+          <article class="metric-card">
+            <strong>MNIST</strong>
+            <span>Dataset base de digitos manuscritos para clasificacion supervisada de imagenes.</span>
+          </article>
+          <article class="metric-card">
+            <strong>28 x 28</strong>
+            <span>Entrada en escala de grises con un solo canal, adaptada a la CNN.</span>
+          </article>
+          <article class="metric-card">
+            <strong>5 epocas</strong>
+            <span>Entrenamiento inicial con <code>batch_size=64</code> y validacion interna.</span>
+          </article>
+          <article class="metric-card">
+            <strong>Softmax</strong>
+            <span>Salida de 10 probabilidades para decidir cual digito es el mas probable.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="visual-panel">
+        <div class="screen-card glass-card">
+          <div class="screen-header">
+            <div class="screen-dots" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="screen-label">Prediccion conceptual</div>
+          </div>
+
+          <div class="digit-board" aria-label="Salida conceptual del clasificador">
+            <div class="digit-card"><span>0</span><small>0.02</small></div>
+            <div class="digit-card"><span>1</span><small>0.01</small></div>
+            <div class="digit-card"><span>2</span><small>0.03</small></div>
+            <div class="digit-card"><span>3</span><small>0.05</small></div>
+            <div class="digit-card"><span>4</span><small>0.01</small></div>
+            <div class="digit-card"><span>5</span><small>0.04</small></div>
+            <div class="digit-card"><span>6</span><small>0.02</small></div>
+            <div class="digit-card active"><span>7</span><small>0.76</small></div>
+            <div class="digit-card"><span>8</span><small>0.04</small></div>
+            <div class="digit-card"><span>9</span><small>0.02</small></div>
+          </div>
+
+          <div class="confidence-stack">
+            <div class="confidence-row">
+              <span>0</span>
+              <div class="confidence-bar"><div class="confidence-fill" style="width: 2%;"></div></div>
+              <strong>2%</strong>
+            </div>
+            <div class="confidence-row">
+              <span>3</span>
+              <div class="confidence-bar"><div class="confidence-fill" style="width: 5%;"></div></div>
+              <strong>5%</strong>
+            </div>
+            <div class="confidence-row">
+              <span>7</span>
+              <div class="confidence-bar"><div class="confidence-fill" style="width: 76%;"></div></div>
+              <strong>76%</strong>
+            </div>
+            <div class="confidence-row">
+              <span>8</span>
+              <div class="confidence-bar"><div class="confidence-fill" style="width: 4%;"></div></div>
+              <strong>4%</strong>
+            </div>
+          </div>
+
+          <p class="screen-note">
+            La red no interpreta el numero como lo haria una persona. Aprende trazos, bordes, curvas y patrones
+            visuales hasta convertir la imagen en una distribucion de probabilidades por clase.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="flujo">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Desarrollo del caso</p>
+          <h2 class="section-title">Flujo de trabajo del clasificador.</h2>
+        </div>
+        <p class="section-intro">
+          La estructura del ejercicio sigue una secuencia clara de machine learning para imagenes: cargar,
+          preparar, entrenar, evaluar e interpretar. Aqui se ve el paso a paso sin perder el sentido de lo que hace cada bloque.
+        </p>
+      </div>
+
+      <div class="pipeline">
+        <article class="timeline-card">
+          <span>1</span>
+          <h3>Carga de datos</h3>
+          <p>Se importa MNIST desde TensorFlow/Keras y se separa en entrenamiento y prueba.</p>
+        </article>
+        <article class="timeline-card">
+          <span>2</span>
+          <h3>Preprocesamiento</h3>
+          <p>Las imagenes se redimensionan a <code>28 x 28 x 1</code> y se normalizan a valores entre 0 y 1.</p>
+        </article>
+        <article class="timeline-card">
+          <span>3</span>
+          <h3>Etiquetas</h3>
+          <p>Las clases pasan a formato one-hot con <code>to_categorical</code> para usar softmax.</p>
+        </article>
+        <article class="timeline-card">
+          <span>4</span>
+          <h3>Entrenamiento</h3>
+          <p>La CNN se ajusta con Adam, perdida categorica y un 10% del train para validacion.</p>
+        </article>
+        <article class="timeline-card">
+          <span>5</span>
+          <h3>Lectura de resultados</h3>
+          <p>Se evalua en test y luego se comparan etiquetas reales vs. predichas para interpretar el modelo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="arquitectura">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Arquitectura</p>
+          <h2 class="section-title">Como esta construida la CNN.</h2>
+        </div>
+        <p class="section-intro">
+          La red combina capas convolucionales para extraer patrones visuales y capas densas para convertir esos rasgos
+          en una decision final. Es un flujo clasico pero muy util para entender deep learning aplicado a imagenes.
+        </p>
+      </div>
+
+      <div class="arch-grid">
+        <article class="arch-node">
+          <div>
+            <strong>Input</strong>
+            <em>Imagen 28 x 28 x 1 en escala de grises.</em>
+          </div>
+        </article>
+        <div class="arch-arrow" aria-hidden="true">→</div>
+        <article class="arch-node">
+          <div>
+            <strong>Conv2D · 32 filtros</strong>
+            <em>Detecta bordes, trazos y rasgos simples del digito.</em>
+          </div>
+        </article>
+        <article class="arch-node">
+          <div>
+            <strong>MaxPooling</strong>
+            <em>Reduce dimensionalidad y conserva los patrones mas relevantes.</em>
+          </div>
+        </article>
+        <article class="arch-node">
+          <div>
+            <strong>Conv2D · 64 filtros</strong>
+            <em>Aprende patrones visuales mas complejos combinando rasgos previos.</em>
+          </div>
+        </article>
+        <article class="arch-node">
+          <div>
+            <strong>Dense · 64</strong>
+            <em>Resume las caracteristicas y prepara la clasificacion final.</em>
+          </div>
+        </article>
+        <article class="arch-node">
+          <div>
+            <strong>Softmax · 10</strong>
+            <em>Entrega una probabilidad por cada clase del 0 al 9.</em>
+          </div>
+        </article>
+      </div>
+
+      <div class="content-grid" style="margin-top: 1rem;">
+        <article class="stack-card">
+          <h3>Lo que resuelve cada capa</h3>
+          <p>Las convoluciones encuentran patrones espaciales; el pooling reduce ruido y costo computacional; las capas densas transforman esas caracteristicas en una prediccion interpretable.</p>
+        </article>
+        <article class="stack-card">
+          <h3>Por que softmax</h3>
+          <p>No es un problema binario. Hay varias clases posibles, por eso la salida correcta es una distribucion de probabilidad sobre diez opciones.</p>
+        </article>
+        <article class="stack-card">
+          <h3>Lo importante del ejercicio</h3>
+          <p>Mas que repetir una receta, este caso demuestra comprension de preprocesamiento, estructura de red, entrenamiento inicial y lectura de resultados en clasificacion de imagenes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="resultados">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Interpretacion</p>
+          <h2 class="section-title">Como leer las predicciones del modelo.</h2>
+        </div>
+        <p class="section-intro">
+          El script evalua el conjunto de prueba y luego muestra ejemplos reales junto a la prediccion. El punto clave es entender que la red entrega probabilidades, no solo un numero aislado.
+        </p>
+      </div>
+
+      <div class="results-grid">
+        <article class="result-card">
+          <h3>Lectura del output</h3>
+          <div class="results-block">
+            <p>
+              En el flujo de prueba se usa <code>np.argmax(predictions[i])</code> para escoger la clase con mayor probabilidad.
+              Esa es la salida final que se compara con la etiqueta real.
+            </p>
+            <div class="result-strip">
+              <div class="result-token">
+                <strong>Etiqueta real</strong>
+                <span>Numero correcto asociado a la imagen.</span>
+              </div>
+              <div class="result-token">
+                <strong>Prediccion</strong>
+                <span>Clase con mayor valor despues de softmax.</span>
+              </div>
+              <div class="result-token">
+                <strong>Interpretacion</strong>
+                <span>Mientras mayor sea la separacion, mayor confianza del modelo.</span>
+              </div>
+            </div>
+            <div class="pill-row">
+              <span class="pill">Clasificacion multiclase</span>
+              <span class="pill">Vision por computador</span>
+              <span class="pill">TensorFlow / Keras</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="result-card">
+          <h3>Aspectos que deja claros este caso</h3>
+          <ul style="margin: 0; padding-left: 1.1rem;">
+            <li>Preparacion correcta de imagenes para una CNN.</li>
+            <li>Uso de etiquetas one-hot para salida multiclase.</li>
+            <li>Separacion entre entrenamiento, validacion y prueba.</li>
+            <li>Lectura visual de resultados mas alla de una sola metrica.</li>
+            <li>Capacidad de extender el ejercicio a otros datasets.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="codigo">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Bloques clave</p>
+          <h2 class="section-title">Codigo principal del ejercicio.</h2>
+        </div>
+        <p class="section-intro">
+          Estos fragmentos reflejan exactamente la estructura central del archivo trabajado en Colab para el clasificador de numeros.
+        </p>
+      </div>
+
+      <div class="code-grid">
+        <article class="code-card">
+          <h3>Carga y preparacion de MNIST</h3>
+          <pre><code>from tensorflow.keras.datasets import mnist
+from tensorflow.keras.utils import to_categorical
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+x_train = x_train.reshape((x_train.shape[0], 28, 28, 1)).astype("float32") / 255
+x_test = x_test.reshape((x_test.shape[0], 28, 28, 1)).astype("float32") / 255
+
+y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)</code></pre>
+          <p>El preprocesamiento adapta el dataset a una CNN y normaliza los pixeles para entrenar con mayor estabilidad.</p>
+        </article>
+
+        <article class="code-card">
+          <h3>Modelo convolucional</h3>
+          <pre><code>model = Sequential()
+model.add(Conv2D(32, (3, 3), activation="relu", input_shape=(28, 28, 1)))
+model.add(MaxPooling2D((2, 2)))
+model.add(Conv2D(64, (3, 3), activation="relu"))
+model.add(MaxPooling2D((2, 2)))
+model.add(Flatten())
+model.add(Dense(64, activation="relu"))
+model.add(Dense(10, activation="softmax"))</code></pre>
+          <p>La primera parte extrae patrones visuales y la salida softmax convierte el resultado en probabilidades por clase.</p>
+        </article>
+
+        <article class="code-card">
+          <h3>Entrenamiento y evaluacion</h3>
+          <pre><code>model.compile(
+    optimizer="adam",
+    loss="categorical_crossentropy",
+    metrics=["accuracy"]
+)
+
+model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.1)
+
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(f"Precision en test: {test_acc:.4f}")</code></pre>
+          <p>Se usa una configuracion inicial solida para un ejercicio academico y se reserva parte del entrenamiento para validacion.</p>
+        </article>
+
+        <article class="code-card">
+          <h3>Prediccion visual</h3>
+          <pre><code>predictions = model.predict(x_test)
+
+for i in range(10):
+    plt.imshow(x_test[i].reshape(28, 28), cmap="gray")
+    plt.title(
+        f"Real: {np.argmax(y_test[i])}, "
+        f"Predicho: {np.argmax(predictions[i])}"
+    )
+    plt.axis("off")
+    plt.show()</code></pre>
+          <p>Esta parte ayuda a interpretar el comportamiento del modelo mostrando ejemplos concretos del conjunto de prueba.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="extension">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Extension del archivo</p>
+          <h2 class="section-title">Exploracion adicional con CIFAR-10.</h2>
+        </div>
+        <p class="section-intro">
+          El mismo archivo continua con una variante sobre CIFAR-10 filtrando tres clases: airplane, automobile y truck. Eso amplia el ejercicio hacia imagenes a color y comparacion entre entrenamiento normal y data augmentation.
+        </p>
+      </div>
+
+      <div class="insights-grid">
+        <article class="insight-card">
+          <h3>Filtro de clases</h3>
+          <p>Se seleccionan las clases 0, 1 y 9 del dataset original y luego se remapean a una salida de tres categorias.</p>
+          <div class="pill-row">
+            <span class="pill">airplane</span>
+            <span class="pill">automobile</span>
+            <span class="pill">truck</span>
+          </div>
+        </article>
+
+        <article class="insight-card">
+          <h3>Augmentacion de datos</h3>
+          <p>El flujo incluye rotacion, desplazamientos y volteo horizontal para mejorar diversidad y robustez del entrenamiento.</p>
+          <pre><code>datagen = ImageDataGenerator(
+    rotation_range=15,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    horizontal_flip=True,
+)</code></pre>
+        </article>
+
+        <article class="insight-card">
+          <h3>Lectura critica</h3>
+          <p>La extension muestra interes real por probar variaciones del problema. Tambien deja espacio para mejoras, como separar experimentos en archivos distintos y medir la precision sobre todo el set de prueba de forma consistente.</p>
+        </article>
+      </div>
+
+      <div class="footnote" style="margin-top: 1rem;">
+        Este caso funciona bien dentro del portfolio porque no se queda solo en "entrene una red". Muestra preparacion de datos, arquitectura, interpretacion de predicciones y una extension hacia otro dataset para seguir profundizando en deep learning.
+      </div>
+
+      <div class="footer-links">
+        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a
+          href="https://colab.research.google.com/drive/1UeXTTcmO7rmNh5NylrYSSncuhZKp-mmZ?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir Colab
+        </a>
+        <a href="https://github.com/Zhulgon" target="_blank" rel="noopener noreferrer">Ver GitHub</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      { threshold: 0.16 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+  </script>
+</body>
+</html>

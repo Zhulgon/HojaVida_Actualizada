@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prediccion de perdidas logisticas | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Caso de regresion con datos sinteticos para estimar unidades perdidas en envios y comparar regresion lineal con arbol de decision."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./ml-case.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="topbar-brand" href="./modelos-ml.html">
+        <span class="brand-dot" aria-hidden="true"></span>
+        Todos los casos ML
+      </a>
+      <nav class="topbar-nav" aria-label="Navegacion del caso">
+        <a href="#caso">Caso</a>
+        <a href="#datos">Datos</a>
+        <a href="#modelos">Modelos</a>
+        <a href="#lectura">Lectura</a>
+      </nav>
+      <a class="topbar-link" href="../index.html#projects">Portfolio</a>
+    </header>
+
+    <section class="hero" id="caso">
+      <div class="hero-panel">
+        <p class="eyebrow">Prediccion con datos sinteticos</p>
+        <h1 class="hero-title">Perdidas logisticas y <span class="highlight">comparacion de modelos</span>.</h1>
+        <p class="lead">
+          Este ejercicio construye un dataset sintetico sobre envios y perdidas de unidades, con variables como
+          cantidad enviada, distancia, modo de transporte y fragilidad. Luego explora relaciones, entrena una
+          regresion lineal y compara su desempeno contra un arbol de decision.
+        </p>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <strong>1000 muestras</strong>
+            <span>Dataset sintetico generado con semilla controlada.</span>
+          </article>
+          <article class="metric-card">
+            <strong>4 features</strong>
+            <span>Cantidad, distancia, modo de transporte y fragilidad.</span>
+          </article>
+          <article class="metric-card">
+            <strong>MAE / MSE</strong>
+            <span>Metricas usadas para comparar calidad de prediccion.</span>
+          </article>
+          <article class="metric-card">
+            <strong>2 modelos</strong>
+            <span>Regresion lineal y arbol de decision como contraste.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="visual-panel">
+        <article class="visual-card">
+          <h3>Valor del caso</h3>
+          <ul class="key-list">
+            <li>No se queda en entrenar: hace EDA, separa train/test y compara enfoques.</li>
+            <li>Relaciona variables operativas con una salida cuantitativa.</li>
+            <li>Incluye una lectura critica de por que un modelo simple puede ser mejor.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">pandas</span>
+            <span class="pill">LinearRegression</span>
+            <span class="pill">DecisionTreeRegressor</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="datos">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Datos</p>
+          <h2 class="section-title">Como se construye el problema.</h2>
+        </div>
+        <p class="section-intro">
+          La variable objetivo se genera a partir de una formula con ruido. Eso hace que el caso sea ideal para
+          observar cuando la relacion subyacente favorece a un modelo lineal.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card"><h3>Cantidad enviada</h3><p>Representa el volumen base del envio y empuja parte de la perdida esperada.</p></article>
+        <article class="card"><h3>Distancia y fragilidad</h3><p>Agregan complejidad operativa y explican por que ciertos despachos pierden mas unidades.</p></article>
+        <article class="card"><h3>Modo de transporte</h3><p>Introduce una variable discreta con efecto directo sobre el resultado final.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="modelos">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Modelado</p>
+          <h2 class="section-title">Regresion lineal primero, arbol despues.</h2>
+        </div>
+        <p class="section-intro">
+          El notebook hace algo muy sano: no asume que el segundo modelo sera mejor solo por ser mas complejo.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>Regresion lineal</h3>
+          <p>Entrena sobre el conjunto de entrenamiento, revisa coeficientes e intercepto y luego calcula MAE y MSE sobre test.</p>
+        </article>
+        <article class="card">
+          <h3>Arbol de decision</h3>
+          <p>Usa <code>DecisionTreeRegressor(max_depth=5)</code> y compara sus metricas con la linea base lineal.</p>
+        </article>
+      </div>
+
+      <div class="note">
+        El propio notebook concluye que la regresion lineal predice mejor en este caso, lo cual tiene sentido porque los datos sinteticos fueron generados con una relacion basicamente lineal.
+      </div>
+    </section>
+
+    <section class="section" id="lectura">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Lectura final</p>
+          <h2 class="section-title">Que comunica este caso.</h2>
+        </div>
+        <p class="section-intro">
+          Muestra capacidad para estructurar un problema de prediccion, explorar datos, elegir metricas y justificar
+          por que un modelo funciona mejor que otro.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card"><h3>EDA antes de modelar</h3><p>Incluye dispersion, boxplot y barplot para inspeccionar relaciones entre variables.</p></article>
+        <article class="card"><h3>Comparacion honesta</h3><p>No vende el modelo mas complejo como ganador automatico; deja que las metricas hablen.</p></article>
+        <article class="card"><h3>Enfoque aplicado</h3><p>El caso esta bien alineado con operaciones, logistica y analitica de negocio.</p></article>
+      </div>
+
+      <div class="foot-links">
+        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="../index.html#projects">Volver al portfolio</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

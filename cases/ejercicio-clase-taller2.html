@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taller 2 con CIFAR-10 filtrado | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Caso de clasificacion multiclase con CIFAR-10 filtrado a automobile, ship y truck usando una CNN con TensorFlow y un conjunto de validacion."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./ml-case.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="topbar-brand" href="./modelos-ml.html">
+        <span class="brand-dot" aria-hidden="true"></span>
+        Todos los casos ML
+      </a>
+      <nav class="topbar-nav" aria-label="Navegacion del caso">
+        <a href="#caso">Caso</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#modelo">Modelo</a>
+        <a href="#aporte">Aporte</a>
+      </nav>
+      <a class="topbar-link" href="../index.html#projects">Portfolio</a>
+    </header>
+
+    <section class="hero" id="caso">
+      <div class="hero-panel">
+        <p class="eyebrow">CNN multiclase</p>
+        <h1 class="hero-title">CIFAR-10 filtrado para una <span class="highlight">clasificacion de 3 clases</span>.</h1>
+        <p class="lead">
+          Este taller toma CIFAR-10 y lo reduce a tres categorias concretas: automobile, ship y truck.
+          A partir de ahi normaliza imagenes, construye un set de validacion, entrena una CNN pequena y
+          evalua tanto metricas como predicciones visuales sobre imagenes aleatorias del test.
+        </p>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <strong>3 clases</strong>
+            <span>Automobile, ship y truck remapeadas a 0, 1 y 2.</span>
+          </article>
+          <article class="metric-card">
+            <strong>20% validacion</strong>
+            <span>Separacion explicita del entrenamiento para controlar aprendizaje.</span>
+          </article>
+          <article class="metric-card">
+            <strong>10 epocas</strong>
+            <span>Entrenamiento inicial con <code>batch_size=32</code>.</span>
+          </article>
+          <article class="metric-card">
+            <strong>Softmax</strong>
+            <span>Salida multiclase con tres probabilidades posibles.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="visual-panel">
+        <article class="visual-card">
+          <h3>Lo interesante del caso</h3>
+          <ul class="key-list">
+            <li>No usa todo CIFAR-10, sino una version filtrada y controlada.</li>
+            <li>Incluye un split de validacion separado del test final.</li>
+            <li>Combina metricas con ejemplos visuales de aciertos y errores.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">CIFAR-10</span>
+            <span class="pill">Conv2D</span>
+            <span class="pill">Validation</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="pipeline">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Pipeline</p>
+          <h2 class="section-title">Desde el dataset completo hasta tres clases utiles.</h2>
+        </div>
+        <p class="section-intro">
+          El valor del ejercicio esta en saber acotar el problema y preparar bien los datos antes de entrenar.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="card step">
+          <span class="step-index">1</span>
+          <div><p>Se cargan las imagenes de CIFAR-10 y se aplanan las etiquetas para trabajar mas facil.</p></div>
+        </article>
+        <article class="card step">
+          <span class="step-index">2</span>
+          <div><p>Se filtran solo las clases <code>[1, 8, 9]</code> y luego se remapean a <code>0, 1, 2</code>.</p></div>
+        </article>
+        <article class="card step">
+          <span class="step-index">3</span>
+          <div><p>Las imagenes se normalizan y se crea un conjunto de validacion con <code>train_test_split</code>.</p></div>
+        </article>
+        <article class="card step">
+          <span class="step-index">4</span>
+          <div><p>Se entrena la CNN y luego se grafican accuracy, loss y ejemplos del set de prueba.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="modelo">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Modelo</p>
+          <h2 class="section-title">Una CNN pequena, clara y bien enfocada.</h2>
+        </div>
+        <p class="section-intro">
+          La arquitectura combina dos bloques convolucionales con pooling, una capa densa y una salida softmax.
+          Es un modelo razonable para un ejercicio formativo de clasificacion multiclase.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>Arquitectura</h3>
+          <div class="code-block"><code>Conv2D(32) -> MaxPooling -> Conv2D(64) -> MaxPooling -> Flatten -> Dense(64) -> Dense(3, softmax)</code></div>
+        </article>
+        <article class="card">
+          <h3>Resultados que se observan</h3>
+          <p>El notebook compara curvas de entrenamiento y validacion, y ademas presenta tres imagenes aleatorias con su clase real y predicha para revisar el comportamiento del modelo mas alla del accuracy.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="aporte">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Lectura</p>
+          <h2 class="section-title">Que comunica este taller en el portfolio.</h2>
+        </div>
+        <p class="section-intro">
+          Este caso muestra algo importante: no solo sabes usar una CNN, tambien sabes recortar un problema,
+          construir validacion y revisar aprendizaje con graficas y ejemplos.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card"><h3>Preparacion de datos</h3><p>Filtrado de clases, remapeo de etiquetas y normalizacion correcta de imagenes.</p></article>
+        <article class="card"><h3>Entrenamiento mas ordenado</h3><p>Uso explicito de validacion para seguir la evolucion del modelo durante las epocas.</p></article>
+        <article class="card"><h3>Interpretacion visual</h3><p>Comparacion entre prediccion y realidad para detectar si el modelo generaliza de forma creible.</p></article>
+      </div>
+
+      <div class="foot-links">
+        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="../index.html#projects">Volver al portfolio</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

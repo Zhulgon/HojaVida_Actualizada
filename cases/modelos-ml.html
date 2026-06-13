@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Casos de ML y analitica | Juan Sebastian Rubiano</title>
+  <meta
+    name="description"
+    content="Catalogo de casos de machine learning, analitica, audio, mineria de datos y simulacion construidos por Juan Sebastian Rubiano a partir de ejercicios reales en Python y Colab."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./ml-case.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="topbar-brand" href="../index.html#projects">
+        <span class="brand-dot" aria-hidden="true"></span>
+        Volver al portfolio
+      </a>
+      <nav class="topbar-nav" aria-label="Secciones">
+        <a href="#catalogo">Catalogo</a>
+        <a href="#enfoque">Enfoque</a>
+        <a href="#casos">Casos</a>
+      </nav>
+      <a class="topbar-link" href="https://github.com/Zhulgon" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
+    </header>
+
+    <section class="hero" id="catalogo">
+      <div class="hero-panel">
+        <p class="eyebrow">Machine learning · datos · simulacion</p>
+        <h1 class="hero-title">Coleccion de <span class="highlight">casos ML</span> del portfolio.</h1>
+        <p class="lead">
+          Este espacio agrupa ejercicios que fui desarrollando en Python y Colab sobre vision por computador,
+          audio, mineria de datos, simulacion financiera y modelos predictivos. La idea no es mostrar solo codigo,
+          sino convertir cada trabajo en un caso entendible, navegable y util para reclutadores o revisiones tecnicas.
+        </p>
+        <div class="hero-actions">
+          <a class="button-link primary" href="#casos">Explorar casos</a>
+          <a class="button-link" href="../index.html#projects">Volver al slider</a>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card">
+            <strong>8 casos</strong>
+            <span>Ejercicios convertidos en paginas individuales dentro del portfolio.</span>
+          </article>
+          <article class="metric-card">
+            <strong>Python</strong>
+            <span>Trabajo con TensorFlow, scikit-learn, librosa, NumPy, pandas y visualizacion.</span>
+          </article>
+          <article class="metric-card">
+            <strong>ML aplicado</strong>
+            <span>Clasificacion de imagenes, analisis de audio, clustering, regresion y simulacion.</span>
+          </article>
+          <article class="metric-card">
+            <strong>Casos reales</strong>
+            <span>Transformados a un formato visual mas profesional y facil de revisar.</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="visual-panel">
+        <article class="visual-card">
+          <h3>Lo que vas a encontrar</h3>
+          <div class="badge-row">
+            <span class="badge">CNN</span>
+            <span class="badge">Audio</span>
+            <span class="badge">KMeans</span>
+            <span class="badge">Monte Carlo</span>
+          </div>
+          <p>
+            La coleccion mezcla ejercicios academicos, parciales, notebooks de practica y experimentos personales.
+            Algunos se enfocan en prediccion, otros en exploracion y otros en interpretacion de senales o decisiones.
+          </p>
+          <div class="mini-stat">
+            <strong>Vision</strong>
+            <span>MNIST, CIFAR-10, cats vs dogs</span>
+          </div>
+          <div class="mini-stat">
+            <strong>Audio</strong>
+            <span>MFCC, FFT, pitch, espectrograma</span>
+          </div>
+          <div class="mini-stat">
+            <strong>Datos</strong>
+            <span>KNN, regresion, ART2, portafolios</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="enfoque">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Curaduria del contenido</p>
+          <h2 class="section-title">Como se organizo esta coleccion.</h2>
+        </div>
+        <p class="section-intro">
+          No todo esta presentado como un paper ni como un notebook crudo. Cada caso resume el problema,
+          el dataset o insumo, el flujo tecnico, las decisiones del modelo y la lectura que deja sobre mis habilidades.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card">
+          <h3>Fidelidad al trabajo real</h3>
+          <p>Los casos salen de los archivos que dejaste en la carpeta, sin inventar proyectos que no existan.</p>
+        </article>
+        <article class="card">
+          <h3>Lectura mas profesional</h3>
+          <p>Reorganicé cada ejercicio para que se entienda el objetivo, el pipeline y el valor tecnico que demuestra.</p>
+        </article>
+        <article class="card">
+          <h3>Navegacion mas limpia</h3>
+          <p>En vez de llenar el slider con demasiados botones, el proyecto de ML entra primero aqui y desde aqui se distribuyen los casos.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="casos">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Casos</p>
+          <h2 class="section-title">Indice de notebooks convertidos en portfolio.</h2>
+        </div>
+        <p class="section-intro">
+          Puedes abrir cada uno como una pagina independiente. En el caso de <code>clasificadorNumeros1-9.py</code>
+          y <code>actividad_parcial_ia.py</code>, ambos comparten base de codigo, pero quedan presentados con enfasis distinto.
+        </p>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-card">
+          <small>Vision por computador</small>
+          <h3>Clasificador CNN de numeros manuscritos</h3>
+          <p>MNIST como caso principal y extension a CIFAR-10 filtrado en tres clases.</p>
+          <div class="pill-row">
+            <span class="pill">TensorFlow</span>
+            <span class="pill">CNN</span>
+            <span class="pill">MNIST</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="cta-row">
+            <a href="./clasificador-numeros-mnist.html">Abrir caso</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <small>Parcial integrador</small>
+          <h3>Actividad parcial de IA</h3>
+          <p>La misma base tecnica presentada como parcial con doble experimento: digitos y clasificacion visual en CIFAR-10.</p>
+          <div class="pill-row">
+            <span class="pill">Parcial</span>
+            <span class="pill">CIFAR-10</span>
+            <span class="pill">Augmentation</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="cta-row">
+            <a href="./actividad-parcial-ia.html">Abrir caso</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <small>Audio</small>
+          <h3>Analisis de audio con MFCC y FFT</h3>
+          <p>Comparacion entre guitarra y flauta, mas lectura de espectro de frecuencias sobre una senal de voz.</p>
+          <div class="pill-row">
+            <span class="pill">librosa</span>
+            <span class="pill">MFCC</span>
+            <span class="pill">FFT</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="cta-row">
+            <a href="./audioia.html">Abrir caso</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <small>CNN multiclase</small>
+          <h3>Taller 2 con CIFAR-10 filtrado</h3>
+          <p>Clasificacion entre automobile, ship y truck usando una CNN pequena con conjunto de validacion.</p>
+          <div class="pill-row">
+            <span class="pill">CIFAR-10</span>
+            <span class="pill">Validation split</span>
+            <span class="pill">Accuracy</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="cta-row">
+            <a href="./ejercicio-clase-taller2.html">Abrir caso</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <small>Senales</small>
+          <h3>Espectrograma y rasgos de una onda de audio</h3>
+          <p>Extraccion de pitch, volumen, MFCC, duracion, FFT, forma de onda y espectrograma logaritmico.</p>
+          <div class="pill-row">
+            <span class="pill">Pitch</span>
+            <span class="pill">RMS</span>
+            <span class="pill">Spectrogram</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="cta-row">
+            <a href="./espectograma-onda-ia.html">Abrir caso</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <small>Clasificacion binaria</small>
+          <h3>Gatos vs perros con CNN</h3>
+          <p>Pipeline con TensorFlow Datasets, conversion a escala de grises y pruebas con imagenes cargadas manualmente.</p>
+          <div class="pill-row">
+            <span class="pill">Cats vs Dogs</span>
+            <span class="pill">Sigmoid</span>
+            <span class="pill">Custom test</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="cta-row">
+            <a href="./gatos-perros-cnn.html">Abrir caso</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <small>Finanzas</small>
+          <h3>Simulacion de portafolios e inversiones</h3>
+          <p>Markowitz, Monte Carlo, diversificacion, escenarios moderado y conservador, y proyeccion con aportes mensuales.</p>
+          <div class="pill-row">
+            <span class="pill">yfinance</span>
+            <span class="pill">Monte Carlo</span>
+            <span class="pill">Portafolios</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="cta-row">
+            <a href="./inversiones-trii.html">Abrir caso</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <small>Prediccion</small>
+          <h3>Perdidas logisticas con regresion</h3>
+          <p>Dataset sintetico para estimar unidades perdidas y comparar regresion lineal contra arbol de decision.</p>
+          <div class="pill-row">
+            <span class="pill">pandas</span>
+            <span class="pill">Regression</span>
+            <span class="pill">MAE / MSE</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="cta-row">
+            <a href="./rubiano-ia-parcial1.html">Abrir caso</a>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <small>Mineria de datos</small>
+          <h3>Practica de clustering, regresion, KNN y ART2</h3>
+          <p>Una practica amplia que toca varias tecnicas de analitica y aprendizaje a partir de datasets sinteticos.</p>
+          <div class="pill-row">
+            <span class="pill">KMeans</span>
+            <span class="pill">KNN</span>
+            <span class="pill">ART2</span>
+          </div>
+          <div class="spacer"></div>
+          <div class="cta-row">
+            <a href="./mineria-datos-practica.html">Abrir caso</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
