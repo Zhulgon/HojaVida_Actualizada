@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Espectrograma y rasgos de una onda de audio | Juan Sebastian Rubiano</title>
+  <title>Espectrograma y rasgos de una onda de audio | Juan Sebastián Rubiano</title>
   <meta
     name="description"
-    content="Caso de analisis de audio con Python y librosa que extrae pitch, intensidad, MFCC, duracion, FFT, forma de onda y espectrograma."
+    content="Caso de análisis de audio con Python y librosa que extrae pitch, intensidad, MFCC, duracion, FFT, forma de onda y espectrograma."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
         <span class="brand-dot" aria-hidden="true"></span>
         Todos los casos ML
       </a>
-      <nav class="topbar-nav" aria-label="Navegacion del caso">
+      <nav class="topbar-nav" aria-label="Navegación del caso">
         <a href="#caso">Caso</a>
         <a href="#rasgos">Rasgos</a>
         <a href="#salidas">Salidas</a>
@@ -36,9 +36,9 @@
         <p class="eyebrow">Procesamiento de audio</p>
         <h1 class="hero-title">De una onda de audio a un <span class="highlight">perfil de rasgos</span>.</h1>
         <p class="lead">
-          Este ejercicio toma un archivo de audio cargado manualmente y construye una lectura mas completa:
-          tono dominante, intensidad promedio, MFCC, duracion, primeras frecuencias de la FFT, forma de onda,
-          espectrograma logaritmico y visualizacion de coeficientes.
+          Este ejercicio toma un archivo de audio cargado manualmente y construye una lectura más completa:
+          tono dominante, intensidad promedio, MFCC, duración, primeras frecuencias de la FFT, forma de onda,
+          espectrograma logarítmico y visualización de coeficientes.
         </p>
         <div class="hero-actions">
           <a class="button-link primary" href="#rasgos">Ver rasgos</a>
@@ -62,7 +62,7 @@
           </article>
           <article class="metric-card">
             <strong>MFCC</strong>
-            <span>Caracterizacion del timbre a traves de 13 coeficientes.</span>
+            <span>Caracterización del timbre a traves de 13 coeficientes.</span>
           </article>
           <article class="metric-card">
             <strong>STFT</strong>
@@ -73,12 +73,12 @@
 
       <div class="visual-panel">
         <article class="visual-card">
-          <h3>Lecturas extraidas</h3>
+          <h3>Lecturas extraídas</h3>
           <ul class="key-list">
             <li>Tono dominante y magnitud.</li>
             <li>Intensidad promedio con RMS.</li>
-            <li>Duracion total de la senal.</li>
-            <li>Transformada de Fourier y visualizacion temporal-espectral.</li>
+            <li>Duración total de la señal.</li>
+            <li>Transformada de Fourier y visualización temporal-espectral.</li>
           </ul>
           <div class="pill-row">
             <span class="pill">piptrack</span>
@@ -101,12 +101,12 @@
     <section class="section" id="rasgos">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Extraccion</p>
+          <p class="eyebrow">Extracción</p>
           <h2 class="section-title">Los rasgos que se calculan.</h2>
         </div>
         <p class="section-intro">
           El caso no hace una sola medicion. Construye una descripcion bastante completa del audio,
-          lo cual es util para tareas posteriores de clasificacion, comparacion o interpretacion.
+          lo cual es útil para tareas posteriores de clasificación, comparación o interpretación.
         </p>
       </div>
 
@@ -117,7 +117,7 @@
         </article>
         <article class="card">
           <h3>Intensidad</h3>
-          <p>La energia promedio se resume con <code>librosa.feature.rms</code>, una medida util para volumen.</p>
+          <p>La energía promedio se resume con <code>librosa.feature.rms</code>, una medida útil para volumen.</p>
         </article>
         <article class="card">
           <h3>Timbre y duracion</h3>
@@ -129,41 +129,41 @@
     <section class="section" id="salidas">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Visualizacion</p>
-          <h2 class="section-title">Las tres salidas graficas mas fuertes.</h2>
+          <p class="eyebrow">Visualización</p>
+          <h2 class="section-title">Las tres salidas graficas más fuertes.</h2>
         </div>
         <p class="section-intro">
           Este tipo de ejercicio muestra bien que puedes conectar calculo numerico con lectura visual,
-          algo muy valioso cuando se trabaja con senales y analitica aplicada.
+          algo muy valioso cuando se trabaja con señales y analítica aplicada.
         </p>
       </div>
 
       <div class="grid two">
         <article class="card">
           <h3>Forma de onda</h3>
-          <p>Muestra la amplitud a lo largo del tiempo y sirve como primera vista de la senal.</p>
+          <p>Muestra la amplitud a lo largo del tiempo y sirve como primera vista de la señal.</p>
         </article>
         <article class="card">
-          <h3>Espectrograma logaritmico</h3>
-          <p>Permite ver como cambia la energia segun tiempo y frecuencia usando una escala mas interpretable para audio.</p>
+          <h3>Espectrograma logarítmico</h3>
+          <p>Permite ver cómo cambia la energía según tiempo y frecuencia usando una escala más interpretable para audio.</p>
         </article>
         <article class="card">
           <h3>Mapa de MFCC</h3>
-          <p>Hace visible la evolucion temporal de los coeficientes, lo que ayuda a comparar regiones del audio.</p>
+          <p>Hace visible la evolución temporal de los coeficientes, lo que ayuda a comparar regiones del audio.</p>
         </article>
         <article class="card">
           <h3>FFT base</h3>
-          <p>Las primeras frecuencias impresas sirven como lectura inicial del contenido espectral de la senal.</p>
+          <p>Las primeras frecuencias impresas sirven como lectura inicial del contenido espectral de la señal.</p>
         </article>
       </div>
 
       <div class="note">
-        Este caso se complementa bien con <a href="./audioia.html">audioia.html</a>: uno compara audios con MFCC y distancia,
-        mientras este profundiza en la caracterizacion completa de una sola onda.
+        Este caso se complementa bien con <a href="./analisis-audio-mfcc-fft.html">el análisis comparativo de audio con MFCC y FFT</a>:
+        uno compara audios y distancias, mientras este profundiza en la caracterización completa de una sola onda.
       </div>
 
       <div class="foot-links">
-        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="./modelos-ml.html">Volver al catálogo</a>
         <a
           href="https://colab.research.google.com/drive/1PGgHQHjcMewhEZzhuJ5slc774YLudHIZ?usp=drive_open"
           target="_blank"

@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CIFAR-10 filtrado: automobile, ship y truck | Juan Sebastian Rubiano</title>
+  <title>CIFAR-10 filtrado: automobile, ship y truck | Juan Sebastián Rubiano</title>
   <meta
     name="description"
-    content="Caso de clasificacion multiclase con CIFAR-10 filtrado a automobile, ship y truck usando una CNN con TensorFlow, validacion separada y lectura de resultados."
+    content="Caso de clasificación multiclase con CIFAR-10 filtrado a automobile, ship y truck usando una CNN con TensorFlow, validación separada y lectura de resultados."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
         <span class="brand-dot" aria-hidden="true"></span>
         Todos los casos ML
       </a>
-      <nav class="topbar-nav" aria-label="Navegacion del caso">
+      <nav class="topbar-nav" aria-label="Navegación del caso">
         <a href="#caso">Caso</a>
         <a href="#pipeline">Pipeline</a>
         <a href="#modelo">Modelo</a>
@@ -37,9 +37,9 @@
         <p class="eyebrow">CNN multiclase</p>
         <h1 class="hero-title">CIFAR-10 filtrado para <span class="highlight">tres clases concretas</span>.</h1>
         <p class="lead">
-          Este ejercicio toma CIFAR-10 y lo reduce a tres categorias: automobile, ship y truck.
-          A partir de ahi normaliza imagenes, construye un conjunto de validacion, entrena una CNN pequena
-          y evalua tanto metricas como predicciones visuales sobre imagenes del test.
+          Este ejercicio toma CIFAR-10 y lo reduce a tres categorías: automobile, ship y truck.
+          A partir de ahi normaliza imágenes, construye un conjunto de validación, entrena una CNN pequeña
+          y evalúa tanto métricas como predicciones visuales sobre imágenes del test.
         </p>
         <div class="hero-actions">
           <a class="button-link primary" href="#pipeline">Ver pipeline</a>
@@ -58,8 +58,8 @@
             <span>Automobile, ship y truck remapeadas a 0, 1 y 2.</span>
           </article>
           <article class="metric-card">
-            <strong>20% validacion</strong>
-            <span>Separacion explicita del entrenamiento para controlar aprendizaje.</span>
+            <strong>20% validación</strong>
+            <span>Separación explicita del entrenamiento para controlar aprendizaje.</span>
           </article>
           <article class="metric-card">
             <strong>10 epocas</strong>
@@ -77,8 +77,8 @@
           <h3>Resumen del caso</h3>
           <ul class="key-list">
             <li>No usa todo CIFAR-10, sino una version filtrada y controlada.</li>
-            <li>Incluye un split de validacion separado del test final.</li>
-            <li>Combina metricas con ejemplos visuales de aciertos y errores.</li>
+            <li>Incluye un split de validación separado del test final.</li>
+            <li>Combina métricas con ejemplos visuales de aciertos y errores.</li>
           </ul>
           <div class="pill-row">
             <span class="pill">CIFAR-10</span>
@@ -111,7 +111,7 @@
       <div class="steps">
         <article class="card step">
           <span class="step-index">1</span>
-          <div><p>Se cargan las imagenes de CIFAR-10 y se aplanan las etiquetas para trabajar con mas comodidad.</p></div>
+          <div><p>Se cargan las imágenes de CIFAR-10 y se aplanan las etiquetas para trabajar con más comodidad.</p></div>
         </article>
         <article class="card step">
           <span class="step-index">2</span>
@@ -119,7 +119,7 @@
         </article>
         <article class="card step">
           <span class="step-index">3</span>
-          <div><p>Las imagenes se normalizan y se crea un conjunto de validacion con <code>train_test_split</code>.</p></div>
+          <div><p>Las imágenes se normalizan y se crea un conjunto de validación con <code>train_test_split</code>.</p></div>
         </article>
         <article class="card step">
           <span class="step-index">4</span>
@@ -132,11 +132,11 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Modelo</p>
-          <h2 class="section-title">Una CNN pequena, clara y bien enfocada.</h2>
+          <h2 class="section-title">Una CNN pequeña, clara y bien enfocada.</h2>
         </div>
         <p class="section-intro">
           La arquitectura combina dos bloques convolucionales con pooling, una capa densa y una salida softmax.
-          Es un modelo razonable para un ejercicio de practica en clasificacion multiclase.
+          Es un modelo razonable para un ejercicio de práctica en clasificación multiclase.
         </p>
       </div>
 
@@ -147,7 +147,7 @@
         </article>
         <article class="card">
           <h3>Resultados que se observan</h3>
-          <p>El cuaderno compara curvas de entrenamiento y validacion, y ademas presenta imagenes aleatorias con su clase real y predicha para revisar el comportamiento del modelo mas alla del accuracy.</p>
+          <p>El cuaderno compara curvas de entrenamiento y validación, y además presenta imágenes aleatorias con su clase real y predicha para revisar el comportamiento del modelo más alla del accuracy.</p>
         </article>
       </div>
     </section>
@@ -159,19 +159,19 @@
           <h2 class="section-title">Que comunica este ejercicio.</h2>
         </div>
         <p class="section-intro">
-          Este caso muestra que no solo sabes usar una CNN, tambien sabes recortar un problema, construir validacion
+          Este caso muestra que no solo sabes usar una CNN, también sabes recortar un problema, construir validación
           y revisar aprendizaje con graficas y ejemplos.
         </p>
       </div>
 
       <div class="grid three">
-        <article class="card"><h3>Preparacion de datos</h3><p>Filtrado de clases, remapeo de etiquetas y normalizacion correcta de imagenes.</p></article>
-        <article class="card"><h3>Entrenamiento ordenado</h3><p>Uso explicito de validacion para seguir la evolucion del modelo durante las epocas.</p></article>
-        <article class="card"><h3>Interpretacion visual</h3><p>Comparacion entre prediccion y realidad para detectar si el modelo generaliza de forma creible.</p></article>
+        <article class="card"><h3>Preparación de datos</h3><p>Filtrado de clases, remapeo de etiquetas y normalizacion correcta de imagenes.</p></article>
+        <article class="card"><h3>Entrenamiento ordenado</h3><p>Uso explicito de validación para seguir la evolución del modelo durante las epocas.</p></article>
+        <article class="card"><h3>Interpretación visual</h3><p>Comparación entre predicción y realidad para detectar si el modelo generaliza de forma creible.</p></article>
       </div>
 
       <div class="foot-links">
-        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="./modelos-ml.html">Volver al catálogo</a>
         <a
           href="https://colab.research.google.com/drive/1UA1gCNwjBBi0etbr7bESy8qffQvpsOTV?usp=drive_open"
           target="_blank"

@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gatos vs perros con CNN | Juan Sebastian Rubiano</title>
+  <title>Gatos vs perros con CNN | Juan Sebastián Rubiano</title>
   <meta
     name="description"
-    content="Caso de clasificacion binaria con TensorFlow Datasets para distinguir gatos y perros mediante una CNN en escala de grises y pruebas con imagenes propias."
+    content="Caso de clasificación binaria con TensorFlow Datasets para distinguir gatos y perros mediante una CNN en escala de grises y pruebas con imágenes propias."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
         <span class="brand-dot" aria-hidden="true"></span>
         Todos los casos ML
       </a>
-      <nav class="topbar-nav" aria-label="Navegacion del caso">
+      <nav class="topbar-nav" aria-label="Navegación del caso">
         <a href="#caso">Caso</a>
         <a href="#flujo">Flujo</a>
         <a href="#sigmoid">Sigmoid</a>
@@ -34,12 +34,12 @@
 
     <section class="hero" id="caso">
       <div class="hero-panel">
-        <p class="eyebrow">Clasificacion binaria</p>
+        <p class="eyebrow">Clasificación binaria</p>
         <h1 class="hero-title">Gatos vs perros con una <span class="highlight">CNN en grises</span>.</h1>
         <p class="lead">
-          Este ejercicio usa el dataset <code>cats_vs_dogs</code> desde TensorFlow Datasets, redimensiona imagenes
+          Este ejercicio usa el dataset <code>cats_vs_dogs</code> desde TensorFlow Datasets, redimensiona imágenes
           a 100 x 100, las convierte a escala de grises y entrena una CNN binaria. Luego abre una segunda etapa de pruebas
-          con imagenes cargadas manualmente para revisar predicciones reales fuera del dataset base.
+          con imágenes cargadas manualmente para revisar predicciones reales fuera del dataset base.
         </p>
         <div class="hero-actions">
           <a class="button-link primary" href="#flujo">Ver flujo</a>
@@ -55,7 +55,7 @@
         <div class="metric-grid">
           <article class="metric-card">
             <strong>100 x 100</strong>
-            <span>Tamano unificado de entrada para las imagenes.</span>
+            <span>Tamaño unificado de entrada para las imagenes.</span>
           </article>
           <article class="metric-card">
             <strong>Escala de grises</strong>
@@ -78,7 +78,7 @@
           <ul class="key-list">
             <li>Uso del dataset oficial de TensorFlow Datasets.</li>
             <li>Conversor a escala de grises con OpenCV.</li>
-            <li>Pruebas con imagenes subidas manualmente al final del flujo.</li>
+            <li>Pruebas con imágenes subidas manualmente al final del flujo.</li>
           </ul>
           <div class="pill-row">
             <span class="pill">TFDS</span>
@@ -101,7 +101,7 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Flujo</p>
-          <h2 class="section-title">Preparacion de imagenes y entrenamiento.</h2>
+          <h2 class="section-title">Preparación de imágenes y entrenamiento.</h2>
         </div>
         <p class="section-intro">
           El ejercicio recorre todo el proceso: inspeccion del dataset, transformacion, armado de arreglos,
@@ -120,7 +120,7 @@
         </article>
         <article class="card step">
           <span class="step-index">3</span>
-          <div><p>Las imagenes se normalizan a valores entre 0 y 1 y las etiquetas se convierten a arreglo numerico.</p></div>
+          <div><p>Las imágenes se normalizan a valores entre 0 y 1 y las etiquetas se convierten a arreglo numerico.</p></div>
         </article>
         <article class="card step">
           <span class="step-index">4</span>
@@ -132,24 +132,24 @@
     <section class="section" id="sigmoid">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Interpretacion</p>
+          <p class="eyebrow">Interpretación</p>
           <h2 class="section-title">La clave: entender la sigmoid.</h2>
         </div>
         <p class="section-intro">
           La salida del modelo representa probabilidad de pertenecer a una de las dos clases. Entender ese punto
-          es importante para no leer mal una prediccion aparentemente baja o alta.
+          es importante para no leer mal una predicción aparentemente baja o alta.
         </p>
       </div>
 
       <div class="grid two">
         <article class="card">
           <h3>Lectura correcta</h3>
-          <p>Si la salida esta cerca de 1, el modelo considera mas probable la clase perro. Si esta cerca de 0, la imagen se interpreta como gato con mayor confianza.</p>
+          <p>Si la salida esta cerca de 1, el modelo considera más probable la clase perro. Si esta cerca de 0, la imagen se interpreta como gato con mayor confianza.</p>
         </article>
         <article class="card">
           <h3>Ajuste en la confianza</h3>
-          <p>El flujo corrige la presentacion de resultados usando <code>1 - prediccion</code> para reportar confianza de gato cuando corresponde.</p>
-          <div class="code-block"><code>confianza = prediccion * 100 if etiqueta == "Perro" else (1 - prediccion) * 100</code></div>
+          <p>El flujo corrige la presentacion de resultados usando <code>1 - predicción</code> para reportar confianza de gato cuando corresponde.</p>
+          <div class="code-block"><code>confianza = predicción * 100 if etiqueta == "Perro" else (1 - predicción) * 100</code></div>
         </article>
       </div>
     </section>
@@ -158,22 +158,22 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Pruebas reales</p>
-          <h2 class="section-title">Predicciones sobre imagenes propias.</h2>
+          <h2 class="section-title">Predicciones sobre imágenes propias.</h2>
         </div>
         <p class="section-intro">
-          Este cierre saca al modelo del dataset base y lo pone a responder frente a imagenes cargadas manualmente,
-          algo muy util para revisar generalizacion fuera del conjunto de entrenamiento.
+          Este cierre saca al modelo del dataset base y lo pone a responder frente a imágenes cargadas manualmente,
+          algo muy útil para revisar generalizacion fuera del conjunto de entrenamiento.
         </p>
       </div>
 
       <div class="grid three">
-        <article class="card"><h3>Subida manual</h3><p>Las imagenes se cargan con Colab, se transforman igual que el train y se pasan al modelo.</p></article>
-        <article class="card"><h3>Prediccion individual</h3><p>Se puede probar una imagen puntual como <code>gato1.jpg</code> o <code>perro1.jpg</code> para inspeccion directa.</p></article>
-        <article class="card"><h3>Valor para portfolio</h3><p>Muestra un paso extra de validacion pragmatica y capacidad de interpretar salidas de modelos binarios.</p></article>
+        <article class="card"><h3>Subida manual</h3><p>Las imágenes se cargan con Colab, se transforman igual que el train y se pasan al modelo.</p></article>
+        <article class="card"><h3>Predicción individual</h3><p>Se puede probar una imagen puntual como <code>gato1.jpg</code> o <code>perro1.jpg</code> para inspeccion directa.</p></article>
+        <article class="card"><h3>Valor para portfolio</h3><p>Muestra un paso extra de validación pragmatica y capacidad de interpretar salidas de modelos binarios.</p></article>
       </div>
 
       <div class="foot-links">
-        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="./modelos-ml.html">Volver al catálogo</a>
         <a
           href="https://colab.research.google.com/drive/1TJlscbdDiFOO2j1cfnQm2-2o11fo2xJ8?usp=drive_open"
           target="_blank"

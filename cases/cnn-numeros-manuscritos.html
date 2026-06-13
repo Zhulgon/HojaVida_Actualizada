@@ -1,12 +1,12 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Clasificador CNN de numeros manuscritos | Juan Sebastian Rubiano</title>
+  <title>Clasificador CNN de números manuscritos | Juan Sebastián Rubiano</title>
   <meta
     name="description"
-    content="Caso visual de machine learning con un clasificador CNN de numeros manuscritos sobre MNIST, con flujo de preparacion de datos, arquitectura, entrenamiento y extension a CIFAR-10."
+    content="Caso visual de machine learning con un clasificador CNN de números manuscritos sobre MNIST, con flujo de preparación de datos, arquitectura, entrenamiento y extensión a CIFAR-10."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +23,13 @@
         <span class="dot" aria-hidden="true"></span>
         Todos los casos ML
       </a>
-      <nav class="topbar-nav" aria-label="Navegacion del caso">
+      <nav class="topbar-nav" aria-label="Navegación del caso">
         <a href="#caso">Caso</a>
         <a href="#flujo">Flujo</a>
         <a href="#arquitectura">Arquitectura</a>
         <a href="#resultados">Resultados</a>
-        <a href="#codigo">Codigo</a>
-        <a href="#extension">Extension</a>
+        <a href="#codigo">Código</a>
+        <a href="#extension">Extensión</a>
       </nav>
       <a class="topbar-link" href="../index.html#projects">
         Portfolio
@@ -38,39 +38,39 @@
 
     <section class="hero reveal" id="caso">
       <div class="hero-panel">
-          <p class="eyebrow">Machine learning aplicado &middot; vision por computador</p>
-        <h1>Clasificador <span class="highlight">CNN</span> de numeros manuscritos.</h1>
+          <p class="eyebrow">Machine learning aplicado &middot; visión por computador</p>
+        <h1>Clasificador <span class="highlight">CNN</span> de números manuscritos.</h1>
         <p class="hero-copy">
           Este caso parte de un ejercicio en Python trabajado en Colab para entrenar una red neuronal convolucional
-          sobre MNIST. El flujo incluye preparacion de imagenes, codificacion de etiquetas, construccion del modelo,
-          entrenamiento, evaluacion y lectura visual de predicciones.
+          sobre MNIST. El flujo incluye preparación de imágenes, codificación de etiquetas, construcción del modelo,
+          entrenamiento, evaluación y lectura visual de predicciones.
         </p>
         <p class="hero-copy">
-          Aunque el archivo se llama <code>clasificadorNumeros1-9</code>, la implementacion principal clasifica diez
-          clases reales del dataset: del 0 al 9. Dentro del mismo archivo tambien deje una extension con CIFAR-10
-          para seguir explorando clasificacion multiclase en imagenes a color.
+          Aunque el archivo se llama <code>clasificadorNumeros1-9</code>, la implementación principal clasifica diez
+          clases reales del dataset: del 0 al 9. Dentro del mismo archivo también dejé una extensión con CIFAR-10
+          para seguir explorando clasificación multiclase en imágenes a color.
         </p>
         <div class="hero-actions">
           <a class="button-link primary" href="#flujo">Ver desarrollo</a>
           <a class="button-link" href="#codigo">Revisar bloques clave</a>
-          <a class="button-link" href="./modelos-ml.html">Ver catalogo ML</a>
+          <a class="button-link" href="./modelos-ml.html">Ver catálogo ML</a>
         </div>
         <div class="hero-grid">
           <article class="metric-card">
             <strong>MNIST</strong>
-            <span>Dataset base de digitos manuscritos para clasificacion supervisada de imagenes.</span>
+            <span>Dataset base de dígitos manuscritos para clasificación supervisada de imágenes.</span>
           </article>
           <article class="metric-card">
             <strong>28 x 28</strong>
             <span>Entrada en escala de grises con un solo canal, adaptada a la CNN.</span>
           </article>
           <article class="metric-card">
-            <strong>5 epocas</strong>
-            <span>Entrenamiento inicial con <code>batch_size=64</code> y validacion interna.</span>
+            <strong>5 épocas</strong>
+            <span>Entrenamiento inicial con <code>batch_size=64</code> y validación interna.</span>
           </article>
           <article class="metric-card">
             <strong>Softmax</strong>
-            <span>Salida de 10 probabilidades para decidir cual digito es el mas probable.</span>
+            <span>Salida de 10 probabilidades para decidir cuál dígito es el más probable.</span>
           </article>
         </div>
       </div>
@@ -83,7 +83,7 @@
               <span></span>
               <span></span>
             </div>
-            <div class="screen-label">Prediccion conceptual</div>
+            <div class="screen-label">Predicción conceptual</div>
           </div>
 
           <div class="digit-board" aria-label="Salida conceptual del clasificador">
@@ -123,8 +123,8 @@
           </div>
 
           <p class="screen-note">
-            La red no interpreta el numero como lo haria una persona. Aprende trazos, bordes, curvas y patrones
-            visuales hasta convertir la imagen en una distribucion de probabilidades por clase.
+            La red no interpreta el número como lo haría una persona. Aprende trazos, bordes, curvas y patrones
+            visuales hasta convertir la imagen en una distribución de probabilidades por clase.
           </p>
         </div>
       </div>
@@ -137,8 +137,8 @@
           <h2 class="section-title">Flujo de trabajo del clasificador.</h2>
         </div>
         <p class="section-intro">
-          La estructura del ejercicio sigue una secuencia clara de machine learning para imagenes: cargar,
-          preparar, entrenar, evaluar e interpretar. Aqui se ve el paso a paso sin perder el sentido de lo que hace cada bloque.
+          La estructura del ejercicio sigue una secuencia clara de machine learning para imágenes: cargar,
+          preparar, entrenar, evaluar e interpretar. Aquí se ve el paso a paso sin perder el sentido de lo que hace cada bloque.
         </p>
       </div>
 
@@ -151,7 +151,7 @@
         <article class="timeline-card">
           <span>2</span>
           <h3>Preprocesamiento</h3>
-          <p>Las imagenes se redimensionan a <code>28 x 28 x 1</code> y se normalizan a valores entre 0 y 1.</p>
+          <p>Las imágenes se redimensionan a <code>28 x 28 x 1</code> y se normalizan a valores entre 0 y 1.</p>
         </article>
         <article class="timeline-card">
           <span>3</span>
@@ -161,12 +161,12 @@
         <article class="timeline-card">
           <span>4</span>
           <h3>Entrenamiento</h3>
-          <p>La CNN se ajusta con Adam, perdida categorica y un 10% del train para validacion.</p>
+          <p>La CNN se ajusta con Adam, pérdida categórica y un 10% del train para validación.</p>
         </article>
         <article class="timeline-card">
           <span>5</span>
           <h3>Lectura de resultados</h3>
-          <p>Se evalua en test y luego se comparan etiquetas reales vs. predichas para interpretar el modelo.</p>
+          <p>Se evalúa en test y luego se comparan etiquetas reales vs. predichas para interpretar el modelo.</p>
         </article>
       </div>
     </section>
@@ -175,11 +175,11 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Arquitectura</p>
-          <h2 class="section-title">Como esta construida la CNN.</h2>
+          <h2 class="section-title">Cómo está construida la CNN.</h2>
         </div>
         <p class="section-intro">
           La red combina capas convolucionales para extraer patrones visuales y capas densas para convertir esos rasgos
-          en una decision final. Es un flujo clasico pero muy util para entender deep learning aplicado a imagenes.
+          en una decisión final. Es un flujo clásico pero muy útil para entender deep learning aplicado a imágenes.
         </p>
       </div>
 
@@ -194,25 +194,25 @@
         <article class="arch-node">
           <div>
             <strong>Conv2D &middot; 32 filtros</strong>
-            <em>Detecta bordes, trazos y rasgos simples del digito.</em>
+            <em>Detecta bordes, trazos y rasgos simples del dígito.</em>
           </div>
         </article>
         <article class="arch-node">
           <div>
             <strong>MaxPooling</strong>
-            <em>Reduce dimensionalidad y conserva los patrones mas relevantes.</em>
+            <em>Reduce dimensionalidad y conserva los patrones más relevantes.</em>
           </div>
         </article>
         <article class="arch-node">
           <div>
             <strong>Conv2D &middot; 64 filtros</strong>
-            <em>Aprende patrones visuales mas complejos combinando rasgos previos.</em>
+            <em>Aprende patrones visuales más complejos combinando rasgos previos.</em>
           </div>
         </article>
         <article class="arch-node">
           <div>
             <strong>Dense &middot; 64</strong>
-            <em>Resume las caracteristicas y prepara la clasificacion final.</em>
+            <em>Resume las características y prepara la clasificación final.</em>
           </div>
         </article>
         <article class="arch-node">
@@ -226,15 +226,15 @@
       <div class="content-grid spaced">
         <article class="stack-card">
           <h3>Lo que resuelve cada capa</h3>
-          <p>Las convoluciones encuentran patrones espaciales; el pooling reduce ruido y costo computacional; las capas densas transforman esas caracteristicas en una prediccion interpretable.</p>
+            <p>Las convoluciones encuentran patrones espaciales; el pooling reduce ruido y costo computacional; las capas densas transforman esas características en una predicción interpretable.</p>
         </article>
         <article class="stack-card">
-          <h3>Por que softmax</h3>
-          <p>No es un problema binario. Hay varias clases posibles, por eso la salida correcta es una distribucion de probabilidad sobre diez opciones.</p>
+          <h3>Por qué softmax</h3>
+          <p>No es un problema binario. Hay varias clases posibles, por eso la salida correcta es una distribución de probabilidad sobre diez opciones.</p>
         </article>
         <article class="stack-card">
           <h3>Lo importante del ejercicio</h3>
-          <p>Mas que repetir una receta, este caso demuestra comprension de preprocesamiento, estructura de red, entrenamiento inicial y lectura de resultados en clasificacion de imagenes.</p>
+          <p>Más que repetir una receta, este caso demuestra comprensión de preprocesamiento, estructura de red, entrenamiento inicial y lectura de resultados en clasificación de imágenes.</p>
         </article>
       </div>
     </section>
@@ -242,11 +242,11 @@
     <section class="section reveal" id="resultados">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Interpretacion</p>
-          <h2 class="section-title">Como leer las predicciones del modelo.</h2>
+          <p class="eyebrow">Interpretación</p>
+          <h2 class="section-title">Cómo leer las predicciones del modelo.</h2>
         </div>
         <p class="section-intro">
-          El script evalua el conjunto de prueba y luego muestra ejemplos reales junto a la prediccion. El punto clave es entender que la red entrega probabilidades, no solo un numero aislado.
+          El script evalúa el conjunto de prueba y luego muestra ejemplos reales junto a la predicción. El punto clave es entender que la red entrega probabilidades, no solo un número aislado.
         </p>
       </div>
 
@@ -261,20 +261,20 @@
             <div class="result-strip">
               <div class="result-token">
                 <strong>Etiqueta real</strong>
-                <span>Numero correcto asociado a la imagen.</span>
+                <span>Número correcto asociado a la imagen.</span>
               </div>
               <div class="result-token">
-                <strong>Prediccion</strong>
-                <span>Clase con mayor valor despues de softmax.</span>
+                <strong>Predicción</strong>
+                <span>Clase con mayor valor después de softmax.</span>
               </div>
               <div class="result-token">
-                <strong>Interpretacion</strong>
-                <span>Mientras mayor sea la separacion, mayor confianza del modelo.</span>
+                <strong>Interpretación</strong>
+                <span>Mientras mayor sea la separación, mayor confianza del modelo.</span>
               </div>
             </div>
             <div class="pill-row">
-              <span class="pill">Clasificacion multiclase</span>
-              <span class="pill">Vision por computador</span>
+              <span class="pill">Clasificación multiclase</span>
+              <span class="pill">Visión por computador</span>
               <span class="pill">TensorFlow / Keras</span>
             </div>
           </div>
@@ -283,10 +283,10 @@
         <article class="result-card">
           <h3>Aspectos que deja claros este caso</h3>
           <ul class="list-tight">
-            <li>Preparacion correcta de imagenes para una CNN.</li>
+            <li>Preparación correcta de imágenes para una CNN.</li>
             <li>Uso de etiquetas one-hot para salida multiclase.</li>
-            <li>Separacion entre entrenamiento, validacion y prueba.</li>
-            <li>Lectura visual de resultados mas alla de una sola metrica.</li>
+            <li>Separación entre entrenamiento, validación y prueba.</li>
+            <li>Lectura visual de resultados más allá de una sola métrica.</li>
             <li>Capacidad de extender el ejercicio a otros datasets.</li>
           </ul>
         </article>
@@ -297,16 +297,16 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Bloques clave</p>
-          <h2 class="section-title">Codigo principal del ejercicio.</h2>
+          <h2 class="section-title">Código principal del ejercicio.</h2>
         </div>
         <p class="section-intro">
-          Estos fragmentos reflejan exactamente la estructura central del archivo trabajado en Colab para el clasificador de numeros.
+          Estos fragmentos reflejan exactamente la estructura central del archivo trabajado en Colab para el clasificador de números.
         </p>
       </div>
 
       <div class="code-grid">
         <article class="code-card">
-          <h3>Carga y preparacion de MNIST</h3>
+          <h3>Carga y preparación de MNIST</h3>
           <pre><code>from tensorflow.keras.datasets import mnist
 from tensorflow.keras.utils import to_categorical
 
@@ -334,7 +334,7 @@ model.add(Dense(10, activation="softmax"))</code></pre>
         </article>
 
         <article class="code-card">
-          <h3>Entrenamiento y evaluacion</h3>
+          <h3>Entrenamiento y evaluación</h3>
           <pre><code>model.compile(
     optimizer="adam",
     loss="categorical_crossentropy",
@@ -344,12 +344,12 @@ model.add(Dense(10, activation="softmax"))</code></pre>
 model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.1)
 
 test_loss, test_acc = model.evaluate(x_test, y_test)
-print(f"Precision en test: {test_acc:.4f}")</code></pre>
-          <p>Se usa una configuracion inicial solida para un ejercicio academico y se reserva parte del entrenamiento para validacion.</p>
+print(f"Precisión en test: {test_acc:.4f}")</code></pre>
+          <p>Se usa una configuración inicial sólida para un ejercicio académico y se reserva parte del entrenamiento para validación.</p>
         </article>
 
         <article class="code-card">
-          <h3>Prediccion visual</h3>
+          <h3>Predicción visual</h3>
           <pre><code>predictions = model.predict(x_test)
 
 for i in range(10):
@@ -368,18 +368,18 @@ for i in range(10):
     <section class="section reveal" id="extension">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Extension del archivo</p>
-          <h2 class="section-title">Exploracion adicional con CIFAR-10.</h2>
+          <p class="eyebrow">Extensión del archivo</p>
+          <h2 class="section-title">Exploración adicional con CIFAR-10.</h2>
         </div>
         <p class="section-intro">
-          El mismo archivo continua con una variante sobre CIFAR-10 filtrando tres clases: airplane, automobile y truck. Eso amplia el ejercicio hacia imagenes a color y comparacion entre entrenamiento normal y data augmentation.
+          El mismo archivo continua con una variante sobre CIFAR-10 filtrando tres clases: airplane, automobile y truck. Eso amplia el ejercicio hacia imágenes a color y comparación entre entrenamiento normal y data augmentation.
         </p>
       </div>
 
       <div class="insights-grid">
         <article class="insight-card">
           <h3>Filtro de clases</h3>
-          <p>Se seleccionan las clases 0, 1 y 9 del dataset original y luego se remapean a una salida de tres categorias.</p>
+          <p>Se seleccionan las clases 0, 1 y 9 del dataset original y luego se remapean a una salida de tres categorías.</p>
           <div class="pill-row">
             <span class="pill">airplane</span>
             <span class="pill">automobile</span>
@@ -388,8 +388,8 @@ for i in range(10):
         </article>
 
         <article class="insight-card">
-          <h3>Augmentacion de datos</h3>
-          <p>El flujo incluye rotacion, desplazamientos y volteo horizontal para mejorar diversidad y robustez del entrenamiento.</p>
+          <h3>Augmentación de datos</h3>
+          <p>El flujo incluye rotación, desplazamientos y volteo horizontal para mejorar diversidad y robustez del entrenamiento.</p>
           <pre><code>datagen = ImageDataGenerator(
     rotation_range=15,
     width_shift_range=0.1,
@@ -399,17 +399,17 @@ for i in range(10):
         </article>
 
         <article class="insight-card">
-          <h3>Lectura critica</h3>
-          <p>La extension muestra interes real por probar variaciones del problema. Tambien deja espacio para mejoras, como separar experimentos en archivos distintos y medir la precision sobre todo el set de prueba de forma consistente.</p>
+          <h3>Lectura crítica</h3>
+          <p>La extensión muestra interés real por probar variaciones del problema. También deja espacio para mejoras, como separar experimentos en archivos distintos y medir la precisión sobre todo el set de prueba de forma consistente.</p>
         </article>
       </div>
 
       <div class="footnote spaced">
-        Este caso no se limita a un entrenamiento aislado. Muestra preparacion de datos, arquitectura, lectura de probabilidades e incluso una extension hacia otro dataset para seguir profundizando en vision por computador.
+        Este caso no se limita a un entrenamiento aislado. Muestra preparación de datos, arquitectura, lectura de probabilidades e incluso una extensión hacia otro dataset para seguir profundizando en visión por computador.
       </div>
 
       <div class="footer-links">
-        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="./modelos-ml.html">Volver al catálogo</a>
         <a href="https://github.com/Zhulgon" target="_blank" rel="noopener noreferrer">Ver GitHub</a>
       </div>
     </section>

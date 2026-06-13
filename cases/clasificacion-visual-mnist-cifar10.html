@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Clasificacion visual con MNIST y CIFAR-10 | Juan Sebastian Rubiano</title>
+  <title>Clasificación visual con MNIST y CIFAR-10 | Juan Sebastián Rubiano</title>
   <meta
     name="description"
-    content="Caso visual con TensorFlow y Keras que combina clasificacion de digitos en MNIST y un segundo ejercicio con CIFAR-10 para airplane, automobile y truck."
+    content="Caso visual con TensorFlow y Keras que combina clasificación de dígitos en MNIST y un segundo ejercicio con CIFAR-10 para airplane, automobile y truck."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
         <span class="brand-dot" aria-hidden="true"></span>
         Todos los casos ML
       </a>
-      <nav class="topbar-nav" aria-label="Navegacion del caso">
+      <nav class="topbar-nav" aria-label="Navegación del caso">
         <a href="#caso">Caso</a>
         <a href="#flujo">Flujo</a>
         <a href="#experimentos">Experimentos</a>
@@ -34,11 +34,11 @@
 
     <section class="hero" id="caso">
       <div class="hero-panel">
-        <p class="eyebrow">Vision por computador</p>
+        <p class="eyebrow">Visión por computador</p>
         <h1 class="hero-title">MNIST y CIFAR-10 en un <span class="highlight">mismo flujo visual</span>.</h1>
         <p class="lead">
-          Este caso combina dos ejercicios sobre imagenes. El primero entrena una CNN para reconocer digitos manuscritos
-          en MNIST. El segundo extiende la practica a CIFAR-10 filtrando tres clases visuales: airplane, automobile y truck,
+          Este caso combina dos ejercicios sobre imagenes. El primero entrena una CNN para reconocer dígitos manuscritos
+          en MNIST. El segundo extiende la práctica a CIFAR-10 filtrando tres clases visuales: airplane, automobile y truck,
           con una variante adicional apoyada en data augmentation.
         </p>
         <div class="hero-actions">
@@ -51,12 +51,12 @@
           >
             Abrir Colab
           </a>
-          <a class="button-link" href="./clasificador-numeros-mnist.html">Ver enfoque centrado en MNIST</a>
+          <a class="button-link" href="./cnn-numeros-manuscritos.html">Ver enfoque centrado en MNIST</a>
         </div>
         <div class="metric-grid">
           <article class="metric-card">
             <strong>2 ejercicios</strong>
-            <span>Digitos manuscritos y clasificacion visual con imagenes RGB.</span>
+            <span>Dígitos manuscritos y clasificación visual con imágenes RGB.</span>
           </article>
           <article class="metric-card">
             <strong>TensorFlow</strong>
@@ -64,7 +64,7 @@
           </article>
           <article class="metric-card">
             <strong>10 clases</strong>
-            <span>Salida softmax sobre MNIST para los numeros del 0 al 9.</span>
+            <span>Salida softmax sobre MNIST para los números del 0 al 9.</span>
           </article>
           <article class="metric-card">
             <strong>3 clases</strong>
@@ -77,8 +77,8 @@
         <article class="visual-card">
           <h3>Resumen del caso</h3>
           <ul class="key-list">
-            <li>Pasa de una clasificacion simple en grises a una variante multiclase con imagenes RGB.</li>
-            <li>Incluye preparacion de datos, normalizacion, arquitectura, entrenamiento y lectura de predicciones.</li>
+            <li>Pasa de una clasificación simple en grises a una variante multiclase con imágenes RGB.</li>
+            <li>Incluye preparación de datos, normalizacion, arquitectura, entrenamiento y lectura de predicciones.</li>
             <li>Introduce una capa de augmentation para robustecer el segundo experimento.</li>
           </ul>
           <div class="pill-row">
@@ -103,11 +103,11 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Flujo</p>
-          <h2 class="section-title">Como se organiza el desarrollo.</h2>
+          <h2 class="section-title">Cómo se organiza el desarrollo.</h2>
         </div>
         <p class="section-intro">
-          El archivo no se queda en una sola prueba. Avanza desde un problema clasico de vision por computador
-          hasta una extension mas rica visualmente, lo que deja ver progresion y curiosidad tecnica.
+          El archivo no se queda en una sola prueba. Avanza desde un problema clásico de visión por computador
+          hasta una extensión más rica visualmente, lo que deja ver progresión y curiosidad técnica.
         </p>
       </div>
 
@@ -116,7 +116,7 @@
           <span class="step-index">1</span>
           <div>
             <h3>MNIST y salida multiclase</h3>
-            <p>Se cargan los digitos, se normalizan imagenes de 28 x 28 x 1 y se convierten etiquetas con <code>to_categorical</code>.</p>
+            <p>Se cargan los dígitos, se normalizan imágenes de 28 x 28 x 1 y se convierten etiquetas con <code>to_categorical</code>.</p>
           </div>
         </article>
         <article class="card step">
@@ -130,7 +130,7 @@
           <span class="step-index">3</span>
           <div>
             <h3>Lectura visual de resultados</h3>
-            <p>Se comparan imagenes del set de prueba con la etiqueta real y la prediccion del modelo.</p>
+            <p>Se comparan imágenes del set de prueba con la etiqueta real y la predicción del modelo.</p>
           </div>
         </article>
         <article class="card step">
@@ -147,23 +147,23 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Experimentos</p>
-          <h2 class="section-title">Que demuestra cada bloque.</h2>
+          <h2 class="section-title">Qué demuestra cada bloque.</h2>
         </div>
         <p class="section-intro">
           Aunque los dos modelos comparten una base CNN parecida, el caso deja ver que entiendes distintos tipos
-          de entrada, salida y evaluacion.
+          de entrada, salida y evaluación.
         </p>
       </div>
 
       <div class="grid two">
         <article class="card">
-          <h3>Bloque 1 - Digitos manuscritos</h3>
-          <p>Sirve para demostrar el manejo de una CNN clasica sobre imagenes pequenas, una salida de diez clases y lectura de probabilidades con <code>argmax</code>.</p>
+          <h3>Bloque 1 - Dígitos manuscritos</h3>
+          <p>Sirve para demostrar el manejo de una CNN clasica sobre imágenes pequeñas, una salida de diez clases y lectura de probabilidades con <code>argmax</code>.</p>
           <div class="code-block"><code>model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.1)</code></div>
         </article>
         <article class="card">
-          <h3>Bloque 2 - Imagenes RGB filtradas</h3>
-          <p>Amplia el caso hacia imagenes a color, uso de tres clases y una estrategia de augmentation con rotaciones, desplazamientos y volteo horizontal.</p>
+          <h3>Bloque 2 - Imágenes RGB filtradas</h3>
+          <p>Amplia el caso hacia imágenes a color, uso de tres clases y una estrategia de augmentation con rotaciones, desplazamientos y volteo horizontal.</p>
           <div class="code-block"><code>datagen = ImageDataGenerator(rotation_range=15, width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)</code></div>
         </article>
       </div>
@@ -172,36 +172,36 @@
     <section class="section" id="lectura">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Lectura tecnica</p>
+          <p class="eyebrow">Lectura técnica</p>
           <h2 class="section-title">Por que este caso suma al portfolio.</h2>
         </div>
         <p class="section-intro">
-          Bien presentado, este flujo muestra bases reales de deep learning, preparacion de datasets y lectura critica
-          de resultados sobre imagenes de distinta complejidad.
+          Bien presentado, este flujo muestra bases reales de deep learning, preparación de datasets y lectura crítica
+          de resultados sobre imágenes de distinta complejidad.
         </p>
       </div>
 
       <div class="grid three">
         <article class="card">
           <h3>Base en CNN</h3>
-          <p>Demuestra manejo inicial de arquitecturas convolucionales, entrenamiento y evaluacion supervisada.</p>
+          <p>Demuestra manejo inicial de arquitecturas convolucionales, entrenamiento y evaluación supervisada.</p>
         </article>
         <article class="card">
           <h3>Escalado del problema</h3>
-          <p>Pasa de una clasificacion de digitos a un escenario visual mas complejo con objetos a color.</p>
+          <p>Pasa de una clasificación de dígitos a un escenario visual más complejo con objetos a color.</p>
         </article>
         <article class="card">
-          <h3>Capacidad de extension</h3>
-          <p>Deja ver una continuidad natural entre experimentos y una exploracion tecnica mas amplia.</p>
+          <h3>Capacidad de extensión</h3>
+          <p>Deja ver una continuidad natural entre experimentos y una exploración técnica más amplia.</p>
         </article>
       </div>
 
       <div class="note spaced">
-        Este caso comparte base con el clasificador de numeros, pero aqui queda presentado como un recorrido mas amplio entre MNIST y CIFAR-10.
+        Este caso comparte base con el clasificador de números, pero aquí queda presentado como un recorrido más amplio entre MNIST y CIFAR-10.
       </div>
 
       <div class="foot-links">
-        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="./modelos-ml.html">Volver al catálogo</a>
         <a
           href="https://colab.research.google.com/drive/1UeXTTcmO7rmNh5NylrYSSncuhZKp-mmZ?usp=sharing"
           target="_blank"

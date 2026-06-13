@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Simulacion de portafolios con Monte Carlo | Juan Sebastian Rubiano</title>
+  <title>Simulación de portafolios con Monte Carlo | Juan Sebastián Rubiano</title>
   <meta
     name="description"
-    content="Caso de simulacion financiera con Python usando yfinance, Markowitz, Monte Carlo y proyecciones de portafolios moderados y conservadores."
+    content="Caso de simulación financiera con Python usando yfinance, Markowitz, Monte Carlo y proyecciones de portafolios moderados y conservadores."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,25 +23,25 @@
         <span class="brand-dot" aria-hidden="true"></span>
         Todos los casos ML
       </a>
-      <nav class="topbar-nav" aria-label="Navegacion del caso">
+      <nav class="topbar-nav" aria-label="Navegación del caso">
         <a href="#caso">Caso</a>
         <a href="#markowitz">Markowitz</a>
         <a href="#montecarlo">Monte Carlo</a>
-        <a href="#proyeccion">Proyeccion</a>
+        <a href="#proyeccion">Proyección</a>
       </nav>
       <a class="topbar-link" href="../index.html#projects">Portfolio</a>
     </header>
 
     <section class="hero" id="caso">
       <div class="hero-panel">
-        <p class="eyebrow">Simulacion financiera</p>
+        <p class="eyebrow">Simulación financiera</p>
         <h1 class="hero-title">Portafolios, <span class="highlight">riesgo y proyecciones</span> de inversion.</h1>
         <p class="lead">
           Este caso descarga historicos con <code>yfinance</code>, calcula retornos mensuales, simula miles de portafolios aleatorios,
-          arma escenarios moderado y conservador, y proyecta crecimiento a varios anos incluyendo aportes mensuales.
+          arma escenarios moderado y conservador, y proyecta crecimiento a varios años incluyendo aportes mensuales.
         </p>
         <div class="hero-actions">
-          <a class="button-link primary" href="#markowitz">Ver analisis</a>
+          <a class="button-link primary" href="#markowitz">Ver análisis</a>
           <a
             class="button-link"
             href="https://colab.research.google.com/drive/1AYHx8QJrbKVmdOlyLDZdI8GS9W_GcL8V?usp=drive_open"
@@ -58,14 +58,14 @@
           </article>
           <article class="metric-card">
             <strong>20 000</strong>
-            <span>Portafolios aleatorios en la primera simulacion de frontera eficiente.</span>
+            <span>Portafolios aleatorios en la primera simulación de frontera eficiente.</span>
           </article>
           <article class="metric-card">
             <strong>10 000</strong>
             <span>Corridas Monte Carlo para escenarios de valor futuro.</span>
           </article>
           <article class="metric-card">
-            <strong>10 anos</strong>
+            <strong>10 años</strong>
             <span>Horizonte extendido para ver efecto compuesto y aportes mensuales.</span>
           </article>
         </div>
@@ -77,7 +77,7 @@
           <ul class="key-list">
             <li>Optimizacion inicial sobre acciones como Ecopetrol, Bancolombia, Cemargos y Grupo Aval.</li>
             <li>Diversificacion con ETFs como SPY, QQQ, EEM y BND.</li>
-            <li>Comparacion entre portafolio moderado y conservador.</li>
+            <li>Comparación entre portafolio moderado y conservador.</li>
             <li>Proyecciones con 1M inicial y 500k de aporte mensual.</li>
           </ul>
           <div class="pill-row">
@@ -90,7 +90,7 @@
             <img
               class="case-shot"
               src="../assets/cases/modelosML/screens/colab-montecarlo.png"
-              alt="Vista del cuaderno de Colab para la simulacion de portafolios con Monte Carlo"
+              alt="Vista del cuaderno de Colab para la simulación de portafolios con Monte Carlo"
             >
           </div>
           <p class="shot-caption">Captura del cuaderno de Colab asociado a este ejercicio.</p>
@@ -113,11 +113,11 @@
       <div class="grid two">
         <article class="card">
           <h3>Variables centrales</h3>
-          <p>Retorno esperado anual, volatilidad anual y Sharpe ratio como criterio de comparacion entre portafolios simulados.</p>
+          <p>Retorno esperado anual, volatilidad anual y Sharpe ratio como criterio de comparación entre portafolios simulados.</p>
         </article>
         <article class="card">
-          <h3>Lectura del grafico</h3>
-          <p>La nube de puntos representa posibles combinaciones de riesgo y retorno, mientras el punto resaltado marca la opcion optima segun el criterio elegido.</p>
+          <h3>Lectura del gráfico</h3>
+          <p>La nube de puntos representa posibles combinaciones de riesgo y retorno, mientras el punto resaltado marca la opción óptima según el criterio elegido.</p>
         </article>
       </div>
     </section>
@@ -126,7 +126,7 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Etapas 2 y 3</p>
-          <h2 class="section-title">Diversificacion y simulacion de escenarios.</h2>
+          <h2 class="section-title">Diversificacion y simulación de escenarios.</h2>
         </div>
         <p class="section-intro">
           Luego el caso mezcla acciones colombianas con ETFs globales y simula el valor futuro de un capital inicial
@@ -137,27 +137,27 @@
       <div class="grid three">
         <article class="card">
           <h3>Portafolio moderado</h3>
-          <p>Mayor participacion en SP500 y Nasdaq, mas una porcion de emergentes y bonos.</p>
+          <p>Mayor participacion en SP500 y Nasdaq, más una porcion de emergentes y bonos.</p>
         </article>
         <article class="card">
           <h3>Portafolio conservador</h3>
-          <p>Aumenta el peso de bonos para bajar riesgo esperado y suavizar la distribucion final.</p>
+          <p>Aumenta el peso de bonos para bajar riesgo esperado y suavizar la distribución final.</p>
         </article>
         <article class="card">
           <h3>Percentiles P10, P50 y P90</h3>
-          <p>Resumir los resultados con percentiles hace que la simulacion sea mucho mas facil de comunicar.</p>
+          <p>Resumir los resultados con percentiles hace que la simulación sea mucho más facil de comunicar.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="proyeccion">
+    <section class="section" id="proyección">
       <div class="section-head">
         <div>
           <p class="eyebrow">Etapa 4</p>
-          <h2 class="section-title">Proyeccion con aportes mensuales.</h2>
+          <h2 class="section-title">Proyección con aportes mensuales.</h2>
         </div>
         <p class="section-intro">
-          La ultima parte aterriza el ejercicio a una logica mas practica: no solo proyecta un capital inicial,
+          La ultima parte aterriza el ejercicio a una logica más práctica: no solo proyecta un capital inicial,
           sino que incorpora aportes mensuales y compara crecimiento final contra aportes acumulados.
         </p>
       </div>
@@ -168,17 +168,17 @@
           <p><code>1 000 000 COP</code> como capital inicial, <code>500 000 COP</code> de aporte mensual y un horizonte de 10 anos.</p>
         </article>
         <article class="card">
-          <h3>Lectura util</h3>
+          <h3>Lectura útil</h3>
           <p>Separar aportes totales de rendimiento acumulado ayuda a explicar cuanto crecimiento viene del habito de invertir y cuanto del retorno esperado.</p>
         </article>
       </div>
 
       <div class="note success">
-        Este es uno de los casos mas completos de la carpeta porque une descarga de datos, estadistica descriptiva, optimizacion, simulacion y visualizacion en un solo hilo de negocio.
+        Este es uno de los casos más completos de la carpeta porque une descarga de datos, estadística descriptiva, optimizacion, simulación y visualización en un solo hilo de negocio.
       </div>
 
       <div class="foot-links">
-        <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a href="./modelos-ml.html">Volver al catálogo</a>
         <a
           href="https://colab.research.google.com/drive/1AYHx8QJrbKVmdOlyLDZdI8GS9W_GcL8V?usp=drive_open"
           target="_blank"
