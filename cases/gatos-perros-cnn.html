@@ -37,10 +37,21 @@
         <p class="eyebrow">Clasificacion binaria</p>
         <h1 class="hero-title">Gatos vs perros con una <span class="highlight">CNN en grises</span>.</h1>
         <p class="lead">
-          Este notebook usa el dataset <code>cats_vs_dogs</code> desde TensorFlow Datasets, redimensiona imagenes
+          Este ejercicio usa el dataset <code>cats_vs_dogs</code> desde TensorFlow Datasets, redimensiona imagenes
           a 100 x 100, las convierte a escala de grises y entrena una CNN binaria. Luego abre una segunda etapa de pruebas
           con imagenes cargadas manualmente para revisar predicciones reales fuera del dataset base.
         </p>
+        <div class="hero-actions">
+          <a class="button-link primary" href="#flujo">Ver flujo</a>
+          <a
+            class="button-link"
+            href="https://colab.research.google.com/drive/1TJlscbdDiFOO2j1cfnQm2-2o11fo2xJ8?usp=drive_open"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Abrir Colab
+          </a>
+        </div>
         <div class="metric-grid">
           <article class="metric-card">
             <strong>100 x 100</strong>
@@ -67,13 +78,21 @@
           <ul class="key-list">
             <li>Uso del dataset oficial de TensorFlow Datasets.</li>
             <li>Conversor a escala de grises con OpenCV.</li>
-            <li>Pruebas con imagenes subidas manualmente al final del notebook.</li>
+            <li>Pruebas con imagenes subidas manualmente al final del flujo.</li>
           </ul>
           <div class="pill-row">
             <span class="pill">TFDS</span>
             <span class="pill">OpenCV</span>
             <span class="pill">Binary classification</span>
           </div>
+          <div class="shot-frame">
+            <img
+              class="case-shot"
+              src="../assets/cases/modelosML/screens/colab-gatos-perros.png"
+              alt="Vista del cuaderno de Colab para el clasificador de gatos y perros"
+            >
+          </div>
+          <p class="shot-caption">Captura del cuaderno de Colab asociado a este ejercicio.</p>
         </article>
       </div>
     </section>
@@ -85,7 +104,7 @@
           <h2 class="section-title">Preparacion de imagenes y entrenamiento.</h2>
         </div>
         <p class="section-intro">
-          El notebook recorre todo el proceso: inspeccion del dataset, transformacion, armado de arreglos,
+          El ejercicio recorre todo el proceso: inspeccion del dataset, transformacion, armado de arreglos,
           normalizacion y entrenamiento de la red.
         </p>
       </div>
@@ -101,7 +120,7 @@
         </article>
         <article class="card step">
           <span class="step-index">3</span>
-          <div><p>Las imagenes se normalizan a valores entre 0 y 1 y las etiquetas se convierten a arreglo numpico.</p></div>
+          <div><p>Las imagenes se normalizan a valores entre 0 y 1 y las etiquetas se convierten a arreglo numerico.</p></div>
         </article>
         <article class="card step">
           <span class="step-index">4</span>
@@ -114,11 +133,11 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Interpretacion</p>
-          <h2 class="section-title">La parte importante: entender la sigmoid.</h2>
+          <h2 class="section-title">La clave: entender la sigmoid.</h2>
         </div>
         <p class="section-intro">
-          El mismo notebook deja una aclaracion valiosa: al principio parecia raro ver "Gato con 0% de confianza",
-          pero eso se corrige al entender que la salida representa probabilidad de ser perro, no una confianza simetrica entre dos etiquetas.
+          La salida del modelo representa probabilidad de pertenecer a una de las dos clases. Entender ese punto
+          es importante para no leer mal una prediccion aparentemente baja o alta.
         </p>
       </div>
 
@@ -129,7 +148,7 @@
         </article>
         <article class="card">
           <h3>Ajuste en la confianza</h3>
-          <p>El notebook termina corrigiendo la presentacion de resultados usando <code>1 - prediccion</code> para reportar confianza de gato cuando corresponde.</p>
+          <p>El flujo corrige la presentacion de resultados usando <code>1 - prediccion</code> para reportar confianza de gato cuando corresponde.</p>
           <div class="code-block"><code>confianza = prediccion * 100 if etiqueta == "Perro" else (1 - prediccion) * 100</code></div>
         </article>
       </div>
@@ -142,8 +161,8 @@
           <h2 class="section-title">Predicciones sobre imagenes propias.</h2>
         </div>
         <p class="section-intro">
-          Este cierre es de lo mejor del ejercicio, porque saca al modelo del dataset base y lo pone a responder
-          frente a imagenes cargadas por el usuario.
+          Este cierre saca al modelo del dataset base y lo pone a responder frente a imagenes cargadas manualmente,
+          algo muy util para revisar generalizacion fuera del conjunto de entrenamiento.
         </p>
       </div>
 
@@ -155,6 +174,13 @@
 
       <div class="foot-links">
         <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a
+          href="https://colab.research.google.com/drive/1TJlscbdDiFOO2j1cfnQm2-2o11fo2xJ8?usp=drive_open"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir Colab
+        </a>
         <a href="../index.html#projects">Volver al portfolio</a>
       </div>
     </section>

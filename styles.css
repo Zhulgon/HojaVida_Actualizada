@@ -184,6 +184,17 @@ body.is-scrolled .nav-shell {
   box-shadow: var(--shadow-soft);
 }
 
+#experience,
+#credentials,
+#education {
+  scroll-margin-top: 6.4rem;
+}
+
+.section-anchor {
+  position: relative;
+  top: -5rem;
+}
+
 .section-shell-contact {
   padding: 1rem;
 }
@@ -719,6 +730,66 @@ body.is-scrolled .nav-shell {
   gap: 1.1rem;
 }
 
+.experience-layout {
+  display: grid;
+  grid-template-columns: minmax(22rem, 0.98fr) minmax(0, 1.42fr);
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.experience-column,
+.formation-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 0;
+}
+
+.experience-heading,
+.formation-heading {
+  margin-bottom: 0;
+}
+
+.experience-heading h2 {
+  max-width: 16ch;
+  font-size: clamp(1.5rem, 2vw, 2.15rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.experience-heading p:last-child {
+  max-width: 42ch;
+}
+
+.formation-heading {
+  align-items: center;
+  text-align: center;
+}
+
+.formation-heading h2 {
+  max-width: 23ch;
+  margin-inline: auto;
+  font-size: clamp(1.95rem, 2.7vw, 2.8rem);
+  line-height: 0.98;
+}
+
+.formation-heading p:last-child {
+  max-width: 72ch;
+  margin-inline: auto;
+}
+
+.experience-feature-grid {
+  display: block;
+  min-height: 0;
+}
+
+.formation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -947,11 +1018,29 @@ body.is-scrolled .nav-shell {
   opacity: 0.8;
   transform: translateX(0) scale(0.975);
   filter: saturate(0.92);
+  cursor: pointer;
 }
 
 .project-slide.is-prev,
 .project-slide.is-far {
   opacity: 0.3;
+}
+
+.project-slide.is-next:hover,
+.project-slide.is-next:focus-within {
+  opacity: 0.92;
+  transform: translateX(-0.2rem) scale(0.985);
+}
+
+.project-slide.is-next .project-visual {
+  transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
+}
+
+.project-slide.is-next:hover .project-visual,
+.project-slide.is-next:focus-within .project-visual {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
+  box-shadow: 0 18px 34px rgba(10, 15, 30, 0.18);
 }
 
 .project-slide .project-card {
@@ -1182,6 +1271,16 @@ body.is-scrolled .nav-shell {
   gap: 1.1rem;
 }
 
+.experience-story-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.95rem;
+  min-height: 0;
+  padding: 1.2rem 1.15rem 1.15rem 1.45rem;
+  text-align: left;
+}
+
 .timeline-card {
   overflow: hidden;
   text-align: center;
@@ -1197,6 +1296,76 @@ body.is-scrolled .nav-shell {
 
 .timeline-card {
   padding-left: 1.55rem;
+}
+
+.experience-story-card h3 {
+  font-size: 1.18rem;
+  line-height: 1.14;
+  max-width: 22ch;
+}
+
+.experience-story-copy {
+  max-width: 54ch;
+  line-height: 1.64;
+}
+
+.experience-story-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.experience-story-list li {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--text-soft);
+  line-height: 1.58;
+}
+
+.experience-story-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.experience-story-closing {
+  margin-top: 0.2rem;
+  font-weight: 800;
+  color: var(--text) !important;
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.formation-card,
+.education-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  justify-content: flex-start;
+  height: auto;
+  min-height: 20rem;
+  padding: 1.15rem 1rem 1rem;
+  text-align: left;
+}
+
+.formation-card .credential-icon {
+  margin-bottom: 0.35rem;
+}
+
+.formation-card .project-badges {
+  margin-top: auto;
+}
+
+.formation-card .link-chip {
+  align-self: flex-start;
 }
 
 .education-card {
@@ -1346,7 +1515,28 @@ body.is-scrolled .nav-shell {
   transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 @media (max-width: 1100px) {
+  .experience-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .formation-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .timeline-grid,
   .impact-grid,
   .credentials-grid,
@@ -1473,11 +1663,18 @@ body.is-scrolled .nav-shell {
   .hero-links,
   .impact-grid,
   .skills-grid,
+  .formation-grid,
   .credentials-grid,
   .education-grid,
   .timeline-grid,
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .experience-story-card h3,
+  .formation-heading h2,
+  .formation-heading p:last-child {
+    max-width: none;
   }
 
   .projects-carousel-head {

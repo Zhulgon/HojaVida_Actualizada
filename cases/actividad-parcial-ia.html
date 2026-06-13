@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Actividad parcial de IA | Juan Sebastian Rubiano</title>
+  <title>Clasificacion visual con MNIST y CIFAR-10 | Juan Sebastian Rubiano</title>
   <meta
     name="description"
-    content="Caso visual de un parcial de inteligencia artificial con CNN sobre MNIST y una extension multiclase sobre CIFAR-10 usando TensorFlow y data augmentation."
+    content="Caso visual con TensorFlow y Keras que combina clasificacion de digitos en MNIST y un segundo ejercicio con CIFAR-10 para airplane, automobile y truck."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,12 +34,12 @@
 
     <section class="hero" id="caso">
       <div class="hero-panel">
-        <p class="eyebrow">Parcial de inteligencia artificial</p>
-        <h1 class="hero-title">Dos experimentos en un <span class="highlight">mismo parcial</span>.</h1>
+        <p class="eyebrow">Vision por computador</p>
+        <h1 class="hero-title">MNIST y CIFAR-10 en un <span class="highlight">mismo flujo visual</span>.</h1>
         <p class="lead">
-          Este archivo funciona como una actividad integradora. Primero entrena una CNN para reconocer digitos
-          manuscritos en MNIST y luego extiende la practica a CIFAR-10 filtrando tres clases visuales para
-          comparar entrenamiento normal contra un flujo con data augmentation.
+          Este caso combina dos ejercicios sobre imagenes. El primero entrena una CNN para reconocer digitos manuscritos
+          en MNIST. El segundo extiende la practica a CIFAR-10 filtrando tres clases visuales: airplane, automobile y truck,
+          con una variante adicional apoyada en data augmentation.
         </p>
         <div class="hero-actions">
           <a class="button-link primary" href="#experimentos">Ver experimentos</a>
@@ -51,12 +51,12 @@
           >
             Abrir Colab
           </a>
-          <a class="button-link" href="./clasificador-numeros-mnist.html">Caso enfocado en MNIST</a>
+          <a class="button-link" href="./clasificador-numeros-mnist.html">Ver enfoque centrado en MNIST</a>
         </div>
         <div class="metric-grid">
           <article class="metric-card">
-            <strong>2 bloques</strong>
-            <span>Digitos manuscritos y clasificacion de imagenes a color.</span>
+            <strong>2 ejercicios</strong>
+            <span>Digitos manuscritos y clasificacion visual con imagenes RGB.</span>
           </article>
           <article class="metric-card">
             <strong>TensorFlow</strong>
@@ -75,7 +75,7 @@
 
       <div class="visual-panel">
         <article class="visual-card">
-          <h3>Lo mas valioso del parcial</h3>
+          <h3>Resumen del caso</h3>
           <ul class="key-list">
             <li>Pasa de una clasificacion simple en grises a una variante multiclase con imagenes RGB.</li>
             <li>Incluye preparacion de datos, normalizacion, arquitectura, entrenamiento y lectura de predicciones.</li>
@@ -87,6 +87,14 @@
             <span class="pill">Softmax</span>
             <span class="pill">Augmentation</span>
           </div>
+          <div class="shot-frame">
+            <img
+              class="case-shot"
+              src="../assets/cases/modelosML/screens/colab-mnist-cifar.png"
+              alt="Vista del cuaderno de Colab con el ejercicio de MNIST y CIFAR-10"
+            >
+          </div>
+          <p class="shot-caption">Captura del cuaderno de Colab enlazado a este caso.</p>
         </article>
       </div>
     </section>
@@ -95,7 +103,7 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Flujo</p>
-          <h2 class="section-title">Como esta armado el parcial.</h2>
+          <h2 class="section-title">Como se organiza el desarrollo.</h2>
         </div>
         <p class="section-intro">
           El archivo no se queda en una sola prueba. Avanza desde un problema clasico de vision por computador
@@ -121,7 +129,7 @@
         <article class="card step">
           <span class="step-index">3</span>
           <div>
-            <h3>Evaluacion visual</h3>
+            <h3>Lectura visual de resultados</h3>
             <p>Se comparan imagenes del set de prueba con la etiqueta real y la prediccion del modelo.</p>
           </div>
         </article>
@@ -142,15 +150,15 @@
           <h2 class="section-title">Que demuestra cada bloque.</h2>
         </div>
         <p class="section-intro">
-          Aunque los dos modelos comparten una base CNN parecida, el valor del archivo esta en mostrar que
-          entiendes distintos tipos de entrada, salida y evaluacion.
+          Aunque los dos modelos comparten una base CNN parecida, el caso deja ver que entiendes distintos tipos
+          de entrada, salida y evaluacion.
         </p>
       </div>
 
       <div class="grid two">
         <article class="card">
           <h3>Bloque 1 - Digitos manuscritos</h3>
-          <p>Sirve para demostrar la comprension de una CNN clasica sobre imagenes pequenas, una salida de diez clases y lectura de probabilidades con <code>argmax</code>.</p>
+          <p>Sirve para demostrar el manejo de una CNN clasica sobre imagenes pequenas, una salida de diez clases y lectura de probabilidades con <code>argmax</code>.</p>
           <div class="code-block"><code>model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.1)</code></div>
         </article>
         <article class="card">
@@ -165,11 +173,11 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Lectura tecnica</p>
-          <h2 class="section-title">Por que este parcial suma al portfolio.</h2>
+          <h2 class="section-title">Por que este caso suma al portfolio.</h2>
         </div>
         <p class="section-intro">
-          No es solo una tarea entregada. Bien presentada, esta actividad muestra bases reales de deep learning,
-          preparacion de datasets y lectura critica de resultados.
+          Bien presentado, este flujo muestra bases reales de deep learning, preparacion de datasets y lectura critica
+          de resultados sobre imagenes de distinta complejidad.
         </p>
       </div>
 
@@ -184,12 +192,12 @@
         </article>
         <article class="card">
           <h3>Capacidad de extension</h3>
-          <p>Deja ver que no te quedas con el ejemplo minimo y que buscas experimentar con mejoras y comparaciones.</p>
+          <p>Deja ver una continuidad natural entre experimentos y una exploracion tecnica mas amplia.</p>
         </article>
       </div>
 
-      <div class="note" style="margin-top: 1rem;">
-        Este archivo comparte base con el caso de clasificador de numeros, pero aqui queda reinterpretado como una actividad parcial mas amplia, centrada en la progresion entre experimentos.
+      <div class="note spaced">
+        Este caso comparte base con el clasificador de numeros, pero aqui queda presentado como un recorrido mas amplio entre MNIST y CIFAR-10.
       </div>
 
       <div class="foot-links">

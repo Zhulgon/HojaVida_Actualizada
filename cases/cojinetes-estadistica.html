@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
@@ -14,1021 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
     rel="stylesheet"
   >
-  <style>
-    :root {
-      --bg: #efe8dc;
-      --paper: #fffdf8;
-      --paper-soft: #faf5eb;
-      --ink: #182334;
-      --ink-soft: #5f6778;
-      --line: rgba(24, 35, 52, 0.12);
-      --accent: #0f8e88;
-      --accent-2: #d59643;
-      --shadow: 0 24px 70px rgba(49, 37, 20, 0.12);
-      --shadow-soft: 0 12px 30px rgba(49, 37, 20, 0.08);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Manrope", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(15, 142, 136, 0.16), transparent 24%),
-        radial-gradient(circle at top right, rgba(213, 150, 67, 0.16), transparent 24%),
-        linear-gradient(180deg, #f6f0e5 0%, #eee6d9 100%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1220px, calc(100% - 1.5rem));
-      margin: 0 auto;
-      padding: 2rem 0;
-    }
-
-    .book-shell {
-      border: 1px solid var(--line);
-      border-radius: 36px;
-      background: linear-gradient(180deg, rgba(255, 253, 248, 0.92), rgba(250, 244, 233, 0.94));
-      box-shadow: var(--shadow);
-      padding: 1.3rem;
-    }
-
-    .book-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .eyebrow {
-      margin: 0 0 0.7rem;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      margin: 0;
-      font-family: "Sora", sans-serif;
-      line-height: 1.04;
-    }
-
-    .book-head h1 {
-      font-size: clamp(1.9rem, 4vw, 3rem);
-    }
-
-    .book-head p {
-      margin: 0.6rem 0 0;
-      max-width: 720px;
-      color: var(--ink-soft);
-      line-height: 1.7;
-    }
-
-    .page-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .page-control,
-    .page-tab,
-    .book-link {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.8);
-      color: var(--ink);
-      transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
-      font-weight: 700;
-    }
-
-    .page-control,
-    .page-tab {
-      cursor: pointer;
-    }
-
-    .page-control {
-      min-width: 3rem;
-      min-height: 3rem;
-      font-size: 1rem;
-    }
-
-    .page-tab {
-      padding: 0.62rem 0.92rem;
-    }
-
-    .page-tab--step {
-      min-width: 2.3rem;
-      padding: 0.5rem 0.7rem;
-    }
-
-    .book-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.8rem 1.1rem;
-    }
-
-    .page-control:hover,
-    .page-tab:hover,
-    .page-tab.is-active,
-    .book-link:hover {
-      transform: translateY(-2px);
-      border-color: rgba(15, 142, 136, 0.3);
-      background: rgba(15, 142, 136, 0.08);
-    }
-
-    .book-nav {
-      display: flex;
-      align-items: center;
-      flex-wrap: nowrap;
-      gap: 0.55rem;
-      margin-top: 0.35rem;
-      margin-bottom: 1rem;
-      overflow-x: auto;
-      padding-bottom: 0.2rem;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .book-nav::-webkit-scrollbar {
-      display: none;
-    }
-
-    .book-nav-label {
-      flex: 0 0 auto;
-      padding: 0 0.2rem;
-      color: var(--ink-soft);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .step-tabs {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      flex-wrap: nowrap;
-    }
-
-    .book-head-link {
-      padding: 0.72rem 1rem;
-      white-space: nowrap;
-    }
-
-    .sheet {
-      display: none;
-      min-height: 840px;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(252, 247, 239, 0.96));
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), var(--shadow-soft);
-      padding: 1.35rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .sheet::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(24, 35, 52, 0.025) 0, rgba(24, 35, 52, 0.025) 1px, transparent 1px, transparent 60px),
-        linear-gradient(rgba(24, 35, 52, 0.02) 0, rgba(24, 35, 52, 0.02) 1px, transparent 1px, transparent 60px);
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .sheet.is-active {
-      display: block;
-    }
-
-    .sheet.is-compact {
-      min-height: 700px;
-      padding: 1rem;
-    }
-
-    .sheet.is-compact .sheet-inner {
-      gap: 0.9rem;
-    }
-
-    .sheet.is-compact .sheet-header {
-      padding-bottom: 0.65rem;
-    }
-
-    .sheet.is-compact .card {
-      padding: 0.95rem 1rem;
-    }
-
-    .sheet.is-compact-short {
-      min-height: 620px;
-    }
-
-    .sheet[data-page="3"] .sheet-grid > .card[style*="grid-column"] {
-      display: none;
-    }
-
-    .sheet[data-page="2"] .sheet-grid > .card[style*="grid-column"] {
-      display: none;
-    }
-
-    .ordered-values {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-      margin-top: 0.9rem;
-    }
-
-    .ordered-column {
-      border: 1px solid rgba(24, 35, 52, 0.08);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.72);
-      overflow: hidden;
-    }
-
-    .ordered-head {
-      padding: 0.75rem 0.9rem;
-      background: rgba(15, 142, 136, 0.08);
-      color: var(--ink);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .ordered-list {
-      display: grid;
-      gap: 0;
-    }
-
-    .ordered-value {
-      padding: 0.52rem 0.9rem;
-      border-top: 1px solid rgba(24, 35, 52, 0.06);
-      color: var(--ink-soft);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .sheet-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 1.15rem;
-      height: 100%;
-    }
-
-    .sheet-cover {
-      align-content: center;
-      justify-items: center;
-      text-align: center;
-      padding: 2.5rem 2rem;
-    }
-
-    .sheet-cover .cover-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.7rem 1rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.8);
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.1rem;
-    }
-
-    .sheet-cover h2 {
-      font-size: clamp(2.7rem, 6vw, 5.4rem);
-      max-width: 900px;
-    }
-
-    .accent {
-  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-    .sheet-cover p {
-      margin: 1.1rem auto 0;
-      max-width: 780px;
-      color: var(--ink-soft);
-      font-size: 1.06rem;
-      line-height: 1.9;
-    }
-
-    .cover-line {
-      width: min(620px, 100%);
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(24, 35, 52, 0.16) 12%, rgba(24, 35, 52, 0.16) 88%, transparent 100%);
-      margin: 1.5rem 0 0.9rem;
-    }
-
-    .sheet-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .sheet-header h3 {
-      font-size: clamp(1.45rem, 2.5vw, 2.2rem);
-    }
-
-    .sheet-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 6.2rem;
-      padding: 0.65rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.78);
-      color: var(--ink-soft);
-      font-weight: 800;
-    }
-
-    .sheet-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      align-items: start;
-    }
-
-    .card {
-      padding: 1.05rem 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.82);
-    }
-
-    .card h4 {
-      font-size: 1.02rem;
-      margin-bottom: 0.75rem;
-      color: var(--ink);
-    }
-
-    .card p,
-    .card li {
-      color: var(--ink-soft);
-      line-height: 1.75;
-      margin: 0;
-    }
-
-    .card ul,
-    .card ol {
-      margin: 0;
-      padding-left: 1.2rem;
-    }
-
-    .card li + li {
-      margin-top: 0.42rem;
-    }
-
-    .card-feature {
-      background:
-        linear-gradient(180deg, rgba(15, 142, 136, 0.06), rgba(213, 150, 67, 0.05)),
-        rgba(255, 255, 255, 0.86);
-    }
-
-    .formula {
-      display: block;
-      margin-top: 0.7rem;
-      padding: 0.9rem 1rem;
-      border-radius: var(--radius-md);
-      background: rgba(16, 24, 40, 0.96);
-      color: #eff6ff;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      overflow: auto;
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
-
-    .spread {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 1rem;
-    }
-
-    .selection-overview {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 1rem;
-    }
-
-    .selection-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .selection-table {
-      display: grid;
-      gap: 0.24rem;
-    }
-
-    .selection-head,
-    .selection-row {
-      display: grid;
-      grid-template-columns: 0.8fr 1fr 0.95fr;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .selection-head {
-      padding: 0.8rem 0.9rem;
-      border-radius: 14px;
-      background: rgba(15, 142, 136, 0.08);
-      color: var(--ink);
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .selection-row {
-      padding: 0.72rem 0.9rem;
-      border-radius: 14px;
-      color: var(--ink-soft);
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(24, 35, 52, 0.06);
-      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .selection-row:hover {
-      transform: translateY(-2px);
-      border-color: rgba(15, 142, 136, 0.22);
-      box-shadow: 0 12px 24px rgba(24, 35, 52, 0.08);
-    }
-
-    .selection-row strong {
-      color: var(--ink);
-    }
-
-    .frequency-shell {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .frequency-scroll {
-      overflow-x: auto;
-      padding-bottom: 0.2rem;
-    }
-
-    .frequency-table {
-      width: 100%;
-      min-width: 980px;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-      background: rgba(255, 255, 255, 0.72);
-      border-radius: 18px;
-      overflow: hidden;
-    }
-
-    .frequency-table thead th {
-      padding: 0.9rem 0.75rem;
-      background: rgba(15, 142, 136, 0.08);
-      color: var(--ink);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      text-align: left;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .frequency-table tbody td {
-      padding: 0.82rem 0.75rem;
-      color: var(--ink-soft);
-      border-bottom: 1px solid rgba(24, 35, 52, 0.08);
-    }
-
-    .frequency-table tbody tr:hover {
-      background: rgba(15, 142, 136, 0.05);
-    }
-
-    .frequency-table tbody td strong {
-      color: var(--ink);
-    }
-
-    .class-notes {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .class-note {
-      padding: 1rem 1.05rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.78);
-      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .class-note:hover {
-      transform: translateY(-2px);
-      border-color: rgba(15, 142, 136, 0.22);
-      box-shadow: 0 12px 24px rgba(24, 35, 52, 0.08);
-    }
-
-    .class-note h4 {
-      margin: 0 0 0.45rem;
-      font-size: 1rem;
-    }
-
-    .class-note p {
-      margin: 0;
-      color: var(--ink-soft);
-      line-height: 1.75;
-    }
-
-    .charts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      align-items: start;
-    }
-
-    .chart-card {
-      padding: 1.05rem 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.82);
-    }
-
-    .chart-card h4 {
-      margin: 0 0 0.35rem;
-      font-size: 1.02rem;
-    }
-
-    .chart-card p {
-      margin: 0 0 0.85rem;
-      color: var(--ink-soft);
-      line-height: 1.7;
-    }
-
-    .chart-stage {
-      width: 100%;
-      overflow: hidden;
-      border-radius: 18px;
-      background:
-        linear-gradient(180deg, rgba(15, 142, 136, 0.05), rgba(255, 255, 255, 0.4)),
-        rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(24, 35, 52, 0.08);
-      padding: 0.85rem;
-    }
-
-    .chart-stage svg {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .chart-stage text {
-      font-family: "Manrope", sans-serif;
-      fill: var(--ink-soft);
-      font-size: 12px;
-    }
-
-    .chart-stage .chart-title {
-      fill: var(--ink);
-      font-weight: 800;
-      font-size: 14px;
-    }
-
-    .chart-stage .value-label {
-      fill: var(--ink);
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    .chart-stage .axis-label {
-      fill: var(--ink);
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    .chart-note {
-      margin-top: 0.85rem;
-      color: var(--ink-soft);
-      line-height: 1.7;
-    }
-
-    .chart-analysis {
-      margin-top: 0.95rem;
-      padding: 0.95rem 1rem;
-      border: 1px solid rgba(24, 35, 52, 0.08);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.72);
-    }
-
-    .chart-analysis h5 {
-      margin: 0 0 0.55rem;
-      font-family: "Sora", sans-serif;
-      font-size: 0.92rem;
-      line-height: 1.2;
-      color: var(--ink);
-    }
-
-    .chart-analysis ul {
-      margin: 0;
-      padding-left: 1.15rem;
-    }
-
-    .chart-analysis li {
-      color: var(--ink-soft);
-      line-height: 1.7;
-    }
-
-    .chart-analysis li + li {
-      margin-top: 0.35rem;
-    }
-
-    .charts-carousel {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .carousel-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding: 0 0.2rem;
-    }
-
-    .carousel-head p {
-      margin: 0;
-      max-width: 760px;
-      color: var(--ink-soft);
-      line-height: 1.7;
-    }
-
-    .carousel-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .carousel-button,
-    .carousel-dot {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.82);
-      color: var(--ink);
-      transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
-      cursor: pointer;
-    }
-
-    .carousel-button {
-      width: 2.7rem;
-      height: 2.7rem;
-      border-radius: 999px;
-      font-size: 1rem;
-      font-weight: 800;
-    }
-
-    .carousel-dot {
-      width: 0.8rem;
-      height: 0.8rem;
-      border-radius: 999px;
-      padding: 0;
-    }
-
-    .carousel-button:hover,
-    .carousel-dot:hover,
-    .carousel-dot.is-active {
-      transform: translateY(-2px);
-      border-color: rgba(15, 142, 136, 0.28);
-      background: rgba(15, 142, 136, 0.14);
-    }
-
-    .carousel-status {
-      color: var(--ink-soft);
-      font-size: 0.9rem;
-      font-weight: 700;
-      min-width: 3rem;
-      text-align: center;
-    }
-
-    .carousel-viewport {
-      overflow: hidden;
-      border-radius: 24px;
-    }
-
-    .carousel-track {
-      display: flex;
-      transition: transform 0.55s ease;
-      will-change: transform;
-    }
-
-    .chart-slide {
-      min-width: 100%;
-      padding: 0.1rem;
-    }
-
-    .ojiva-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 1rem;
-      margin-top: 0.95rem;
-    }
-
-    .ojiva-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .ojiva-table th,
-    .ojiva-table td {
-      padding: 0.72rem 0.8rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(24, 35, 52, 0.08);
-      color: var(--ink-soft);
-    }
-
-    .ojiva-table th {
-      background: rgba(15, 142, 136, 0.08);
-      color: var(--ink);
-      font-size: 0.8rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .ojiva-table td strong {
-      color: var(--ink);
-    }
-
-    .study-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      align-items: start;
-    }
-
-    .study-grid.is-three {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .study-card {
-      padding: 1.05rem 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.82);
-    }
-
-    .study-card h4 {
-      margin: 0 0 0.45rem;
-      font-size: 1rem;
-    }
-
-    .study-card p,
-    .study-card li {
-      margin: 0;
-      color: var(--ink-soft);
-      line-height: 1.72;
-    }
-
-    .study-card ul {
-      margin: 0;
-      padding-left: 1.15rem;
-    }
-
-    .study-card li + li {
-      margin-top: 0.35rem;
-    }
-
-    .study-formula {
-      display: block;
-      margin: 0.7rem 0 0.75rem;
-      padding: 0.9rem 1rem;
-      border-radius: 16px;
-      background: rgba(16, 24, 40, 0.96);
-      color: #eff6ff;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.92rem;
-      line-height: 1.55;
-      overflow: auto;
-    }
-
-    .study-meta {
-      margin-top: 0.75rem;
-      display: grid;
-      gap: 0.35rem;
-    }
-
-    .study-meta span {
-      color: var(--ink-soft);
-      line-height: 1.65;
-    }
-
-    .study-result {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      margin: 0.1rem 0 0.8rem;
-      padding: 0.62rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 142, 136, 0.2);
-      background: rgba(15, 142, 136, 0.08);
-      color: var(--ink);
-      font-weight: 800;
-    }
-
-    .normal-carousel {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .normal-slide {
-      min-width: 100%;
-      padding: 0.1rem;
-    }
-
-    .normal-card {
-      padding: 1.15rem;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background:
-        linear-gradient(180deg, rgba(15, 142, 136, 0.04), rgba(255, 255, 255, 0.86)),
-        rgba(255, 255, 255, 0.84);
-      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .normal-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(15, 142, 136, 0.18);
-      box-shadow: 0 18px 34px rgba(24, 35, 52, 0.08);
-    }
-
-    .normal-card > p {
-      margin: 0.4rem 0 1rem;
-      color: var(--ink-soft);
-      line-height: 1.72;
-    }
-
-    .normal-case-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 1rem;
-      align-items: start;
-    }
-
-    .normal-math {
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .normal-stack {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .normal-stack .study-formula {
-      margin: 0;
-    }
-
-    .normal-points {
-      display: grid;
-      gap: 0.55rem;
-      margin: 0;
-      padding-left: 1.15rem;
-    }
-
-    .normal-points li {
-      color: var(--ink-soft);
-      line-height: 1.7;
-    }
-
-    .normal-interpretation {
-      margin-top: 1rem;
-      padding: 0.95rem 1rem;
-      border-radius: 18px;
-      border: 1px solid rgba(24, 35, 52, 0.08);
-      background: rgba(255, 255, 255, 0.76);
-    }
-
-    .normal-interpretation h5 {
-      margin: 0 0 0.45rem;
-      font-family: "Sora", sans-serif;
-      font-size: 0.9rem;
-      line-height: 1.2;
-    }
-
-    .normal-interpretation p {
-      margin: 0;
-      color: var(--ink-soft);
-      line-height: 1.72;
-    }
-
-    .normal-curve {
-      fill: none;
-      stroke: #182334;
-      stroke-width: 4;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .normal-axis {
-      stroke: rgba(24, 35, 52, 0.65);
-      stroke-width: 2;
-    }
-
-    .normal-guide {
-      stroke: rgba(24, 35, 52, 0.16);
-      stroke-width: 1.5;
-      stroke-dasharray: 4 5;
-    }
-
-    .normal-marker {
-      stroke: #4f86c6;
-      stroke-width: 2;
-    }
-
-    .normal-fill-primary {
-      fill: rgba(229, 182, 74, 0.72);
-    }
-
-    .normal-fill-secondary {
-      fill: rgba(116, 176, 240, 0.4);
-    }
-
-    .normal-label {
-      fill: var(--ink);
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    .normal-small {
-      fill: var(--ink-soft);
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    @media (max-width: 980px) {
-      .sheet-grid,
-      .spread,
-      .selection-overview,
-      .selection-columns,
-      .class-notes,
-      .charts-grid,
-      .ojiva-grid,
-      .normal-case-grid,
-      .study-grid,
-      .study-grid.is-three {
-        grid-template-columns: 1fr;
-      }
-
-      .book-head {
-        flex-direction: column;
-        align-items: start;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .container {
-        width: min(100% - 1rem, 1220px);
-      }
-
-      .sheet {
-        padding: 1rem;
-      }
-
-      .sheet-cover {
-        padding: 1rem;
-      }
-
-      .book-nav {
-        gap: 0.45rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./cojinetes-book.css">
 </head>
 <body>
   <main class="container">
@@ -1040,8 +26,8 @@
         </div>
 
         <div class="page-controls">
-          <button class="page-control" type="button" id="prevPage" aria-label="Hoja anterior">←</button>
-          <button class="page-control" type="button" id="nextPage" aria-label="Siguiente hoja">→</button>
+          <button class="page-control" type="button" id="prevPage" aria-label="Hoja anterior">&larr;</button>
+          <button class="page-control" type="button" id="nextPage" aria-label="Siguiente hoja">&rarr;</button>
           <a class="book-link book-head-link" href="../index.html#projects">Volver al portfolio</a>
         </div>
       </div>
@@ -1083,9 +69,9 @@
             El recorrido resume los 15 pasos del ejercicio y deja cada procedimiento explicado con formulas,
             interpretaciones y apoyo visual para seguir el analisis de principio a fin.
           </p>
-          <p style="display: none;">
+          <p class="is-hidden">
             Aplicando conceptos de estadistica descriptiva para organizar la muestra, definir el problema,
-            calcular el tamaño muestral y desarrollar el estudio paso a paso.
+            calcular el tamano muestral y desarrollar el estudio paso a paso.
           </p>
         </div>
       </article>
@@ -1105,7 +91,7 @@
               <h4>Secuencia completa del trabajo</h4>
               <ol>
                 <li>Aspectos basicos.</li>
-                <li>Tamaño de la muestra.</li>
+                <li>Tamano de la muestra.</li>
                 <li>Seleccion de la muestra.</li>
                 <li>Arreglo y presentacion de datos.</li>
                 <li>Tabla de frecuencias.</li>
@@ -1126,7 +112,7 @@
               <h4>Bloques principales</h4>
               <ul>
                 <li>Planteamiento del caso y definicion de la variable.</li>
-                <li>Diseño muestral y seleccion de la muestra.</li>
+                <li>Diseno muestral y seleccion de la muestra.</li>
                 <li>Organizacion de datos y tabla de frecuencias.</li>
                 <li>Graficos y medidas de resumen.</li>
                 <li>Intervalos de confianza y pruebas de hipotesis.</li>
@@ -1165,7 +151,7 @@
                 <li>Se clasifica la poblacion como finita.</li>
                 <li>Se establece el diametro como variable cuantitativa continua.</li>
               </ul>
-              <p style="margin-top: 0.85rem;">
+              <p class="card-copy">
                 Este punto nos ubica en el proposito del analisis: estudiar el comportamiento del diametro de
                 los cojinetes esfericos para poder organizar la muestra correctamente y preparar los calculos
                 estadisticos de las siguientes etapas.
@@ -1192,30 +178,30 @@
                 <li><strong>Nivel de confianza:</strong> 95%.</li>
                 <li><strong>Factor probabilistico:</strong> Z = 1,96.</li>
                 <li><strong>Margen de error:</strong> E = 0,1.</li>
-                <li><strong>Desviacion estandar poblacional de un estudio anterior:</strong> θ = 0,4.</li>
-                <li><strong>Tamaño de la poblacion:</strong> N = 420.</li>
+                <li><strong>Desviacion estandar poblacional de un estudio anterior:</strong> &theta; = 0,4.</li>
+                <li><strong>Tamano de la poblacion:</strong> N = 420.</li>
               </ul>
             </section>
 
             <section class="card">
               <h4>Formula desarrollada</h4>
-              <span class="formula">n = (N · Z² · θ²) / ((N - 1) · E² + Z² · θ²)</span>
-              <p style="margin-top: 0.8rem;">
+              <span class="formula">n = (N &middot; Z&sup2; &middot; &theta;&sup2;) / ((N - 1) &middot; E&sup2; + Z&sup2; &middot; &theta;&sup2;)</span>
+              <p class="card-copy compact">
                 A partir de esos valores se obtiene un resultado aproximado de <strong>53,1302816</strong>,
-                y en la hoja se deja finalmente <strong>n = 54</strong> como tamaño de muestra.
+                y en la hoja se deja finalmente <strong>n = 54</strong> como tamano de muestra.
               </p>
-              <ul style="margin-top: 0.85rem;">
+              <ul class="list-offset">
                 <li>El desarrollo de la formula produce un valor aproximado de 53,1302816.</li>
                 <li>El tamano final de la muestra se fija en 54 observaciones.</li>
                 <li>Ese valor es el que se usa en las hojas posteriores del ejercicio.</li>
               </ul>
             </section>
 
-            <section class="card" style="grid-column: 1 / -1;">
+            <section class="card span-full">
               <h4>Resultado del calculo</h4>
               <ul>
                 <li>El desarrollo de la formula produce un valor aproximado de 53,1302816.</li>
-                <li>El tamaño final de la muestra se fija en 54 observaciones.</li>
+                <li>El tamano final de la muestra se fija en 54 observaciones.</li>
                 <li>Ese valor es el que se usa en las hojas posteriores del ejercicio.</li>
               </ul>
             </section>
@@ -1255,7 +241,7 @@
 
           <div class="selection-columns">
             <section class="card">
-              <h4>Bloque 1 · Registros 1 a 27</h4>
+                <h4>Bloque 1 &middot; Registros 1 a 27</h4>
               <div class="selection-table">
                 <div class="selection-head">
                   <span>Consecutivo</span>
@@ -1293,7 +279,7 @@
             </section>
 
             <section class="card">
-              <h4>Bloque 2 · Registros 28 a 54</h4>
+                <h4>Bloque 2 &middot; Registros 28 a 54</h4>
               <div class="selection-table">
                 <div class="selection-head">
                   <span>Consecutivo</span>
@@ -1765,7 +751,7 @@
                       </svg>
                     </div>
                     <div class="ojiva-grid">
-                      <div class="chart-analysis" style="margin-top: 0;">
+                        <div class="chart-analysis flush">
                         <h5>Tabla menor que</h5>
                         <table class="ojiva-table">
                           <thead>
@@ -1782,7 +768,7 @@
                           </tbody>
                         </table>
                       </div>
-                      <div class="chart-analysis" style="margin-top: 0;">
+                        <div class="chart-analysis flush">
                         <h5>Analisis de la ojiva</h5>
                         <ul>
                           <li>El 7.4% de los cojinetes esfericos registran datos por debajo de 5.052 cm.</li>
@@ -1821,7 +807,7 @@
           <div class="study-grid is-three">
             <section class="study-card">
               <h4>La media</h4>
-              <span class="study-formula">X&#772; = Σ(FiXi) / n = 273.744 / 54 = 5.06933333</span>
+              <span class="study-formula">X&#772; = Î£(FiXi) / n = 273.744 / 54 = 5.06933333</span>
               <div class="study-result">X&#772; = 5.069 cm</div>
               <p>Es como si todos los cojinetes de la muestra hubiesen obtenido un diametro de 5.069 puntos (cm).</p>
             </section>
@@ -1936,7 +922,7 @@ P10 = 5.052 + 0.009 ((5.4 - 4) / 12)</span>
               <p class="eyebrow">Hoja 10</p>
               <h3>Paso 9: Medidas de dispersion</h3>
             </div>
-            <span class="sheet-number">RQ, s², s y CV</span>
+            <span class="sheet-number">RQ, s&sup2;, s y CV</span>
           </div>
 
           <div class="study-grid">
@@ -1950,14 +936,14 @@ RQ = 5.0776 - 5.059 = 0.0186</span>
 
             <section class="study-card">
               <h4>Varianza</h4>
-              <span class="study-formula">S² = Σ((Xi - X&#772;)² Fi) / (n - 1)</span>
-              <div class="study-result">S² = 0.00015 cm²</div>
+              <span class="study-formula">S&sup2; = &Sigma;((Xi - X&#772;)&sup2; Fi) / (n - 1)</span>
+              <div class="study-result">S&sup2; = 0.00015 cm&sup2;</div>
               <p>La varianza resume la dispersion cuadratica de los diametros respecto a la media.</p>
             </section>
 
             <section class="study-card">
               <h4>Desviacion estandar</h4>
-              <span class="study-formula">s = √S²</span>
+              <span class="study-formula">s = &radic;S&sup2;</span>
               <div class="study-result">s = 0.0124 cm</div>
               <p>La separacion entre la media y los datos medida por la desviacion estandar es de 0.0124 cm.</p>
             </section>
@@ -1994,7 +980,7 @@ As = 3 (5.069 - 5.071) / 0.0124</span>
                 <span>As &lt; 0</span>
                 <span>X&#772; &lt; X&#771; &lt; X&#770;</span>
               </div>
-              <div class="chart-stage" style="margin-top: 0.9rem;">
+              <div class="chart-stage offset-top">
                 <svg viewBox="0 0 420 220" role="img" aria-label="Curva con sesgo a la izquierda">
                   <text x="20" y="24" class="chart-title">Sesgo a la izquierda</text>
                   <line x1="48" y1="180" x2="386" y2="180" stroke="#182334" stroke-width="2"/>
@@ -2024,7 +1010,7 @@ Cu = (5.077 - 5.059) / (2 (5.087 - 5.053))</span>
               <div class="study-meta">
                 <span>Cu &gt; 0.263</span>
               </div>
-              <div class="chart-stage" style="margin-top: 0.9rem;">
+              <div class="chart-stage offset-top">
                 <svg viewBox="0 0 420 220" role="img" aria-label="Curva leptocurtica">
                   <text x="20" y="24" class="chart-title">Leptocurtica</text>
                   <line x1="48" y1="180" x2="386" y2="180" stroke="#182334" stroke-width="2"/>
@@ -2778,7 +1764,7 @@ H1: &mu; &gt; 5.060</span>
                         </div>
                       </section>
 
-                      <section class="study-card" style="grid-column: 1 / -1;">
+                      <section class="study-card span-full">
                         <h4>Grafica y estadistico</h4>
                         <div class="normal-case-grid">
                           <div class="chart-stage">
@@ -2821,7 +1807,7 @@ Si zcal &gt; z tabla se acepta H0.</span>
 Se acepta H0.</span>
                       </section>
 
-                      <section class="study-card" style="grid-column: 1 / -1;">
+                      <section class="study-card span-full">
                         <h4>Conclusion</h4>
                         <div class="study-result">A un nivel de confianza del 95% se acepta H0</div>
                         <p>A un nivel de confianza del 95% podemos creer en la hipotesis planteada.</p>
@@ -2872,7 +1858,7 @@ Muestra grande - Distribucion normal</span>
 
             <section class="study-card">
               <h4>Paso 3</h4>
-              <div class="chart-stage" style="margin-bottom: 0.9rem;">
+              <div class="chart-stage offset-bottom">
                 <svg viewBox="0 0 420 260" role="img" aria-label="Curva normal con area del valor p">
                   <line x1="42" y1="226" x2="398" y2="226" class="normal-axis"/>
                   <line x1="116" y1="226" x2="116" y2="176" class="normal-marker"/>
@@ -2904,7 +1890,7 @@ Valor-P = 0.9999</span>
 Si Valor-P &gt; &alpha;, aceptamos H0.</span>
             </section>
 
-            <section class="study-card" style="grid-column: 1 / -1;">
+            <section class="study-card span-full">
               <h4>Decision final</h4>
               <div class="study-result">Como 0.9999 &gt; 0.05, aceptamos H0</div>
               <p>La prueba queda cerrada por el enfoque del valor-P con aceptacion de la hipotesis nula.</p>
@@ -3101,3 +2087,4 @@ Si Valor-P &gt; &alpha;, aceptamos H0.</span>
   </script>
 </body>
 </html>
+

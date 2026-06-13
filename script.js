@@ -1,56 +1,37 @@
-const translations = {
+﻿const translations = {
   es: {
-    metaTitle: "Juan Sebastián Rubiano | Portafolio",
+    metaTitle: "Juan Sebastian Rubiano | Portafolio",
     metaDescription:
-      "Portafolio de Juan Sebastián Rubiano, estudiante de Ingeniería de Sistemas y tecnólogo en Desarrollo de Sistemas Informáticos. Proyectos en desarrollo web, Python, SQL, React, TypeScript, análisis de datos, machine learning, IA aplicada y realidad aumentada.",
+      "Portafolio de Juan Sebastian Rubiano, estudiante de Ingenieria de Sistemas y tecnologo en Desarrollo de Sistemas Informaticos. Proyectos en desarrollo web, Python, SQL, React, TypeScript, analisis de datos, machine learning, IA aplicada y realidad aumentada.",
     nav: {
-      menu: "Menú",
-      about: "Sobre mí",
-      skills: "Tecnologías",
+      menu: "Menu",
+      skills: "Tecnologias",
       projects: "Proyectos",
-      credentials: "Certificaciones",
+      credentials: "Formacion",
       experience: "Experiencia",
       contact: "Contacto",
     },
     hero: {
-      eyebrow: "Datos · Analítica · IA aplicada · Software",
+      eyebrow: "Ingenieria de Sistemas - Datos - IA aplicada - Software",
       title:
-        'Trabajo con <span class="accent">datos</span>, <span class="accent">analítica</span> e <span class="accent">IA aplicada</span> para convertir información en decisiones y soluciones útiles.',
+        'Convierto <span class="accent">datos</span>, <span class="accent">analitica</span> e <span class="accent">IA aplicada</span> en soluciones utiles para procesos y decisiones reales.',
       summary1:
-        "Estoy enfocado en análisis de datos, visualización, bases de datos e inteligencia artificial aplicada a procesos reales. Me interesa usar la información para ordenar operación, detectar patrones y apoyar mejores decisiones.",
+        "Soy estudiante de decimo semestre de Ingenieria de Sistemas y tecnologo en Desarrollo de Sistemas Informaticos, con foco en analisis de datos, visualizacion, bases de datos e inteligencia artificial aplicada a procesos reales.",
       summary2:
-        "Como complemento, desarrollo software web y prototipos funcionales que conectan datos, negocio y experiencia de usuario. Ese cruce se ve en proyectos como dashboards analíticos, Optica Suite y experiencias AR aplicadas al sector óptico.",
-      primaryCta: "Contactarme",
-      secondaryCta: "Ver proyectos",
-      availabilityTitle: "Disponible para prácticas, pasantías y roles junior",
+        "Complemento ese enfoque con desarrollo de software, automatizacion y prototipos funcionales que conectan negocio, operacion y experiencia de usuario. Ese cruce se refleja en proyectos como Optica Suite, dashboards analiticos y experiencias AR aplicadas al sector optico.",
+      availabilityTitle: "Disponible para practicas, pasantias y roles junior",
       availabilityBody:
-        "Busco oportunidades como analista de datos junior, practicante de ingeniería de sistemas o roles iniciales donde pueda aportar en analítica, bases de datos, automatización e inteligencia artificial aplicada, con desarrollo de software como complemento.",
-      facts: [
-        { value: "Excel · Python · SQL", label: "enfoque principal en datos" },
-        { value: "PostgreSQL · NoSQL · Tableau", label: "análisis, persistencia y visualización" },
-        { value: "C1 English · EF SET", label: "comunicación técnica y profesional" },
-      ],
-    },
-    about: {
-      eyebrow: "Sobre mí",
-      title: "Datos, criterio de negocio y desarrollo de software como complemento.",
-      intro:
-        "Mi perfil parte del trabajo con datos y se fortalece con disciplina, aprendizaje constante y contexto operativo real.",
-      paragraphs: [
-        "Estoy enfocado en trabajar con datos, analítica e inteligencia artificial aplicada para resolver problemas reales de operación. Me interesa transformar información en reportes, dashboards y criterios útiles para tomar decisiones con más claridad.",
-        "Como complemento, desarrollo software web y prototipos que conectan bases de datos, automatización, producto y experiencia de usuario. La disciplina, el ciclismo, el aprendizaje continuo y el contexto de negocio real fortalecen la forma en que trabajo.",
-      ],
-      highlights: ["Disciplina", "Ciclismo", "Aprendizaje continuo", "Inglés C1", "Criterio de negocio"],
+        "Busco oportunidades como analista de datos junior, practicante de ingenieria de sistemas o roles iniciales donde pueda aportar en analitica, bases de datos, automatizacion e inteligencia artificial aplicada, con capacidad para convertir necesidades de negocio en soluciones funcionales.",
     },
     skills: {
-      eyebrow: "Tecnologías",
-      title: "Tecnologías y herramientas con las que hoy aporto más valor.",
+      eyebrow: "Tecnologias",
+      title: "Tecnologias y herramientas con las que hoy aporto mas valor.",
       intro:
-        "Primero aparece mi foco en datos y analítica; luego el desarrollo de software, las tecnologías inmersivas y las herramientas con las que trabajo en proyectos reales.",
+        "Primero aparece mi foco en datos y analitica; luego el desarrollo de software, las tecnologias inmersivas y las herramientas con las que trabajo en proyectos reales.",
       items: [
         {
           title: "Datos e IA",
-          summary: "Excel, análisis, visualización y automatización aplicada a decisiones.",
+          summary: "Excel, analisis, visualizacion y automatizacion aplicada a decisiones.",
           accent: "#8ff0b3",
           tools: [
             { label: "Excel", icon: "fa-solid fa-file-excel", color: "#67dc92" },
@@ -76,7 +57,7 @@ const translations = {
         },
         {
           title: "AR y XR",
-          summary: "Tecnologías inmersivas para catálogos, pruebas y experiencias interactivas.",
+          summary: "Tecnologias inmersivas para catalogos, pruebas y experiencias interactivas.",
           accent: "#ffb07d",
           tools: [
             { label: "Unity", abbr: "U", color: "#f3f5fb" },
@@ -87,7 +68,7 @@ const translations = {
         },
         {
           title: "Bases de datos y herramientas",
-          summary: "Persistencia y herramientas de trabajo que uso con más frecuencia.",
+          summary: "Persistencia y herramientas de trabajo que uso con mas frecuencia.",
           accent: "#c9b4ff",
           tools: [
             { label: "SQL", abbr: "SQL", color: "#86d6ff" },
@@ -104,19 +85,94 @@ const translations = {
       eyebrow: "Proyectos destacados",
       title: "Lo primero que quiero mostrar es lo que ya he construido.",
       intro:
-        "Estos proyectos representan mejor mi perfil hoy: software operativo, visualización de datos, experiencias inmersivas y apps pensadas como producto.",
+        "Estos proyectos representan mejor mi perfil hoy: software operativo, visualizacion de datos, experiencias inmersivas y casos tecnicos aplicados.",
+      prevLabel: "Proyecto anterior",
+      nextLabel: "Proyecto siguiente",
+      carouselLabel: "Carrusel de proyectos",
+      counter: "Proyecto {current} de {total}",
       items: [
+        {
+          name: "Estadistica de cojinetes",
+          kind: "standard",
+          meta: "Python - Estadistica descriptiva",
+          title: "Caso aplicado de estadistica sobre diametros de cojinetes esfericos",
+          summary:
+            "Replica en Python de un ejercicio academico sobre una muestra de 54 cojinetes: tabla de frecuencias, percentiles, dispersion e intervalos de confianza para la desviacion estandar poblacional.",
+          bullets: [
+            "Reproduce medidas de tendencia central y posicion para datos agrupados.",
+            "Incluye varianza, desviacion estandar, coeficiente de variacion e intervalo intercuartilico.",
+            "Calcula IC del 90% y 95% para sigma usando chi-cuadrado y deja el caso documentado como pieza de portafolio.",
+          ],
+          tags: ["Python", "NumPy", "Matplotlib", "SciPy", "Chi-cuadrado", "Estadistica"],
+          links: [{ label: "Ver caso", href: "cases/cojinetes-estadistica.html" }],
+          image: "assets/projects/cojinetes-statistics-summary.png",
+          fallback: "ST",
+        },
+        {
+          name: "HR Dashboard en Tableau",
+          kind: "standard",
+          meta: "BI - Visualizacion de datos",
+          title: "Dashboard ejecutivo y detallado para analitica de recursos humanos",
+          summary:
+            "Proyecto en Tableau disenado para convertir datos de empleados en una vista util para liderazgo: headcount, empleados activos, terminaciones, distribucion por areas y evolucion de contrataciones.",
+          bullets: [
+            "Dashboard con vista summary y vista details.",
+            "Apoya decisiones de talento, rotacion, reclutamiento y distribucion del personal.",
+            "Incluye workbook, dataset, documentacion formal y mockups.",
+          ],
+          tags: ["Tableau", "Python", "CSV", "Draw.io", "Storytelling"],
+          links: [{ label: "GitHub", href: "https://github.com/Zhulgon/DashboardTableau" }],
+          image: "assets/projects/tableau-dashboard-summary.png",
+          fallback: "TB",
+        },
+        {
+          name: "Data Lake Practice",
+          kind: "standard",
+          meta: "Data engineering - En desarrollo",
+          title: "Practica de arquitectura de data lake y organizacion de pipelines analiticos",
+          summary:
+            "Repositorio en desarrollo para estructurar una base de practica en data lake, capas de datos y flujo de trabajo analitico orientado a aprendizaje aplicado.",
+          bullets: [
+            "Pensado para practicar organizacion de datos crudos, procesados y listos para consumo.",
+            "Sirve como laboratorio personal para arquitectura de datos, ETL y criterio de modelado.",
+            "Queda enlazado como proyecto activo de crecimiento en data engineering y analitica.",
+          ],
+          tags: ["Data Lake", "Python", "SQL", "ETL", "Arquitectura de datos"],
+          links: [{ label: "GitHub", href: "https://github.com/Zhulgon/DataLakePractice" }],
+          image: "assets/projects/DataLake.png",
+          fallback: "DL",
+        },
+        {
+          name: "IA y analisis de datos",
+          kind: "standard",
+          meta: "Machine learning - Exploracion",
+          title: "Machine learning, audio, simulacion y casos de analisis de datos",
+          summary:
+            "Coleccion de ejercicios y prototipos con datasets de texto, audio, imagen y video para fortalecer preparacion de datos, exploracion, entrenamiento y lectura de resultados.",
+          bullets: [
+            "Uso de Pandas, NumPy, scikit-learn y TensorFlow segun el problema.",
+            "Enfasis en limpieza, EDA y documentacion entendible de hallazgos.",
+            "Incluye casos navegables dentro del portfolio y acceso a cuadernos de Colab cuando aplica.",
+          ],
+          tags: ["Python", "Pandas", "NumPy", "scikit-learn", "TensorFlow", "EDA"],
+          links: [
+            { label: "GitHub", href: "https://github.com/Zhulgon" },
+            { label: "Ver casos", href: "cases/modelos-ml.html" },
+          ],
+          image: "assets/projects/MlCatalogo.png",
+          fallback: "ML",
+        },
         {
           name: "Optica Suite",
           kind: "featured",
-          meta: "Software operativo · Full stack",
-          title: "Suite web para la gestión comercial, clínica y logística de ópticas",
+          meta: "Software operativo - Full stack",
+          title: "Sistema integral para centralizar operacion clinica, comercial y logistica",
           summary:
-            "Sistema orientado al funcionamiento completo de una óptica: pacientes, citas, ventas, órdenes de laboratorio, cierre de caja, historias clínicas, control por roles, auditoría y reportes.",
+            "Nacio al detectar que la optica manejaba procesos aislados en Word, PDF, Excel y notas sueltas. Disene este sistema para integrar inventarios, ventas, historias clinicas, agenda de citas, sedes, usuarios por roles, auditoria y reportes en una sola plataforma.",
           bullets: [
-            "Modela procesos reales del negocio óptico con foco en trazabilidad y operación.",
-            "Arquitectura con NestJS, Prisma, PostgreSQL, React, Vite y TypeScript.",
-            "Incluye módulos críticos para clínica, ventas, laboratorio, caja y analítica comercial.",
+            "Resuelve un problema real de operacion dispersa y mejora trazabilidad, control y seguimiento.",
+            "Integra inventarios, ventas, historias clinicas, agenda de citas, sedes, roles, auditoria y reportes operativos.",
+            "Conecta software y datos para dejar informacion mas confiable, analizar el negocio y sostener mejores decisiones.",
           ],
           tags: ["NestJS", "Prisma", "PostgreSQL", "React", "Vite", "TypeScript", "Docker"],
           links: [{ label: "GitHub", href: "https://github.com/Zhulgon/optica-suite" }],
@@ -126,14 +182,14 @@ const translations = {
         {
           name: "AR Monturas",
           kind: "compact",
-          meta: "Unity · Realidad aumentada",
-          title: "Catálogo en AR con image target y face tracking para ópticas",
+          meta: "Unity - Realidad aumentada",
+          title: "Catalogo AR con face tracking disenado para una necesidad real en optica",
           summary:
-            "Aplicación móvil en Unity para Android que permite visualizar monturas en 3D, navegar referencias del catálogo y probar una experiencia experimental con face tracking.",
+            "Desarrolle este catalogo para mejorar la forma de mostrar monturas, apoyar la asesoria comercial y acercar una experiencia mas interactiva al cliente. El proyecto sigue en mejora continua con la intencion de llevarlo a una implementacion real.",
           bullets: [
-            "Reconocimiento de imagen objetivo con Vuforia.",
-            "Cambio de referencias y selección de tallas en entorno AR.",
-            "Escena adicional para prueba de montura sobre rostro con cámara frontal.",
+            "Permite visualizar monturas en 3D y navegar referencias del catalogo desde el movil.",
+            "Incluye image targets y una linea experimental con face tracking para probar monturas sobre el rostro.",
+            "Nace como extension del problema comercial y de experiencia detectado en la optica.",
           ],
           tags: ["Unity 6", "C#", "Vuforia", "AR Foundation", "ARCore", "Android"],
           links: [{ label: "GitHub", href: "https://github.com/Zhulgon/AR_Monturas" }],
@@ -141,129 +197,71 @@ const translations = {
           fallback: "AR",
         },
         {
-          name: "HR Dashboard en Tableau",
+          name: "App Finanzas + Habitos",
           kind: "standard",
-          meta: "BI · Data visualization",
-          title: "Dashboard ejecutivo y detallado para analítica de recursos humanos",
+          meta: "Mobile product - React Native",
+          title: "Aplicacion personal para habitos, finanzas y progreso gamificado",
           summary:
-            "Proyecto en Tableau diseñado para convertir datos de empleados en una vista útil para liderazgo: headcount, empleados activos, terminaciones, distribución por áreas y evolución de contrataciones.",
-          bullets: [
-            "Dashboard con vista summary y vista details.",
-            "Apoya decisiones de talento, rotación, reclutamiento y distribución del personal.",
-            "Incluye workbook, dataset, documentación formal y mockups.",
-          ],
-          tags: ["Tableau", "Python", "CSV", "Draw.io", "Storytelling"],
-          links: [{ label: "GitHub", href: "https://github.com/Zhulgon/DashboardTableau" }],
-          image: "assets/projects/tableau-dashboard-summary.png",
-        },
-        {
-          name: "App Finanzas + Hábitos",
-          kind: "standard",
-          meta: "Mobile product · React Native",
-          title: "Aplicación personal para hábitos, finanzas y progreso gamificado",
-          summary:
-            "Proyecto que mezcla organización personal, educación financiera y mecánicas de producto. Permite registrar hábitos, ingresos, gastos, metas de ahorro y progreso con capas de gamificación.",
+            "Proyecto que mezcla organizacion personal, educacion financiera y mecanicas de producto. Permite registrar habitos, ingresos, gastos, metas de ahorro y progreso con capas de gamificacion.",
           bullets: [
             "Construida con Expo, React Native, TypeScript, Zustand y persistencia local.",
             "Incluye misiones, niveles, logros, academia financiera y comparativos semanales.",
-            "Pensada como producto real, con roadmap, tests, backup y sync opcional.",
+            "Pensada como producto real, con roadmap, tests, backup y sincronizacion opcional.",
           ],
           tags: ["Expo", "React Native", "TypeScript", "Zustand", "Jest", "Product thinking"],
           links: [{ label: "GitHub", href: "https://github.com/Zhulgon/APP_Finanzas_Habitos" }],
           image: "assets/projects/finanzas-home.png",
-        },
-        {
-          name: "IA y análisis de datos",
-          kind: "standard",
-          meta: "Machine learning · Exploración",
-          title: "Modelos y ejercicios con datasets de texto, audio y video",
-          summary:
-            "Trabajo práctico para fortalecer preparación de datos, exploración, evaluación y lectura de resultados con modelos supervisados y redes neuronales básicas.",
-          bullets: [
-            "Uso de Pandas, NumPy, Scikit-learn y TensorFlow según el problema.",
-            "Énfasis en limpieza, EDA y documentación entendible de hallazgos.",
-            "Interés especial en proyectos donde IA y negocio se crucen de forma útil.",
-          ],
-          tags: ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow", "EDA"],
-          links: [{ label: "GitHub", href: "https://github.com/Zhulgon" }],
-          image: "assets/projects/MlCatalogo.png",
-          fallback: "ML",
+          fallback: "FH",
         },
       ],
     },
     credentials: {
-      eyebrow: "Certificaciones y fortalezas",
-      title: "Formación complementaria y habilidades profesionales.",
+      eyebrow: "Formacion",
+      title: "Formacion y habilidades complementarias.",
       intro:
-        "Certificaciones, cursos y fortalezas que respaldan mi perfil en tecnología, comunicación técnica y aprendizaje continuo.",
+        "Base academica, certificaciones y fortalezas que refuerzan mi perfil para datos, software e inteligencia artificial aplicada.",
       items: [
         {
-          icon: "fa-solid fa-chart-column",
-          topline: "Google · Analítica",
-          title: "Google Data Analytics y Google Advanced Data Analytics",
-          body: "Formación enfocada en limpieza de datos, análisis exploratorio, SQL, dashboards y comunicación clara de hallazgos.",
-          badges: ["Google", "Data Analytics", "SQL", "Dashboards"],
+          icon: "fa-solid fa-graduation-cap",
+          topline: "Universidad Tecnologica de Santander",
+          title: "Ingenieria de Sistemas",
+          body: "Estudiante de decimo semestre con enfoque en analisis de datos, inteligencia artificial, arquitectura de software y resolucion de problemas con criterio tecnico.",
+          badges: ["Ingenieria", "Datos", "IA", "Arquitectura"],
+        },
+        {
+          icon: "fa-solid fa-laptop-code",
+          topline: "Universidad Tecnologica de Santander",
+          title: "Tecnologo en Desarrollo de Sistemas Informaticos",
+          body: "Formacion aplicada en programacion, bases de datos, analisis de sistemas y construccion de soluciones funcionales orientadas a necesidades reales.",
+          badges: ["Programacion", "Bases de datos", "Analisis", "Soluciones reales"],
         },
         {
           icon: "fa-solid fa-certificate",
-          topline: "IBM · IA y tecnologías emergentes",
-          title: "Ruta IBM en IA, ciberseguridad, mentalidad digital y empleabilidad con IA",
-          body: "Incluye Digital Mindset, Cybersecurity Fundamentals, Explore Emerging Tech y cursos de AvanzaTec sobre IA, nuevas tecnologías y búsqueda laboral con IA.",
-          badges: ["IBM", "AI", "Cybersecurity", "Emerging Tech"],
-          link: { label: "Ver más en LinkedIn", href: "https://www.linkedin.com/in/juansrubiano" },
-        },
-        {
-          icon: "fa-solid fa-language",
-          topline: "Idiomas y fundamentos",
-          title: "EF SET C1, PCAP Python y bases web/mobile",
-          body: "Complemento la base técnica con EF SET English Certificate (C1 Advanced), PCAP: Programming Essentials in Python y cursos de Google Actívate en HTML/CSS y desarrollo de apps móviles.",
-          badges: ["C1 English", "Python", "HTML/CSS", "Mobile"],
+          topline: "Certificaciones y fortalezas",
+          title: "Google, IBM, EF SET C1, PCAP Python y aprendizaje continuo",
+          body: "Complemento mi base formal con rutas en analitica y tecnologias emergentes, certificacion C1 en ingles, fundamentos solidos en Python y una practica constante de mejora autodirigida.",
+          badges: ["Google", "IBM", "C1 English", "Python"],
+          link: { label: "Ver mas en LinkedIn", href: "https://www.linkedin.com/in/juansrubiano" },
         },
       ],
     },
     experience: {
       eyebrow: "Experiencia",
-      title: "Experiencia que mezcla operación real con construcción técnica.",
+      title: "Experiencia con contexto real, criterio de negocio y ejecucion tecnica.",
       intro:
-        "Esto es lo que más me diferencia: no vengo solo de la teoría o del aula, sino también de haber vivido problemas reales de negocio y convertirlos en soluciones.",
+        "Durante dos anos estuve al frente de una optica y ese contexto fue donde aprendi operacion, ventas, datos, automatizacion y construccion de soluciones con impacto directo.",
       items: [
         {
-          topline: "Sector óptico · 2 años",
-          title: "Propietario y administrador de óptica",
-          body: "Gestión de inventario, proveedores, flujo de caja, atención al cliente y dinámica comercial. Ese contexto fue clave para identificar necesidades reales y diseñar productos más aterrizados.",
-        },
-        {
-          topline: "Producto y desarrollo",
-          title: "Construcción de software para procesos reales",
-          body: "Desarrollo de soluciones orientadas a operación, visualización y experiencia digital, especialmente en proyectos donde el software debe resolver fricción concreta y no solo verse bien.",
-        },
-        {
-          topline: "Semillero, universidad y proyectos propios",
-          title: "Formación aplicada en datos, IA y software",
-          body: "Participación en proyectos académicos y personales de desarrollo, analítica y prototipado técnico, siempre buscando que el entregable sea demostrable y útil.",
-        },
-      ],
-    },
-    education: {
-      eyebrow: "Formación",
-      title: "Base académica y aprendizaje continuo.",
-      intro:
-        "La formación formal está respaldada por práctica constante en proyectos, documentación técnica y exploración de herramientas reales.",
-      items: [
-        {
-          topline: "Universidad Tecnológica de Santander",
-          title: "Ingeniería de Sistemas",
-          body: "Estudiante de décimo semestre con interés especial en IA, análisis de datos, arquitectura de software y construcción de productos tecnológicos.",
-        },
-        {
-          topline: "Universidad Tecnológica de Santander",
-          title: "Tecnólogo en Desarrollo de Sistemas Informáticos",
-          body: "Formación sólida en programación, análisis, bases de datos y diseño de soluciones orientadas a necesidades reales.",
-        },
-        {
-          topline: "Aprendizaje continuo",
-          title: "Exploración constante en datos, producto y software",
-          body: "Complemento la formación con proyectos propios, lectura técnica, documentación, pruebas con nuevas herramientas y mejoras iterativas sobre productos ya construidos.",
+          topline: "Sector optico - 2 anos al frente de la operacion",
+          title: "Propietario, administrador y disenador de soluciones para una optica",
+          body: "Gestione la operacion comercial y administrativa de la optica: inventario, proveedores, ventas, atencion al cliente, flujo de caja y seguimiento del negocio. Ese trabajo me dio criterio real para entender donde se pierde tiempo, donde se rompe la trazabilidad y como la tecnologia puede aportar valor de verdad.",
+          highlights: [
+            "Disene un software para integrar inventarios, ventas, historias, citas, sedes, usuarios por roles y reportes en un solo sistema.",
+            "Trabaje marketing digital y presencia comercial para mejorar alcance, comunicacion y captacion de clientes.",
+            "Realice analisis de datos sobre ventas e indicadores del negocio para apoyar decisiones mas claras y sostenibles.",
+            "Impulse un catalogo en realidad aumentada con face tracking como extension de una necesidad comercial real dentro de la optica.",
+          ],
+          closing: "Tengo experiencia, solo me falta la oportunidad de demostrarlo.",
         },
       ],
     },
@@ -271,8 +269,8 @@ const translations = {
       eyebrow: "Contacto",
       title: "Si hay una vacante o un proyecto interesante, conversemos.",
       body:
-        "Estoy abierto a prácticas profesionales, roles junior y retos donde pueda aportar en software, datos, IA aplicada o construcción de producto con criterio de negocio.",
-      formTitle: "Escríbeme desde aquí",
+        "Estoy abierto a practicas profesionales, roles junior y retos donde pueda aportar en software, datos, IA aplicada o construccion de producto con criterio de negocio.",
+      formTitle: "Escribeme desde aqui",
       formBody: "El formulario prepara un correo con tu mensaje listo para enviar.",
       name: "Nombre",
       email: "Correo",
@@ -283,11 +281,15 @@ const translations = {
     },
     footer: {
       backToTop: "Volver arriba",
-      copy: "© {year} Juan Sebastián Rubiano. Software, datos e IA con enfoque práctico.",
+      copy: "(c) {year} Juan Sebastian Rubiano. Software, datos e IA con enfoque practico.",
     },
     theme: {
       light: "Modo claro",
       dark: "Modo oscuro",
+    },
+    controls: {
+      language: "Cambiar idioma",
+      theme: "Cambiar tema",
     },
   },
   en: {
@@ -296,42 +298,23 @@ const translations = {
       "Portfolio of Juan Sebastian Rubiano, Systems Engineering student and Software Development Technologist. Projects in web development, Python, SQL, React, TypeScript, data analytics, machine learning, applied AI and augmented reality.",
     nav: {
       menu: "Menu",
-      about: "About Me",
       skills: "Technologies",
       projects: "Projects",
-      credentials: "Credentials",
+      credentials: "Education",
       experience: "Experience",
       contact: "Contact",
     },
     hero: {
-      eyebrow: "Data · Analytics · Applied AI · Software",
+      eyebrow: "Systems Engineering - Data - Applied AI - Software",
       title:
-        'I work with <span class="accent">data</span>, <span class="accent">analytics</span> and <span class="accent">applied AI</span> to turn information into useful decisions and solutions.',
+        'I turn <span class="accent">data</span>, <span class="accent">analytics</span> and <span class="accent">applied AI</span> into useful solutions for real processes and decision-making.',
       summary1:
-        "My main focus is data analysis, visualization, databases and applied AI for real workflows. I am interested in using information to organize operations, detect patterns and support better decision-making.",
+        "I am a tenth-semester Systems Engineering student and Software Development Technologist focused on data analysis, visualization, databases and applied artificial intelligence for real operational workflows.",
       summary2:
-        "As a complement, I build web software and functional prototypes that connect data, business logic and user experience. That mix appears in projects such as analytical dashboards, Optica Suite and applied AR experiences.",
-      primaryCta: "Let's talk",
-      secondaryCta: "See projects",
-      availabilityTitle: "Open to internships, entry-level and junior roles.",
+        "I complement that focus with software development, automation and functional prototypes that connect business context, operations and user experience. That mix appears in projects such as Optica Suite, analytical dashboards and applied AR experiences.",
+      availabilityTitle: "Open to internships, entry-level and junior roles",
       availabilityBody:
-        "I am looking for opportunities as a junior data analyst, systems engineering intern or early-career role where I can contribute in analytics, databases, automation and applied AI, with software development as a complement.",
-      facts: [
-        { value: "Excel · Python · SQL", label: "main data focus" },
-        { value: "PostgreSQL · NoSQL · Tableau", label: "analysis, persistence and visualization" },
-        { value: "C1 English · EF SET", label: "technical and professional communication" },
-      ],
-    },
-    about: {
-      eyebrow: "About Me",
-      title: "Data focus, business awareness and software as a complement.",
-      intro:
-        "My profile starts from working with data and is strengthened by discipline, continuous learning and real operational context.",
-      paragraphs: [
-        "I am focused on data, analytics and applied artificial intelligence to solve real operational problems. I like turning information into reports, dashboards and clearer decision-making criteria.",
-        "As a complement, I build web software and prototypes that connect databases, automation, product thinking and user experience. Discipline, cycling, continuous learning and business context shape the way I work.",
-      ],
-      highlights: ["Discipline", "Cycling", "Continuous learning", "C1 English", "Business awareness"],
+        "I am looking for opportunities as a junior data analyst, systems engineering intern or early-career contributor who can support analytics, databases, automation and applied AI while translating business needs into functional solutions.",
     },
     skills: {
       eyebrow: "Technologies",
@@ -349,11 +332,11 @@ const translations = {
             { label: "Tableau", abbr: "Tb", color: "#ffb36b" },
             { label: "Applied AI", icon: "fa-solid fa-robot", color: "#8ee6d8" },
             { label: "Dashboards", icon: "fa-solid fa-chart-column", color: "#86d6ff" },
-            { label: "ML", abbr: "ML", color: "#ffb15a" },
+            { label: "Machine Learning", abbr: "ML", color: "#ffb15a" },
           ],
         },
         {
-          title: "Software Development",
+          title: "Software development",
           summary: "Web software as a complement for turning data and processes into products.",
           accent: "#7ee0ff",
           tools: [
@@ -377,8 +360,8 @@ const translations = {
           ],
         },
         {
-          title: "Databases and Tools",
-          summary: "Persistence and day-to-day tooling I use most often.",
+          title: "Databases and tools",
+          summary: "Persistence and day-to-day tools I use most often.",
           accent: "#c9b4ff",
           tools: [
             { label: "SQL", abbr: "SQL", color: "#86d6ff" },
@@ -392,49 +375,36 @@ const translations = {
       ],
     },
     projects: {
-      eyebrow: "Featured Projects",
+      eyebrow: "Featured projects",
       title: "The first thing I want to show is what I have already built.",
       intro:
-        "These projects represent my profile best today: operational software, data visualization, immersive experiences and product-minded apps.",
+        "These projects represent my profile best today: operational software, data visualization, immersive experiences and applied technical case work.",
+      prevLabel: "Previous project",
+      nextLabel: "Next project",
+      carouselLabel: "Projects carousel",
+      counter: "Project {current} of {total}",
       items: [
         {
-          name: "Optica Suite",
-          kind: "featured",
-          meta: "Operational software · Full stack",
-          title: "Web suite for commercial, clinical and logistics workflows in optical businesses",
+          name: "Bearing statistics case",
+          kind: "standard",
+          meta: "Python - Descriptive statistics",
+          title: "Applied statistics case on spherical bearing diameters",
           summary:
-            "A system built around the complete operation of an optical store: patients, appointments, sales, lab orders, cash closing, clinical records, role-based access, audit logs and reporting.",
+            "Python recreation of an academic exercise built around a 54-item bearing sample: grouped frequencies, percentiles, dispersion metrics and confidence intervals for the population standard deviation.",
           bullets: [
-            "Models real optical business processes with traceability and operations in mind.",
-            "Built with NestJS, Prisma, PostgreSQL, React, Vite and TypeScript.",
-            "Includes critical modules for clinic, sales, lab workflow, cash management and commercial analytics.",
+            "Replicates central tendency and position measures for grouped data.",
+            "Includes variance, standard deviation, coefficient of variation and interquartile range.",
+            "Computes 90% and 95% confidence intervals for sigma with chi-square and documents the case as a portfolio piece.",
           ],
-          tags: ["NestJS", "Prisma", "PostgreSQL", "React", "Vite", "TypeScript", "Docker"],
-          links: [{ label: "GitHub", href: "https://github.com/Zhulgon/optica-suite" }],
-          video: "assets/projects/VideoOpti-suite.mp4",
-          fallback: "AR",
-        },
-        {
-          name: "AR Monturas",
-          kind: "compact",
-          meta: "Unity · Augmented reality",
-          title: "AR glasses catalog with image target recognition and face tracking",
-          summary:
-            "A Unity Android app that lets users explore 3D eyeglass models in augmented reality, browse catalog references and try an experimental face-tracking flow.",
-          bullets: [
-            "Image target recognition powered by Vuforia.",
-            "Catalog navigation plus size selection in AR.",
-            "Separate scene for trying selected frames on the face using the front camera.",
-          ],
-          tags: ["Unity 6", "C#", "Vuforia", "AR Foundation", "ARCore", "Android"],
-          links: [{ label: "GitHub", href: "https://github.com/Zhulgon/AR_Monturas" }],
-          video: "assets/projects/ar-monturas-demo.mp4",
-          fallback: "AR",
+          tags: ["Python", "NumPy", "Matplotlib", "SciPy", "Chi-square", "Statistics"],
+          links: [{ label: "View case", href: "cases/cojinetes-estadistica.html" }],
+          image: "assets/projects/cojinetes-statistics-summary.png",
+          fallback: "ST",
         },
         {
           name: "HR Dashboard in Tableau",
           kind: "standard",
-          meta: "BI · Data visualization",
+          meta: "BI - Data visualization",
           title: "Executive and detailed dashboard for HR analytics",
           summary:
             "A Tableau project designed to turn employee data into decision-ready views for leadership: headcount, active employees, terminations, department distribution and hiring trends.",
@@ -446,11 +416,83 @@ const translations = {
           tags: ["Tableau", "Python", "CSV", "Draw.io", "Storytelling"],
           links: [{ label: "GitHub", href: "https://github.com/Zhulgon/DashboardTableau" }],
           image: "assets/projects/tableau-dashboard-summary.png",
+          fallback: "TB",
+        },
+        {
+          name: "Data Lake Practice",
+          kind: "standard",
+          meta: "Data engineering - In progress",
+          title: "Practice repository for data lake architecture and analytics pipeline structure",
+          summary:
+            "An in-progress repository created to practice data lake foundations, layered data organization and analytics-oriented workflow design.",
+          bullets: [
+            "Designed to explore raw, processed and consumption-ready data layers.",
+            "Acts as a personal lab for data architecture, ETL thinking and modeling criteria.",
+            "Linked as an active growth project in data engineering and analytics.",
+          ],
+          tags: ["Data Lake", "Python", "SQL", "ETL", "Data architecture"],
+          links: [{ label: "GitHub", href: "https://github.com/Zhulgon/DataLakePractice" }],
+          image: "assets/projects/DataLake.png",
+          fallback: "DL",
+        },
+        {
+          name: "AI and data analysis",
+          kind: "standard",
+          meta: "Machine learning - Exploration",
+          title: "Machine learning, audio, simulation and data analysis cases",
+          summary:
+            "Collection of exercises and prototypes using text, audio, image and video datasets to strengthen data preparation, exploration, training and result interpretation.",
+          bullets: [
+            "Uses Pandas, NumPy, scikit-learn and TensorFlow depending on the problem.",
+            "Strong focus on cleaning, EDA and understandable documentation of findings.",
+            "Includes navigable portfolio cases and Colab access when a public notebook is available.",
+          ],
+          tags: ["Python", "Pandas", "NumPy", "scikit-learn", "TensorFlow", "EDA"],
+          links: [
+            { label: "GitHub", href: "https://github.com/Zhulgon" },
+            { label: "View cases", href: "cases/modelos-ml.html" },
+          ],
+          image: "assets/projects/MlCatalogo.png",
+          fallback: "ML",
+        },
+        {
+          name: "Optica Suite",
+          kind: "featured",
+          meta: "Operational software - Full stack",
+          title: "Integrated system to centralize clinical, commercial and logistics workflows",
+          summary:
+            "It started after identifying that the optical business was running processes separately across Word files, PDFs, Excel sheets and loose notes. I designed this system to unify inventory, sales, clinical records, appointments, branches, role-based users, audit tracking and reporting in one platform.",
+          bullets: [
+            "Solves a real fragmented-operations problem and improves traceability, control and follow-up.",
+            "Integrates inventory, sales, clinical records, appointment scheduling, branches, role-based access, audit trails and operational reports.",
+            "Connects software and data to produce more reliable information, analyze business performance and support better decisions.",
+          ],
+          tags: ["NestJS", "Prisma", "PostgreSQL", "React", "Vite", "TypeScript", "Docker"],
+          links: [{ label: "GitHub", href: "https://github.com/Zhulgon/optica-suite" }],
+          video: "assets/projects/VideoOpti-suite.mp4",
+          fallback: "OS",
+        },
+        {
+          name: "AR Monturas",
+          kind: "compact",
+          meta: "Unity - Augmented reality",
+          title: "AR catalog with face tracking designed for a real optical retail need",
+          summary:
+            "I built this catalog to improve how optical frames are presented, support the sales process and bring a more interactive experience to customers. The project is still under continuous improvement with the intention of becoming a real implementation.",
+          bullets: [
+            "Allows users to visualize 3D frames and browse catalog references from mobile devices.",
+            "Includes image targets and an experimental face-tracking flow for virtual frame try-on.",
+            "It was created as an extension of a real commercial and customer-experience problem inside the optical business.",
+          ],
+          tags: ["Unity 6", "C#", "Vuforia", "AR Foundation", "ARCore", "Android"],
+          links: [{ label: "GitHub", href: "https://github.com/Zhulgon/AR_Monturas" }],
+          video: "assets/projects/ar-monturas-demo.mp4",
+          fallback: "AR",
         },
         {
           name: "Habits + Finance App",
           kind: "standard",
-          meta: "Mobile product · React Native",
+          meta: "Mobile product - React Native",
           title: "Personal app for habits, finance tracking and gamified progress",
           summary:
             "A product-oriented app that mixes personal organization, financial education and game mechanics. It helps users track habits, income, expenses, savings goals and personal progress.",
@@ -462,104 +504,63 @@ const translations = {
           tags: ["Expo", "React Native", "TypeScript", "Zustand", "Jest", "Product thinking"],
           links: [{ label: "GitHub", href: "https://github.com/Zhulgon/APP_Finanzas_Habitos" }],
           image: "assets/projects/finanzas-home.png",
-        },
-        {
-          name: "AI and data analysis",
-          kind: "standard",
-          meta: "Machine learning · Exploration",
-          title: "Practical ML exercises with text, audio and video datasets",
-          summary:
-            "Hands-on work to strengthen data preparation, exploration, evaluation and result interpretation using supervised models and basic neural networks.",
-          bullets: [
-            "Uses Pandas, NumPy, Scikit-learn and TensorFlow depending on the problem.",
-            "Strong focus on cleaning, EDA and understandable documentation of findings.",
-            "Especially interested in projects where AI and business value connect in a useful way.",
-          ],
-          tags: ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow", "EDA"],
-          links: [{ label: "GitHub", href: "https://github.com/Zhulgon" }],
-          fallback: "ML",
+          fallback: "FH",
         },
       ],
     },
     credentials: {
-      eyebrow: "Credentials",
-      title: "Complementary training and professional strengths.",
+      eyebrow: "Education",
+      title: "Education and complementary strengths.",
       intro:
-        "Certifications, courses and strengths that support my profile in technology, technical communication and continuous learning.",
+        "Academic foundation, certifications and strengths that reinforce my profile across data, software and applied artificial intelligence.",
       items: [
         {
-          icon: "fa-solid fa-chart-column",
-          topline: "Google · Analytics",
-          title: "Google Data Analytics and Google Advanced Data Analytics",
-          body: "Training focused on data cleaning, exploratory analysis, SQL, dashboards and clear communication of findings.",
-          badges: ["Google", "Data Analytics", "SQL", "Dashboards"],
+          icon: "fa-solid fa-graduation-cap",
+          topline: "Universidad Tecnologica de Santander",
+          title: "Systems Engineering",
+          body: "Tenth-semester student focused on data analysis, artificial intelligence, software architecture and technical problem-solving with business awareness.",
+          badges: ["Engineering", "Data", "AI", "Architecture"],
+        },
+        {
+          icon: "fa-solid fa-laptop-code",
+          topline: "Universidad Tecnologica de Santander",
+          title: "Software Development Technologist",
+          body: "Applied training in programming, databases, systems analysis and the delivery of functional solutions built for real operational needs.",
+          badges: ["Programming", "Databases", "Analysis", "Real solutions"],
         },
         {
           icon: "fa-solid fa-certificate",
-          topline: "IBM · AI and emerging tech",
-          title: "IBM pathway in AI, cybersecurity, digital mindset and AI-assisted employability",
-          body: "Includes Digital Mindset, Cybersecurity Fundamentals, Explore Emerging Tech and AvanzaTec courses related to AI, new technologies and job search with AI.",
-          badges: ["IBM", "AI", "Cybersecurity", "Emerging Tech"],
+          topline: "Credentials and strengths",
+          title: "Google, IBM, EF SET C1, PCAP Python and continuous learning",
+          body: "I strengthen my formal education with analytics and emerging-tech pathways, C1 English certification, solid Python foundations and a consistent habit of self-directed improvement.",
+          badges: ["Google", "IBM", "C1 English", "Python"],
           link: { label: "See more on LinkedIn", href: "https://www.linkedin.com/in/juansrubiano" },
-        },
-        {
-          icon: "fa-solid fa-language",
-          topline: "Language and foundations",
-          title: "EF SET C1, PCAP Python and web/mobile fundamentals",
-          body: "I complement my technical base with EF SET English Certificate (C1 Advanced), PCAP: Programming Essentials in Python and Google Activate courses in HTML/CSS and mobile app development.",
-          badges: ["C1 English", "Python", "HTML/CSS", "Mobile"],
         },
       ],
     },
     experience: {
       eyebrow: "Experience",
-      title: "Experience that blends real operations with technical execution.",
+      title: "Experience grounded in real operations, business judgment and technical execution.",
       intro:
-        "This is one of my strongest differentiators: I am not coming only from theory or coursework, but also from living business problems and turning them into solutions.",
+        "For two years I was in charge of an optical business, and that environment is where I learned operations, sales, data thinking, automation and solution-building with direct impact.",
       items: [
         {
-          topline: "Optical sector · 2 years",
-          title: "Optical business owner and administrator",
-          body: "Managed inventory, suppliers, cash flow, customer service and commercial operations. That context helped me spot real bottlenecks and design more grounded software.",
-        },
-        {
-          topline: "Product and development",
-          title: "Building software for real workflows",
-          body: "Worked on solutions focused on operations, analytics and digital experience, especially where software must solve real friction instead of only looking polished.",
-        },
-        {
-          topline: "University, research group and personal projects",
-          title: "Applied training in data, AI and software",
-          body: "Worked on academic and personal projects across software development, analytics and technical prototyping, always trying to keep deliverables demonstrable and useful.",
-        },
-      ],
-    },
-    education: {
-      eyebrow: "Education",
-      title: "Academic foundation and continuous learning.",
-      intro:
-        "Formal studies are reinforced with constant project work, technical reading, documentation and exploration of real tools.",
-      items: [
-        {
-          topline: "Universidad Tecnológica de Santander",
-          title: "Systems Engineering",
-          body: "Tenth-semester student with strong interest in AI, data analysis, software architecture and digital product building.",
-        },
-        {
-          topline: "Universidad Tecnológica de Santander",
-          title: "Software Development Technologist",
-          body: "Solid foundation in programming, systems analysis, databases and real-world solution design.",
-        },
-        {
-          topline: "Continuous learning",
-          title: "Ongoing exploration in data, product and software",
-          body: "I complement formal education with personal projects, technical reading, documentation, experimentation and iterative improvement of the products I build.",
+          topline: "Optical sector - 2 years leading operations",
+          title: "Owner, administrator and solution designer for an optical business",
+          body: "I managed the commercial and administrative side of the business: inventory, suppliers, sales, customer service, cash flow and overall operational follow-up. That work gave me real judgment about where time is lost, where traceability breaks and how technology can create practical value.",
+          highlights: [
+            "Designed software to unify inventory, sales, records, appointments, branches, role-based users and reporting in one system.",
+            "Handled digital marketing and commercial visibility to improve reach, communication and customer acquisition.",
+            "Worked with sales and business indicators to support clearer and more sustainable decisions through data analysis.",
+            "Pushed an augmented reality catalog with face tracking as an extension of a real commercial need inside the optical business.",
+          ],
+          closing: "I already have experience. What I need now is the opportunity to prove it.",
         },
       ],
     },
     contact: {
       eyebrow: "Contact",
-      title: "If there is an interesting role or project, let's talk.",
+      title: "If there is an interesting role or project, lets talk.",
       body:
         "I am open to internships, junior roles and challenges where I can contribute across software, data, applied AI or product building with business context.",
       formTitle: "Write from here",
@@ -573,470 +574,34 @@ const translations = {
     },
     footer: {
       backToTop: "Back to top",
-      copy: "© {year} Juan Sebastian Rubiano. Software, data and AI with practical focus.",
+      copy: "(c) {year} Juan Sebastian Rubiano. Software, data and AI with practical focus.",
     },
     theme: {
       light: "Light mode",
       dark: "Dark mode",
     },
+    controls: {
+      language: "Switch language",
+      theme: "Switch theme",
+    },
   },
 };
-
-const dataLakeProjectEs = {
-  name: "Data Lake Practice",
-  kind: "standard",
-  meta: "Data engineering · En desarrollo",
-  title: "Práctica de arquitectura de data lake y organización de pipelines analíticos",
-  summary:
-    "Repositorio en desarrollo para estructurar una base de práctica en data lake, capas de datos y flujo de trabajo analítico orientado a aprendizaje aplicado.",
-  bullets: [
-    "Pensado para practicar organización de datos crudos, procesados y listos para consumo.",
-    "Sirve como laboratorio personal para arquitectura de datos, ETL y criterio de modelado.",
-    "Queda enlazado como proyecto activo de crecimiento en data engineering y analítica.",
-  ],
-  tags: ["Data Lake", "Python", "SQL", "ETL", "Arquitectura de datos"],
-  links: [{ label: "GitHub", href: "https://github.com/Zhulgon/DataLakePractice" }],
-  image: "assets/projects/DataLake.png",
-  fallback: "DL",
-};
-
-const dataLakeProjectEn = {
-  name: "Data Lake Practice",
-  kind: "standard",
-  meta: "Data engineering · In progress",
-  title: "Practice repository for data lake architecture and analytics pipeline structure",
-  summary:
-    "An in-progress repository created to practice data lake foundations, layered data organization and analytics-oriented workflow design.",
-  bullets: [
-    "Designed to explore raw, processed and consumption-ready data layers.",
-    "Acts as a personal lab for data architecture, ETL thinking and modeling criteria.",
-    "Linked as an active growth project in data engineering and analytics.",
-  ],
-  tags: ["Data Lake", "Python", "SQL", "ETL", "Data Architecture"],
-  links: [{ label: "GitHub", href: "https://github.com/Zhulgon/DataLakePractice" }],
-  image: "assets/projects/DataLake.png",
-  fallback: "DL",
-};
-
-const bearingStatsProjectEs = {
-  name: "Estadistica de cojinetes",
-  kind: "standard",
-  meta: "Python · Estadistica descriptiva",
-  title: "Caso aplicado de estadistica sobre diametros de cojinetes esfericos",
-  summary:
-    "Replica en Python de un ejercicio academico sobre una muestra de 54 cojinetes: tabla de frecuencias, percentiles, dispersion e intervalos de confianza para la desviacion estandar poblacional.",
-  bullets: [
-    "Reproduce medidas de tendencia central y posicion para datos agrupados.",
-    "Incluye varianza, desviacion estandar, coeficiente de variacion e intervalo intercuartilico.",
-    "Calcula IC del 90% y 95% para sigma usando chi-cuadrado y deja el caso documentado como pieza de portafolio.",
-  ],
-  tags: ["Python", "NumPy", "Matplotlib", "SciPy", "Chi-cuadrado", "Estadistica"],
-  links: [{ label: "Ver caso", href: "cases/cojinetes-estadistica.html" }],
-  image: "assets/projects/cojinetes-statistics-summary.png",
-};
-
-const bearingStatsProjectEn = {
-  name: "Bearing statistics case",
-  kind: "standard",
-  meta: "Python · Descriptive statistics",
-  title: "Applied statistics case on spherical bearing diameters",
-  summary:
-    "Python recreation of an academic exercise built around a 54-item bearing sample: grouped frequencies, percentiles, dispersion metrics and confidence intervals for the population standard deviation.",
-  bullets: [
-    "Replicates central tendency and position measures for grouped data.",
-    "Includes variance, standard deviation, coefficient of variation and interquartile range.",
-    "Computes 90% and 95% confidence intervals for sigma with chi-square and documents the case as a portfolio piece.",
-  ],
-  tags: ["Python", "NumPy", "Matplotlib", "SciPy", "Chi-square", "Statistics"],
-  links: [{ label: "View case", href: "cases/cojinetes-estadistica.html" }],
-  image: "assets/projects/cojinetes-statistics-summary.png",
-};
-
-function upsertProjectBefore(items, project, targetName) {
-  const existingIndex = items.findIndex((item) => item.name === project.name);
-  if (existingIndex >= 0) {
-    items.splice(existingIndex, 1, project);
-    return;
-  }
-
-  const targetIndex = items.findIndex((item) => item.name === targetName);
-  if (targetIndex >= 0) {
-    items.splice(targetIndex, 0, project);
-    return;
-  }
-
-  items.push(project);
-}
-
-Object.assign(translations.es.hero, {
-  eyebrow: "Ingeniería de Sistemas · Datos · IA aplicada · Software",
-  title:
-    'Convierto <span class="accent">datos</span>, <span class="accent">analítica</span> e <span class="accent">IA aplicada</span> en soluciones útiles para procesos y decisiones reales.',
-  summary1:
-    "Soy estudiante de décimo semestre de Ingeniería de Sistemas y tecnólogo en Desarrollo de Sistemas Informáticos, con foco en análisis de datos, visualización, bases de datos e inteligencia artificial aplicada a procesos reales.",
-  summary2:
-    "Complemento ese enfoque con desarrollo de software, automatización y prototipos funcionales que conectan negocio, operación y experiencia de usuario. Ese cruce se refleja en proyectos como Optica Suite, dashboards analíticos y experiencias AR aplicadas al sector óptico.",
-  availabilityTitle: "Disponible para prácticas, pasantías y roles junior",
-  availabilityBody:
-    "Busco oportunidades como analista de datos junior, practicante de ingeniería de sistemas o roles iniciales donde pueda aportar en analítica, bases de datos, automatización e inteligencia artificial aplicada, con capacidad para convertir necesidades de negocio en soluciones funcionales.",
-  facts: [
-    { value: "Perfil de datos", label: "Excel · Python · SQL · Tableau · Power BI · AWS · NoSQL" },
-    { value: "Perfil de software", label: "JavaScript · TypeScript · React · Node.js · NestJS · APIs REST" },
-    { value: "C1 English · EF SET", label: "" },
-  ],
-});
-
-Object.assign(translations.en.hero, {
-  eyebrow: "Systems Engineering · Data · Applied AI · Software",
-  title:
-    'I turn <span class="accent">data</span>, <span class="accent">analytics</span> and <span class="accent">applied AI</span> into useful solutions for real processes and decision-making.',
-  summary1:
-    "I am a tenth-semester Systems Engineering student and Software Development Technologist focused on data analysis, visualization, databases and applied artificial intelligence for real operational workflows.",
-  summary2:
-    "I complement that focus with software development, automation and functional prototypes that connect business context, operations and user experience. That mix appears in projects such as Optica Suite, analytical dashboards and applied AR experiences.",
-  availabilityBody:
-    "I am looking for opportunities as a junior data analyst, systems engineering intern or early-career contributor who can support analytics, databases, automation and applied AI while translating business needs into functional solutions.",
-  facts: [
-    { value: "Data profile", label: "Excel · Python · SQL · Tableau · Power BI · AWS · NoSQL" },
-    { value: "Software profile", label: "JavaScript · TypeScript · React · Node.js · NestJS · REST APIs" },
-    { value: "C1 English · EF SET", label: "" },
-  ],
-});
-
-Object.assign(translations.es.projects, {
-  prevLabel: "Proyecto anterior",
-  nextLabel: "Proyecto siguiente",
-  carouselLabel: "Carrusel de proyectos",
-  counter: "Proyecto {current} de {total}",
-});
-
-Object.assign(translations.en.projects, {
-  prevLabel: "Previous project",
-  nextLabel: "Next project",
-  carouselLabel: "Projects carousel",
-  counter: "Project {current} of {total}",
-});
-
-upsertProjectBefore(translations.es.projects.items, dataLakeProjectEs, "App Finanzas + Hábitos");
-upsertProjectBefore(translations.en.projects.items, dataLakeProjectEn, "Habits + Finance App");
-upsertProjectBefore(translations.es.projects.items, bearingStatsProjectEs, "Data Lake Practice");
-upsertProjectBefore(translations.en.projects.items, bearingStatsProjectEn, "Data Lake Practice");
-
-function updateProject(items, projectName, updates) {
-  const project = items.find((item) => item.name === projectName);
-  if (!project) {
-    return;
-  }
-
-  Object.assign(project, updates);
-}
-
-function reorderProjects(items, orderedNames) {
-  const ordered = [];
-  const used = new Set();
-
-  orderedNames.forEach((name) => {
-    const project = items.find((item) => item.name === name);
-    if (project) {
-      ordered.push(project);
-      used.add(name);
-    }
-  });
-
-  items.forEach((item) => {
-    if (!used.has(item.name)) {
-      ordered.push(item);
-    }
-  });
-
-  items.splice(0, items.length, ...ordered);
-}
-
-Object.assign(translations.es.hero, {
-  title:
-    'Transformo <span class="accent">datos</span>, <span class="accent">analítica</span> e <span class="accent">IA aplicada</span> en soluciones nacidas de problemas reales de operación.',
-  summary2:
-    "Ese enfoque nació en mi óptica, donde al comienzo la operación estaba dispersa entre Word, PDF, Excel y notas aisladas. A partir de ese problema diseñé software, dashboards y experiencias AR para integrar información, analizar ventas y mejorar la experiencia del cliente en un solo ecosistema.",
-  availabilityBody:
-    "Busco oportunidades como analista de datos junior, practicante de ingeniería de sistemas o roles iniciales donde pueda aportar en analítica, visualización, bases de datos, automatización e inteligencia artificial aplicada, usando el desarrollo de software como complemento para convertir necesidades de negocio en soluciones funcionales.",
-});
-
-Object.assign(translations.en.hero, {
-  title:
-    'I turn <span class="accent">data</span>, <span class="accent">analytics</span> and <span class="accent">applied AI</span> into solutions born from real operational problems.',
-  summary2:
-    "That focus started in my optical business, where operations were initially scattered across Word files, PDFs, Excel sheets and isolated notes. From that problem I designed software, dashboards and AR experiences to integrate information, analyze sales and improve customer experience in a single ecosystem.",
-  availabilityBody:
-    "I am looking for opportunities as a junior data analyst, systems engineering intern or early-career contributor who can support analytics, visualization, databases, automation and applied AI, using software development as a complement to turn business needs into functional solutions.",
-});
-
-Object.assign(translations.es.projects, {
-  title: "Datos, operación real y software construidos desde un problema concreto.",
-  intro:
-    "Mi trabajo no salió de ejercicios aislados: nació de la necesidad de ordenar la operación de mi óptica, integrar información, analizar ventas y diseñar mejores experiencias para clientes y equipo.",
-});
-
-Object.assign(translations.en.projects, {
-  title: "Data, real operations and software built from a concrete business problem.",
-  intro:
-    "My work did not come only from isolated exercises: it started from the need to organize my optical business operations, integrate information, analyze sales and design better experiences for customers and staff.",
-});
-
-updateProject(translations.es.projects.items, "Optica Suite", {
-  meta: "Software operativo · Datos · Full stack",
-  title: "Sistema integral para centralizar la operación de una óptica en un solo entorno",
-  summary:
-    "Nació al detectar que la óptica manejaba procesos aislados en Word, PDF, Excel y notas sueltas. Diseñé este sistema para integrar inventarios, ventas, historias, agenda de citas, sedes, usuarios por roles y reportes en una sola plataforma.",
-  bullets: [
-    "Resuelve un problema real de operación dispersa y mejora trazabilidad, control y seguimiento.",
-    "Integra inventarios, ventas, historias clínicas, agenda de citas, sedes, roles y reportes operativos.",
-    "Conecta software y datos para dejar información más confiable y facilitar decisiones dentro del negocio.",
-  ],
-});
-
-updateProject(translations.en.projects.items, "Optica Suite", {
-  meta: "Operational software · Data · Full stack",
-  title: "Integrated system to centralize optical business operations in a single environment",
-  summary:
-    "It started after identifying that the optical business was running processes separately across Word files, PDFs, Excel sheets and loose notes. I designed this system to unify inventory, sales, records, appointments, branches, role-based users and reporting in one platform.",
-  bullets: [
-    "Solves a real fragmented-operations problem and improves traceability, control and follow-up.",
-    "Integrates inventory, sales, clinical records, appointment scheduling, branches, role-based access and operational reports.",
-    "Connects software and data to produce more reliable information and better business decisions.",
-  ],
-});
-
-updateProject(translations.es.projects.items, "AR Monturas", {
-  meta: "Unity · AR aplicada al negocio",
-  title: "Catálogo en AR con face tracking pensado para una experiencia real de óptica",
-  summary:
-    "Desarrollé este catálogo para mejorar la forma de mostrar monturas y acercar una experiencia más interactiva al cliente. El proyecto sigue en mejora continua con la intención de llevarlo a una implementación real.",
-  bullets: [
-    "Permite visualizar monturas en 3D y navegar referencias del catálogo desde el móvil.",
-    "Incluye image targets y una línea experimental con face tracking para probar monturas sobre el rostro.",
-    "Nace como extensión del problema comercial y de experiencia que ya había detectado en la óptica.",
-  ],
-});
-
-updateProject(translations.en.projects.items, "AR Monturas", {
-  meta: "Unity · Business-oriented AR",
-  title: "AR catalog with face tracking designed for a real optical retail experience",
-  summary:
-    "I built this catalog to improve how optical frames are presented and to bring a more interactive experience to customers. The project is still under continuous improvement with the intention of becoming a real implementation.",
-  bullets: [
-    "Allows users to visualize 3D frames and browse catalog references from mobile devices.",
-    "Includes image targets and an experimental face-tracking flow for virtual frame try-on.",
-    "It was created as an extension of the commercial and customer-experience problem I had already identified in the optical business.",
-  ],
-});
-
-updateProject(translations.es.projects.items, "HR Dashboard en Tableau", {
-  summary:
-    "Proyecto en Tableau que fortaleció mi forma de convertir datos en visualizaciones útiles para toma de decisiones, storytelling y lectura ejecutiva de indicadores.",
-});
-
-updateProject(translations.en.projects.items, "HR Dashboard in Tableau", {
-  summary:
-    "A Tableau project that strengthened my ability to turn data into useful visualizations for decision-making, storytelling and executive KPI reading.",
-});
-
-updateProject(translations.es.projects.items, "IA y análisis de datos", {
-  title: "Ejercicios y prototipos de machine learning con datasets de texto, audio y video",
-  summary:
-    "Trabajo práctico para fortalecer limpieza de datos, EDA, preparación de datasets y evaluación de modelos supervisados, redes neuronales básicas y experimentos con IA aplicada.",
-});
-
-updateProject(translations.en.projects.items, "AI and data analysis", {
-  title: "Machine learning exercises and prototypes with text, audio and video datasets",
-  summary:
-    "Hands-on work to strengthen data cleaning, EDA, dataset preparation and evaluation of supervised models, basic neural networks and applied AI experimentation.",
-});
-
-updateProject(translations.es.projects.items, "IA y anÃ¡lisis de datos", {
-  links: [
-    { label: "GitHub", href: "https://github.com/Zhulgon" },
-    { label: "Ver casos", href: "cases/modelos-ml.html" },
-  ],
-});
-
-updateProject(translations.en.projects.items, "AI and data analysis", {
-  links: [
-    { label: "GitHub", href: "https://github.com/Zhulgon" },
-    { label: "View cases", href: "cases/modelos-ml.html" },
-  ],
-});
-
-updateProject(translations.es.projects.items, "IA y anÃ¡lisis de datos", {
-  links: [
-    { label: "GitHub", href: "https://github.com/Zhulgon" },
-    { label: "Ver casos", href: "cases/modelos-ml.html" },
-  ],
-});
-
-reorderProjects(translations.es.projects.items, [
-  "Estadistica de cojinetes",
-  "HR Dashboard en Tableau",
-  "Data Lake Practice",
-  "IA y análisis de datos",
-  "Optica Suite",
-  "AR Monturas",
-  "App Finanzas + Hábitos",
-]);
-
-reorderProjects(translations.en.projects.items, [
-  "Bearing statistics case",
-  "HR Dashboard in Tableau",
-  "Data Lake Practice",
-  "AI and data analysis",
-  "Optica Suite",
-  "AR Monturas",
-  "Habits + Finance App",
-]);
-
-Object.assign(translations.es.experience, {
-  title: "Experiencia real de negocio convertida en datos, criterio y soluciones.",
-  intro:
-    "Haber sido dueño de una óptica no es un detalle secundario en mi perfil: fue el contexto donde aprendí operación, ventas, inventario, seguimiento y valor real de la información para decidir mejor.",
-  items: [
-    {
-      topline: "Sector óptico · 2 años",
-      title: "Propietario y administrador de óptica",
-      body: "Aprendí a gestionar inventario, proveedores, flujo de caja, ventas, atención al cliente y dinámica comercial. Esa experiencia me dio criterio operativo real y una visión clara de cómo los datos sí pueden generar valor cuando están bien organizados.",
-    },
-    {
-      topline: "Problema real convertido en producto",
-      title: "Diseño de soluciones para integrar operación, reportes y experiencia",
-      body: "Al detectar que la información estaba dispersa entre Word, PDF, Excel y notas aisladas, decidí diseñar un software para centralizar la operación, habilitar reportes, analizar ventas y sostener decisiones más confiables.",
-    },
-    {
-      topline: "Innovación aplicada en la óptica",
-      title: "Dashboard, software y AR como parte de una misma mejora continua",
-      body: "A partir de la operación real desarrollé un sistema integral, analicé información con dashboards y diseñé un catálogo en AR con face tracking para mejorar la experiencia de las monturas. Mi intención es seguir llevándolo hacia una solución real y madura.",
-    },
-  ],
-});
-
-Object.assign(translations.en.experience, {
-  title: "Real business experience turned into data, judgment and solutions.",
-  intro:
-    "Being the owner of an optical business is not a side detail in my profile: it was the environment where I learned operations, sales, inventory, follow-up and the real value of information for better decisions.",
-  items: [
-    {
-      topline: "Optical sector · 2 years",
-      title: "Optical business owner and administrator",
-      body: "I learned to manage inventory, suppliers, cash flow, sales, customer service and commercial operations. That experience gave me real operational judgment and a clear view of how data creates value when it is properly organized.",
-    },
-    {
-      topline: "Real problem turned into product",
-      title: "Designing solutions to integrate operations, reporting and experience",
-      body: "After identifying that information was scattered across Word files, PDFs, Excel sheets and isolated notes, I decided to design software that could centralize operations, enable reporting, analyze sales and support more reliable decision-making.",
-    },
-    {
-      topline: "Applied innovation in optical retail",
-      title: "Dashboard, software and AR as part of the same continuous improvement effort",
-      body: "From the real operation I developed an integrated system, worked with dashboards to analyze information and designed an AR catalog with face tracking to improve the frame experience. My goal is to keep evolving it into a real and mature solution.",
-    },
-  ],
-});
-
-Object.assign(translations.es.hero, {
-  summary2:
-    "Ese enfoque nació en mi óptica, donde al comienzo la operación estaba dispersa entre Word, PDF, Excel y notas aisladas. A partir de ese problema diseñé software, dashboards y experiencias AR para integrar información, analizar ventas, ordenar procesos y mejorar la experiencia del cliente dentro de un mismo ecosistema.",
-});
-
-Object.assign(translations.en.hero, {
-  summary2:
-    "That focus started in my optical business, where operations were initially scattered across Word files, PDFs, Excel sheets and isolated notes. From that problem I designed software, dashboards and AR experiences to integrate information, analyze sales, organize workflows and improve customer experience inside one ecosystem.",
-});
-
-updateProject(translations.es.projects.items, "Optica Suite", {
-  summary:
-    "Nació al detectar que la óptica manejaba procesos aislados en Word, PDF, Excel y notas sueltas. Diseñé este sistema para integrar inventarios, ventas, historias clínicas, agenda de citas, sedes, usuarios por roles, auditoría y reportes en una sola plataforma.",
-  bullets: [
-    "Resuelve un problema real de operación dispersa y mejora trazabilidad, control y seguimiento.",
-    "Integra inventarios, ventas, historias clínicas, agenda de citas, sedes, roles, auditoría y reportes operativos.",
-    "Conecta software y datos para dejar información más confiable, analizar el negocio y sostener mejores decisiones.",
-  ],
-});
-
-updateProject(translations.en.projects.items, "Optica Suite", {
-  summary:
-    "It started after identifying that the optical business was running processes separately across Word files, PDFs, Excel sheets and loose notes. I designed this system to unify inventory, sales, clinical records, appointments, branches, role-based users, audit tracking and reporting in one platform.",
-  bullets: [
-    "Solves a real fragmented-operations problem and improves traceability, control and follow-up.",
-    "Integrates inventory, sales, clinical records, appointment scheduling, branches, role-based access, audit trails and operational reports.",
-    "Connects software and data to produce more reliable information, analyze business performance and support better decisions.",
-  ],
-});
-
-updateProject(translations.es.projects.items, "AR Monturas", {
-  summary:
-    "Desarrollé este catálogo para mejorar la forma de mostrar monturas, apoyar la asesoría comercial y acercar una experiencia más interactiva al cliente. El proyecto sigue en mejora continua con la intención de llevarlo a una implementación real.",
-  bullets: [
-    "Permite visualizar monturas en 3D y navegar referencias del catálogo desde el móvil.",
-    "Incluye image targets y una línea experimental con face tracking para probar monturas sobre el rostro.",
-    "Nace como extensión del problema comercial y de experiencia que ya había detectado en la óptica al buscar una forma más útil de presentar el catálogo.",
-  ],
-});
-
-updateProject(translations.en.projects.items, "AR Monturas", {
-  summary:
-    "I built this catalog to improve how optical frames are presented, support the sales process and bring a more interactive experience to customers. The project is still under continuous improvement with the intention of becoming a real implementation.",
-  bullets: [
-    "Allows users to visualize 3D frames and browse catalog references from mobile devices.",
-    "Includes image targets and an experimental face-tracking flow for virtual frame try-on.",
-    "It was created as an extension of the commercial and customer-experience problem I had already identified while trying to present the catalog in a more useful way.",
-  ],
-});
-
-Object.assign(translations.es.experience, {
-  items: [
-    {
-      topline: "Sector óptico · 2 años",
-      title: "Propietario y administrador de óptica",
-      body: "Aprendí a gestionar inventario, proveedores, flujo de caja, ventas, atención al cliente y dinámica comercial. Esa experiencia me dio criterio operativo real y una visión clara de cómo los datos sí pueden generar valor cuando están bien organizados.",
-    },
-    {
-      topline: "Problema real convertido en producto",
-      title: "Diseño de soluciones para integrar operación, reportes y experiencia",
-      body: "Al detectar que la información estaba dispersa entre Word, PDF, Excel y notas aisladas, decidí diseñar un software para centralizar inventarios, ventas, historias, citas, sedes, roles y reportes, dejando una operación mucho más integrada y confiable.",
-    },
-    {
-      topline: "Innovación aplicada en la óptica",
-      title: "Dashboard, software y AR como parte de una misma mejora continua",
-      body: "A partir de la operación real desarrollé un sistema integral, analicé ventas e indicadores con dashboards y diseñé un catálogo en AR con face tracking para mejorar la experiencia alrededor de las monturas. Mi intención es seguir llevándolo hacia una solución real y madura.",
-    },
-  ],
-});
-
-Object.assign(translations.en.experience, {
-  items: [
-    {
-      topline: "Optical sector · 2 years",
-      title: "Optical business owner and administrator",
-      body: "I learned to manage inventory, suppliers, cash flow, sales, customer service and commercial operations. That experience gave me real operational judgment and a clear view of how data creates value when it is properly organized.",
-    },
-    {
-      topline: "Real problem turned into product",
-      title: "Designing solutions to integrate operations, reporting and experience",
-      body: "After identifying that information was scattered across Word files, PDFs, Excel sheets and isolated notes, I decided to design software that could centralize inventory, sales, records, appointments, branches, roles and reporting into a much more reliable operation.",
-    },
-    {
-      topline: "Applied innovation in optical retail",
-      title: "Dashboard, software and AR as part of the same continuous improvement effort",
-      body: "From that real operation I developed an integrated system, analyzed sales and business indicators with dashboards and designed an AR catalog with face tracking to improve the frame experience. My goal is to keep evolving it into a real and mature solution.",
-    },
-  ],
-});
 
 const state = {
   locale: localStorage.getItem("portfolio-locale") || "es",
   theme: localStorage.getItem("portfolio-theme") || "light",
   projectIndex: 0,
+  projectAnimating: false,
+  projectPendingLoop: null,
+  revealObserver: null,
 };
 
-function resolveCopy(path, copy) {
-  return path.split(".").reduce((current, key) => current[key], copy);
+function getCopy() {
+  return translations[state.locale];
+}
+
+function resolveCopy(path, source) {
+  return path.split(".").reduce((value, key) => (value ? value[key] : ""), source);
 }
 
 function createElement(tag, className, text) {
@@ -1053,54 +618,41 @@ function createElement(tag, className, text) {
   return element;
 }
 
-function renderHeroFacts(copy) {
-  const container = document.getElementById("heroFacts");
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = "";
-
-  copy.hero.facts.forEach((fact) => {
-    const card = createElement("article", "fact-card");
-
-    card.appendChild(createElement("strong", "", fact.value));
-
-    if (fact.label) {
-      card.appendChild(createElement("span", "", fact.label));
-    }
-
-    container.appendChild(card);
-  });
+function isExternalHref(href) {
+  return /^https?:\/\//.test(href);
 }
 
-function renderAbout(copy) {
-  const content = document.getElementById("aboutContent");
-  const highlights = document.getElementById("aboutHighlights");
+function buildLinkChip(link) {
+  const anchor = createElement("a", "link-chip", link.label);
+  anchor.href = link.href;
+  const external = isExternalHref(link.href);
 
-  content.innerHTML = "";
-  highlights.innerHTML = "";
+  if (external) {
+    anchor.target = "_blank";
+    anchor.rel = "noopener noreferrer";
+  }
 
-  copy.about.paragraphs.forEach((paragraph) => {
-    content.appendChild(createElement("p", "", paragraph));
-  });
-
-  copy.about.highlights.forEach((highlight) => {
-    highlights.appendChild(createElement("span", "about-pill", highlight));
-  });
+  anchor.innerHTML = external
+    ? `${link.label} <i class="fa-solid fa-arrow-up-right-from-square"></i>`
+    : `${link.label} <i class="fa-solid fa-arrow-right"></i>`;
+  return anchor;
 }
 
 function renderSkills(copy) {
   const grid = document.getElementById("skillsGrid");
+  if (!grid) {
+    return;
+  }
+
   grid.innerHTML = "";
 
   copy.skills.items.forEach((item, index) => {
     const card = createElement("article", `skill-card reveal${index % 2 === 1 ? " reveal-delay" : ""}`);
-    card.style.setProperty("--skill-accent", item.accent);
-
     const title = createElement("h3", "", item.title);
     const summary = createElement("p", "skill-summary", item.summary);
     const techGrid = createElement("div", "tech-grid");
+
+    card.style.setProperty("--skill-accent", item.accent);
 
     if (item.tools.length <= 4) {
       techGrid.classList.add("tech-grid-compact");
@@ -1108,16 +660,18 @@ function renderSkills(copy) {
 
     item.tools.forEach((tool) => {
       const tile = createElement("div", "tech-item");
+      const icon = createElement("div", "tech-icon");
+      const label = createElement("span", "tech-label", tool.label);
+
       tile.style.setProperty("--tool-color", tool.color);
 
-      const icon = createElement("div", "tech-icon");
       if (tool.icon) {
         icon.innerHTML = `<i class="${tool.icon}"></i>`;
       } else {
         icon.appendChild(createElement("span", "tech-abbr", tool.abbr));
       }
 
-      tile.append(icon, createElement("span", "tech-label", tool.label));
+      tile.append(icon, label);
       techGrid.appendChild(tile);
     });
 
@@ -1130,12 +684,10 @@ function buildProjectVisual(project) {
   const visual = createElement("div", "project-visual");
 
   if (project.video) {
-    visual.classList.add("has-video");
     const video = document.createElement("video");
+    visual.classList.add("has-video");
     video.src = project.video;
     video.controls = true;
-    video.loop = false;
-    video.muted = false;
     video.playsInline = true;
     video.preload = "metadata";
     video.setAttribute("aria-label", `${project.name} demo`);
@@ -1147,6 +699,8 @@ function buildProjectVisual(project) {
     const image = document.createElement("img");
     image.src = project.image;
     image.alt = project.name;
+    image.loading = "lazy";
+    image.decoding = "async";
     visual.appendChild(image);
     return visual;
   }
@@ -1164,33 +718,46 @@ function buildProjectVisual(project) {
   return visual;
 }
 
-function clampProjectIndex(total) {
-  if (total <= 0) {
-    state.projectIndex = 0;
-    return;
+function getProjectLoopCloneCount(total) {
+  if (total <= 1) {
+    return 0;
   }
 
-  state.projectIndex = Math.max(0, Math.min(state.projectIndex, total - 1));
+  return Math.min(2, total);
 }
 
-function updateProjectsSlider(copy) {
+function normalizeProjectIndex(index, total) {
+  if (total <= 0) {
+    return 0;
+  }
+
+  return ((index % total) + total) % total;
+}
+
+function getRenderedProjectIndex(total) {
+  return state.projectIndex + getProjectLoopCloneCount(total);
+}
+
+function updateProjectsSlider(copy, options = {}) {
   const track = document.getElementById("projectsGrid");
   const viewport = document.getElementById("projectsViewport");
   const status = document.getElementById("projectsStatus");
   const prevButton = document.getElementById("projectsPrev");
   const nextButton = document.getElementById("projectsNext");
+  const { renderedIndex = null, disableTransition = false } = options;
 
   if (!track || !viewport || !status || !prevButton || !nextButton) {
     return;
   }
 
   const slides = Array.from(track.children);
-  const total = slides.length;
+  const total = copy.projects.items.length;
+  const currentRenderedIndex = renderedIndex ?? getRenderedProjectIndex(total);
 
-  clampProjectIndex(total);
+  state.projectIndex = normalizeProjectIndex(state.projectIndex, total);
 
-  prevButton.disabled = total === 0 || state.projectIndex === 0;
-  nextButton.disabled = total === 0 || state.projectIndex === total - 1;
+  prevButton.disabled = total <= 1;
+  nextButton.disabled = total <= 1;
   prevButton.setAttribute("aria-label", copy.projects.prevLabel);
   nextButton.setAttribute("aria-label", copy.projects.nextLabel);
   viewport.setAttribute("aria-label", copy.projects.carouselLabel);
@@ -1200,45 +767,125 @@ function updateProjectsSlider(copy) {
     .replace("{total}", String(total).padStart(2, "0"));
 
   slides.forEach((slide, index) => {
-    slide.classList.toggle("is-active", index === state.projectIndex);
-    slide.classList.toggle("is-next", index === state.projectIndex + 1);
-    slide.classList.toggle("is-prev", index === state.projectIndex - 1);
-    slide.classList.toggle("is-far", Math.abs(index - state.projectIndex) > 1);
+    const isActive = index === currentRenderedIndex;
+    const isNext = total > 1 && index === currentRenderedIndex + 1;
+    const isPrev = total > 1 && index === currentRenderedIndex - 1;
+
+    slide.classList.toggle("is-active", isActive);
+    slide.classList.toggle("is-next", isNext);
+    slide.classList.toggle("is-prev", isPrev);
+    slide.classList.toggle("is-far", !isActive && !isNext && !isPrev);
+    slide.setAttribute("aria-hidden", String(!isActive));
   });
 
-  const activeSlide = slides[state.projectIndex];
-  if (activeSlide) {
-    track.style.transform = `translateX(-${activeSlide.offsetLeft}px)`;
-  }
-}
-
-function changeProjectSlide(step) {
-  const copy = translations[state.locale];
-  const total = copy.projects.items.length;
-
-  clampProjectIndex(total);
-
-  const nextIndex = Math.max(0, Math.min(state.projectIndex + step, total - 1));
-  if (nextIndex === state.projectIndex) {
+  const activeSlide = slides[currentRenderedIndex];
+  if (!activeSlide) {
     return;
   }
 
-  state.projectIndex = nextIndex;
+  track.style.transition = disableTransition ? "none" : "";
+  track.style.transform = `translateX(-${activeSlide.offsetLeft}px)`;
+
+  if (disableTransition) {
+    track.getBoundingClientRect();
+    track.style.transition = "";
+  }
+}
+
+function completeProjectLoop(copy) {
+  if (!state.projectPendingLoop) {
+    return;
+  }
+
+  const { projectIndex, renderedIndex } = state.projectPendingLoop;
+  state.projectPendingLoop = null;
+  state.projectIndex = projectIndex;
+
+  window.requestAnimationFrame(() => {
+    updateProjectsSlider(copy, { renderedIndex, disableTransition: true });
+    window.requestAnimationFrame(() => {
+      state.projectAnimating = false;
+    });
+  });
+}
+
+function changeProjectSlide(step) {
+  const copy = getCopy();
+  const total = copy.projects.items.length;
+  const cloneCount = getProjectLoopCloneCount(total);
+
+  if (total <= 1 || state.projectAnimating || step === 0) {
+    return;
+  }
+
+  state.projectIndex = normalizeProjectIndex(state.projectIndex, total);
+
+  if (step > 0 && state.projectIndex === total - 1) {
+    state.projectAnimating = true;
+    state.projectPendingLoop = {
+      projectIndex: 0,
+      renderedIndex: cloneCount,
+    };
+    updateProjectsSlider(copy, { renderedIndex: total + cloneCount });
+    return;
+  }
+
+  if (step < 0 && state.projectIndex === 0) {
+    state.projectAnimating = true;
+    state.projectPendingLoop = {
+      projectIndex: total - 1,
+      renderedIndex: total + cloneCount - 1,
+    };
+    updateProjectsSlider(copy, { renderedIndex: cloneCount - 1 });
+    return;
+  }
+
+  state.projectIndex = normalizeProjectIndex(state.projectIndex + step, total);
   updateProjectsSlider(copy);
 }
 
 function renderProjects(copy) {
   const track = document.getElementById("projectsGrid");
+  if (!track) {
+    return;
+  }
+
+  const items = copy.projects.items;
+  const cloneCount = getProjectLoopCloneCount(items.length);
+  const slidesData = items.map((project, index) => ({ project, index, isClone: false }));
+
+  state.projectAnimating = false;
+  state.projectPendingLoop = null;
+  state.projectIndex = normalizeProjectIndex(state.projectIndex, items.length);
   track.innerHTML = "";
 
-  clampProjectIndex(copy.projects.items.length);
+  if (cloneCount > 0) {
+    const leadingClones = items.slice(-cloneCount).map((project, offset) => ({
+      project,
+      index: items.length - cloneCount + offset,
+      isClone: true,
+    }));
+    const trailingClones = items.slice(0, cloneCount).map((project, index) => ({
+      project,
+      index,
+      isClone: true,
+    }));
 
-  copy.projects.items.forEach((project) => {
+    slidesData.unshift(...leadingClones);
+    slidesData.push(...trailingClones);
+  }
+
+  slidesData.forEach(({ project, index, isClone }) => {
     const slide = createElement("div", "project-slide");
     const card = createElement("article", `project-card ${project.kind}`);
     const list = document.createElement("ul");
     const tags = createElement("div", "project-tags");
     const links = createElement("div", "project-links");
+
+    slide.dataset.projectIndex = String(index);
+    if (isClone) {
+      slide.dataset.clone = "true";
+    }
 
     project.bullets.forEach((bullet) => {
       list.appendChild(createElement("li", "", bullet));
@@ -1249,12 +896,7 @@ function renderProjects(copy) {
     });
 
     project.links.forEach((link) => {
-      const anchor = createElement("a", "link-chip", link.label);
-      anchor.href = link.href;
-      anchor.target = "_blank";
-      anchor.rel = "noopener noreferrer";
-      anchor.innerHTML = `${link.label} <i class="fa-solid fa-arrow-up-right-from-square"></i>`;
-      links.appendChild(anchor);
+      links.appendChild(buildLinkChip(link));
     });
 
     card.append(
@@ -1277,10 +919,14 @@ function renderProjects(copy) {
 
 function renderCredentials(copy) {
   const grid = document.getElementById("credentialsGrid");
+  if (!grid) {
+    return;
+  }
+
   grid.innerHTML = "";
 
   copy.credentials.items.forEach((item, index) => {
-    const card = createElement("article", `credential-card reveal${index === 1 ? " reveal-delay" : ""}`);
+    const card = createElement("article", `credential-card formation-card reveal${index === 1 ? " reveal-delay" : ""}`);
     const icon = createElement("div", "credential-icon");
     const badges = createElement("div", "project-badges");
 
@@ -1299,12 +945,7 @@ function renderCredentials(copy) {
     );
 
     if (item.link) {
-      const anchor = createElement("a", "link-chip", item.link.label);
-      anchor.href = item.link.href;
-      anchor.target = "_blank";
-      anchor.rel = "noopener noreferrer";
-      anchor.innerHTML = `${item.link.label} <i class="fa-solid fa-arrow-up-right-from-square"></i>`;
-      card.appendChild(anchor);
+      card.appendChild(buildLinkChip(item.link));
     }
 
     grid.appendChild(card);
@@ -1313,30 +954,27 @@ function renderCredentials(copy) {
 
 function renderExperience(copy) {
   const grid = document.getElementById("experienceGrid");
+  if (!grid) {
+    return;
+  }
+
   grid.innerHTML = "";
 
-  copy.experience.items.forEach((item, index) => {
-    const card = createElement("article", `timeline-card reveal${index === 1 ? " reveal-delay" : ""}`);
+  copy.experience.items.forEach((item) => {
+    const card = createElement("article", "timeline-card experience-story-card reveal");
+    const list = createElement("ul", "experience-story-list");
+
     card.append(
       createElement("p", "credential-topline", item.topline),
       createElement("h3", "", item.title),
-      createElement("p", "", item.body)
+      createElement("p", "experience-story-copy", item.body)
     );
-    grid.appendChild(card);
-  });
-}
 
-function renderEducation(copy) {
-  const grid = document.getElementById("educationGrid");
-  grid.innerHTML = "";
+    item.highlights.forEach((highlight) => {
+      list.appendChild(createElement("li", "", highlight));
+    });
 
-  copy.education.items.forEach((item, index) => {
-    const card = createElement("article", `education-card reveal${index === 2 ? " reveal-delay" : ""}`);
-    card.append(
-      createElement("p", "education-topline", item.topline),
-      createElement("h3", "", item.title),
-      createElement("p", "", item.body)
-    );
+    card.append(list, createElement("p", "experience-story-closing", item.closing));
     grid.appendChild(card);
   });
 }
@@ -1358,14 +996,41 @@ function applyStaticTranslations(copy) {
     node.innerHTML = resolveCopy(node.getAttribute("data-i18n-html"), copy);
   });
 
-  document.getElementById("themeToggleLabel").textContent =
-    state.theme === "dark" ? copy.theme.light : copy.theme.dark;
-  document.getElementById("langToggleLabel").textContent = state.locale === "es" ? "EN" : "ES";
+  const themeLabel = state.theme === "dark" ? copy.theme.light : copy.theme.dark;
+  const themeToggleLabel = document.getElementById("themeToggleLabel");
+  const langToggleLabel = document.getElementById("langToggleLabel");
+  const menuToggle = document.getElementById("menuToggle");
+  const themeToggle = document.getElementById("themeToggle");
+  const langToggle = document.getElementById("langToggle");
+
+  if (themeToggleLabel) {
+    themeToggleLabel.textContent = themeLabel;
+  }
+
+  if (langToggleLabel) {
+    langToggleLabel.textContent = state.locale === "es" ? "EN" : "ES";
+  }
+
+  if (menuToggle) {
+    menuToggle.setAttribute("aria-label", copy.nav.menu);
+  }
+
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-label", `${copy.controls.theme}: ${themeLabel}`);
+  }
+
+  if (langToggle) {
+    langToggle.setAttribute("aria-label", copy.controls.language);
+  }
 }
 
 function updateFooter(copy) {
-  document.getElementById("footerCopy").textContent =
-    copy.footer.copy.replace("{year}", String(new Date().getFullYear()));
+  const footerCopy = document.getElementById("footerCopy");
+  if (!footerCopy) {
+    return;
+  }
+
+  footerCopy.textContent = copy.footer.copy.replace("{year}", String(new Date().getFullYear()));
 }
 
 function applyTheme() {
@@ -1375,44 +1040,51 @@ function applyTheme() {
 function closeMenu() {
   const dropdown = document.getElementById("menuDropdown");
   const toggle = document.getElementById("menuToggle");
+
+  if (!dropdown || !toggle) {
+    return;
+  }
+
   dropdown.classList.remove("is-open");
   toggle.setAttribute("aria-expanded", "false");
 }
 
-function renderAll() {
-  const copy = translations[state.locale];
-  applyStaticTranslations(copy);
-  updateFooter(copy);
-  renderHeroFacts(copy);
-  renderSkills(copy);
-  renderProjects(copy);
-  renderCredentials(copy);
-  renderExperience(copy);
-  renderEducation(copy);
-  observeReveal();
-}
-
 function observeReveal() {
   const nodes = document.querySelectorAll(".reveal");
+
+  if (state.revealObserver) {
+    state.revealObserver.disconnect();
+  }
 
   if (!("IntersectionObserver" in window)) {
     nodes.forEach((node) => node.classList.add("is-visible"));
     return;
   }
 
-  const observer = new IntersectionObserver(
+  state.revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          state.revealObserver.unobserve(entry.target);
         }
       });
     },
     { threshold: 0.14 }
   );
 
-  nodes.forEach((node) => observer.observe(node));
+  nodes.forEach((node) => state.revealObserver.observe(node));
+}
+
+function renderAll() {
+  const copy = getCopy();
+  applyStaticTranslations(copy);
+  updateFooter(copy);
+  renderSkills(copy);
+  renderProjects(copy);
+  renderCredentials(copy);
+  renderExperience(copy);
+  observeReveal();
 }
 
 function setupMenu() {
@@ -1420,9 +1092,13 @@ function setupMenu() {
   const dropdown = document.getElementById("menuDropdown");
   const menu = document.getElementById("siteMenu");
 
+  if (!toggle || !dropdown || !menu) {
+    return;
+  }
+
   toggle.addEventListener("click", () => {
-    const open = dropdown.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(open));
+    const isOpen = dropdown.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
   menu.querySelectorAll("a").forEach((anchor) => {
@@ -1450,6 +1126,9 @@ function setupMenu() {
 
 function setupLanguageToggle() {
   const button = document.getElementById("langToggle");
+  if (!button) {
+    return;
+  }
 
   button.addEventListener("click", () => {
     state.locale = state.locale === "es" ? "en" : "es";
@@ -1460,12 +1139,15 @@ function setupLanguageToggle() {
 
 function setupThemeToggle() {
   const button = document.getElementById("themeToggle");
+  if (!button) {
+    return;
+  }
 
   button.addEventListener("click", () => {
     state.theme = state.theme === "light" ? "dark" : "light";
     localStorage.setItem("portfolio-theme", state.theme);
     applyTheme();
-    applyStaticTranslations(translations[state.locale]);
+    applyStaticTranslations(getCopy());
   });
 }
 
@@ -1473,9 +1155,10 @@ function setupProjectSlider() {
   const prevButton = document.getElementById("projectsPrev");
   const nextButton = document.getElementById("projectsNext");
   const viewport = document.getElementById("projectsViewport");
+  const track = document.getElementById("projectsGrid");
   let touchStartX = 0;
 
-  if (!prevButton || !nextButton || !viewport) {
+  if (!prevButton || !nextButton || !viewport || !track) {
     return;
   }
 
@@ -1520,9 +1203,27 @@ function setupProjectSlider() {
     { passive: true }
   );
 
+  track.addEventListener("click", (event) => {
+    if (event.target.closest("a, button, video")) {
+      return;
+    }
+
+    if (event.target.closest(".project-slide.is-next")) {
+      changeProjectSlide(1);
+    }
+  });
+
+  track.addEventListener("transitionend", (event) => {
+    if (event.target !== track || event.propertyName !== "transform" || !state.projectPendingLoop) {
+      return;
+    }
+
+    completeProjectLoop(getCopy());
+  });
+
   window.addEventListener("resize", () => {
     window.requestAnimationFrame(() => {
-      updateProjectsSlider(translations[state.locale]);
+      updateProjectsSlider(getCopy());
     });
   });
 }
@@ -1531,10 +1232,14 @@ function setupContactForm() {
   const form = document.getElementById("contactForm");
   const formMessage = document.getElementById("formMessage");
 
+  if (!form || !formMessage) {
+    return;
+  }
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const copy = translations[state.locale];
+    const copy = getCopy();
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
@@ -1545,7 +1250,7 @@ function setupContactForm() {
       return;
     }
 
-    const greeting = state.locale === "es" ? "Hola Juan Sebastián," : "Hi Juan Sebastian,";
+    const greeting = state.locale === "es" ? "Hola Juan Sebastian," : "Hi Juan Sebastian,";
     const subjectText =
       state.locale === "es"
         ? `Contacto desde portafolio web - ${name}`
@@ -1558,6 +1263,7 @@ function setupContactForm() {
 
     formMessage.textContent = copy.contact.feedbackReady;
     formMessage.style.color = "var(--accent)";
+
     window.location.href =
       `mailto:jsebastian000124@gmail.com?subject=${encodeURIComponent(subjectText)}` +
       `&body=${encodeURIComponent(bodyText)}`;

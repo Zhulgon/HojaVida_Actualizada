@@ -1,12 +1,12 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Juan Sebastián Rubiano | Portafolio</title>
+  <title>Juan Sebastian Rubiano | Portafolio</title>
   <meta
     name="description"
-    content="Portafolio de Juan Sebastián Rubiano, estudiante de Ingeniería de Sistemas y tecnólogo en Desarrollo de Sistemas Informáticos. Proyectos en desarrollo web, Python, SQL, React, TypeScript, análisis de datos, machine learning, IA aplicada y realidad aumentada."
+    content="Portafolio de Juan Sebastian Rubiano, estudiante de Ingenieria de Sistemas y tecnologo en Desarrollo de Sistemas Informaticos. Proyectos en desarrollo web, Python, SQL, React, TypeScript, analisis de datos, machine learning, IA aplicada y realidad aumentada."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
       <a class="brand" href="#hero" aria-label="Ir al inicio">JSR</a>
 
       <div id="menuDropdown" class="menu-dropdown">
-        <nav id="siteMenu" class="site-menu" aria-label="Navegación principal">
+        <nav id="siteMenu" class="site-menu" aria-label="Navegacion principal">
           <div class="site-menu-panel">
             <div class="site-menu-group site-menu-group-left">
               <a href="#skills" data-i18n="nav.skills"></a>
@@ -46,7 +46,7 @@
               type="button"
               aria-expanded="false"
               aria-controls="siteMenu"
-              aria-label="Abrir menú"
+              aria-label="Abrir menu"
             >
               <span class="menu-trigger-label" data-i18n="nav.menu"></span>
               <span class="menu-trigger-icon" aria-hidden="true">
@@ -105,7 +105,7 @@
 
         <div class="hero-panel reveal reveal-delay">
           <div class="portrait-card">
-            <img src="assets/profile.jpg" alt="Foto de Juan Sebastián Rubiano">
+            <img src="assets/profile.jpg" alt="Foto de Juan Sebastian Rubiano">
           </div>
 
           <div class="availability-card">
@@ -164,44 +164,29 @@
       </div>
     </section>
 
-    <section id="credentials" class="section">
-      <div class="container">
-        <div class="section-shell">
-          <div class="section-heading reveal">
-            <p class="eyebrow" data-i18n="credentials.eyebrow"></p>
-            <h2 data-i18n="credentials.title"></h2>
-            <p data-i18n="credentials.intro"></p>
-          </div>
-
-          <div id="credentialsGrid" class="credentials-grid"></div>
-        </div>
-      </div>
-    </section>
-
     <section id="experience" class="section section-alt">
       <div class="container">
-        <div class="section-shell">
-          <div class="section-heading reveal">
-            <p class="eyebrow" data-i18n="experience.eyebrow"></p>
-            <h2 data-i18n="experience.title"></h2>
-            <p data-i18n="experience.intro"></p>
+        <div class="experience-layout">
+          <div class="experience-column section-shell reveal">
+            <div class="section-heading experience-heading">
+              <p class="eyebrow" data-i18n="experience.eyebrow"></p>
+              <h2 data-i18n="experience.title"></h2>
+              <p data-i18n="experience.intro"></p>
+            </div>
+
+            <div id="experienceGrid" class="experience-feature-grid"></div>
           </div>
 
-          <div id="experienceGrid" class="timeline-grid"></div>
-        </div>
-      </div>
-    </section>
+          <div id="credentials" class="formation-column section-shell reveal reveal-delay">
+            <div id="education" class="section-anchor"></div>
+            <div class="section-heading formation-heading">
+              <p class="eyebrow" data-i18n="credentials.eyebrow"></p>
+              <h2 data-i18n="credentials.title"></h2>
+              <p data-i18n="credentials.intro"></p>
+            </div>
 
-    <section id="education" class="section">
-      <div class="container">
-        <div class="section-shell">
-          <div class="section-heading reveal">
-            <p class="eyebrow" data-i18n="education.eyebrow"></p>
-            <h2 data-i18n="education.title"></h2>
-            <p data-i18n="education.intro"></p>
+            <div id="credentialsGrid" class="formation-grid"></div>
           </div>
-
-          <div id="educationGrid" class="education-grid"></div>
         </div>
       </div>
     </section>
@@ -275,3 +260,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+

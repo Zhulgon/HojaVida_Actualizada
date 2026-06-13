@@ -41,13 +41,24 @@
           cantidad enviada, distancia, modo de transporte y fragilidad. Luego explora relaciones, entrena una
           regresion lineal y compara su desempeno contra un arbol de decision.
         </p>
+        <div class="hero-actions">
+          <a class="button-link primary" href="#modelos">Ver modelos</a>
+          <a
+            class="button-link"
+            href="https://colab.research.google.com/drive/1MJ_jvrufMapGj2PsAB3LXOYvUn1qZPM0?usp=drive_open"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Abrir Colab
+          </a>
+        </div>
         <div class="metric-grid">
           <article class="metric-card">
             <strong>1000 muestras</strong>
             <span>Dataset sintetico generado con semilla controlada.</span>
           </article>
           <article class="metric-card">
-            <strong>4 features</strong>
+            <strong>4 variables</strong>
             <span>Cantidad, distancia, modo de transporte y fragilidad.</span>
           </article>
           <article class="metric-card">
@@ -74,6 +85,14 @@
             <span class="pill">LinearRegression</span>
             <span class="pill">DecisionTreeRegressor</span>
           </div>
+          <div class="shot-frame">
+            <img
+              class="case-shot"
+              src="../assets/cases/modelosML/screens/colab-perdidas-logisticas.png"
+              alt="Vista del cuaderno de Colab para el caso de prediccion de perdidas logisticas"
+            >
+          </div>
+          <p class="shot-caption">Captura del cuaderno de Colab asociado a este ejercicio.</p>
         </article>
       </div>
     </section>
@@ -104,7 +123,7 @@
           <h2 class="section-title">Regresion lineal primero, arbol despues.</h2>
         </div>
         <p class="section-intro">
-          El notebook hace algo muy sano: no asume que el segundo modelo sera mejor solo por ser mas complejo.
+          El flujo hace una comparacion util: no asume que el segundo modelo sera mejor solo por ser mas complejo.
         </p>
       </div>
 
@@ -120,7 +139,7 @@
       </div>
 
       <div class="note">
-        El propio notebook concluye que la regresion lineal predice mejor en este caso, lo cual tiene sentido porque los datos sinteticos fueron generados con una relacion basicamente lineal.
+        La comparacion final favorece a la regresion lineal, algo coherente con la forma en que se generaron los datos sinteticos y con la relacion subyacente del problema.
       </div>
     </section>
 
@@ -144,6 +163,13 @@
 
       <div class="foot-links">
         <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a
+          href="https://colab.research.google.com/drive/1MJ_jvrufMapGj2PsAB3LXOYvUn1qZPM0?usp=drive_open"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir Colab
+        </a>
         <a href="../index.html#projects">Volver al portfolio</a>
       </div>
     </section>

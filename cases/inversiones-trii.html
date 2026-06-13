@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Simulacion de inversiones y portafolios | Juan Sebastian Rubiano</title>
+  <title>Simulacion de portafolios con Monte Carlo | Juan Sebastian Rubiano</title>
   <meta
     name="description"
     content="Caso de simulacion financiera con Python usando yfinance, Markowitz, Monte Carlo y proyecciones de portafolios moderados y conservadores."
@@ -37,10 +37,20 @@
         <p class="eyebrow">Simulacion financiera</p>
         <h1 class="hero-title">Portafolios, <span class="highlight">riesgo y proyecciones</span> de inversion.</h1>
         <p class="lead">
-          Este archivo va mucho mas alla de una grafica simple. Descarga historicos con <code>yfinance</code>,
-          calcula retornos mensuales, simula miles de portafolios aleatorios, arma escenarios moderado y conservador,
-          y proyecta crecimiento a varios anos incluyendo aportes mensuales.
+          Este caso descarga historicos con <code>yfinance</code>, calcula retornos mensuales, simula miles de portafolios aleatorios,
+          arma escenarios moderado y conservador, y proyecta crecimiento a varios anos incluyendo aportes mensuales.
         </p>
+        <div class="hero-actions">
+          <a class="button-link primary" href="#markowitz">Ver analisis</a>
+          <a
+            class="button-link"
+            href="https://colab.research.google.com/drive/1AYHx8QJrbKVmdOlyLDZdI8GS9W_GcL8V?usp=drive_open"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Abrir Colab
+          </a>
+        </div>
         <div class="metric-grid">
           <article class="metric-card">
             <strong>Markowitz</strong>
@@ -76,6 +86,14 @@
             <span class="pill">Monte Carlo</span>
             <span class="pill">Compound growth</span>
           </div>
+          <div class="shot-frame">
+            <img
+              class="case-shot"
+              src="../assets/cases/modelosML/screens/colab-montecarlo.png"
+              alt="Vista del cuaderno de Colab para la simulacion de portafolios con Monte Carlo"
+            >
+          </div>
+          <p class="shot-caption">Captura del cuaderno de Colab asociado a este ejercicio.</p>
         </article>
       </div>
     </section>
@@ -107,12 +125,12 @@
     <section class="section" id="montecarlo">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Etapa 2 y 3</p>
+          <p class="eyebrow">Etapas 2 y 3</p>
           <h2 class="section-title">Diversificacion y simulacion de escenarios.</h2>
         </div>
         <p class="section-intro">
-          Luego el caso se vuelve mas interesante: mezcla acciones colombianas con ETFs globales y simula el valor futuro
-          de un capital inicial usando Monte Carlo para obtener escenarios pesimistas, medios y optimistas.
+          Luego el caso mezcla acciones colombianas con ETFs globales y simula el valor futuro de un capital inicial
+          usando Monte Carlo para obtener escenarios pesimistas, medios y optimistas.
         </p>
       </div>
 
@@ -161,6 +179,13 @@
 
       <div class="foot-links">
         <a href="./modelos-ml.html">Volver al catalogo</a>
+        <a
+          href="https://colab.research.google.com/drive/1AYHx8QJrbKVmdOlyLDZdI8GS9W_GcL8V?usp=drive_open"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir Colab
+        </a>
         <a href="../index.html#projects">Volver al portfolio</a>
       </div>
     </section>
