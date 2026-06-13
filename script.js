@@ -120,6 +120,7 @@ const translations = {
           ],
           tags: ["NestJS", "Prisma", "PostgreSQL", "React", "Vite", "TypeScript", "Docker"],
           links: [{ label: "GitHub", href: "https://github.com/Zhulgon/optica-suite" }],
+          video: "assets/projects/VideoOpti-suite.mp4",
           fallback: "OS",
         },
         {
@@ -409,7 +410,8 @@ const translations = {
           ],
           tags: ["NestJS", "Prisma", "PostgreSQL", "React", "Vite", "TypeScript", "Docker"],
           links: [{ label: "GitHub", href: "https://github.com/Zhulgon/optica-suite" }],
-          image: "assets/projects/SO.png",
+          video: "assets/projects/VideoOpti-suite.mp4",
+          fallback: "AR",
         },
         {
           name: "AR Monturas",
