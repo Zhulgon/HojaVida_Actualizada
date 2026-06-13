@@ -250,6 +250,42 @@
       display: none;
     }
 
+    .ordered-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-top: 0.9rem;
+    }
+
+    .ordered-column {
+      border: 1px solid rgba(24, 35, 52, 0.08);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.72);
+      overflow: hidden;
+    }
+
+    .ordered-head {
+      padding: 0.75rem 0.9rem;
+      background: rgba(15, 142, 136, 0.08);
+      color: var(--ink);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .ordered-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .ordered-value {
+      padding: 0.52rem 0.9rem;
+      border-top: 1px solid rgba(24, 35, 52, 0.06);
+      color: var(--ink-soft);
+      font-variant-numeric: tabular-nums;
+    }
+
     .sheet-inner {
       position: relative;
       z-index: 1;
@@ -286,10 +322,12 @@
     }
 
     .accent {
-      background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 
     .sheet-cover p {
       margin: 1.1rem auto 0;
@@ -1016,17 +1054,18 @@
           <button class="page-tab page-tab--step" type="button" data-page="2">1</button>
           <button class="page-tab page-tab--step" type="button" data-page="3">2</button>
           <button class="page-tab page-tab--step" type="button" data-page="4">3</button>
-          <button class="page-tab page-tab--step" type="button" data-page="5">5</button>
-          <button class="page-tab page-tab--step" type="button" data-page="6">6</button>
-          <button class="page-tab page-tab--step" type="button" data-page="7">7</button>
-          <button class="page-tab page-tab--step" type="button" data-page="8">8</button>
-          <button class="page-tab page-tab--step" type="button" data-page="9">9</button>
-          <button class="page-tab page-tab--step" type="button" data-page="10">10</button>
-          <button class="page-tab page-tab--step" type="button" data-page="11">11</button>
-          <button class="page-tab page-tab--step" type="button" data-page="12">12</button>
-          <button class="page-tab page-tab--step" type="button" data-page="13">13</button>
-          <button class="page-tab page-tab--step" type="button" data-page="14">14</button>
-          <button class="page-tab page-tab--step" type="button" data-page="15">15</button>
+          <button class="page-tab page-tab--step" type="button" data-page="5">4</button>
+          <button class="page-tab page-tab--step" type="button" data-page="6">5</button>
+          <button class="page-tab page-tab--step" type="button" data-page="7">6</button>
+          <button class="page-tab page-tab--step" type="button" data-page="8">7</button>
+          <button class="page-tab page-tab--step" type="button" data-page="9">8</button>
+          <button class="page-tab page-tab--step" type="button" data-page="10">9</button>
+          <button class="page-tab page-tab--step" type="button" data-page="11">10</button>
+          <button class="page-tab page-tab--step" type="button" data-page="12">11</button>
+          <button class="page-tab page-tab--step" type="button" data-page="13">12</button>
+          <button class="page-tab page-tab--step" type="button" data-page="14">13</button>
+          <button class="page-tab page-tab--step" type="button" data-page="15">14</button>
+          <button class="page-tab page-tab--step" type="button" data-page="16">15</button>
         </div>
       </div>
 
@@ -1131,22 +1170,6 @@
                 los cojinetes esfericos para poder organizar la muestra correctamente y preparar los calculos
                 estadisticos de las siguientes etapas.
               </p>
-            </section>
-
-            <section class="card" style="grid-column: 1 / -1; display: none;">
-              <h4>Contexto del problema</h4>
-              <p>
-                El ejercicio busca analizar una muestra de cojinetes esfericos para estudiar su diametro y
-                evaluar si el proceso mantiene un comportamiento consistente. Este primer paso deja claro
-                que estamos trabajando con una variable continua y con una poblacion finita, lo que define
-                la forma correcta de construir la muestra, resumir los datos y llegar luego a intervalos
-                de confianza y pruebas de hipotesis.
-              </p>
-              <ul style="margin-top: 0.85rem;">
-                <li>El desarrollo de la formula produce un valor aproximado de 53,1302816.</li>
-                <li>El tamano final de la muestra se fija en 54 observaciones.</li>
-                <li>Ese valor es el que se usa en las hojas posteriores del ejercicio.</li>
-              </ul>
             </section>
           </div>
         </div>
@@ -1315,6 +1338,117 @@
           <div class="sheet-header">
             <div>
               <p class="eyebrow">Hoja 6</p>
+              <h3>Paso 4: Arreglo y presentacion de datos</h3>
+            </div>
+            <span class="sheet-number">Muestra ordenada</span>
+          </div>
+
+          <div class="spread">
+            <section class="card card-feature">
+              <h4>Muestra ordenada</h4>
+              <p>Orden ascendente de los 54 registros para preparar la presentacion agrupada y el calculo de clases.</p>
+              <div class="ordered-values">
+                <div class="ordered-column">
+                  <div class="ordered-head">Registros 1 a 27</div>
+                  <div class="ordered-list">
+                    <div class="ordered-value">5.011</div>
+                    <div class="ordered-value">5.011</div>
+                    <div class="ordered-value">5.018</div>
+                    <div class="ordered-value">5.041</div>
+                    <div class="ordered-value">5.046</div>
+                    <div class="ordered-value">5.049</div>
+                    <div class="ordered-value">5.051</div>
+                    <div class="ordered-value">5.051</div>
+                    <div class="ordered-value">5.053</div>
+                    <div class="ordered-value">5.054</div>
+                    <div class="ordered-value">5.054</div>
+                    <div class="ordered-value">5.054</div>
+                    <div class="ordered-value">5.055</div>
+                    <div class="ordered-value">5.056</div>
+                    <div class="ordered-value">5.056</div>
+                    <div class="ordered-value">5.058</div>
+                    <div class="ordered-value">5.058</div>
+                    <div class="ordered-value">5.059</div>
+                    <div class="ordered-value">5.060</div>
+                    <div class="ordered-value">5.061</div>
+                    <div class="ordered-value">5.062</div>
+                    <div class="ordered-value">5.066</div>
+                    <div class="ordered-value">5.066</div>
+                    <div class="ordered-value">5.066</div>
+                    <div class="ordered-value">5.066</div>
+                    <div class="ordered-value">5.066</div>
+                    <div class="ordered-value">5.067</div>
+                  </div>
+                </div>
+
+                <div class="ordered-column">
+                  <div class="ordered-head">Registros 28 a 54</div>
+                  <div class="ordered-list">
+                    <div class="ordered-value">5.068</div>
+                    <div class="ordered-value">5.069</div>
+                    <div class="ordered-value">5.069</div>
+                    <div class="ordered-value">5.069</div>
+                    <div class="ordered-value">5.071</div>
+                    <div class="ordered-value">5.071</div>
+                    <div class="ordered-value">5.072</div>
+                    <div class="ordered-value">5.072</div>
+                    <div class="ordered-value">5.073</div>
+                    <div class="ordered-value">5.074</div>
+                    <div class="ordered-value">5.075</div>
+                    <div class="ordered-value">5.076</div>
+                    <div class="ordered-value">5.077</div>
+                    <div class="ordered-value">5.077</div>
+                    <div class="ordered-value">5.077</div>
+                    <div class="ordered-value">5.077</div>
+                    <div class="ordered-value">5.078</div>
+                    <div class="ordered-value">5.082</div>
+                    <div class="ordered-value">5.083</div>
+                    <div class="ordered-value">5.084</div>
+                    <div class="ordered-value">5.084</div>
+                    <div class="ordered-value">5.087</div>
+                    <div class="ordered-value">5.087</div>
+                    <div class="ordered-value">5.090</div>
+                    <div class="ordered-value">5.096</div>
+                    <div class="ordered-value">5.096</div>
+                    <div class="ordered-value">5.097</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="card">
+              <h4>Parametros para agrupar la muestra</h4>
+              <ul>
+                <li><strong>Tamano de la muestra:</strong> n = 54.</li>
+                <li><strong>Valor maximo:</strong> Xmax = 5.097.</li>
+                <li><strong>Valor minimo de trabajo:</strong> Xmin = 5.043.</li>
+                <li><strong>Rango:</strong> R = Xmax - Xmin = 0.054.</li>
+                <li><strong>Numero de clases estimado:</strong> 1 + 3.3 log n = 6.716849907, por lo que se toman 6 clases.</li>
+                <li><strong>Amplitud:</strong> A = R / N.C.E = 0.009.</li>
+                <li><strong>Amplitud modificada:</strong> Amod = 0.009.</li>
+                <li><strong>Rango modificado:</strong> Rmod = Amod x N.C.E = 0.054.</li>
+                <li><strong>Diferencia de rangos:</strong> DR = 0.</li>
+                <li><strong>Limite inferior ajustado:</strong> X'i = Xmin - DR = 5.043.</li>
+              </ul>
+            </section>
+          </div>
+
+          <section class="card">
+            <h4>Lectura del paso</h4>
+            <p>
+              Este bloque organiza la muestra y fija los parametros que luego se usan para construir la tabla
+              de frecuencias. La hoja trabaja con 6 clases de amplitud 0.009 y deja preparado el limite
+              inferior ajustado en 5.043 para presentar los datos de forma agrupada.
+            </p>
+          </section>
+        </div>
+      </article>
+
+      <article class="sheet" data-page="6">
+        <div class="sheet-inner">
+          <div class="sheet-header">
+            <div>
+              <p class="eyebrow">Hoja 6</p>
               <h3>Paso 5: La tabla de frecuencia</h3>
             </div>
             <span class="sheet-number">6 clases</span>
@@ -1454,7 +1588,7 @@
         </div>
       </article>
 
-      <article class="sheet" data-page="6">
+      <article class="sheet" data-page="7">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
@@ -1674,7 +1808,7 @@
         </div>
       </article>
 
-      <article class="sheet" data-page="7">
+      <article class="sheet" data-page="8">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
@@ -1724,7 +1858,7 @@
         </div>
       </article>
 
-      <article class="sheet" data-page="8">
+      <article class="sheet" data-page="9">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
@@ -1795,7 +1929,7 @@ P10 = 5.052 + 0.009 ((5.4 - 4) / 12)</span>
         </div>
       </article>
 
-      <article class="sheet" data-page="9">
+      <article class="sheet" data-page="10">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
@@ -1839,7 +1973,7 @@ CV = 0.0124 / 5.0684 = 0.244653145</span>
         </div>
       </article>
 
-      <article class="sheet" data-page="10">
+      <article class="sheet" data-page="11">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
@@ -1913,7 +2047,7 @@ Cu = (5.077 - 5.059) / (2 (5.087 - 5.053))</span>
         </div>
       </article>
 
-      <article class="sheet" data-page="11">
+      <article class="sheet" data-page="12">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
@@ -2262,7 +2396,7 @@ A1 = 0.7642 = 76.42%</span>
         </div>
       </article>
 
-      <article class="sheet" data-page="12">
+      <article class="sheet" data-page="13">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
@@ -2427,7 +2561,7 @@ X&#772; = 5.06933333</span>
         </div>
       </article>
 
-      <article class="sheet" data-page="13">
+      <article class="sheet" data-page="14">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
@@ -2589,7 +2723,7 @@ gl = 53</span>
         </div>
       </article>
 
-      <article class="sheet" data-page="14">
+      <article class="sheet" data-page="15">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
@@ -2706,7 +2840,7 @@ Se acepta H0.</span>
         </div>
       </article>
 
-      <article class="sheet" data-page="15">
+      <article class="sheet" data-page="16">
         <div class="sheet-inner">
           <div class="sheet-header">
             <div>
