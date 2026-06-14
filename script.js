@@ -220,6 +220,9 @@
       title: "Formación, datos y software.",
       intro:
         "Aquí resumo mi base académica y los dos frentes profesionales que más quiero fortalecer en prácticas y roles junior: datos y desarrollo de software.",
+      orbitTitle: "Tecnologías y frameworks",
+      orbitIntro:
+        "Vista visual de las herramientas que hoy acompañan mis dos focos principales.",
       items: [
         {
           icon: "fa-solid fa-graduation-cap",
@@ -243,7 +246,6 @@
           title: "Datos",
           body: "Este frente se apoya en certificaciones de Google e IBM, análisis exploratorio, visualización, machine learning aplicado y proyectos donde conecto métricas, procesos y decisiones de negocio.",
           badges: ["Google Data Analytics", "Advanced Data Analytics", "IBM AI / Tech", "EF SET C1"],
-          toolsTitle: "Tecnologías y frameworks",
           tools: [
             { label: "Excel", icon: "fa-solid fa-file-excel", color: "#67dc92" },
             { label: "Python", icon: "fa-brands fa-python", color: "#ffd662" },
@@ -253,7 +255,6 @@
             { label: "AWS", abbr: "AWS", color: "#ffb866" },
             { label: "Spark", abbr: "Sp", color: "#ff935f" },
             { label: "NoSQL", abbr: "No", color: "#77e4c8" },
-            { label: "Pandas", abbr: "PD", color: "#9c8bff" },
           ],
           link: { label: "Ver credenciales", href: "https://www.linkedin.com/in/juansrubiano" },
         },
@@ -263,7 +264,6 @@
           title: "Software",
           body: "Este frente se fortalece con certificaciones de Python, desarrollo web y apps móviles, además de proyectos reales donde diseñé sistemas, flujos operativos, dashboards y experiencias inmersivas.",
           badges: ["PCAP Python", "IBM Web / Cyber", "HTML & CSS", "Apps móviles"],
-          toolsTitle: "Tecnologías y frameworks",
           tools: [
             { label: "JavaScript", icon: "fa-brands fa-js", color: "#ffd84d" },
             { label: "TypeScript", abbr: "TS", color: "#69b5ff" },
@@ -272,7 +272,6 @@
             { label: "NestJS", abbr: "N", color: "#ff7b90" },
             { label: "GitHub", icon: "fa-brands fa-github", color: "#d8e0f2" },
             { label: "Docker", icon: "fa-brands fa-docker", color: "#78c7ff" },
-            { label: "Kubernetes", abbr: "K8s", color: "#8db5ff" },
             { label: "Unity", abbr: "U", color: "#f0f4ff" },
           ],
           link: { label: "Ver más en LinkedIn", href: "https://www.linkedin.com/in/juansrubiano" },
@@ -543,6 +542,9 @@
       title: "Education, data and software.",
       intro:
         "This section summarizes my academic foundation and the two professional tracks I most want to strengthen through internships and junior roles: data and software development.",
+      orbitTitle: "Technologies and frameworks",
+      orbitIntro:
+        "A visual view of the tools that currently support my two main professional tracks.",
       items: [
         {
           icon: "fa-solid fa-graduation-cap",
@@ -566,7 +568,6 @@
           title: "Data",
           body: "This track is backed by Google and IBM pathways, exploratory analysis, visualization, applied machine learning and projects where I connect metrics, processes and business decisions.",
           badges: ["Google Data Analytics", "Advanced Data Analytics", "IBM AI / Tech", "EF SET C1"],
-          toolsTitle: "Technologies and frameworks",
           tools: [
             { label: "Excel", icon: "fa-solid fa-file-excel", color: "#67dc92" },
             { label: "Python", icon: "fa-brands fa-python", color: "#ffd662" },
@@ -576,7 +577,6 @@
             { label: "AWS", abbr: "AWS", color: "#ffb866" },
             { label: "Spark", abbr: "Sp", color: "#ff935f" },
             { label: "NoSQL", abbr: "No", color: "#77e4c8" },
-            { label: "Pandas", abbr: "PD", color: "#9c8bff" },
           ],
           link: { label: "View credentials", href: "https://www.linkedin.com/in/juansrubiano" },
         },
@@ -586,7 +586,6 @@
           title: "Software",
           body: "This track is reinforced by Python, web development and mobile foundations, plus real projects where I designed systems, operational workflows, dashboards and immersive experiences.",
           badges: ["PCAP Python", "IBM Web / Cyber", "HTML & CSS", "Mobile apps"],
-          toolsTitle: "Technologies and frameworks",
           tools: [
             { label: "JavaScript", icon: "fa-brands fa-js", color: "#ffd84d" },
             { label: "TypeScript", abbr: "TS", color: "#69b5ff" },
@@ -595,7 +594,6 @@
             { label: "NestJS", abbr: "N", color: "#ff7b90" },
             { label: "GitHub", icon: "fa-brands fa-github", color: "#d8e0f2" },
             { label: "Docker", icon: "fa-brands fa-docker", color: "#78c7ff" },
-            { label: "Kubernetes", abbr: "K8s", color: "#8db5ff" },
             { label: "Unity", abbr: "U", color: "#f0f4ff" },
           ],
           link: { label: "See more on LinkedIn", href: "https://www.linkedin.com/in/juansrubiano" },
@@ -622,7 +620,7 @@
     },
   ],
 },
-    ccontact: {
+    contact: {
   eyebrow: "Contact",
   title: "Let’s connect",
   body:
@@ -655,6 +653,7 @@ const state = {
   projectPendingLoop: null,
   contactUnlocked: false,
   revealObserver: null,
+  orbitAnimationFrame: null,
 };
 
 function getCopy() {
@@ -699,14 +698,10 @@ function buildLinkChip(link) {
   return anchor;
 }
 
-function buildCredentialTools(tools, title) {
+function buildCredentialTools(tools) {
   const stack = createElement("div", "credential-stack");
   const grid = createElement("div", "credential-tool-grid");
   const orbitDuration = Math.max(18, tools.length * 2.35);
-
-  if (title) {
-    stack.appendChild(createElement("p", "credential-stack-title", title));
-  }
 
   grid.classList.add("credential-tool-grid-constellation");
 
@@ -736,6 +731,122 @@ function buildCredentialTools(tools, title) {
 
   stack.appendChild(grid);
   return stack;
+}
+
+function renderCredentialOrbits(copy) {
+  const panel = document.getElementById("credentialsOrbitPanel");
+  if (!panel) {
+    return;
+  }
+
+  const orbitItems = copy.credentials.items.filter((item) => item.tools?.length);
+  panel.innerHTML = "";
+  panel.hidden = orbitItems.length === 0;
+
+  if (!orbitItems.length) {
+    return;
+  }
+
+  const shell = createElement("div", "formation-orbits-shell");
+  const heading = createElement("div", "formation-orbits-heading");
+  const title = createElement("h3", "", copy.credentials.orbitTitle);
+  const intro = createElement("p", "", copy.credentials.orbitIntro);
+  const grid = createElement("div", "formation-orbits-grid");
+
+  heading.append(title, intro);
+
+  orbitItems.forEach((item, index) => {
+    const orbitCard = createElement("article", `formation-orbit-card${index % 2 === 1 ? " reveal-delay" : ""}`);
+    const orbit = buildCredentialTools(item.tools);
+    const caption = createElement("p", "formation-orbit-caption", item.title);
+
+    orbitCard.append(orbit, caption);
+    grid.appendChild(orbitCard);
+  });
+
+  shell.append(heading, grid);
+  panel.appendChild(shell);
+}
+
+function stopCredentialOrbitMotion() {
+  if (state.orbitAnimationFrame) {
+    window.cancelAnimationFrame(state.orbitAnimationFrame);
+    state.orbitAnimationFrame = null;
+  }
+}
+
+function initCredentialOrbitMotion() {
+  stopCredentialOrbitMotion();
+
+  const orbitGrids = Array.from(document.querySelectorAll(".credential-tool-grid-constellation"));
+  if (!orbitGrids.length) {
+    return;
+  }
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const orbitConfigs = orbitGrids.map((grid, gridIndex) => ({
+    grid,
+    direction: gridIndex % 2 === 0 ? 1 : -1,
+    nodes: Array.from(grid.querySelectorAll(".credential-orbit-node")),
+  }));
+
+  const renderFrame = (time) => {
+    const seconds = time / 1000;
+
+    orbitConfigs.forEach(({ grid, nodes, direction }, gridIndex) => {
+      const total = nodes.length;
+      const baseAngle = gridIndex === 0 ? Math.PI * 0.58 : Math.PI * 0.42;
+      const orbitSpeed = reducedMotion ? 0 : 0.22 + total * 0.005;
+      const radiusX = 33;
+      const radiusY = 24;
+
+      nodes.forEach((node, index) => {
+        const item = node.firstElementChild;
+        if (!item) {
+          return;
+        }
+
+        const angle = baseAngle + (Math.PI * 2 * index) / total + seconds * orbitSpeed * direction;
+        const depth = (Math.sin(angle) + 1) / 2;
+        const x = 50 + Math.cos(angle) * radiusX;
+        const y = 48 + Math.sin(angle) * radiusY;
+        const opacity = Math.max(0, Math.min(1, (depth - 0.14) / 0.86));
+        const scale = 0.74 + depth * 0.34;
+        const label = item.querySelector(".credential-tool-label");
+        const icon = item.querySelector(".credential-tool-icon");
+
+        node.style.left = `${x}%`;
+        node.style.top = `${y}%`;
+        node.style.zIndex = String(Math.round(depth * 100));
+
+        item.style.opacity = opacity.toFixed(3);
+        item.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        item.style.filter = `blur(${(1 - depth) * 1.1}px)`;
+        item.style.pointerEvents = opacity > 0.42 ? "auto" : "none";
+
+        if (label) {
+          label.style.opacity = Math.max(0.2, opacity).toFixed(3);
+        }
+
+        if (icon) {
+          icon.style.boxShadow = depth > 0.54
+            ? `inset 0 0 0 1px color-mix(in srgb, var(--tool-color) 26%, transparent), 0 14px 28px color-mix(in srgb, var(--tool-color) 16%, transparent)`
+            : `inset 0 0 0 1px color-mix(in srgb, var(--tool-color) 18%, transparent)`;
+        }
+      });
+    });
+
+    if (!reducedMotion) {
+      state.orbitAnimationFrame = window.requestAnimationFrame(renderFrame);
+    }
+  };
+
+  if (reducedMotion) {
+    renderFrame(0);
+    return;
+  }
+
+  state.orbitAnimationFrame = window.requestAnimationFrame(renderFrame);
 }
 
 function renderSkills(copy) {
@@ -1063,10 +1174,6 @@ function renderCredentials(copy) {
 
     card.appendChild(badges);
 
-    if (item.tools?.length) {
-      card.appendChild(buildCredentialTools(item.tools, item.toolsTitle));
-    }
-
     if (item.link) {
       card.appendChild(buildLinkChip(item.link));
     }
@@ -1235,6 +1342,8 @@ function renderAll() {
   renderSkills(copy);
   renderProjects(copy);
   renderCredentials(copy);
+  renderCredentialOrbits(copy);
+  initCredentialOrbitMotion();
   renderExperience(copy);
   observeReveal();
 }
@@ -1403,6 +1512,14 @@ function setupScrollUI() {
   window.addEventListener("scroll", updateScrollState, { passive: true });
 }
 
+function setupViewportRefresh() {
+  window.addEventListener("resize", () => {
+    window.requestAnimationFrame(() => {
+      initCredentialOrbitMotion();
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   applyTheme();
   renderAll();
@@ -1412,4 +1529,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupProjectSlider();
   setupContactReveal();
   setupScrollUI();
+  setupViewportRefresh();
 });
