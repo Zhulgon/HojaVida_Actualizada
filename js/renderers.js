@@ -310,6 +310,7 @@
     const slides = Array.from(track.children);
     const total = copy.projects.items.length;
     const currentRenderedIndex = renderedIndex ?? getRenderedProjectIndex(total);
+    const compactCarousel = window.matchMedia("(max-width: 860px)").matches;
 
     state.projectIndex = normalizeProjectIndex(state.projectIndex, total);
 
@@ -327,11 +328,12 @@
       const isActive = index === currentRenderedIndex;
       const isNext = total > 1 && index === currentRenderedIndex + 1;
       const isPrev = total > 1 && index === currentRenderedIndex - 1;
+      const useDesktopNeighbors = !compactCarousel;
 
       slide.classList.toggle("is-active", isActive);
-      slide.classList.toggle("is-next", isNext);
-      slide.classList.toggle("is-prev", isPrev);
-      slide.classList.toggle("is-far", !isActive && !isNext && !isPrev);
+      slide.classList.toggle("is-next", useDesktopNeighbors && isNext);
+      slide.classList.toggle("is-prev", useDesktopNeighbors && isPrev);
+      slide.classList.toggle("is-far", useDesktopNeighbors && !isActive && !isNext && !isPrev);
       slide.setAttribute("aria-hidden", String(!isActive));
     });
 
