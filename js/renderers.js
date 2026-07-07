@@ -84,11 +84,48 @@
     }
   }
 
+  function resetCredentialOrbitLayout(orbitGrids) {
+    orbitGrids.forEach((grid) => {
+      grid.querySelectorAll(".credential-orbit-node").forEach((node) => {
+        const item = node.firstElementChild;
+        const label = item?.querySelector(".credential-tool-label");
+        const icon = item?.querySelector(".credential-tool-icon");
+
+        node.style.left = "";
+        node.style.top = "";
+        node.style.zIndex = "";
+
+        if (!item) {
+          return;
+        }
+
+        item.style.opacity = "";
+        item.style.transform = "";
+        item.style.filter = "";
+        item.style.pointerEvents = "";
+
+        if (label) {
+          label.style.opacity = "";
+        }
+
+        if (icon) {
+          icon.style.boxShadow = "";
+        }
+      });
+    });
+  }
+
   function initCredentialOrbitMotion() {
     stopCredentialOrbitMotion();
 
     const orbitGrids = Array.from(document.querySelectorAll(".credential-tool-grid-constellation"));
     if (!orbitGrids.length) {
+      return;
+    }
+
+    const compactLayout = window.matchMedia("(max-width: 560px)").matches;
+    if (compactLayout) {
+      resetCredentialOrbitLayout(orbitGrids);
       return;
     }
 
