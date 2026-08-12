@@ -12,8 +12,28 @@
     document.documentElement.lang = state.locale;
 
     const metaDescription = document.querySelector('meta[name="description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", copy.metaDescription);
+    }
+
+    if (ogTitle) {
+      ogTitle.setAttribute("content", copy.metaTitle);
+    }
+
+    if (ogDescription) {
+      ogDescription.setAttribute("content", copy.metaDescription);
+    }
+
+    if (twitterTitle) {
+      twitterTitle.setAttribute("content", copy.metaTitle);
+    }
+
+    if (twitterDescription) {
+      twitterDescription.setAttribute("content", copy.metaDescription);
     }
 
     document.querySelectorAll("[data-i18n]").forEach((node) => {
@@ -30,6 +50,8 @@
     const menuToggle = document.getElementById("menuToggle");
     const themeToggle = document.getElementById("themeToggle");
     const langToggle = document.getElementById("langToggle");
+    const projectsControls = document.querySelector(".projects-controls");
+    const heroSignals = document.getElementById("heroSignals");
 
     if (themeToggleLabel) {
       themeToggleLabel.textContent = themeLabel;
@@ -49,6 +71,14 @@
 
     if (langToggle) {
       langToggle.setAttribute("aria-label", copy.controls.language);
+    }
+
+    if (projectsControls) {
+      projectsControls.setAttribute("aria-label", copy.projects.carouselLabel);
+    }
+
+    if (heroSignals) {
+      heroSignals.setAttribute("aria-label", copy.hero.signalsAria);
     }
 
     updateContactReveal(copy);
@@ -126,6 +156,11 @@
 
   function applyTheme() {
     document.body.setAttribute("data-theme", state.theme);
+
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) {
+      themeColor.setAttribute("content", state.theme === "dark" ? "#0d1320" : "#ece5d9");
+    }
   }
 
   function closeMenu() {
@@ -238,6 +273,7 @@
 
     button.addEventListener("click", () => {
       state.theme = state.theme === "light" ? "dark" : "light";
+      localStorage.setItem("portfolio-theme", state.theme);
       applyTheme();
       applyStaticTranslations(getCopy());
     });
@@ -297,6 +333,11 @@
 
     track.addEventListener("click", (event) => {
       if (event.target.closest("a, button, video")) {
+        return;
+      }
+
+      if (event.target.closest(".project-slide.is-prev")) {
+        app.changeProjectSlide(-1);
         return;
       }
 

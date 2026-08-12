@@ -7,7 +7,7 @@
 
   const state = {
     locale: localStorage.getItem("portfolio-locale") || "es",
-    theme: "dark",
+    theme: localStorage.getItem("portfolio-theme") || "dark",
     projectIndex: 0,
     projectAnimating: false,
     projectPendingLoop: null,
