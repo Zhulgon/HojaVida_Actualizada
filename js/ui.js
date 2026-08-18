@@ -51,7 +51,6 @@
     const themeToggle = document.getElementById("themeToggle");
     const langToggle = document.getElementById("langToggle");
     const projectsControls = document.querySelector(".projects-controls");
-    const heroSignals = document.getElementById("heroSignals");
 
     if (themeToggleLabel) {
       themeToggleLabel.textContent = themeLabel;
@@ -75,10 +74,6 @@
 
     if (projectsControls) {
       projectsControls.setAttribute("aria-label", copy.projects.carouselLabel);
-    }
-
-    if (heroSignals) {
-      heroSignals.setAttribute("aria-label", copy.hero.signalsAria);
     }
 
     updateContactReveal(copy);

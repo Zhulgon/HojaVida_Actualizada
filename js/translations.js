@@ -20,13 +20,6 @@
           "Soy estudiante de décimo semestre de Ingeniería de Sistemas y tecnólogo en Desarrollo de Sistemas Informáticos. He construido una base aplicada en software, bases de datos, visualización y organización de información a partir de proyectos y problemas reales.",
         summary2:
           "Busco prácticas empresariales y primeras oportunidades donde pueda aportar en desarrollo de software, análisis de datos o roles de apoyo en ingeniería de datos, combinando aprendizaje rápido con experiencia aplicada en productos, reportes y trazabilidad.",
-        signalDataLabel: "Datos",
-        signalDataValue: "Python · SQL · Tableau · Power BI",
-        signalSoftwareLabel: "Software",
-        signalSoftwareValue: "TypeScript · React · NestJS · APIs",
-        signalLanguageLabel: "Idioma",
-        signalLanguageValue: "Inglés C1 · EF SET",
-        signalsAria: "Indicadores clave del perfil",
         availabilityTitle: "Disponible para prácticas y primeras oportunidades",
         availabilityBody:
           "Abierto a prácticas empresariales, roles trainee y posiciones junior en desarrollo de software, análisis de datos y automatización.",
@@ -348,13 +341,6 @@
           "I am a tenth-semester Systems Engineering student and Software Development Technologist. I have built an applied foundation in software, databases, visualization and information organization through projects and real operational problems.",
         summary2:
           "I am looking for internships and early-career opportunities where I can contribute in software development, data analysis or data engineering support roles, combining fast learning with practical experience in products, reporting and traceability.",
-        signalDataLabel: "Data",
-        signalDataValue: "Python · SQL · Tableau · Power BI",
-        signalSoftwareLabel: "Software",
-        signalSoftwareValue: "TypeScript · React · NestJS · APIs",
-        signalLanguageLabel: "Language",
-        signalLanguageValue: "C1 English · EF SET",
-        signalsAria: "Key profile signals",
         availabilityTitle: "Open to internships and early-career opportunities",
         availabilityBody:
           "Open to internships, trainee roles and junior positions in software development, data analytics and automation.",
